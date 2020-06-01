@@ -1,0 +1,67 @@
+Sunnyland Woods
+by ApothecaryOfLight
+
+
+====================
+==  MEDIA RIGHTS  ==
+====================
+	All graphics were created by Luis Zuno aka Ansimuz. I have never communicated with Mr. Zuno, but he generously published his Sunnyland Woods asset pack under the Creative Commons Universal license (CCO 1.0). Please support him and creators like him by visitng his sites and promoting his work:
+	https://ansimuz.itch.io/sunnyland-woods
+	https://ansimuz.itch.io/
+	https://www.patreon.com/ansimuz
+
+
+==============
+==  CODING  ==
+==============
+C++
+SDL
+
+
+================
+==   TARGETS  ==
+================
+Windows
+Linux
+
+
+===============
+==  ROADMAP  ==
+===============
+Collisions
+
+Objects
+Clickables		PLUS CLICKABLES THAT ARENT CLICKABLE, LIKE MENU LOADING BAR
+	EACH CLICKABLE CALLS UPON ARRAY OF HARDCODED FUNCTIONS AND CONDITIONALS
+	SO YOU CAN CUSTOMIZE THE APPEARANCE AND PLACEMENT OF BUTTONS
+	BUT YOU CAN'T CREATE CONDITIONALS OR EFFECTS
+	ONLY CHOOSE MULTIPLE CONDITIONALS AND EFFECTS FROM A DROPDOWN
+Collectibles
+Interactables
+
+XML levels
+Use CMake
+Map Editor
+Merge MainMenu and GameInterface
+Versioning
+
+All entities will be composed of collision boxes based on their pixels
+
+-WAY TO CREATE BOUNDING BOXES DYNAMICALLY USING PIXEL TESTING!?
+
+-ABILITY TO DRAW BOUNDING BOXES ON SCREEN (F4)
+
+-Ability to have differently sized animations and variables capable of centering them and being accounted for in collisions.
+
+-Collisions with enemies- SIDE, BELOW or FROM ABOVE
+-Collisions with interactables- SIDE, BELOW, or FROM ABOVE
+-Collision with terrains- SIDE, BELOW, or FROM ABOVE
+-Collision with collectibles- IMPACT
+
+
+FACTORY TO CREATE ASSETS
+	-File name
+	-Calculate bounding boxes based on pixels FOR EACH FRAME
+	-Allocate and destroy all data appropriately
+	-On shutdown deallocate the buffers etc.
+	-Needs to handle static images and multiframe animations
