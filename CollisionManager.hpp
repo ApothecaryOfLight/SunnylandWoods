@@ -20,6 +20,7 @@ public:
 	void doInitializeCollisions ( void );
 
 	void doAddCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 );
+	void doUpdateCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 );
 
 	void doGameLogicTick ( void );
 
@@ -37,14 +38,3 @@ private:
 };
 
 #endif
-
-//Test player for collisions
-	//w/enemies
-	//w/objects
-	//w/collectibles
-	//w/interactables
-
-//Test enemies for collisions
-	//w/ enemies
-	//w/ objects
-	//they can't use/see/collide with interactables

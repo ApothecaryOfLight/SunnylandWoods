@@ -25,12 +25,12 @@ public:
 	void doRenderFrame ( void );
 	void doGameLogic ( void );
 
-	SDL_Rect rect_PlayerSrc, rect_PlayerDest;
+	SDL_Rect rect_PlayerSrc, rect_PlayerDest; //TODO: Reintegrate all player positions to myCamera, not myAssetFactory. AssetFactory is not an object manager, it is a resource loader.
 private:
 	SDL_Renderer * myRen;
 	InputManager * myInputManager;
 
-	SDL_Texture * texture_PlayerIdleFrames[8];
+	//SDL_Texture * texture_PlayerIdleFrames[8];
 	SDL_Texture * texture_PlayerRunFrames[6];
 	SDL_Texture * texture_PlayerJumpFrames[4];
 	SDL_Texture * texture_PlayerCrouchFrames[2];

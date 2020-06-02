@@ -25,6 +25,15 @@ Windows
 Linux
 
 
+AssetID - Unique for each frame
+ObjectID - Unique for each gameworld object, so each Croc gets its own ObjectID, which is retired upon being killed and reissued when a new enemy/w/e is spawned.
+		ObjectID sets are self-contained, so EnemyID1 is not MapObjectID1.
+SectorFormat - Each object manager will store a SectorFormat with the following universal fields:
+	ObjectID	AssetID		XPos		YPos		XSector		YSector		CurrentFrame	MaxFrames	varies
+		Fields after MaxFrames vary based upon which Manager.
+AssetIDs map to a list of all assets
+	AssetID+CurrentFrame=OffsetPosition		XSize		YSize
+
 ===============
 ==  ROADMAP  ==
 ===============

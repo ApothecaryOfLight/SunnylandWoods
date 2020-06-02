@@ -1,5 +1,12 @@
 //CollisionManager.cpp
 
+/*
+TODO:
+	Collision dimensions are stored in AssetFactory
+	Object positions are stored in their respective Object Managers
+	CollisionManager is not to be queried by other managers, but instead is to crunch collisions and run the simulation.
+*/
+
 #include <iostream>
 
 #include <list>
@@ -42,15 +49,24 @@ CollisionManager::~CollisionManager ( void ) {
 	delete[] myCollisionBoxes;
 }
 
-//Build a list of all collision boxes for all entities in the sector, bound to their frames, with x/y adjustments for each collision set.
-//Store all collision boxes as SDL_Rects and use SDL is intersecting to test.
-//Lookup by: world ID, Asset ID, xpos, ypos, frame, adjX, adjY
-//Will test all the collision boxes of that entity against all collision boxes in the sector and in adjacent sectors
+
+//1) Match each object in the managers with their asset IDs from AssetFactory
+//2) Combine that data with information from CameraManager
+//3) Get their coordinants from ObjectManagers
+//4) Use that to create an x/y/w/h collision box for each object
+	//FUTURE: Make collision boxes stack frame by frame for finer collisions.
 void CollisionManager::doInitializeCollisions ( void ) {
 	//doAddCollisionRectangle( 0, 0, 0, 90, 90 );
-	SDL_Rect * myRect = &myPlayerManager->rect_PlayerDest;
-	std::cout << myRect->x << "/" << myRect->y << "/" << myRect->w << "/" << myRect->h << std::endl;
-	doAddCollisionRectangle( 0, myRect->x, myRect->y, myRect->w, myRect->h );
+	StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]; //Needs to reference myCameraManager for player coords, not AssetFactory (!!) but also not PlayerManager
+	SDL_Rect * myRect = &myStaticAssetPtr->myRect_dst;
+	//std::cout << myRect->x << "/" << myRect->y << "/" << myRect->w << "/" << myRect->h << std::endl;
+	doAddCollisionRectangle(
+		0,
+		myRect->x,
+		myRect->y,
+		myRect->x + myRect->w,
+		myRect->y + myRect->h
+	);
 }
 
 void CollisionManager::doAddCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 ) {
@@ -62,20 +78,42 @@ void CollisionManager::doAddCollisionRectangle ( int inID, int inX1, int inY1, i
 	myCollisionBoxCounter++;
 }
 
+void CollisionManager::doUpdateCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 ) {
+	myCollisionBoxes[myCollisionBoxCounter][0] = inX1;
+	myCollisionBoxes[myCollisionBoxCounter][1] = inY1;
+	myCollisionBoxes[myCollisionBoxCounter][2] = inX1+inX2;
+	myCollisionBoxes[myCollisionBoxCounter][3] = inY1+inY2;
+}
+
+//1) Match each on-screen object to its Asset ID
+//2) Construct the rect for each onscreen object by applying the ObjectManager's positional values
+//3) Draw the collision boxes.
 void CollisionManager::doDrawCollisionBoxes ( void ) {
-	SDL_Rect * myRect = &myPlayerManager->rect_PlayerDest;
-	std::cout << myRect->x << "/" << myRect->y << "/" << myRect->w << "/" << myRect->h << std::endl;
-	
+	StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0];
+	SDL_Rect * myRect = &myStaticAssetPtr->myRect_dst;
 
 	SDL_SetRenderDrawColor( myRen, 255, 0, 0, SDL_ALPHA_OPAQUE);
 	for( int i=0; i<myCollisionBoxCounter; i++ ) {
 		int size = myCollisionBoxLookup[i].size();
 		for( int b=0; b<size; b++ ) {
-			SDL_RenderDrawLine( myRen, myRect->x, myRect->y, myRect->x+myRect->w, myRect->y+myRect->h  ); 
+			SDL_RenderDrawLine(
+				myRen,
+				myRect->x,
+				myRect->y,
+				myRect->x+myRect->w,
+				myRect->y+myRect->h
+			); 
 		}
 	}
 }
 
+//1) Test enemies against map
+//2) Test player against map
+//3) Test player against enemies
 void CollisionManager::doGameLogicTick ( void ) {
-	
+	//doEnemyLogicTick();
+	//doCollectiblesLogicTick();
+	//doClickablesLogicTick();
+	//doInteractablesLogicTick();
+	//doPlayerLogicTick();
 }

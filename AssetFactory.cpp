@@ -14,7 +14,7 @@ AssetFactory::AssetFactory ( SDL_Renderer * inRen, CameraManager * inCameraManag
 
 //TODO: An asset file?
 void AssetFactory::doLoadImages ( void ) {
-	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 0, 0, 90, 58, 8 );
+	doLoadPlayerImages();
 }
 
 //TODO: Inline?
@@ -40,7 +40,7 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelWidth = inWidth;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelHeight = inHeight;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( 0, 0, inWidth, inHeight );
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect ( (myCameraManager->ScreenWidth/2)-((90*3)/2), (myCameraManager->ScreenHeight/2), inWidth*3, inHeight*3 );
+			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect ( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen, inWidth*3, inHeight*3 );
 
 			SDL_FreeSurface( myNewSurface );
 		}
@@ -61,6 +61,7 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 }
 
 void AssetFactory::doResize ( void ) {
+	//TODO: doSetPlayerSize
 	for( int i=0; i<8; i++ ) {
 		StaticAsset * myStaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
 		int width = myStaticAssetPtr->PixelWidth;
@@ -74,9 +75,19 @@ void AssetFactory::doResize ( void ) {
 	}
 }
 
-void AssetFactory::doAdjustPlayerDest ( int inDestX ) {
+void AssetFactory::doAdjustPlayerDest ( int inDestX ) { //TODO: Each object needs a positional location and associated metadata outside of the Asset.
 	for( int i=0; i<8; i++ ) {
 		StaticAsset * StaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
 		StaticAssetPtr->myRect_dst.x = inDestX;
 	}
+	for( int i=0; i<6; i++ ) {
+		StaticAsset * StaticAssetPtr = myAnimatedAssets[1]->myStaticAssets[i];
+		StaticAssetPtr->myRect_dst.x = inDestX;
+	}
+}
+
+void AssetFactory::doLoadPlayerImages ( void ) {
+	myCameraManager->doSetPlayerSize( 90, 85 );
+	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 0, 0, 90, 58, 8 );
+	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 0, 0, 90, 58, 6 );	
 }

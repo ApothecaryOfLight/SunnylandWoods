@@ -16,7 +16,6 @@
 
 PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory ) {
 	myRen = inRen;
-	doLoadPlayer();
 	anim_frame_Player = 0;
 	anim_frame_Player_MAX = 8;
 	myInputManager = inInputManager;
@@ -25,12 +24,14 @@ PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManag
 	myAssetFactory = inAssetFactory;
 
 	FPSCounter = 0;
+
+	doLoadPlayer();
 }
 
 PlayerManager::~PlayerManager ( void ) {
-	for( int i=0; i<8; i++ ) {
+	/*for( int i=0; i<8; i++ ) {
 		SDL_DestroyTexture( texture_PlayerIdleFrames[i] );
-	}
+	}*/
 	for( int i=0; i<6; i++ ) {
 		SDL_DestroyTexture( texture_PlayerRunFrames[i] );
 	}
@@ -60,9 +61,11 @@ SDL_Rect PlayerManager::doCreateRect ( int inX, int inY, int inW, int inH ) {
 
 void PlayerManager::doLoadPlayer ( void ) {
 	rect_PlayerSrc = doCreateRect ( 0, 0, 90, 58 );
-	rect_PlayerDest = doCreateRect ( (screenWIDTH/2)-((90*3)/2), (screenHEIGHT/2), 90*3, 58*3 );
+	rect_PlayerDest = doCreateRect ( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen, 90*3, 58*3 ); //TODO: Tie this into CameraManager
+	rect_PlayerDest.x = myCameraManager->PlayerX_screen;
+	rect_PlayerDest.x = myCameraManager->PlayerY_screen;
 
-	doLoadPlayerAnimationCycle( texture_PlayerIdleFrames, "media/SPRITES/player/idle/player-idle-", 8 );
+	//doLoadPlayerAnimationCycle( texture_PlayerIdleFrames, "media/SPRITES/player/idle/player-idle-", 8 );
 	doLoadPlayerAnimationCycle( texture_PlayerRunFrames, "media/SPRITES/player/run/player-run-", 6 );
 	doLoadPlayerAnimationCycle( texture_PlayerJumpFrames, "media/SPRITES/player/jump/player-jump-", 4 );
 	doLoadPlayerAnimationCycle( texture_PlayerCrouchFrames, "media/SPRITES/player/crouch/player-crouch-", 2 );
@@ -89,38 +92,41 @@ void PlayerManager::doRenderFrame ( void ) {
 			FPSCounter = 0;
 		}
 	}
-//std::cout << "ASDF : " << rect_PlayerDest.x << "/" << rect_PlayerDest.y << "/" << rect_PlayerDest.w << "/" << rect_PlayerDest.h << std::endl;
-	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) {
+
+
+	//TODO: Needs adjustment for half of player sprite width at the time.
+	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)-9;
-		if( myCameraManager->PlayerX_screen <= (screenWIDTH/3)-((90*3)/2) ) {
-			myCameraManager->PlayerX_screen = (screenWIDTH/3)-((90*3)/2);
+		if( myCameraManager->PlayerX_screen <= myCameraManager->ScreenWall_Left ) {
+			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level-9;
 		}
-		rect_PlayerDest.x = myCameraManager->PlayerX_screen;
+		//rect_PlayerDest.x = myCameraManager->PlayerX_screen;
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen );
 	}
-	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) {
+	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Logic for moving right
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+9;
-		if( myCameraManager->PlayerX_screen >= ((screenWIDTH/3)*2)-((90*3)/2) ) {
-			myCameraManager->PlayerX_screen = ((screenWIDTH/3)*2)-((90*3)/2);
+		if( myCameraManager->PlayerX_screen + myCameraManager->PlayerSize_X >= myCameraManager->ScreenWall_Right ) {
+			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - myCameraManager->PlayerSize_X;
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+9;
 		}
-		rect_PlayerDest.x = myCameraManager->PlayerX_screen;
+		//rect_PlayerDest.x = myCameraManager->PlayerX_screen;
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen );
 	}
+
 
 	if( myInputManager->inputFlag_Jumping == true ) {
 		anim_frame_Player_MAX = 4;
 		if( anim_frame_Player >= 4 ) { anim_frame_Player = 0; }
-			if( myInputManager->isPlayerFacingLeft == true ) {
+			if( myInputManager->isPlayerFacingLeft == true ) { //Jumping left
 				SDL_RenderCopyEx( myRen, texture_PlayerJumpFrames[anim_frame_Player], &rect_PlayerSrc, &rect_PlayerDest, 0, NULL, SDL_FLIP_HORIZONTAL );
 			}
-			else if( myInputManager->isPlayerFacingLeft == false ) {
+			else if( myInputManager->isPlayerFacingLeft == false ) { //Jumping right
 				SDL_RenderCopy( myRen, texture_PlayerJumpFrames[anim_frame_Player], &rect_PlayerSrc, &rect_PlayerDest );
 			}
 	}
 	else if ( myInputManager->inputFlag_Jumping == false ) {
-		if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == false && myInputManager->inputFlag_Crouching == true ) {
+		if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == false && myInputManager->inputFlag_Crouching == true ) { //Crouching
 			anim_frame_Player_MAX = 2;
 			if( anim_frame_Player >= 2 ) { anim_frame_Player = 0; }
 			if( myInputManager->isPlayerFacingLeft == true ) {
@@ -130,12 +136,12 @@ void PlayerManager::doRenderFrame ( void ) {
 				SDL_RenderCopy( myRen, texture_PlayerCrouchFrames[anim_frame_Player], &rect_PlayerSrc, &rect_PlayerDest );
 			}
 		}
-		else if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) {
+		else if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Running left
 			anim_frame_Player_MAX = 6;
 			if( anim_frame_Player >= 6 ) { anim_frame_Player = 0; }
 			SDL_RenderCopyEx( myRen, texture_PlayerRunFrames[anim_frame_Player], &rect_PlayerSrc, &rect_PlayerDest, 0, NULL, SDL_FLIP_HORIZONTAL );
 		}
-		else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) {
+		else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Running right
 			anim_frame_Player_MAX = 6;
 			if( anim_frame_Player >= 6 ) { anim_frame_Player = 0; }
 			SDL_RenderCopy( myRen, texture_PlayerRunFrames[anim_frame_Player], &rect_PlayerSrc, &rect_PlayerDest );
@@ -143,21 +149,15 @@ void PlayerManager::doRenderFrame ( void ) {
 		else {
 			anim_frame_Player_MAX = 8;
 			if( anim_frame_Player >= 8 ) { anim_frame_Player = 0; }
-			/*if( myInputManager->isPlayerFacingLeft == true ) {
-				SDL_RenderCopyEx( myRen, texture_PlayerIdleFrames[anim_frame_Player], &rect_PlayerSrc, &rect_PlayerDest, 0, NULL, SDL_FLIP_HORIZONTAL );
-			}
-			else if( myInputManager->isPlayerFacingLeft == false ) {
-				SDL_RenderCopy( myRen, texture_PlayerIdleFrames[anim_frame_Player], &rect_PlayerSrc, &rect_PlayerDest );
-			}*/
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[anim_frame_Player];
-			if( myInputManager->isPlayerFacingLeft == true ) {
+			if( myInputManager->isPlayerFacingLeft == true ) { //Idle left
 				SDL_RenderCopyEx( myRen, myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
 					&(myStaticAssetPtr->myRect_dst),
 					0, NULL, SDL_FLIP_HORIZONTAL
 				);
 			}
-			else if( myInputManager->isPlayerFacingLeft == false ) {
+			else if( myInputManager->isPlayerFacingLeft == false ) { //Idle right
 				SDL_RenderCopy( myRen, myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
 					&(myStaticAssetPtr->myRect_dst)

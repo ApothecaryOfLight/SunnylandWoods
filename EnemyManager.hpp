@@ -19,6 +19,8 @@ public:
 	void doAddEnemy ( int inAssetID, int inPosX, int inPosY );
 
 	void doEnemyTick ( int inSectorID, int inSectorX, int inSectorY );
+
+	//void doDrawEnemies
 private:
 	SDL_Renderer * myRen;
 	MapManager * myMapManager;
