@@ -20,6 +20,10 @@ AnimationManager::AnimationManager ( SDL_Renderer * inRen, MapManager * inMapMan
 	myCollisionManager = inCollisionManager;
 }
 
+void AnimationManager::doGameLogic ( void ) {
+	myCollisionManager->doGameLogic();
+}
+
 void AnimationManager::doRenderFrame ( void ) {
 	SDL_RenderClear( myRen );
 
@@ -28,9 +32,4 @@ void AnimationManager::doRenderFrame ( void ) {
 	myCollisionManager->doDrawCollisionBoxes();
 
 	SDL_RenderPresent(myRen);
-}
-
-void AnimationManager::doGameLogic ( void ) {
-	//TODO: Replace with CollisionManager call
-	myPlayerManager->doGameLogic();
 }

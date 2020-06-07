@@ -110,10 +110,10 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 //1) Test enemies against map
 //2) Test player against map
 //3) Test player against enemies
-void CollisionManager::doGameLogicTick ( void ) {
+void CollisionManager::doGameLogic ( void ) {
 	//doEnemyLogicTick();
 	//doCollectiblesLogicTick();
 	//doClickablesLogicTick();
 	//doInteractablesLogicTick();
-	//doPlayerLogicTick();
+	myPlayerManager->doGameLogic();
 }

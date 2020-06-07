@@ -41,13 +41,7 @@ void PlayerManager::doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray
 	}
 }
 
-//TODO: Implement this, seperating out the logic code from doRenderFrame
-/*void PlayerManager::doGameLogic ( void ) {
-
-}*/
-
-//TODO: Seperate animation code and game logic code. This function shouldn't set movement and positioning, just draw them.
-void PlayerManager::doRenderFrame ( void ) {
+void PlayerManager::doGameLogic ( void ) {
 	FPSCounter++;
 	if( myInputManager->inputFlag_Jumping == true || myInputManager->inputFlag_Right == true || myInputManager->inputFlag_Left == true  ) {
 		if( FPSCounter >= 2 ) {
@@ -68,12 +62,8 @@ void PlayerManager::doRenderFrame ( void ) {
 		}
 	}
 
-
-
-	//TODO: Needs adjustment for half of player sprite width at the time.
 	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)-9;
-		std::cout << "PlayerScreenPosX: " << myCameraManager->PlayerX_screen << std::endl;
 		if( myCameraManager->PlayerX_screen <= myCameraManager->ScreenWall_Left ) {
 			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level-9;
@@ -82,15 +72,15 @@ void PlayerManager::doRenderFrame ( void ) {
 	}
 	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Logic for moving right
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+9;
-		std::cout << "PlayerScreenPosX: " << (myCameraManager->PlayerX_screen + myCameraManager->PlayerSize_X) << std::endl;
-		if( myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X*3) >= myCameraManager->ScreenWall_Right ) {
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - (myCameraManager->PlayerSize_X*3);
+		if( myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X*myCameraManager->magnification) >= myCameraManager->ScreenWall_Right ) {
+			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - (myCameraManager->PlayerSize_X*myCameraManager->magnification);
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+9;
 		}
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 	}
+}
 
-
+void PlayerManager::doRenderFrame ( void ) {
 
 	if( myInputManager->inputFlag_Jumping == true ) {
 		anim_frame_Player_MAX = 4;
@@ -187,8 +177,4 @@ void PlayerManager::doRenderFrame ( void ) {
 			}
 		}
 	}
-}
-
-void PlayerManager::doGameLogic ( void ) {
-	//TODO: Likely remove this in favor of game logic functions elsewhere.
 }

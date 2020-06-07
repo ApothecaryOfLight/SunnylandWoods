@@ -15,8 +15,8 @@
 class AnimationManager {
 public:
 	AnimationManager ( SDL_Renderer * inRen, MapManager * inMapManager, PlayerManager * inPlayerManager, EnemyManager * inEnemyManager, InputManager * inInputManager, CollisionManager * inCollisionManager );
-	void doRenderFrame ( void );
 	void doGameLogic ( void );
+	void doRenderFrame ( void );
 private:
 	SDL_Renderer * myRen;
 	MapManager * myMapManager;

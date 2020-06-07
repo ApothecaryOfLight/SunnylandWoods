@@ -22,15 +22,17 @@ public:
 	void doAddCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 );
 	void doUpdateCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 );
 
-	void doGameLogicTick ( void );
+	void doGameLogic ( void );
 
 	void doDrawCollisionBoxes ( void );
 private:
 	SDL_Renderer * myRen;
+
 	CameraManager * myCameraManager;
 	AssetFactory * myAssetFactory;
 	EnemyManager * myEnemyManager;
 	PlayerManager * myPlayerManager;
+
 	int myCollisionBoxCounter;
 	std::list<int> retiredCollisionBoxIDs;
 	int ** myCollisionBoxes;
