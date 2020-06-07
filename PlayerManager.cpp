@@ -24,23 +24,9 @@ PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManag
 	myAssetFactory = inAssetFactory;
 
 	FPSCounter = 0;
-
-	doLoadPlayer();
 }
 
 PlayerManager::~PlayerManager ( void ) {
-	/*for( int i=0; i<8; i++ ) {
-		SDL_DestroyTexture( texture_PlayerIdleFrames[i] );
-	}*/
-	/*for( int i=0; i<6; i++ ) {
-		SDL_DestroyTexture( texture_PlayerRunFrames[i] );
-	}
-	for( int i=0; i<4; i++ ) {
-		SDL_DestroyTexture( texture_PlayerJumpFrames[i] );
-	}
-	for( int i=0; i<2; i++ ) {
-		SDL_DestroyTexture( texture_PlayerCrouchFrames[i] );
-	}*/
 }
 
 void PlayerManager::doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray, std::string inFileLocation, int inLength ) {
@@ -55,21 +41,10 @@ void PlayerManager::doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray
 	}
 }
 
-SDL_Rect PlayerManager::doCreateRect ( int inX, int inY, int inW, int inH ) {
-	SDL_Rect toRetByValue; toRetByValue.x = inX; toRetByValue.y = inY; toRetByValue.w = inW; toRetByValue.h = inH; return toRetByValue;
-}
+//TODO: Implement this, seperating out the logic code from doRenderFrame
+/*void PlayerManager::doGameLogic ( void ) {
 
-void PlayerManager::doLoadPlayer ( void ) {
-	//rect_PlayerSrc = doCreateRect ( 0, 0, 90, 58 );
-	//rect_PlayerDest = doCreateRect ( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen, 90*3, 58*3 ); //TODO: Tie this into CameraManager
-	//rect_PlayerDest.x = myCameraManager->PlayerX_screen;
-	//rect_PlayerDest.x = myCameraManager->PlayerY_screen;
-
-	//doLoadPlayerAnimationCycle( texture_PlayerIdleFrames, "media/SPRITES/player/idle/player-idle-", 8 );
-	//doLoadPlayerAnimationCycle( texture_PlayerRunFrames, "media/SPRITES/player/run/player-run-", 6 );
-	//doLoadPlayerAnimationCycle( texture_PlayerJumpFrames, "media/SPRITES/player/jump/player-jump-", 4 );
-	//doLoadPlayerAnimationCycle( texture_PlayerCrouchFrames, "media/SPRITES/player/crouch/player-crouch-", 2 );
-}
+}*/
 
 //TODO: Seperate animation code and game logic code. This function shouldn't set movement and positioning, just draw them.
 void PlayerManager::doRenderFrame ( void ) {
@@ -94,23 +69,27 @@ void PlayerManager::doRenderFrame ( void ) {
 	}
 
 
+
 	//TODO: Needs adjustment for half of player sprite width at the time.
 	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)-9;
+		std::cout << "PlayerScreenPosX: " << myCameraManager->PlayerX_screen << std::endl;
 		if( myCameraManager->PlayerX_screen <= myCameraManager->ScreenWall_Left ) {
 			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level-9;
 		}
-		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen );
+		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 	}
 	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Logic for moving right
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+9;
-		if( myCameraManager->PlayerX_screen + myCameraManager->PlayerSize_X >= myCameraManager->ScreenWall_Right ) {
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - myCameraManager->PlayerSize_X;
+		std::cout << "PlayerScreenPosX: " << (myCameraManager->PlayerX_screen + myCameraManager->PlayerSize_X) << std::endl;
+		if( myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X*3) >= myCameraManager->ScreenWall_Right ) {
+			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - (myCameraManager->PlayerSize_X*3);
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+9;
 		}
-		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen );
+		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 	}
+
 
 
 	if( myInputManager->inputFlag_Jumping == true ) {

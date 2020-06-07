@@ -2,6 +2,9 @@
 
 #include "CameraManager.hpp"
 
+#include <iostream>
+
+
 CameraManager::CameraManager ( int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight ) {
 	PlayerX_level = inPlayerX;
 	PlayerY_level = inPlayerY;
@@ -26,11 +29,16 @@ void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
 	ScreenWidth = inNewWidth;
 	ScreenHeight = inNewHeight;
 
+std::cout << "ScreenSize: " << ScreenWidth << "/" << ScreenHeight << std::endl;
+
 	ScreenWall_Left = ScreenWidth/5;
-	ScreenWall_Right = ScreenWidth-ScreenWall_Left;
+	ScreenWall_Right = ScreenWidth - ScreenWall_Left;
+
+std::cout << "ScreenWalls: " << ScreenWall_Left << "/" << ScreenWall_Right << std::endl;
 
 	PlayerSize_X = 90; //TODO: Apply resizing if appropriate.
 	PlayerSize_Y = 58;
+std::cout << "PlayerSize: " << PlayerSize_X << "/" << PlayerSize_Y << std::endl;
 
 	PlayerX_screen = (ScreenWidth/2)-(PlayerSize_X/2);
 	PlayerY_screen = (ScreenHeight*.5)-((PlayerSize_Y*magnification)/2);

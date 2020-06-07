@@ -75,6 +75,7 @@ void AssetFactory::doResize ( void ) {
 	}
 }
 
+//TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 void AssetFactory::doAdjustPlayerDest ( int inDestX ) { //TODO: Each object needs a positional location and associated metadata outside of the Asset.
 	for( int i=0; i<8; i++ ) {
 		StaticAsset * StaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
