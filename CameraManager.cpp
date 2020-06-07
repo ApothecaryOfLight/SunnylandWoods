@@ -34,7 +34,6 @@ void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
 
 	PlayerX_screen = (ScreenWidth/2)-(PlayerSize_X/2);
 	PlayerY_screen = (ScreenHeight*.5)-((PlayerSize_Y*magnification)/2);
-
 }
 
 void CameraManager::doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY ) {

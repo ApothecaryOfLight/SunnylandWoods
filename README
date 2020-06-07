@@ -37,6 +37,8 @@ AssetIDs map to a list of all assets
 ===============
 ==  ROADMAP  ==
 ===============
+1) Unify coordinate systems under myCameraManager
+
 Collisions
 
 Objects

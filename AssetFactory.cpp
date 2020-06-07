@@ -84,10 +84,25 @@ void AssetFactory::doAdjustPlayerDest ( int inDestX ) { //TODO: Each object need
 		StaticAsset * StaticAssetPtr = myAnimatedAssets[1]->myStaticAssets[i];
 		StaticAssetPtr->myRect_dst.x = inDestX;
 	}
+	for( int i=0; i<4; i++ ) {
+		StaticAsset * StaticAssetPtr = myAnimatedAssets[4]->myStaticAssets[i];
+		StaticAssetPtr->myRect_dst.x = inDestX;
+	}
+	for( int i=0; i<2; i++ ) {
+		StaticAsset * StaticAssetPtr = myAnimatedAssets[2]->myStaticAssets[i];
+		StaticAssetPtr->myRect_dst.x = inDestX;
+	}
+	for( int i=0; i<2; i++ ) {
+		StaticAsset * StaticAssetPtr = myAnimatedAssets[3]->myStaticAssets[i];
+		StaticAssetPtr->myRect_dst.x = inDestX;
+	}
 }
 
 void AssetFactory::doLoadPlayerImages ( void ) {
 	myCameraManager->doSetPlayerSize( 90, 85 );
 	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 0, 0, 90, 58, 8 );
-	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 0, 0, 90, 58, 6 );	
+	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 0, 0, 90, 58, 6 );
+	doLoadImage( 2, true, "media/SPRITES/player/hurt/player-hurt-", 0, 0, 90, 58, 2 );
+	doLoadImage( 3, true, "media/SPRITES/player/crouch/player-crouch-", 0, 0, 90, 58, 2 );
+	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 0, 0, 90, 58, 4 );	
 }
