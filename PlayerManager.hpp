@@ -23,15 +23,15 @@ public:
 	void doRenderFrame ( void );
 	void doGameLogic ( void );
 
+	int anim_frame_Player;
+	int PlayerAnimationType;
+	int anim_frame_Player_MAX;
+	int FPSCounter;
 private:
 	SDL_Renderer * myRen;
 	InputManager * myInputManager;
 
-	int anim_frame_Player;
-	int anim_frame_Player_MAX;
-	int FPSCounter;
 
-	int PlayerAnimationType;
 
 	CameraManager * myCameraManager;
 	AssetFactory * myAssetFactory;

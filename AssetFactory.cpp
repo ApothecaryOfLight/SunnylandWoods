@@ -15,6 +15,7 @@ AssetFactory::AssetFactory ( SDL_Renderer * inRen, CameraManager * inCameraManag
 //TODO: An asset file?
 void AssetFactory::doLoadImages ( void ) {
 	doLoadPlayerImages();
+	doLoadImage( 5, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0 );
 }
 
 //TODO: Inline?
@@ -39,12 +40,14 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myTexture = SDL_CreateTextureFromSurface( myRen, myNewSurface );
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelWidth = inWidth;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelHeight = inHeight;
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( 0, 0, inWidth, inHeight );
+			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect ( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen, inWidth*3, inHeight*3 );
 
 			SDL_FreeSurface( myNewSurface );
 		}
 	} else if( !isAnimated ) {
+		std::cout << "Loading image 5." << std::endl;
+		std::cout << inAssetID << std::endl;
 		myStaticAssets[inAssetID] = new StaticAsset;
 
 		SDL_Surface *myNewSurface = IMG_Load( inSrcFilename.c_str() );
@@ -53,8 +56,8 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 		myStaticAssets[inAssetID]->myTexture = SDL_CreateTextureFromSurface( myRen, myNewSurface );
 		myStaticAssets[inAssetID]->PixelWidth = inWidth;
 		myStaticAssets[inAssetID]->PixelHeight = inHeight;
-		myStaticAssets[inAssetID]->myRect_src = doCreateRect ( 0, 0, inWidth, inHeight );
-		myStaticAssets[inAssetID]->myRect_dst = doCreateRect ( (myCameraManager->ScreenWidth/2)-((90*3)/2), (myCameraManager->ScreenHeight/2), inWidth*3, inHeight*3 );
+		myStaticAssets[inAssetID]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
+		myStaticAssets[inAssetID]->myRect_dst = doCreateRect ( 320, 320, inWidth*3, inHeight*3 );
 
 		SDL_FreeSurface( myNewSurface );
 	}
@@ -106,4 +109,6 @@ void AssetFactory::doLoadPlayerImages ( void ) {
 	doLoadImage( 2, true, "media/SPRITES/player/hurt/player-hurt-", 0, 0, 90, 58, 2 );
 	doLoadImage( 3, true, "media/SPRITES/player/crouch/player-crouch-", 0, 0, 90, 58, 2 );
 	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 0, 0, 90, 58, 4 );	
+
+
 }

@@ -37,7 +37,9 @@ AssetIDs map to a list of all assets
 ===============
 ==  ROADMAP  ==
 ===============
-1) Unify coordinate systems under myCameraManager
+1) Stack collision boxes vertically for finer collisions (down and up will only address top and bottom boxes, this granularity will exist side-to-side).
+2) Calculate boxes dynamically at startup for each Asset
+3) Introduce MapObjects, with collisions
 
 Collisions
 

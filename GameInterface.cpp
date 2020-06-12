@@ -30,11 +30,11 @@ GameInterface::GameInterface ( SDL_Renderer * inRen ) {
 
 	myInputManager = new InputManager();
 
-	myMapManager = new MapManager ( inRen, myCameraManager ); //root of the spatial context
+	myMapManager = new MapManager ( inRen, myCameraManager, myAssetFactory ); //root of the spatial context
 	myClickableManager = new ClickableManager ( inRen, myMapManager, myCameraManager );
 	myEnemyManager = new EnemyManager ( inRen, myMapManager, myCameraManager );
 	myPlayerManager = new PlayerManager ( inRen, myInputManager, myCameraManager, myAssetFactory );
-	myCollisionManager = new CollisionManager ( inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager ); //Move all movement code here
+	myCollisionManager = new CollisionManager ( inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager ); //Move all movement code here
 
 	myLevelManager = new LevelManager( myMapManager, myEnemyManager, myClickableManager );
 	myAnimationManager = new AnimationManager ( inRen, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager );

@@ -12,6 +12,10 @@ run-linux-debug: linux
 	reset
 	cd bin && gdb SunnylandWoods_Linux
 
+run-linux-valgrind : linux
+	reset
+	cd bin && valgrind --leak-check=yes ./SunnylandWoods_Linux
+
 linux : main.cpp objs/InterfaceManager.o objs/MainMenuInterface.o objs/GameInterface.o objs/InputManager.o objs/AnimationManager.o objs/PlayerManager.o objs/EnemyManager.o objs/MapManager.o objs/TimeManager.o objs/CameraManager.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o
 	reset
 	g++ -g main.cpp -std=c++11 objs/InterfaceManager.o objs/MainMenuInterface.o objs/GameInterface.o objs/InputManager.o objs/AnimationManager.o objs/PlayerManager.o objs/EnemyManager.o objs/MapManager.o objs/TimeManager.o  objs/CameraManager.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o `sdl2-config --cflags --libs` -lGL -lSDL2_image -o bin/SunnylandWoods_Linux

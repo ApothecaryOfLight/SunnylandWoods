@@ -18,6 +18,7 @@ PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManag
 	myRen = inRen;
 	anim_frame_Player = 0;
 	anim_frame_Player_MAX = 8;
+	PlayerAnimationType = 0;
 	myInputManager = inInputManager;
 
 	myCameraManager = inCameraManager;
@@ -42,7 +43,7 @@ void PlayerManager::doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray
 }
 
 void PlayerManager::doGameLogic ( void ) {
-	FPSCounter++;
+	/*FPSCounter++;
 	if( myInputManager->inputFlag_Jumping == true || myInputManager->inputFlag_Right == true || myInputManager->inputFlag_Left == true  ) {
 		if( FPSCounter >= 2 ) {
 			anim_frame_Player++;
@@ -77,13 +78,13 @@ void PlayerManager::doGameLogic ( void ) {
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+9;
 		}
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
-	}
+	}*/
 }
 
 void PlayerManager::doRenderFrame ( void ) {
-
 	if( myInputManager->inputFlag_Jumping == true ) {
 		anim_frame_Player_MAX = 4;
+		PlayerAnimationType = 4;
 		if( anim_frame_Player >= 4 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[4]->myStaticAssets[anim_frame_Player];
 			if( myInputManager->isPlayerFacingLeft == true ) { //Jumping left
@@ -109,6 +110,7 @@ void PlayerManager::doRenderFrame ( void ) {
 	else if ( myInputManager->inputFlag_Jumping == false ) {
 		if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == false && myInputManager->inputFlag_Crouching == true ) { //Crouching
 			anim_frame_Player_MAX = 2;
+			PlayerAnimationType = 3;
 			if( anim_frame_Player >= 2 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[3]->myStaticAssets[anim_frame_Player];
 			if( myInputManager->isPlayerFacingLeft == true ) {
@@ -133,6 +135,7 @@ void PlayerManager::doRenderFrame ( void ) {
 		}
 		else if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) {
 			anim_frame_Player_MAX = 6;
+			PlayerAnimationType = 1;
 			if( anim_frame_Player >= 6 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[1]->myStaticAssets[anim_frame_Player];
 			SDL_RenderCopyEx(
@@ -147,6 +150,7 @@ void PlayerManager::doRenderFrame ( void ) {
 		}
 		else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Running right
 			anim_frame_Player_MAX = 6;
+			PlayerAnimationType = 1;
 			if( anim_frame_Player >= 6 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[1]->myStaticAssets[anim_frame_Player];
 			SDL_RenderCopy(
@@ -158,6 +162,7 @@ void PlayerManager::doRenderFrame ( void ) {
 		}
 		else {
 			anim_frame_Player_MAX = 8;
+			PlayerAnimationType = 0;
 			if( anim_frame_Player >= 8 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[anim_frame_Player];
 			if( myInputManager->isPlayerFacingLeft == true ) { //Idle left
