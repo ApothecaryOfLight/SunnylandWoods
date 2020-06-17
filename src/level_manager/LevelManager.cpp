@@ -1,12 +1,9 @@
-
-
 //Remember to set the SectorsX and SectorsY in EnemyManager, MapManager and ClickableManager
-
 #include "LevelManager.hpp"
 
-#include "MapManager.hpp"
-#include "ClickableManager.hpp"
-#include "EnemyManager.hpp"
+#include "../map_manager/MapManager.hpp"
+#include "../clickable_manager/ClickableManager.hpp"
+#include "../enemy_manager/EnemyManager.hpp"
 
 
 LevelManager::LevelManager ( MapManager * inMapManager, EnemyManager * inEnemyManager, ClickableManager * inClickableManager ) {
@@ -16,5 +13,16 @@ LevelManager::LevelManager ( MapManager * inMapManager, EnemyManager * inEnemyMa
 }
 
 void LevelManager::doLoadLevel( std::string inLevelName ) {
+//0) Resize everything as appropriate
+
+//1) Load MapObjects
+	myMapManager->doLoadMapObjects();
+//2) Load Enemies
+
+//3) Load Interactables
+
+//4) Load Clickables
+
+//5) Load player position and set sectors
 
 }

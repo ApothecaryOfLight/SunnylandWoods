@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 
-#include "CameraManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
 
 AssetFactory::AssetFactory ( SDL_Renderer * inRen, CameraManager * inCameraManager ) {
 	myRen = inRen;

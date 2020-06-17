@@ -3,12 +3,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "CameraManager.hpp"
-#include "PlayerManager.hpp"
-#include "EnemyManager.hpp"
-#include "PlayerManager.hpp"
-#include "AssetFactory.hpp"
-#include "InputManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
+#include "../player_manager/PlayerManager.hpp"
+#include "../enemy_manager/EnemyManager.hpp"
+#include "../player_manager/PlayerManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
+#include "../map_manager/MapManager.hpp"
+#include "../input_manager/InputManager.hpp"
 
 #ifndef _COLLISION_MANAGER_
 #define _COLLISION_MANAGER_

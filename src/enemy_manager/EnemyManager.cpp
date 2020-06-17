@@ -1,13 +1,11 @@
 //EnemyManager.cpp
+#include "EnemyManager.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "EnemyManager.hpp"
-
-#include "MapManager.hpp"
-
-#include "CameraManager.hpp"
+#include "../map_manager/MapManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
 
 EnemyManager::EnemyManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager ) {
 	myRen = inRen;

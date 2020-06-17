@@ -6,9 +6,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "CameraManager.hpp"
-#include "AssetFactory.hpp"
-
+#include "../camera_manager/CameraManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
 
 #include <string>
 
@@ -28,7 +27,7 @@ public:
 	//SDL_Rect doCreateRect ( int inX, int inY, int inW, int inH );
 	void doCreateRect ( int inMapObjectID, int inX, int inY, int inW, int inH );
 
-	void doLoadObjects ( void );
+	void doLoadMapObjects ( void );
 
 	void doRenderFrame ( void );
 

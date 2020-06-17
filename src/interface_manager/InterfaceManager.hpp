@@ -5,8 +5,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "MainMenuInterface.hpp"
-#include "GameInterface.hpp"
+#include "../main_menu_interface/MainMenuInterface.hpp"
+#include "../game_interface/GameInterface.hpp"
 
 class InterfaceManager {
 public:

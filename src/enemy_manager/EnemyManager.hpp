@@ -6,9 +6,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "MapManager.hpp"
-
-#include "CameraManager.hpp"
+#include "../map_manager/MapManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
 
 class EnemyManager {
 public:

@@ -6,13 +6,12 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "InputManager.hpp"
-
 #include <string>
 #include <sstream>
 
-#include "CameraManager.hpp"
-#include "AssetFactory.hpp"
+#include "../input_manager/InputManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
 
 class PlayerManager {
 public:

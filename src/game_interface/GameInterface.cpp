@@ -1,24 +1,19 @@
 //GameInterface.cpp
+#include "GameInterface.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "GameInterface.hpp"
-
-#include "AnimationManager.hpp"
-#include "PlayerManager.hpp"
-#include "EnemyManager.hpp"
-#include "InputManager.hpp"
-
-#include "ClickableManager.hpp"
-
-#include "CollisionManager.hpp"
-#include "LevelManager.hpp"
-
-#include "AssetFactory.hpp"
-
-#include "CameraManager.hpp"
-#include "MapManager.hpp"
+#include "../animation_manager/AnimationManager.hpp"
+#include "../player_manager/PlayerManager.hpp"
+#include "../enemy_manager/EnemyManager.hpp"
+#include "../input_manager/InputManager.hpp"
+#include "../clickable_manager/ClickableManager.hpp"
+#include "../collision_manager/CollisionManager.hpp"
+#include "../level_manager/LevelManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
+#include "../camera_manager/CameraManager.hpp"
+#include "../map_manager/MapManager.hpp"
 
 #define screenWIDTH 960
 #define screenHEIGHT 624

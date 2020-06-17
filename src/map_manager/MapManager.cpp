@@ -1,12 +1,11 @@
 //MapManager.cpp
+#include "MapManager.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "MapManager.hpp"
-
-#include "CameraManager.hpp"
-#include "AssetFactory.hpp"
+#include "../camera_manager/CameraManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
 
 #include <iostream>
 
@@ -41,6 +40,8 @@ MapManager::MapManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, 
 	std::cout << &myCollisionBoxes << std::endl;
 
 	doLoadMapTextures();
+
+	//doLoadMapObjects();
 	std::cout << "MapManager constructor finished." << std::endl;
 }
 
@@ -59,10 +60,11 @@ inline void MapManager::doCreateRect ( int inMapObjectID, int inX, int inY, int 
 	//myCollisionBoxes[ inMapObjectID ] = new SDL_Rect;
 	std::cout << "doCreateRect: " << inMapObjectID << " = " << inX << "/" << inY << "/" << inW << "/" << inH << std::endl;
 	std::cout << &myCollisionBoxes << std::endl;
+	int myMagnification = myCameraManager->magnification;
 	myCollisionBoxes[ inMapObjectID ]->x = inX;
 	myCollisionBoxes[ inMapObjectID ]->y = inY;
-	myCollisionBoxes[ inMapObjectID ]->w = inW;
-	myCollisionBoxes[ inMapObjectID ]->h = inH;
+	myCollisionBoxes[ inMapObjectID ]->w = inW * myMagnification;
+	myCollisionBoxes[ inMapObjectID ]->h = inH * myMagnification;
 }
 
 void MapManager::doLoadMapTextures ( void ) {
@@ -80,17 +82,22 @@ void MapManager::doLoadMapTextures ( void ) {
 	if(!myNewSurface) { std::cout << IMG_GetError() << std::endl; }
 	texture_Clouds = SDL_CreateTextureFromSurface( myRen, myNewSurface );
 	SDL_FreeSurface( myNewSurface );
+}
 
-
-	doCreateRect( 0, 320, 320, 16*myCameraManager->magnification, 16*myCameraManager->magnification );
+void MapManager::doLoadMapObjects ( void ) {
+	doCreateRect( 0, 320, 320, 16, 16 );	
 }
 
 void MapManager::doRenderFrame ( void ) {
+	//1) Only draw objects in sector
+
+	//2) Draw objects with x/y adjustment for camera panning.
+
 	SDL_RenderCopy( myRen, texture_Clouds, &rect_Clouds, &rect_Clouds_dest );
 
 	//for( int i=0; i<myObjectCounter; i++ ) {
 		//if( myObjects[i][3] == 1 ) { //type = block
-			StaticAsset * myStaticAssetPtr = myAssetFactory->myStaticAssets[5]; //Asset ID for block
+			StaticAsset * myStaticAssetPtr = myAssetFactory->myStaticAssets[5]; //Asset ID for block TODO: Make it dynamic, not just the block.
 			SDL_RenderCopy(
 				myRen,
 				myStaticAssetPtr->myTexture,

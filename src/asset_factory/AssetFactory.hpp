@@ -6,7 +6,7 @@
 
 #include <string>
 
-#include "CameraManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
 
 class StaticAsset {
 public:

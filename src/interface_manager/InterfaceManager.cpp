@@ -1,11 +1,10 @@
 //InterfaceManager.cpp
+#include "InterfaceManager.hpp"
 
 #include <SDL2/SDL.h>
 
-#include "InterfaceManager.hpp"
-
-#include "MainMenuInterface.hpp"
-#include "GameInterface.hpp"
+#include "../main_menu_interface/MainMenuInterface.hpp"
+#include "../game_interface/GameInterface.hpp"
 
 InterfaceManager::InterfaceManager ( SDL_Renderer * inRenderer ) {
 	myMainMenuInterface = new MainMenuInterface( inRenderer );

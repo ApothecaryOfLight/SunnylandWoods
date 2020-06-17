@@ -1,12 +1,10 @@
 //InputManager.cpp
+#include "InputManager.hpp"
 
 #include <SDL2/SDL.h>
 
-#include "InputManager.hpp"
-
 #include <string>
 #include <iostream>
-
 
 InputManager::InputManager ( void ) {
 	isQuit = false;

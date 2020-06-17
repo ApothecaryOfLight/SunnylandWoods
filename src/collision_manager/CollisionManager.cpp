@@ -6,6 +6,7 @@ TODO:
 	Object positions are stored in their respective Object Managers
 	CollisionManager is not to be queried by other managers, but instead is to crunch collisions and run the simulation.
 */
+#include "CollisionManager.hpp"
 
 #include <iostream>
 
@@ -14,13 +15,13 @@ TODO:
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "CollisionManager.hpp"
-#include "CameraManager.hpp"
-#include "PlayerManager.hpp"
-#include "EnemyManager.hpp"
-#include "PlayerManager.hpp"
-#include "AssetFactory.hpp"
-#include "MapManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
+#include "../player_manager/PlayerManager.hpp"
+#include "../enemy_manager/EnemyManager.hpp"
+#include "../player_manager/PlayerManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
+#include "../map_manager/MapManager.hpp"
+#include "../input_manager/InputManager.hpp"
 
 CollisionManager::CollisionManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * inPlayerManager, InputManager * inInputManager ) {
 	myRen = inRen;

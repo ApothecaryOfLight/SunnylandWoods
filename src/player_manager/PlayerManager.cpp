@@ -1,15 +1,13 @@
 //PlayerManager.cpp
-
 #include "PlayerManager.hpp"
-
-#include "InputManager.hpp"
 
 #include <string>
 #include <sstream>
-
 #include <iostream>
 
-#include "CameraManager.hpp"
+#include "../input_manager/InputManager.hpp"
+#include "../camera_manager/CameraManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
 
 #define screenWIDTH 960
 #define screenHEIGHT 624

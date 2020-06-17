@@ -29,9 +29,9 @@ PER PIXEL BOUNDING BOXES
 	Generates bounding boxes for each frame on startup.
 */
 
-#include "MapManager.hpp"
-#include "ClickableManager.hpp"
-#include "EnemyManager.hpp"
+#include "../map_manager/MapManager.hpp"
+#include "../clickable_manager/ClickableManager.hpp"
+#include "../enemy_manager/EnemyManager.hpp"
 
 class LevelManager {
 public:

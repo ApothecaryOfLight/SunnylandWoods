@@ -4,9 +4,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "TimeManager.hpp"
-
-#include "InterfaceManager.hpp"
+#include "src/time_manager/TimeManager.hpp"
+#include "src/interface_manager/InterfaceManager.hpp"
 
 #define screenWIDTH 960
 #define screenHEIGHT 624
