@@ -76,6 +76,19 @@ objs/AssetFactory.o : src/asset_factory/AssetFactory.cpp
 	reset
 	g++ src/asset_factory/AssetFactory.cpp -std=c++11 -g -c `sdl2-config --cflags --libs` -o objs/AssetFactory.o
 
+
+## GTest - Runs all GoogleTest unit tests.
+linux-gtest : main_gtest.cpp objs/CameraManager.o objs/CameraManager_gtest.o
+	reset
+	g++ main_gtest.cpp objs/CameraManager.o objs/CameraManager_gtest.o -I/usr/local/include/gtest -g -lgtest -lgtest_main -lpthread -o bin/SunnylandWoods_gtest
+	cd bin && ./SunnylandWoods_gtest --gtest_output="xml:./SunnylandWoods_gtest.xml"
+
+objs/CameraManager_gtest.o : src/camera_manager_gtest/CameraManager_gtest.cpp
+	reset
+	g++ src/camera_manager_gtest/CameraManager_gtest.cpp -c -o objs/CameraManager_gtest.o
+
+
+#windows target
 run-win-dynamic : win-dynamic
 	reset
 	cd bin && wine SunnylandWoods_win32.exe
