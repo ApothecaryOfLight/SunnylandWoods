@@ -14,6 +14,9 @@ CameraManager::CameraManager ( int inPlayerX, int inPlayerY, int inScreenWidth, 
 	CameraX = 0;
 	CameraY = 0;
 
+	//PlayerX_level = 0;
+	//PlayerY_level = 0;
+
 	SectorsX = 1;
 	SectorsY = 1;
 

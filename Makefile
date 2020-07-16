@@ -1,7 +1,7 @@
 clean : 
 	reset
 	rm -f objs/InterfaceManager.o objs/MainMenuInterface.o objs/GameInterface.o objs/InputManager.o objs/AnimationManager.o objs/PlayerManager.o objs/EnemyManager.o objs/MapManager.o objs/TimeManager.o objs/CameraManager.o
-	rm -f objs/InterfaceManager_win.o objs/MainMenuInterface_win.o objs/GameInterface_win.o objs/InputManager_win.o objs/AnimationManager_win.o objs/PlayerManager.o objs/EnemyManager_win.o objs/MapManager_win.o objs/TimeManager_win.o objs/CameraManager_win.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o
+	rm -f objs/InterfaceManager_win.o objs/MainMenuInterface_win.o objs/GameInterface_win.o objs/InputManager_win.o objs/AnimationManager_win.o objs/PlayerManager.o objs/EnemyManager_win.o objs/MapManager_win.o objs/TimeManager_win.o objs/CameraManager_win.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o objs/IDManager.o
 	reset
 
 run-linux : linux
@@ -16,9 +16,9 @@ run-linux-valgrind : linux
 	reset
 	cd bin && valgrind --leak-check=yes ./SunnylandWoods_Linux
 
-linux : main.cpp objs/InterfaceManager.o objs/MainMenuInterface.o objs/GameInterface.o objs/InputManager.o objs/AnimationManager.o objs/PlayerManager.o objs/EnemyManager.o objs/MapManager.o objs/TimeManager.o objs/CameraManager.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o
+linux : main.cpp objs/InterfaceManager.o objs/MainMenuInterface.o objs/GameInterface.o objs/InputManager.o objs/AnimationManager.o objs/PlayerManager.o objs/EnemyManager.o objs/MapManager.o objs/TimeManager.o objs/CameraManager.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o objs/IDManager.o
 	reset
-	g++ -g main.cpp -std=c++11 objs/InterfaceManager.o objs/MainMenuInterface.o objs/GameInterface.o objs/InputManager.o objs/AnimationManager.o objs/PlayerManager.o objs/EnemyManager.o objs/MapManager.o objs/TimeManager.o  objs/CameraManager.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o `sdl2-config --cflags --libs` -lGL -lSDL2_image -o bin/SunnylandWoods_Linux
+	g++ -g main.cpp -std=c++11 objs/InterfaceManager.o objs/MainMenuInterface.o objs/GameInterface.o objs/InputManager.o objs/AnimationManager.o objs/PlayerManager.o objs/EnemyManager.o objs/MapManager.o objs/TimeManager.o  objs/CameraManager.o objs/CollisionManager.o objs/ClickableManager.o objs/LevelManager.o objs/AssetFactory.o objs/IDManager.o `sdl2-config --cflags --libs` -lGL -lSDL2_image -o bin/SunnylandWoods_Linux
 
 objs/InterfaceManager.o : src/interface_manager/InterfaceManager.cpp
 	reset
@@ -76,6 +76,9 @@ objs/AssetFactory.o : src/asset_factory/AssetFactory.cpp
 	reset
 	g++ src/asset_factory/AssetFactory.cpp -std=c++11 -g -c `sdl2-config --cflags --libs` -o objs/AssetFactory.o
 
+objs/IDManager.o : src/id_manager/id_manager.cpp
+	reset
+	g++ src/id_manager/id_manager.cpp -std=c++11 -g -c `sdl2-config --cflags --libs` -o objs/IDManager.o
 
 ## GTest - Runs all GoogleTest unit tests.
 linux-gtest : main_gtest.cpp objs/CameraManager.o objs/CameraManager_gtest.o

@@ -35,12 +35,13 @@ PER PIXEL BOUNDING BOXES
 
 class LevelManager {
 public:
-	LevelManager ( MapManager * inMapManager, EnemyManager * inEnemyManager, ClickableManager * inClickableManager );
+	LevelManager ( MapManager * inMapManager, EnemyManager * inEnemyManager, ClickableManager * inClickableManager, IDManager * inIDManager );
 	void doLoadLevel( std::string inLevelName );
 private:
 	MapManager * myMapManager;
 	EnemyManager * myEnemyManager;
 	ClickableManager * myClickableManager;
+	IDManager * myIDManager;
 	int ID_counter;
 };
 

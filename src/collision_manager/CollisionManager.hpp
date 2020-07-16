@@ -10,13 +10,14 @@
 #include "../asset_factory/AssetFactory.hpp"
 #include "../map_manager/MapManager.hpp"
 #include "../input_manager/InputManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
 #ifndef _COLLISION_MANAGER_
 #define _COLLISION_MANAGER_
 
 class CollisionManager {
 public:
-	CollisionManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * myPlayerManager, InputManager * inInputManager );
+	CollisionManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * myPlayerManager, InputManager * inInputManager, IDManager * inIDManager );
 	~CollisionManager ( void );
 
 	void doInitializeCollisions ( void );
@@ -39,11 +40,12 @@ private:
 	PlayerManager * myPlayerManager;
 	MapManager * myMapManager;
 	InputManager * myInputManager;
+	IDManager * myIDManager;
 
-	int myCollisionBoxCounter;
-	std::list<int> retiredCollisionBoxIDs;
-	int ** myCollisionBoxes;
-	std::list<int> * myCollisionBoxLookup;
+	//int myCollisionBoxCounter;
+	//std::list<int> retiredCollisionBoxIDs;
+	SDL_Rect * myCollisionBoxes;
+	//std::list<int> * myCollisionBoxLookup;
 };
 
 #endif

@@ -6,10 +6,11 @@
 
 #include "../map_manager/MapManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
 class ClickableManager {
 public:
-	ClickableManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager );
+	ClickableManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager, IDManager * inIDManager );
 
 	void doClearMyClickables ( void );
 	void doAddClickable ( int inAssetID, int inPosX, int inPosY, int FunctionID );
@@ -18,6 +19,7 @@ public:
 private:
 	SDL_Renderer * myRen;
 	MapManager * myMapManager;
+	IDManager * myIDManager;
 
 	CameraManager * myCameraManager;
 

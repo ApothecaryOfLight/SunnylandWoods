@@ -9,14 +9,16 @@
 #include "../enemy_manager/EnemyManager.hpp"
 #include "../input_manager/InputManager.hpp"
 #include "../collision_manager/CollisionManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
-AnimationManager::AnimationManager ( SDL_Renderer * inRen, MapManager * inMapManager, PlayerManager * inPlayerManager, EnemyManager * inEnemyManager, InputManager * inInputManager, CollisionManager * inCollisionManager ) {
+AnimationManager::AnimationManager ( SDL_Renderer * inRen, MapManager * inMapManager, PlayerManager * inPlayerManager, EnemyManager * inEnemyManager, InputManager * inInputManager, CollisionManager * inCollisionManager, IDManager * inIDManager ) {
 	myRen = inRen;
 	myMapManager = inMapManager;
 	myPlayerManager = inPlayerManager;
 	myEnemyManager = inEnemyManager;
 	myInputManager = inInputManager;
 	myCollisionManager = inCollisionManager;
+	myIDManager = inIDManager;
 }
 
 void AnimationManager::doGameLogic ( void ) {

@@ -6,11 +6,13 @@
 
 #include "../map_manager/MapManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
-EnemyManager::EnemyManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager ) {
+EnemyManager::EnemyManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager, IDManager * inIDManager ) {
 	myRen = inRen;
 	myMapManager = inMapManager;
 	myCameraManager = inCameraManager;
+	myIDManager = inIDManager;
 
 	myEnemies = new int*[100];
 	for( int i=0; i++; i<100 ) {

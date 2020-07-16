@@ -78,3 +78,14 @@ FACTORY TO CREATE ASSETS
 	-Allocate and destroy all data appropriately
 	-On shutdown deallocate the buffers etc.
 	-Needs to handle static images and multiframe animations
+
+
+
+
+
+
+---------------------------------
+AssetID - Unique to each sprite image, comes with sprite image and source dimensions
+UniversalID - Each instantiated object of any type will have a globally unique ID
+
+Magnification should only be applied when determining sectors and drawing.

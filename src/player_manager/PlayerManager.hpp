@@ -12,10 +12,11 @@
 #include "../input_manager/InputManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
 #include "../asset_factory/AssetFactory.hpp"
+#include "../id_manager/id_manager.hpp"
 
 class PlayerManager {
 public:
-	PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory );
+	PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager );
 	~PlayerManager ( void );
 
 	void doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray, std::string inFileLocation, int inLength );
@@ -31,7 +32,7 @@ private:
 	InputManager * myInputManager;
 
 
-
+	IDManager * myIDManager;
 	CameraManager * myCameraManager;
 	AssetFactory * myAssetFactory;
 };

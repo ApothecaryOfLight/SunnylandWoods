@@ -6,10 +6,11 @@
 #include "../enemy_manager/EnemyManager.hpp"
 
 
-LevelManager::LevelManager ( MapManager * inMapManager, EnemyManager * inEnemyManager, ClickableManager * inClickableManager ) {
+LevelManager::LevelManager ( MapManager * inMapManager, EnemyManager * inEnemyManager, ClickableManager * inClickableManager, IDManager * inIDManager ) {
 	myMapManager = inMapManager;
 	myEnemyManager = inEnemyManager;
 	myClickableManager = inClickableManager;
+	myIDManager = inIDManager;
 }
 
 void LevelManager::doLoadLevel( std::string inLevelName ) {

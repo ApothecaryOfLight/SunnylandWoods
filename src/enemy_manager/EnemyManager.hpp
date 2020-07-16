@@ -8,10 +8,11 @@
 
 #include "../map_manager/MapManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
 class EnemyManager {
 public:
-	EnemyManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager );
+	EnemyManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager, IDManager * inIDManager );
 	~EnemyManager ( void );
 
 	void doClearMyEnemies ( void );
@@ -25,6 +26,7 @@ private:
 	MapManager * myMapManager;
 
 	CameraManager * myCameraManager;
+	IDManager * myIDManager;
 
 	//Make additional nesting array in order to represent sectors.
 	int ** myEnemies; 	//Asset ID		//X Pos			//Y Pos		//Width		//height	//Facing direction

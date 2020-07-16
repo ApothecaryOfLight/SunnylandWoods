@@ -3,8 +3,9 @@
 
 #include "../map_manager/MapManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
-ClickableManager::ClickableManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager ) {
+ClickableManager::ClickableManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager, IDManager * inIDManager ) {
 
 }
 

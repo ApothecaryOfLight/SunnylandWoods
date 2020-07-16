@@ -8,6 +8,11 @@
 
 #include "../camera_manager/CameraManager.hpp"
 
+/*
+Should only include the sprite image, stored with asset ID
+As well as the source dimensions of the image
+*/
+
 class StaticAsset {
 public:
 	SDL_Texture * myTexture;
@@ -32,9 +37,9 @@ public:
 	void doLoadPlayerImages ( void );
 	void doResize ( void );
 
-	void doAdjustPlayerDest ( int inDestX );
+	void doAdjustPlayerDest ( int inDestX, int inDestY );
 
-	StaticAsset * myStaticAssets[100];
+	StaticAsset * myStaticAssets[100];//TODO: Unify these two. IDs will be the distinciton between ranges and singles.
 	AnimatedAsset * myAnimatedAssets[100];
 
 private:

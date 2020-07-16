@@ -8,16 +8,29 @@
 
 #include "../camera_manager/CameraManager.hpp"
 #include "../asset_factory/AssetFactory.hpp"
+#include "../id_manager/id_manager.hpp"
 
+#include <list>
 #include <string>
 
 /*
 Stores all Map Objects
 */
 
+class MapObject {
+public:
+	//GlobalID = from IDManager
+	//AssetID = from AssetManager
+	//LocalID = How MapManager stores it.
+	MapObject ( void );
+	MapObject( int GlobalID, int AssetID );
+	int myGlobalID, myAssetID;
+	int XPos, YPos;
+};
+
 class MapManager {
 public:
-	MapManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory );
+	MapManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager );
 	~MapManager ( void );
 
 	void doLoadMapTextures ( void );
@@ -33,12 +46,17 @@ public:
 
 	int isColliding ( int inX, int inY, int inWidth, int inHeight );
 
+	int getAssetID ( int inGlobalID );
+	MapObject * getMapObject ( int inGlobalID );
+
 	SDL_Rect ** myCollisionBoxes;
+	std::list<int> myActiveMapObjects;
 private:
 	//My class pointers
 	CameraManager * myCameraManager;
 	AssetFactory * myAssetFactory;
 	SDL_Renderer * myRen;
+	IDManager * myIDManager;
 
 	//Rects
 	SDL_Rect rect_Clouds;
@@ -47,10 +65,8 @@ private:
 	//Textures
 	SDL_Texture * texture_Clouds;
 
-	//My Objects
-	int ** myObjects;
-	int myObjectCounter;
-
+	//My Map Objects
+	MapObject * myMapObjects;
 };
 
 #endif

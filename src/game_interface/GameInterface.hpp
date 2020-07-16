@@ -16,6 +16,7 @@
 #include "../asset_factory/AssetFactory.hpp"
 #include "../camera_manager/CameraManager.hpp"
 #include "../map_manager/MapManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
 class GameInterface {
 public:
@@ -36,6 +37,7 @@ private:
 	ClickableManager * myClickableManager;
 	CollisionManager * myCollisionManager;
 	LevelManager * myLevelManager;
+	IDManager * myIDManager;
 };
 
 #endif

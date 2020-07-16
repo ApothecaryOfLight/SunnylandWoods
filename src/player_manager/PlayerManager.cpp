@@ -8,11 +8,12 @@
 #include "../input_manager/InputManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
 #include "../asset_factory/AssetFactory.hpp"
+#include "../id_manager/id_manager.hpp"
 
 #define screenWIDTH 960
 #define screenHEIGHT 624
 
-PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory ) {
+PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager ) {
 	myRen = inRen;
 	anim_frame_Player = 0;
 	anim_frame_Player_MAX = 8;
@@ -21,6 +22,7 @@ PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManag
 
 	myCameraManager = inCameraManager;
 	myAssetFactory = inAssetFactory;
+	myIDManager = inIDManager;
 
 	FPSCounter = 0;
 }

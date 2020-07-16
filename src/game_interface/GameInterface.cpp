@@ -14,6 +14,7 @@
 #include "../asset_factory/AssetFactory.hpp"
 #include "../camera_manager/CameraManager.hpp"
 #include "../map_manager/MapManager.hpp"
+#include "../id_manager/id_manager.hpp"
 
 #define screenWIDTH 960
 #define screenHEIGHT 624
@@ -21,18 +22,20 @@
 GameInterface::GameInterface ( SDL_Renderer * inRen ) {
 	myCameraManager = new CameraManager { (screenWIDTH/2)-((90*3)/2), (screenHEIGHT/2), screenWIDTH, screenHEIGHT };
 
+	myIDManager = new IDManager();
+
 	myAssetFactory = new AssetFactory( inRen, myCameraManager );
 
 	myInputManager = new InputManager();
 
-	myMapManager = new MapManager ( inRen, myCameraManager, myAssetFactory ); //root of the spatial context
-	myClickableManager = new ClickableManager ( inRen, myMapManager, myCameraManager );
-	myEnemyManager = new EnemyManager ( inRen, myMapManager, myCameraManager );
-	myPlayerManager = new PlayerManager ( inRen, myInputManager, myCameraManager, myAssetFactory );
-	myCollisionManager = new CollisionManager ( inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager ); //Move all movement code here
+	myMapManager = new MapManager ( inRen, myCameraManager, myAssetFactory, myIDManager );
+	myClickableManager = new ClickableManager ( inRen, myMapManager, myCameraManager, myIDManager );
+	myEnemyManager = new EnemyManager ( inRen, myMapManager, myCameraManager, myIDManager );
+	myPlayerManager = new PlayerManager ( inRen, myInputManager, myCameraManager, myAssetFactory, myIDManager );
+	myCollisionManager = new CollisionManager ( inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager, myIDManager );
 
-	myLevelManager = new LevelManager( myMapManager, myEnemyManager, myClickableManager );
-	myAnimationManager = new AnimationManager ( inRen, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager );
+	myLevelManager = new LevelManager( myMapManager, myEnemyManager, myClickableManager, myIDManager );
+	myAnimationManager = new AnimationManager ( inRen, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager, myIDManager );
 }
 
 GameInterface::~GameInterface ( void ) {
@@ -42,6 +45,7 @@ GameInterface::~GameInterface ( void ) {
 	delete myMapManager;
 	delete myInputManager;
 	delete myAssetFactory;
+	delete myIDManager;
 	delete myCameraManager;
 }
 
