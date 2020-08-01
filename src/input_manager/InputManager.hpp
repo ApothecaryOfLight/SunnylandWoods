@@ -3,7 +3,7 @@
 #ifndef _INPUT_MANAGER_
 #define _INPUT_MANAGER_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 class InputManager {
 public:

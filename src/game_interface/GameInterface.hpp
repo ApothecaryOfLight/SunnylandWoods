@@ -3,9 +3,10 @@
 #ifndef _GAME_INTERFACE_
 #define _GAME_INTERFACE_
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include <SDL.h>
+#include <SDL_image.h>
 
+#include "../logger/logger.hpp"
 #include "../animation_manager/AnimationManager.hpp"
 #include "../player_manager/PlayerManager.hpp"
 #include "../enemy_manager/EnemyManager.hpp"
@@ -38,6 +39,7 @@ private:
 	CollisionManager * myCollisionManager;
 	LevelManager * myLevelManager;
 	IDManager * myIDManager;
+	Logger * myLogger;
 };
 
 #endif

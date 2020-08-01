@@ -3,8 +3,8 @@
 #ifndef _MAIN_MENU_MANAGER_
 #define _MAIN_MENU_MANAGER_
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include <SDL.h>
+#include <SDL_image.h>
 
 #include <iostream>
 

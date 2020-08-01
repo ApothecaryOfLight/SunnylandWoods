@@ -1,6 +1,6 @@
 #include "TimeManager.hpp"
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 TimeManager::TimeManager() {
 	isStarted = false;

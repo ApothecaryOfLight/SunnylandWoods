@@ -1,8 +1,8 @@
 //AnimationManager.hpp
 #include "AnimationManager.hpp"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include <SDL.h>
+#include <SDL_image.h>
 
 #include "../map_manager/MapManager.hpp"
 #include "../player_manager/PlayerManager.hpp"

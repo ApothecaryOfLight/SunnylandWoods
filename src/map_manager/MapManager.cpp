@@ -1,8 +1,8 @@
 //MapManager.cpp
 #include "MapManager.hpp"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include <SDL.h>
+#include <SDL_image.h>
 
 #include "../camera_manager/CameraManager.hpp"
 #include "../asset_factory/AssetFactory.hpp"

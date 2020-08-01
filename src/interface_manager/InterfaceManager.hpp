@@ -3,7 +3,7 @@
 #ifndef _INTERFACE_MANAGER_
 #define _INTERFACE_MANAGER_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 #include "../main_menu_interface/MainMenuInterface.hpp"
 #include "../game_interface/GameInterface.hpp"

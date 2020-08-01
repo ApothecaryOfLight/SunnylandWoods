@@ -3,9 +3,11 @@
 #ifndef _CAMERA_MANAGER_
 #define _CAMERA_MANAGER_
 
+#include "../logger/logger.hpp"
+
 class CameraManager {
 public:
-	CameraManager ( int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight );
+	CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight );
 	void doSetSectors ( int inSectorsX, int inSectorsY );
 	void doResize ( int inNewWidth, int inNewHeight );
 	void doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY );
@@ -19,6 +21,7 @@ public:
 	int magnification;
 	int ScreenWall_Left, ScreenWall_Right; //The boundaries of how far the character can go left and right before they move the camera.
 	int PlayerSize_X, PlayerSize_Y;
+	Logger* myLogger;
 };
 
 #endif

@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 
+#include "../logger/logger.hpp"
 #include "../input_manager/InputManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
 #include "../asset_factory/AssetFactory.hpp"
@@ -13,7 +14,8 @@
 #define screenWIDTH 960
 #define screenHEIGHT 624
 
-PlayerManager::PlayerManager ( SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager ) {
+PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager ) {
+	myLogger = inLogger;
 	myRen = inRen;
 	anim_frame_Player = 0;
 	anim_frame_Player_MAX = 8;
@@ -166,6 +168,7 @@ void PlayerManager::doRenderFrame ( void ) {
 			if( anim_frame_Player >= 8 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[anim_frame_Player];
 			if( myInputManager->isPlayerFacingLeft == true ) { //Idle left
+				myLogger->log( "Idling left." );
 				SDL_RenderCopyEx( myRen, myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
 					&(myStaticAssetPtr->myRect_dst),
@@ -173,6 +176,24 @@ void PlayerManager::doRenderFrame ( void ) {
 				);
 			}
 			else if( myInputManager->isPlayerFacingLeft == false ) { //Idle right
+				myLogger->log( "Idling right." );
+				myLogger->log("SRC_X: ");
+				myLogger->log(myStaticAssetPtr->myRect_src.x);
+				myLogger->log("SRC_Y: ");
+				myLogger->log(myStaticAssetPtr->myRect_src.y);
+				myLogger->log("SRC_W: ");
+				myLogger->log(myStaticAssetPtr->myRect_src.w);
+				myLogger->log("SRC_H: ");
+				myLogger->log(myStaticAssetPtr->myRect_src.h);
+
+				myLogger->log("DEST_X: ");
+				myLogger->log(myStaticAssetPtr->myRect_dst.x);
+				myLogger->log("DEST_Y: ");
+				myLogger->log(myStaticAssetPtr->myRect_dst.y);
+				myLogger->log("DEST_W: ");
+				myLogger->log(myStaticAssetPtr->myRect_dst.w);
+				myLogger->log("DEST_H: ");
+				myLogger->log(myStaticAssetPtr->myRect_dst.h);
 				SDL_RenderCopy(
 					myRen,
 					myStaticAssetPtr->myTexture,

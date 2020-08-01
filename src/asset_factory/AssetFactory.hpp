@@ -1,11 +1,12 @@
 #ifndef _ASSET_FACTORY_
 #define _ASSET_FACTORY_
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include <SDL.h>
+#include <SDL_image.h>
 
 #include <string>
 
+#include "../logger/logger.hpp"
 #include "../camera_manager/CameraManager.hpp"
 
 /*
@@ -28,7 +29,7 @@ public:
 
 class AssetFactory {
 public:
-	AssetFactory ( SDL_Renderer * inRen, CameraManager * inCameraManager );
+	AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraManager * inCameraManager );
 
 	SDL_Rect doCreateRect ( int inX, int inY, int inW, int inH );
 
@@ -45,6 +46,7 @@ public:
 private:
 	SDL_Renderer * myRen;
 	CameraManager * myCameraManager;
+	Logger * myLogger;
 };
 
 #endif

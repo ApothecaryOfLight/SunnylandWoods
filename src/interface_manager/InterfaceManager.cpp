@@ -1,7 +1,7 @@
 //InterfaceManager.cpp
 #include "InterfaceManager.hpp"
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 #include "../main_menu_interface/MainMenuInterface.hpp"
 #include "../game_interface/GameInterface.hpp"

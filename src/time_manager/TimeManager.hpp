@@ -1,7 +1,7 @@
 #ifndef _TIMER_MANAGER_
 #define _TIMER_MANAGER_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 class TimeManager {
 public:

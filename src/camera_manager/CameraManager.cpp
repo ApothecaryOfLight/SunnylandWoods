@@ -1,14 +1,17 @@
 //CameraType.cpp
 
 #include "CameraManager.hpp"
+#include "../logger/logger.hpp"
 
 #include <iostream>
 
 
-CameraManager::CameraManager ( int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight ) {
+CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight ) {
+	myLogger = inLogger;
 	PlayerX_level = inPlayerX;
 	PlayerY_level = inPlayerY;
 
+	magnification = 3;
 	doResize( inScreenWidth, inScreenHeight );
 
 	CameraX = 0;
@@ -20,7 +23,6 @@ CameraManager::CameraManager ( int inPlayerX, int inPlayerY, int inScreenWidth, 
 	SectorsX = 1;
 	SectorsY = 1;
 
-	magnification = 3;
 }
 
 void CameraManager::doSetSectors ( int inSectorsX, int inSectorsY ) {
@@ -45,6 +47,8 @@ std::cout << "PlayerSize: " << PlayerSize_X << "/" << PlayerSize_Y << std::endl;
 
 	PlayerX_screen = (ScreenWidth/2)-(PlayerSize_X/2);
 	PlayerY_screen = (ScreenHeight*.5)-((PlayerSize_Y*magnification)/2);
+	myLogger->log("YY:");
+	myLogger->log(PlayerY_screen);
 }
 
 void CameraManager::doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY ) {
