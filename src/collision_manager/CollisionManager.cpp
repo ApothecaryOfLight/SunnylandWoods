@@ -24,8 +24,12 @@ TODO:
 #include "../input_manager/InputManager.hpp"
 #include "../id_manager/id_manager.hpp"
 
-CollisionManager::CollisionManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * inPlayerManager, InputManager * inInputManager, IDManager * inIDManager ) {
+#include "../logger/logger.hpp"
+
+CollisionManager::CollisionManager ( Logger * inLogger, SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * inPlayerManager, InputManager * inInputManager, IDManager * inIDManager ) {
 	myRen = inRen;
+	myLogger = inLogger;
+	myLogger->log( "Initializing Collision Manager." );
 	myCameraManager = inCameraManager;
 	myAssetFactory = inAssetFactory;
 	myEnemyManager = inEnemyManager;
@@ -33,70 +37,22 @@ CollisionManager::CollisionManager ( SDL_Renderer * inRen, CameraManager * inCam
 	myMapManager = inMapManager;
 	myInputManager = inInputManager;
 	myIDManager = inIDManager;
-
-	//myCollisionBoxLookup = new std::list<int>[1000];
-	//myCollisionBoxCounter = 0;
-
-	/*myCollisionBoxes = new int*[1000];//Series of stacked rectangles from top to bottom stored as contiguous ranges.
-	for( int i=0; i<=999; i++ ) {
-		myCollisionBoxes[i] = new int[4];
-	}*/
-
-	//doInitializeCollisions(); //TODO: Run only after level is fully loaded
 }
 
 CollisionManager::~CollisionManager ( void ) {
-	/*delete[] myCollisionBoxLookup;
 
-	for( int i=0; i<=999; i++ ) {
-		delete[] myCollisionBoxes[i];
-	}
-	delete[] myCollisionBoxes;*/
 }
 
-
-//1) Match each object in the managers with their asset IDs from AssetFactory
-//2) Combine that data with information from CameraManager
-//3) Get their coordinants from ObjectManagers
-//4) Use that to create an x/y/w/h collision box for each object
-	//FUTURE: Make collision boxes stack frame by frame for finer collisions.
 void CollisionManager::doInitializeCollisions ( void ) {
-	//doAddCollisionRectangle( 0, 0, 0, 90, 90 );
-	//StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]; //Needs to reference myCameraManager for player coords, not AssetFactory (!!) but also not PlayerManager
-	//SDL_Rect * myRect = &myStaticAssetPtr->myRect_dst;
-	//std::cout << myRect->x << "/" << myRect->y << "/" << myRect->w << "/" << myRect->h << std::endl;
 
-	//X) Enumerate map objects.
-	/*std::list<int> myActiveMapObjects = myMapManager->myActiveMapObjects;
-	std::list<int>::iterator MapObjs_myStart = myActiveMapObjects.begin();
-	std::list<int>::iterator MapObjs_myEnd = myActiveMapObjects.end();
-	while( MapObjs_myStart != MapObjs_myEnd ) {
-		int newID = (*MapObjs_myStart);
-		doAddCollisionRectangle(
-			0,
-			myRect->x,
-			myRect->y,
-			myRect->x + myRect->w,
-			myRect->y + myRect->h
-		);
-		++MapObjs_myStart;
-	}*/
 }
 
 void CollisionManager::doAddCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 ) {
-	/*myCollisionBoxLookup[inID].push_back( myCollisionBoxCounter );
-	myCollisionBoxes[myCollisionBoxCounter][0] = inX1;
-	myCollisionBoxes[myCollisionBoxCounter][1] = inY1;
-	myCollisionBoxes[myCollisionBoxCounter][2] = inX1+inX2;
-	myCollisionBoxes[myCollisionBoxCounter][3] = inY1+inY2;
-	myCollisionBoxCounter++;*/
+
 }
 
 void CollisionManager::doUpdateCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 ) {
-	/*myCollisionBoxes[myCollisionBoxCounter][0] = inX1;
-	myCollisionBoxes[myCollisionBoxCounter][1] = inY1;
-	myCollisionBoxes[myCollisionBoxCounter][2] = inX1+inX2;
-	myCollisionBoxes[myCollisionBoxCounter][3] = inY1+inY2;*/
+
 }
 
 //1) Match each on-screen object to its Asset ID
@@ -109,13 +65,13 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 
 	//1) Enumerate and draw player collisions
 	StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0];
-	SDL_Rect * myRect = &myStaticAssetPtr->myRect_dst;
+	SDL_Rect * myPlayer = &myStaticAssetPtr->myRect_dst;
 	SDL_RenderDrawLine(
 		myRen,
-		myRect->x,
-		myRect->y,
-		myRect->x+myRect->w,
-		myRect->y+myRect->h
+		myPlayer->x,
+		myPlayer->y,
+		myPlayer->x+ myPlayer->w,
+		myPlayer->y+ myPlayer->h
 	);
 	//2) Enumerate and draw enemy collisions
 	
@@ -173,6 +129,7 @@ void CollisionManager::doGameLogic ( void ) {
 }
 
 void CollisionManager::doPlayerCollisions ( void ) {
+	//This is game logic, not collisions
 	myPlayerManager->FPSCounter++;
 	if( myInputManager->inputFlag_Jumping == true || myInputManager->inputFlag_Right == true || myInputManager->inputFlag_Left == true  ) {
 		if( myPlayerManager->FPSCounter >= 2 ) {
@@ -193,6 +150,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		}
 	}
 
+
 	if( myInputManager->inputFlag_Jumping == true ) {
 		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
 		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
@@ -200,35 +158,21 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myCopy.x = myCopy.y-9;
 
-std::cout << std::endl << "Player: " << myCopy.x << "/" << myCopy.y << std::endl;
-std::cout << myCopy.w << "/" << myCopy.h << std::endl;
-std::cout << "Box: " << myMapManager->myCollisionBoxes[0]->x << "/" << myMapManager->myCollisionBoxes[0]->y << std::endl;
-std::cout << myMapManager->myCollisionBoxes[0]->w << "/" << myMapManager->myCollisionBoxes[0]->h << std::endl;
-
-
-
-
-
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 		while( MapObjs_myStart != MapObjs_myEnd ) {
 			int MapObjectID = (*MapObjs_myStart);
 			MapObject * myMapObject = myMapManager->getMapObject( MapObjectID );
 			int MapObjectAssetID = myMapObject->myAssetID;
+
 			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
 			int myMagnification = myCameraManager->magnification;
-			myCollisionBox.x = (myCollisionBox.x - myCameraManager->PlayerX_level) * myMagnification;
-			myCollisionBox.y = (myCollisionBox.y - myCameraManager->PlayerY_level) * myMagnification;
-			myCollisionBox.w = (myCollisionBox.w - myCameraManager->PlayerX_level) * myMagnification;
-			myCollisionBox.h = (myCollisionBox.h - myCameraManager->PlayerY_level) * myMagnification;
 
-			/*SDL_RenderDrawLine(
-				myRen,
-				(myCollisionBox.x - myCameraManager->PlayerX_level) * myMagnification,
-				(myCollisionBox.y - myCameraManager->PlayerY_level) * myMagnification,
-				(myCollisionBox.x+myCollisionBox.w - myCameraManager->PlayerX_level) * myMagnification,
-				(myCollisionBox.y+myCollisionBox.h - myCameraManager->PlayerY_level) * myMagnification
-			);*/
+			myCollisionBox.x = (myMapObject->XPos - myCameraManager->PlayerX_level) * myMagnification;
+			myCollisionBox.y = (myMapObject->YPos - myCameraManager->PlayerY_level) * myMagnification;
+			myCollisionBox.w *= myMagnification;
+			myCollisionBox.h *= myMagnification;
+
 			if( SDL_HasIntersection( &myCopy, &myCollisionBox ) == SDL_TRUE ) {
 					std::cout << "Collision to the top!" << std::endl;
 					return; //Barrier.
@@ -236,73 +180,44 @@ std::cout << myMapManager->myCollisionBoxes[0]->w << "/" << myMapManager->myColl
 			++MapObjs_myStart;
 		}
 
-		
-
-
-
-
-		/*if( SDL_HasIntersection( &myCopy, myMapManager->myCollisionBoxes[0] ) == SDL_TRUE ) {
-				std::cout << "Collision to the top!" << std::endl;
-				return; //Barrier.
-		}*/
 		myCameraManager->PlayerY_screen = (myCameraManager->PlayerY_screen)-9;
-		/*if( myCameraManager->PlayerX_screen <= -500 ) { //TODO: A camera/level setting for max y
-			std::cout << "Hitting screen-wall top!" << std::endl;
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
-			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level-9;
-		}*/
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen );
 	}
 
 	//TODO: Replace input flags with case, and ensure in InputManager that only one flag can be set at a time.
 	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
+		//myLogger->log("Running left ");
 		//1) Create a rect that would be where we want to move the player
 		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
 		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
 		SDL_Rect myCopy;
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myCopy.x = myCopy.x-9;
+
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 		while( MapObjs_myStart != MapObjs_myEnd ) {
 			int MapObjectID = (*MapObjs_myStart);
 			MapObject * myMapObject = myMapManager->getMapObject( MapObjectID );
+
 			int MapObjectAssetID = myMapObject->myAssetID;
 			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
-			int myMagnification = myCameraManager->magnification;
-			myCollisionBox.x = (myCollisionBox.x - myCameraManager->PlayerX_level) * myMagnification;
-			myCollisionBox.y = (myCollisionBox.y - myCameraManager->PlayerY_level) * myMagnification;
-			myCollisionBox.w = (myCollisionBox.w - myCameraManager->PlayerX_level) * myMagnification;
-			myCollisionBox.h = (myCollisionBox.h - myCameraManager->PlayerY_level) * myMagnification;
 
-			/*SDL_RenderDrawLine(
-				myRen,
-				(myCollisionBox.x - myCameraManager->PlayerX_level) * myMagnification,
-				(myCollisionBox.y - myCameraManager->PlayerY_level) * myMagnification,
-				(myCollisionBox.x+myCollisionBox.w - myCameraManager->PlayerX_level) * myMagnification,
-				(myCollisionBox.y+myCollisionBox.h - myCameraManager->PlayerY_level) * myMagnification
-			);*/
+			int myMagnification = myCameraManager->magnification;
+
+			myCollisionBox.x = (myMapObject->XPos - myCameraManager->PlayerX_level) * myMagnification;
+			myCollisionBox.y = (myMapObject->YPos - myCameraManager->PlayerY_level) * myMagnification;
+			myCollisionBox.w *= myMagnification;
+			myCollisionBox.h *= myMagnification;
+
 			if( SDL_HasIntersection( &myCopy, &myCollisionBox ) == SDL_TRUE ) {
-					std::cout << "Collision to the top!" << std::endl;
+					//std::cout << "Collision to the top!" << std::endl;
+					myLogger->log("Collision on left!");
 					return; //Barrier.
 			}
 			++MapObjs_myStart;
 		}
-
-
-		/*if( SDL_HasIntersection( &myCopy, myMapManager->myCollisionBoxes[0] ) == SDL_TRUE ) {
-				std::cout << "Collision to the left!" << std::endl;
-
-
-std::cout << std::endl << "Player: " << myCopy.x << "/" << myCopy.y << std::endl;
-std::cout << myCopy.w << "/" << myCopy.h << std::endl;
-std::cout << "Box: " << myMapManager->myCollisionBoxes[0]->x << "/" << myMapManager->myCollisionBoxes[0]->y << std::endl;
-std::cout << myMapManager->myCollisionBoxes[0]->w << "/" << myMapManager->myCollisionBoxes[0]->h << std::endl;
-
-
-				return; //Barrier.
-		}*/
 
 		//3) Break or apply
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)-9;
@@ -322,10 +237,28 @@ std::cout << myMapManager->myCollisionBoxes[0]->w << "/" << myMapManager->myColl
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myCopy.x = myCopy.x+9;
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
-		/*if( SDL_HasIntersection( &myCopy, myMapManager->myCollisionBoxes[0] ) == SDL_TRUE ) {
-				std::cout << "Collision to the right!" << std::endl;
+		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
+		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
+		while (MapObjs_myStart != MapObjs_myEnd) {
+			int MapObjectID = (*MapObjs_myStart);
+			MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+
+			int MapObjectAssetID = myMapObject->myAssetID;
+			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[MapObjectAssetID]->myRect_dst;
+
+			int myMagnification = myCameraManager->magnification;
+
+			myCollisionBox.x = (myMapObject->XPos - myCameraManager->PlayerX_level) * myMagnification;
+			myCollisionBox.y = (myMapObject->YPos - myCameraManager->PlayerY_level) * myMagnification;
+			myCollisionBox.w *= myMagnification;
+			myCollisionBox.h *= myMagnification;
+
+			if (SDL_HasIntersection(&myCopy, &myCollisionBox) == SDL_TRUE) {
+				myLogger->log("Collision on right!");
 				return; //Barrier.
-		}*/
+			}
+			++MapObjs_myStart;
+		}
 
 		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+9;
 		if( myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X*myCameraManager->magnification) >= myCameraManager->ScreenWall_Right ) {

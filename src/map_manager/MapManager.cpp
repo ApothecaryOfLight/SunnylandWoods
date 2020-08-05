@@ -133,6 +133,8 @@ void MapManager::doLoadMapObjects ( void ) {
 	myMapObjects[newID].myGlobalID = newID;
 	myMapObjects[newID].myAssetID = 5;
 
+
+
 	newID = myIDManager->getNewID();
 	myActiveMapObjects.push_back( newID );
 	myMapObjects[newID].XPos = -100;
@@ -195,6 +197,16 @@ void MapManager::doLoadMapObjects ( void ) {
 	myMapObjects[newID].YPos = 600;
 	myMapObjects[newID].myGlobalID = newID;
 	myMapObjects[newID].myAssetID = 5;
+
+
+	for (int i = 0; i < 100; i++) {
+		newID = myIDManager->getNewID();
+		myActiveMapObjects.push_back(newID);
+		myMapObjects[newID].XPos = 200;
+		myMapObjects[newID].YPos = 100;
+		myMapObjects[newID].myGlobalID = newID;
+		myMapObjects[newID].myAssetID = 5;
+	}
 }
 
 void MapManager::doRenderFrame ( void ) {

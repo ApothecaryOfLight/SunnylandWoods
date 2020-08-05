@@ -11,6 +11,8 @@ public:
 	~Logger(void);
 	void log(std::string inMessage);
 	void log(int inInteger);
+private:
+	std::fstream outStream;
 };
 
 #endif _LOGGER_

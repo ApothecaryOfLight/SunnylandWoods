@@ -45,8 +45,8 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelWidth = inWidth;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelHeight = inHeight;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
-			myLogger->log("Y:");
-			myLogger->log(myCameraManager->PlayerY_screen);
+			//myLogger->log("Y:");
+			//myLogger->log(myCameraManager->PlayerY_screen);
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect ( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen, inWidth*3, inHeight*3 );
 
 			SDL_FreeSurface( myNewSurface );

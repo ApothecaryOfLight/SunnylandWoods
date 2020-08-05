@@ -34,7 +34,7 @@ GameInterface::GameInterface ( SDL_Renderer * inRen ) {
 	myClickableManager = new ClickableManager ( inRen, myMapManager, myCameraManager, myIDManager );
 	myEnemyManager = new EnemyManager ( inRen, myMapManager, myCameraManager, myIDManager );
 	myPlayerManager = new PlayerManager ( myLogger, inRen, myInputManager, myCameraManager, myAssetFactory, myIDManager );
-	myCollisionManager = new CollisionManager ( inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager, myIDManager );
+	myCollisionManager = new CollisionManager ( myLogger, inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager, myIDManager );
 
 	myLevelManager = new LevelManager( myMapManager, myEnemyManager, myClickableManager, myIDManager );
 	myAnimationManager = new AnimationManager ( inRen, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager, myIDManager );
