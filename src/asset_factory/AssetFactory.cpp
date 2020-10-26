@@ -38,7 +38,8 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 
 			SDL_Surface *myNewSurface = IMG_Load( std::string( inSrcFilename + myConv + ".png" ).c_str() );
 			myLogger->log( std::string(inSrcFilename + myConv + ".png") );
-			if(!myNewSurface) { std::cout << IMG_GetError() << std::endl; }
+			
+			if(!myNewSurface) { myLogger->log(IMG_GetError()); }
 
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1] = new StaticAsset;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myTexture = SDL_CreateTextureFromSurface( myRen, myNewSurface );

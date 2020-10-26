@@ -1,0 +1,26 @@
+id ICON "SunnylandWoodsIconICO.ico"
+
+1 VERSIONINFO
+FILEVERSION     0,0,1,0
+PRODUCTVERSION  0,0,1,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904E4"
+    BEGIN
+      VALUE "CompanyName", "Created by Abraham Arvedon"
+      VALUE "FileDescription", "An implementation of the Sunnyland Woods Pixel Art Asset Pack created by Luis Zuno also known as Ansimuz."
+      VALUE "FileVersion", "0.1.0"
+      VALUE "InternalName", "Abe's Sunnyland Woods"
+      VALUE "LegalCopyright", "Abraham Arvedon"
+      VALUE "OriginalFilename", "SunnylandWoods.exe"
+      VALUE "ProductName", "Sunnyland Woods"
+      VALUE "ProductVersion", "0.1.0"
+    END
+  END
+
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 1252
+  END
+END

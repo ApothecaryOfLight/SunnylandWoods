@@ -214,6 +214,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			if( SDL_HasIntersection( &myCopy, &myCollisionBox ) == SDL_TRUE ) {
 					//std::cout << "Collision to the top!" << std::endl;
 					myLogger->log("Collision on left!");
+					myLogger->log(MapObjectID);
 					return; //Barrier.
 			}
 			++MapObjs_myStart;
@@ -255,6 +256,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 			if (SDL_HasIntersection(&myCopy, &myCollisionBox) == SDL_TRUE) {
 				myLogger->log("Collision on right!");
+				myLogger->log(MapObjectID);
 				return; //Barrier.
 			}
 			++MapObjs_myStart;
