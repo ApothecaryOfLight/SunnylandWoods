@@ -350,3 +350,597 @@ Collision on right!
 11
 Collision on right!
 11
+YY:
+225
+doLoadImage
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+medias
+doLoadImage
+Initializing Collision Manager.
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+Collision on left!
+14
+YY:
+225
+doLoadImage
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+medias
+doLoadImage
+Initializing Collision Manager.
+YY:
+225
+doLoadImage
+media/SPRITES/player/idle/player-idle-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-5.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-6.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-7.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-8.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/run/player-run-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-5.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-6.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/hurt/player-hurt-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/hurt/player-hurt-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/crouch/player-crouch-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/crouch/player-crouch-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/jump/player-jump-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+medias
+doLoadImage
+Initializing Collision Manager.
+YY:
+225
+doLoadImage
+media/SPRITES/player/idle/player-idle-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-5.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-6.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-7.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-8.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/run/player-run-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-5.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-6.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/hurt/player-hurt-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/hurt/player-hurt-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/crouch/player-crouch-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/crouch/player-crouch-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/jump/player-jump-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+medias
+doLoadImage
+Initializing Collision Manager.
+YY:
+225
+doLoadImage
+media/SPRITES/player/idle/player-idle-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-5.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-6.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-7.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/idle/player-idle-8.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/run/player-run-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-5.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/run/player-run-6.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/hurt/player-hurt-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/hurt/player-hurt-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/crouch/player-crouch-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/crouch/player-crouch-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+doLoadImage
+media/SPRITES/player/jump/player-jump-1.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-2.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-3.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+media/SPRITES/player/jump/player-jump-4.png
+Failed loading libpng16-16.dll: The specified module could not be found.
+
+medias
+doLoadImage
+Initializing Collision Manager.
+YY:
+225
+doLoadImage
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+medias
+doLoadImage
+Initializing Collision Manager.
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on right!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
+Collision on left!
+11
