@@ -1,22 +1,2 @@
-﻿  main.cpp
-  AnimationManager.cpp
-  AssetFactory.cpp
-  CameraManager.cpp
-  ClickableManager.cpp
-  CollisionManager.cpp
-  EnemyManager.cpp
-C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\src\enemy_manager\EnemyManager.cpp(18,22): warning C4552: '<': result of expression not used
-C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\src\enemy_manager\EnemyManager.cpp(24,22): warning C4552: '<': result of expression not used
-  GameInterface.cpp
-  id_manager.cpp
-  InputManager.cpp
-  InterfaceManager.cpp
-  LevelManager.cpp
-  logger.cpp
-  MainMenuInterface.cpp
-  MapManager.cpp
-  PlayerManager.cpp
-  TimeManager.cpp
-  Generating Code...
-C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\src\interface_manager\InterfaceManager.cpp(55): warning C4715: 'InterfaceManager::isQuit': not all control paths return a value
+﻿  MapManager.cpp
   SunnylandWoods.vcxproj -> C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\x64\Debug\SunnylandWoods.exe

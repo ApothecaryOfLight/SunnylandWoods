@@ -48,7 +48,12 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
 			//myLogger->log("Y:");
 			//myLogger->log(myCameraManager->PlayerY_screen);
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect ( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen, inWidth*3, inHeight*3 );
+			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect (
+				myCameraManager->PlayerX_screen,
+				myCameraManager->PlayerY_screen,
+				inWidth * myCameraManager->magnification,
+				inHeight * myCameraManager->magnification
+			);
 
 			SDL_FreeSurface( myNewSurface );
 		}
@@ -75,7 +80,7 @@ void AssetFactory::doResize ( void ) {
 	for( int i=0; i<8; i++ ) {
 		StaticAsset * myStaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
 		int width = myStaticAssetPtr->PixelWidth;
-		int multiplier = 3;//TODO: Tie into input
+		int multiplier = myCameraManager->magnification;//TODO: Tie into input
 		myStaticAssetPtr->myRect_dst = doCreateRect (
 			(myCameraManager->ScreenWidth/2)-( (width*multiplier)/2 ),	//screen position X
 			(myCameraManager->ScreenHeight/2),	//screen position y

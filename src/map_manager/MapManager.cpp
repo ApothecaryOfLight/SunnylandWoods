@@ -83,6 +83,7 @@ inline void MapManager::doCreateRect ( int inMapObjectID, int inX, int inY, int 
 }
 
 //TODO: This should take place in AssetFactory
+//TODO: This should be called on resize.
 void MapManager::doLoadMapTextures ( void ) {
 	rect_Clouds.x = 0;//TODO: Move to background manager.
 	rect_Clouds.y = 0;
@@ -199,7 +200,7 @@ void MapManager::doLoadMapObjects ( void ) {
 	myMapObjects[newID].myAssetID = 5;
 
 
-	for (int i = 20; i < 30; i++) {
+	for (int i = -60; i < 60; i++) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = 0;
@@ -213,6 +214,15 @@ void MapManager::doLoadMapObjects ( void ) {
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = i * 16;
 		myMapObjects[newID].YPos = 30 * 16;
+		myMapObjects[newID].myGlobalID = newID;
+		myMapObjects[newID].myAssetID = 5;
+	}
+
+	for (int i = -30; i < 60; i++) {
+		newID = myIDManager->getNewID();
+		myActiveMapObjects.push_back(newID);
+		myMapObjects[newID].XPos = i * 16;
+		myMapObjects[newID].YPos = 700;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
 	}
