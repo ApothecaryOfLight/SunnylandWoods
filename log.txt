@@ -1,842 +1,4 @@
 YY:
-225
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-YY:
-225
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on right!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-Collision on left!
-11
-YY:
-225
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-Collision on left!
-18
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on left!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on left!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-YY:
-327
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-YY:
-366
-YY:
-388
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-YY:
 283
 doLoadImage
 media/SPRITES/player/idle/player-idle-1.png
@@ -901,101 +63,367 @@ medias
 doLoadImage
 Initializing Collision Manager.
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
-Collision on left!
-111
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
 Collision on right!
-13
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
 Collision on left!
-111
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on left!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
+Collision on right!
+284
 YY:
 283
 doLoadImage
@@ -1028,251 +456,179 @@ media/SPRITES/player/jump/player-jump-4.png
 medias
 doLoadImage
 Initializing Collision Manager.
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
-Collision on left!
-302
 Collision on right!
-303
+219
 Collision on right!
-303
+219
 Collision on right!
-303
+219
 Collision on right!
-303
+219
 Collision on right!
-303
+219
 Collision on right!
-303
-Collision on right!
-303
-Collision on right!
-303
-Collision on right!
-303
-Collision on right!
-303
-Collision on right!
-303
-YY:
-283
-doLoadImage
-media/SPRITES/player/idle/player-idle-1.png
-media/SPRITES/player/idle/player-idle-2.png
-media/SPRITES/player/idle/player-idle-3.png
-media/SPRITES/player/idle/player-idle-4.png
-media/SPRITES/player/idle/player-idle-5.png
-media/SPRITES/player/idle/player-idle-6.png
-media/SPRITES/player/idle/player-idle-7.png
-media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-media/SPRITES/player/run/player-run-1.png
-media/SPRITES/player/run/player-run-2.png
-media/SPRITES/player/run/player-run-3.png
-media/SPRITES/player/run/player-run-4.png
-media/SPRITES/player/run/player-run-5.png
-media/SPRITES/player/run/player-run-6.png
-doLoadImage
-media/SPRITES/player/hurt/player-hurt-1.png
-media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-media/SPRITES/player/crouch/player-crouch-1.png
-media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-media/SPRITES/player/jump/player-jump-1.png
-media/SPRITES/player/jump/player-jump-2.png
-media/SPRITES/player/jump/player-jump-3.png
-media/SPRITES/player/jump/player-jump-4.png
-medias
-doLoadImage
-Initializing Collision Manager.
+219
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
+99
 Collision on left!
-111
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
-Collision on right!
-13
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99
+Collision on left!
+99

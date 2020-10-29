@@ -61,17 +61,30 @@ void CollisionManager::doUpdateCollisionRectangle ( int inID, int inX1, int inY1
 void CollisionManager::doDrawCollisionBoxes ( void ) {
 	SDL_SetRenderDrawColor( myRen, 255, 0, 0, SDL_ALPHA_OPAQUE);
 
-	int myMagnification = myCameraManager->magnification;
+	int magnification = myCameraManager->magnification;
+
+	//0) Draw screen walls
+
 
 	//1) Enumerate and draw player collisions
 	StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0];
-	SDL_Rect * myPlayer = &myStaticAssetPtr->myRect_dst;
+	/*SDL_Rect * myPlayer = &myStaticAssetPtr->myRect_dst;
 	SDL_RenderDrawLine(
 		myRen,
 		myPlayer->x,
 		myPlayer->y,
 		myPlayer->x+ myPlayer->w,
 		myPlayer->y+ myPlayer->h
+	);*/
+	SDL_Rect myPlayerCollisionBox = myStaticAssetPtr->myRect_dst;
+	//myPlayerCollisionBox.x *= magnification;
+	//myPlayerCollisionBox.y *= magnification;
+	myPlayerCollisionBox.w *= magnification;
+	myPlayerCollisionBox.h *= magnification;
+
+	SDL_RenderDrawRect(
+		myRen,
+		&myPlayerCollisionBox
 	);
 	//2) Enumerate and draw enemy collisions
 	
@@ -89,15 +102,22 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 		int MapObjectAssetID = myMapObject->myAssetID;
 //std::cout << MapObjectAssetID << std::endl;
 		SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
-		myCollisionBox.x = myMapObject->XPos;
-		myCollisionBox.y = myMapObject->YPos;
+		myCollisionBox.x = (myMapObject->XPos - myCameraManager->PlayerX_level) * magnification;
+		myCollisionBox.y = (myMapObject->YPos - myCameraManager->PlayerY_level) * magnification;
+		myCollisionBox.w *= magnification;
+		myCollisionBox.h *= magnification;
 
-		SDL_RenderDrawLine(
+		/*SDL_RenderDrawLine(
 			myRen,
 			(myCollisionBox.x - myCameraManager->PlayerX_level) * myMagnification,
 			(myCollisionBox.y - myCameraManager->PlayerY_level) * myMagnification,
 			(myCollisionBox.x+myCollisionBox.w - myCameraManager->PlayerX_level) * myMagnification,
 			(myCollisionBox.y+myCollisionBox.h - myCameraManager->PlayerY_level) * myMagnification
+		);*/
+
+		SDL_RenderDrawRect(
+			myRen,
+			&myCollisionBox
 		);
 
 		++MapObjs_myStart;
@@ -150,13 +170,14 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		}
 	}
 
-
+	int myMagnification = myCameraManager->magnification;
+	int movement_increment = 3 * myMagnification;
 	if( myInputManager->inputFlag_Jumping == true ) {
 		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
 		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
 		SDL_Rect myCopy;
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
-		myCopy.x = myCopy.y-9;
+		myCopy.x = myCopy.y- movement_increment;
 
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
@@ -166,7 +187,6 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int MapObjectAssetID = myMapObject->myAssetID;
 
 			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
-			int myMagnification = myCameraManager->magnification;
 
 			myCollisionBox.x = (myMapObject->XPos - myCameraManager->PlayerX_level) * myMagnification;
 			myCollisionBox.y = (myMapObject->YPos - myCameraManager->PlayerY_level) * myMagnification;
@@ -180,7 +200,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			++MapObjs_myStart;
 		}
 
-		myCameraManager->PlayerY_screen = (myCameraManager->PlayerY_screen)-9;
+		myCameraManager->PlayerY_screen = (myCameraManager->PlayerY_screen)- movement_increment;
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen );
 	}
 
@@ -192,7 +212,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
 		SDL_Rect myCopy;
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
-		myCopy.x = myCopy.x-9;
+		myCopy.x = myCopy.x- movement_increment;
 
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
@@ -212,20 +232,20 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			myCollisionBox.h *= myMagnification;
 
 			if( SDL_HasIntersection( &myCopy, &myCollisionBox ) == SDL_TRUE ) {
-					//std::cout << "Collision to the top!" << std::endl;
-					myLogger->log("Collision on left!");
-					myLogger->log(MapObjectID);
-					return; //Barrier.
+				//TODO: Calculate how much to the left the player can be moved.
+				myLogger->log("Collision on left!");
+				myLogger->log(MapObjectID);
+				return; //Barrier.
 			}
 			++MapObjs_myStart;
 		}
 
 		//3) Break or apply
-		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)-9;
+		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)- movement_increment;
 		if( myCameraManager->PlayerX_screen <= myCameraManager->ScreenWall_Left ) {
 			std::cout << "Hitting screen-wall left!" << std::endl;
 			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
-			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level-9;
+			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level- movement_increment;
 			return;
 		}
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
@@ -236,7 +256,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
 		SDL_Rect myCopy;
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
-		myCopy.x = myCopy.x+9;
+		myCopy.x = myCopy.x+ movement_increment;
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
@@ -262,11 +282,11 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			++MapObjs_myStart;
 		}
 
-		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+9;
+		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+ movement_increment;
 		if( myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X*myCameraManager->magnification) >= myCameraManager->ScreenWall_Right ) {
 			std::cout << "Hitting screen-wall right!" << std::endl;
 			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - (myCameraManager->PlayerSize_X*myCameraManager->magnification);
-			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+9;
+			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+ movement_increment;
 			return;
 		}
 		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.

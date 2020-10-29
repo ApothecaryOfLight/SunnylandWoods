@@ -107,7 +107,7 @@ void MapManager::doLoadMapObjects ( void ) {
 	//Clean
 	//std::cout << "Loading map objects..." << std::endl;
 	int newID = myIDManager->getNewID();
-	myActiveMapObjects.push_back( newID );
+	/*myActiveMapObjects.push_back( newID );
 	myMapObjects[newID].XPos = 320;
 	myMapObjects[newID].YPos = -720;
 	myMapObjects[newID].myGlobalID = newID;
@@ -197,7 +197,7 @@ void MapManager::doLoadMapObjects ( void ) {
 	myMapObjects[newID].XPos = 900;
 	myMapObjects[newID].YPos = 600;
 	myMapObjects[newID].myGlobalID = newID;
-	myMapObjects[newID].myAssetID = 5;
+	myMapObjects[newID].myAssetID = 5;*/
 
 
 	for (int i = -60; i < 60; i++) {
@@ -205,6 +205,14 @@ void MapManager::doLoadMapObjects ( void ) {
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = 0;
 		myMapObjects[newID].YPos = i*16;
+		myMapObjects[newID].myGlobalID = newID;
+		myMapObjects[newID].myAssetID = 5;
+	}
+	for (int i = -60; i < 60; i++) {
+		newID = myIDManager->getNewID();
+		myActiveMapObjects.push_back(newID);
+		myMapObjects[newID].XPos = 900;
+		myMapObjects[newID].YPos = i * 16;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
 	}
