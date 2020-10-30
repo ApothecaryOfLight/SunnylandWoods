@@ -27,6 +27,7 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 	myIDManager = inIDManager;
 
 	FPSCounter = 0;
+	jump_counter = 0;
 }
 
 PlayerManager::~PlayerManager ( void ) {
