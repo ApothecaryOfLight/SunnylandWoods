@@ -190,9 +190,11 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		}
 	}
 
+	int max_jump_height = 150;
+
 	int myMagnification = myCameraManager->magnification;
 	int movement_increment = 3 * myMagnification;
-	if( myInputManager->inputFlag_Jumping == true && myPlayerManager->jump_counter < 30 ) {
+	if( myInputManager->inputFlag_Jumping == true && myPlayerManager->jump_counter < max_jump_height) {
 		myPlayerManager->jump_counter++;
 		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
 		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
@@ -229,14 +231,16 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			//3) Check for collision
 			if (
 				left_collision_player <= right_map_object && left_collision_player >= left_map_object ||
-				right_collision_player >= right_map_object && right_collision_player <= right_map_object
+				right_collision_player >= right_map_object && right_collision_player <= right_map_object ||
+				right_map_object >= left_collision_player && right_map_object <= right_collision_player ||
+				left_map_object >= left_collision_player && left_map_object <= right_collision_player
 			) {
 				if( top_collision_player <= bottom_map_object && top_collision_player >= top_map_object ) {
 					myLogger->log("Collision to top!");
 					myLogger->log(MapObjectID);
 					myMapManager->mark_collided(MapObjectID);
 					is_jumping = false;
-					break;
+					//break; //TODO: Restore breaks for greater efficiency.
 				}
 			}
 
@@ -285,21 +289,23 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			//3) Check for collision
 			if (
 				left_collision_player <= right_map_object && left_collision_player >= left_map_object ||
-				right_collision_player >= right_map_object && right_collision_player <= right_map_object
-				) {
+				right_collision_player <= right_map_object && right_collision_player >= left_map_object ||
+				right_map_object >= left_collision_player && right_map_object <= right_collision_player ||
+				left_map_object >= left_collision_player && left_map_object <= right_collision_player
+			) {
 				if (bottom_collision_player <= bottom_map_object && bottom_collision_player >= top_map_object) {
 					myLogger->log("Collision to bottom!");
 					myLogger->log(MapObjectID);
 					myMapManager->mark_collided(MapObjectID);
 					is_falling = false;
-					break;
+					//break;
 				}
 			}
 
 			++MapObjs_myStart;
 		}
 		if (is_falling == true) {
-			myPlayerManager->jump_counter = 31;
+			myPlayerManager->jump_counter = max_jump_height+1;
 			myCameraManager->PlayerY_screen = (myCameraManager->PlayerY_screen) + movement_increment;
 			myAssetFactory->doAdjustPlayerDest(myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen);
 		}
@@ -338,23 +344,25 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 			int left_collision_player = myCopy.x;
 			int top_collision_player = myCopy.y;
-			int bottom_collision_player = myCopy.y + myCopy.w;
+			int bottom_collision_player = myCopy.y + myCopy.h;
 
 			int right_collision_object = myCollisionBox.x + myCollisionBox.w;
 			int left_collision_object = myCollisionBox.x;
 			int top_collision_object = myCollisionBox.y;
-			int bottom_collision_object = myCollisionBox.y + myCollisionBox.w;
+			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
 
 			if (
 				top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
-				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object	
+				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
+				top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
+				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
 			) {
 				if (left_collision_player <= right_collision_object && left_collision_player >= left_collision_object) {
 					myLogger->log("Collision on left!");
 					myLogger->log(MapObjectID);
 					myMapManager->mark_collided(MapObjectID);
 					is_colliding_left = true;
-					break;
+					//break;
 				}
 			}
 
@@ -399,22 +407,25 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 			int right_collision_player = myCopy.x + myCopy.w;
 			int top_collision_player = myCopy.y;
-			int bottom_collision_player = myCopy.y + myCopy.w;
+			int bottom_collision_player = myCopy.y + myCopy.h;
 
 			int right_collision_object = myCollisionBox.x + myCollisionBox.w;
 			int left_collision_object = myCollisionBox.x;
 			int top_collision_object = myCollisionBox.y;
-			int bottom_collision_object = myCollisionBox.y + myCollisionBox.w;
+			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
 
 			if (
 				top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
-				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object
+				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
+				top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
+				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
 				) {
 				if (right_collision_player <= right_collision_object && right_collision_player >= left_collision_object) {
 					myLogger->log("Collision on right!");
 					myLogger->log(MapObjectID);
 					myMapManager->mark_collided(MapObjectID);
 					is_colliding_right = true;
+					//break;
 				}
 			}
 
