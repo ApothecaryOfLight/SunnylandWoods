@@ -207,6 +207,8 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].YPos = i*16;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
+		myMapObjects[newID].has_collided = false;
+		myMapObjects[newID].has_collided_counter = 0;
 	}
 	for (int i = -60; i < 60; i++) {
 		newID = myIDManager->getNewID();
@@ -215,6 +217,8 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].YPos = i * 16;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
+		myMapObjects[newID].has_collided = false;
+		myMapObjects[newID].has_collided_counter = 0;
 	}
 
 	for (int i = -30; i < 60; i++) {
@@ -224,6 +228,8 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].YPos = 30 * 16;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
+		myMapObjects[newID].has_collided = false;
+		myMapObjects[newID].has_collided_counter = 0;
 	}
 
 	for (int i = -30; i < 60; i++) {
@@ -233,6 +239,8 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].YPos = 700;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
+		myMapObjects[newID].has_collided = false;
+		myMapObjects[newID].has_collided_counter = 0;
 	}
 }
 
@@ -276,4 +284,18 @@ int MapManager::getAssetID( int inGlobalID ) {
 }
 MapObject * MapManager::getMapObject ( int inGlobalID ) {
 	return &myMapObjects[inGlobalID];
+}
+
+void MapManager::mark_collided(int inMapObjectID) {
+	myMapObjects[inMapObjectID].has_collided = true;
+	myMapObjects[inMapObjectID].has_collided_counter = 5;
+}
+
+void MapManager::decrement_collided(int inMapObjectID) {
+	if (myMapObjects[inMapObjectID].has_collided_counter <= 0) {
+		myMapObjects[inMapObjectID].has_collided = false;
+	}
+	else {
+		myMapObjects[inMapObjectID].has_collided_counter--;
+	}
 }

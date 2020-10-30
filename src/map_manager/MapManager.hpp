@@ -26,6 +26,8 @@ public:
 	MapObject( int GlobalID, int AssetID );
 	int myGlobalID, myAssetID;
 	int XPos, YPos;
+	bool has_collided;
+	int has_collided_counter;
 };
 
 class MapManager {
@@ -45,6 +47,9 @@ public:
 	void doRenderFrame ( void );
 
 	int isColliding ( int inX, int inY, int inWidth, int inHeight );
+
+	void mark_collided(int inMapObjectID);
+	void decrement_collided(int inMapObjectID);
 
 	int getAssetID ( int inGlobalID );
 	MapObject * getMapObject ( int inGlobalID );

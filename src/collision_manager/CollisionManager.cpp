@@ -115,6 +115,26 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 			(myCollisionBox.y+myCollisionBox.h - myCameraManager->PlayerY_level) * myMagnification
 		);*/
 
+		if (myMapObject->has_collided == true) {
+			myMapManager->decrement_collided(MapObjectID);
+			SDL_SetRenderDrawColor(
+				myRen,
+				0,
+				100,
+				100,
+				0
+			);
+		}
+		else {
+			SDL_SetRenderDrawColor(
+				myRen,
+				255,
+				0,
+				0,
+				0
+			);
+		}
+
 		SDL_RenderDrawRect(
 			myRen,
 			&myCollisionBox
@@ -180,6 +200,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myCopy.y = myCopy.y- movement_increment;
 
+		bool is_jumping = true;
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 		while( MapObjs_myStart != MapObjs_myEnd ) {
@@ -213,15 +234,19 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				if( top_collision_player <= bottom_map_object && top_collision_player >= top_map_object ) {
 					myLogger->log("Collision to top!");
 					myLogger->log(MapObjectID);
-					return;
+					myMapManager->mark_collided(MapObjectID);
+					is_jumping = false;
+					break;
 				}
 			}
 
 			++MapObjs_myStart;
 		}
 
-		myCameraManager->PlayerY_screen = (myCameraManager->PlayerY_screen)- movement_increment;
-		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen );
+		if (is_jumping == true) {
+			myCameraManager->PlayerY_screen = (myCameraManager->PlayerY_screen) - movement_increment;
+			myAssetFactory->doAdjustPlayerDest(myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen);
+		}
 	}
 	else { //jump key not pressed or jump_counter has been maxed out.
 		//Check for collisions below, otherwise apply gravity effect.
@@ -265,7 +290,9 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				if (bottom_collision_player <= bottom_map_object && bottom_collision_player >= top_map_object) {
 					myLogger->log("Collision to bottom!");
 					myLogger->log(MapObjectID);
+					myMapManager->mark_collided(MapObjectID);
 					is_falling = false;
+					break;
 				}
 			}
 
@@ -292,6 +319,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		myCopy.x = myCopy.x- movement_increment;
 
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
+		bool is_colliding_left = false;
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 		while( MapObjs_myStart != MapObjs_myEnd ) {
@@ -324,22 +352,25 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				if (left_collision_player <= right_collision_object && left_collision_player >= left_collision_object) {
 					myLogger->log("Collision on left!");
 					myLogger->log(MapObjectID);
-					return;
+					myMapManager->mark_collided(MapObjectID);
+					is_colliding_left = true;
+					break;
 				}
 			}
 
 			++MapObjs_myStart;
 		}
 
-		//3) Break or apply
-		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)- movement_increment;
-		if( myCameraManager->PlayerX_screen <= myCameraManager->ScreenWall_Left ) {
-			myLogger->log("Hitting screen-wall left!");
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
-			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level- movement_increment;
-			return;
+		//3) Conditionally apply.
+		if (is_colliding_left == false) {
+			myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen) - movement_increment;
+			if (myCameraManager->PlayerX_screen <= myCameraManager->ScreenWall_Left) {
+				myLogger->log("Hitting screen-wall left!");
+				myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
+				myCameraManager->PlayerX_level = myCameraManager->PlayerX_level - movement_increment;
+			}
+			myAssetFactory->doAdjustPlayerDest(myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 		}
-		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 	}
 	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Logic for moving right
 		//1) Create a rect that would be where we want to move the player
@@ -349,6 +380,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		myCopy = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myCopy.x = myCopy.x+ movement_increment;
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
+		bool is_colliding_right = false;
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 		while (MapObjs_myStart != MapObjs_myEnd) {
@@ -381,21 +413,24 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				if (right_collision_player <= right_collision_object && right_collision_player >= left_collision_object) {
 					myLogger->log("Collision on right!");
 					myLogger->log(MapObjectID);
-					return;
+					myMapManager->mark_collided(MapObjectID);
+					is_colliding_right = true;
 				}
 			}
 
 			++MapObjs_myStart;
 		}
 
-		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+ movement_increment;
-		if( myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X*myCameraManager->magnification) >= myCameraManager->ScreenWall_Right ) {
-			myLogger->log("Hitting screen-wall right!");
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - (myCameraManager->PlayerSize_X*myCameraManager->magnification);
-			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+ movement_increment;
-			return;
+		if (is_colliding_right == false) {
+			myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen) + movement_increment;
+			if (myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X * myCameraManager->magnification) >= myCameraManager->ScreenWall_Right) {
+				myLogger->log("Hitting screen-wall right!");
+				myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - (myCameraManager->PlayerSize_X * myCameraManager->magnification);
+				myCameraManager->PlayerX_level = myCameraManager->PlayerX_level + movement_increment;
+				//return;
+			}
+			myAssetFactory->doAdjustPlayerDest(myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 		}
-		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 	}
 }
 
