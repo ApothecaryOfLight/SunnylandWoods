@@ -203,7 +203,7 @@ void MapManager::doLoadMapObjects ( void ) {
 	for (int i = -60; i < 60; i++) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = 0;
+		myMapObjects[newID].XPos = 500;
 		myMapObjects[newID].YPos = i*16;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
@@ -221,7 +221,7 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].has_collided_counter = 0;
 	}
 
-	for (int i = -30; i < 20; i++) {
+	for (int i = -30; i < 40; i++) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = i * 16;

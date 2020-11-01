@@ -27,6 +27,7 @@ SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
 
 void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames ) {
 	myLogger->log( "doLoadImage" );
+	myLogger->log( inAssetID );
 	if( isAnimated ) {
 		myAnimatedAssets[inAssetID] = new AnimatedAsset;
 		myAnimatedAssets[inAssetID]->frames = inFrames;
