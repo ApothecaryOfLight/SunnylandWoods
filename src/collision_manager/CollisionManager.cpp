@@ -59,6 +59,7 @@ void CollisionManager::doUpdateCollisionRectangle ( int inID, int inX1, int inY1
 //2) Construct the rect for each onscreen object by applying the ObjectManager's positional values
 //3) Draw the collision boxes.
 void CollisionManager::doDrawCollisionBoxes ( void ) {
+	if (myInputManager->isPressed_F5 == false) { return; }
 	SDL_SetRenderDrawColor( myRen, 255, 0, 0, SDL_ALPHA_OPAQUE);
 
 	int magnification = myCameraManager->magnification;

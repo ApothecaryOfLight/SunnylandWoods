@@ -19,6 +19,8 @@ public:
 
 	bool isResized;
 	int newWidth, newHeight;
+
+	bool isPressed_F5;
 private:
 };
 

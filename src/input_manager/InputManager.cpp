@@ -24,6 +24,8 @@ InputManager::InputManager ( void ) {
 
 	isResized = false;
 	int newWidth, newHeight;
+
+	isPressed_F5 = false;
 }
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
@@ -67,6 +69,14 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 					if( isPressed_SpaceBar == false ) {
 						isPressed_SpaceBar = true;
 						inputFlag_Jumping = true;
+					}
+				break;
+				case SDLK_F5:
+					if (isPressed_F5 == false) {
+						isPressed_F5 = true;
+					}
+					else {
+						isPressed_F5 = false;
 					}
 				break;
 			};
