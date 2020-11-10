@@ -55,9 +55,6 @@ void CollisionManager::doUpdateCollisionRectangle ( int inID, int inX1, int inY1
 
 }
 
-//1) Match each on-screen object to its Asset ID
-//2) Construct the rect for each onscreen object by applying the ObjectManager's positional values
-//3) Draw the collision boxes.
 void CollisionManager::doDrawCollisionBoxes ( void ) {
 	if (myInputManager->isPressed_F5 == false) { return; }
 	SDL_SetRenderDrawColor( myRen, 255, 0, 0, SDL_ALPHA_OPAQUE);
@@ -317,11 +314,6 @@ void CollisionManager::doPlayerCollisions ( void ) {
 					if (overlap_after_potential_movement < distance_remaining ) {
 						distance_remaining = overlap_after_potential_movement;
 					}
-					/*if ( (distance_remaining == 0 && overlap_after_potential_movement != 0 ) || (overlap_after_potential_movement < distance_remaining && overlap_after_potential_movement > 0)) {
-						myLogger->log("Collision to bottom difference detected.");
-						myLogger->log(overlap_after_potential_movement);
-						distance_remaining = overlap_after_potential_movement;
-					}*/
 				}
 			}
 

@@ -46,46 +46,10 @@ void PlayerManager::doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray
 }
 
 void PlayerManager::doGameLogic ( void ) {
-	/*FPSCounter++;
-	if( myInputManager->inputFlag_Jumping == true || myInputManager->inputFlag_Right == true || myInputManager->inputFlag_Left == true  ) {
-		if( FPSCounter >= 2 ) {
-			anim_frame_Player++;
-			if( anim_frame_Player >= anim_frame_Player_MAX ) {
-				anim_frame_Player = 0;
-			}
-			FPSCounter = 0;
-		}
-	}
-	else if( myInputManager->inputFlag_Right == false || myInputManager->inputFlag_Left == false || myInputManager->inputFlag_Jumping == false ) {
-		if( FPSCounter >= 3 ) {
-			anim_frame_Player++;
-			if( anim_frame_Player >= anim_frame_Player_MAX ) {
-				anim_frame_Player = 0;
-			}
-			FPSCounter = 0;
-		}
-	}
 
-	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
-		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)-9;
-		if( myCameraManager->PlayerX_screen <= myCameraManager->ScreenWall_Left ) {
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
-			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level-9;
-		}
-		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
-	}
-	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Logic for moving right
-		myCameraManager->PlayerX_screen = (myCameraManager->PlayerX_screen)+9;
-		if( myCameraManager->PlayerX_screen + (myCameraManager->PlayerSize_X*myCameraManager->magnification) >= myCameraManager->ScreenWall_Right ) {
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right - (myCameraManager->PlayerSize_X*myCameraManager->magnification);
-			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level+9;
-		}
-		myAssetFactory->doAdjustPlayerDest( myCameraManager->PlayerX_screen ); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
-	}*/
 }
 
 void PlayerManager::doRenderFrame ( void ) {
-	//if( myInputManager->inputFlag_Jumping == true ) {
 	if( jump_counter != 0 ) {
 		anim_frame_Player_MAX = 4;
 		PlayerAnimationType = 4;
@@ -178,24 +142,6 @@ void PlayerManager::doRenderFrame ( void ) {
 				);
 			}
 			else if( myInputManager->isPlayerFacingLeft == false ) { //Idle right
-				/*myLogger->log( "Idling right." );
-				myLogger->log("SRC_X: ");
-				myLogger->log(myStaticAssetPtr->myRect_src.x);
-				myLogger->log("SRC_Y: ");
-				myLogger->log(myStaticAssetPtr->myRect_src.y);
-				myLogger->log("SRC_W: ");
-				myLogger->log(myStaticAssetPtr->myRect_src.w);
-				myLogger->log("SRC_H: ");
-				myLogger->log(myStaticAssetPtr->myRect_src.h);
-
-				myLogger->log("DEST_X: ");
-				myLogger->log(myStaticAssetPtr->myRect_dst.x);
-				myLogger->log("DEST_Y: ");
-				myLogger->log(myStaticAssetPtr->myRect_dst.y);
-				myLogger->log("DEST_W: ");
-				myLogger->log(myStaticAssetPtr->myRect_dst.w);
-				myLogger->log("DEST_H: ");
-				myLogger->log(myStaticAssetPtr->myRect_dst.h);*/
 				SDL_RenderCopy(
 					myRen,
 					myStaticAssetPtr->myTexture,

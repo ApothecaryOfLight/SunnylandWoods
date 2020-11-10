@@ -14,13 +14,12 @@ AssetFactory::AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraMana
 	doLoadImages();
 }
 
-//TODO: An asset file?
+//TODO: An asset file
 void AssetFactory::doLoadImages ( void ) {
 	doLoadPlayerImages();
 	doLoadImage( 5, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0 );
 }
 
-//TODO: Inline?
 SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
 	SDL_Rect toRetByValue; toRetByValue.x = inX; toRetByValue.y = inY; toRetByValue.w = inW; toRetByValue.h = inH; return toRetByValue;
 }
@@ -127,10 +126,10 @@ void AssetFactory::doAdjustPlayerDest ( int inDestX, int inDestY ) { //TODO: Eac
 void AssetFactory::doLoadPlayerImages ( void ) {
 	myCameraManager->doSetPlayerSize( 90, 85 );
 	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 20, 0, 36, 48, 8 );
-	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 0, 0, 63, 48, 6 );
+	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 9, 0, 54, 48, 6 );
 	doLoadImage( 2, true, "media/SPRITES/player/hurt/player-hurt-", 0, 0, 90, 58, 2 );
 	doLoadImage( 3, true, "media/SPRITES/player/crouch/player-crouch-", 0, 0, 90, 58, 2 );
 	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 21, 0, 45, 58, 4 );	
 
-	myLogger->log("medias");
+	myLogger->log("Player images loaded.");
 }
