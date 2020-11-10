@@ -40,7 +40,8 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 					if( isPressed_LeftArrowKey == false ) {
 						isPressed_LeftArrowKey = true;
 						if( isPressed_RightArrowKey == false ) { isPlayerFacingLeft = true; }
-						if( inputFlag_Jumping == false && inputFlag_Right == false ) {
+						//if( inputFlag_Jumping == false && inputFlag_Right == false ) { //TODO: Make this configable
+						if (inputFlag_Right == false) {
 							inputFlag_Left = true;
 						}
 						else { isPressed_LeftArrowKey = false; }
@@ -50,7 +51,8 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 					if( isPressed_RightArrowKey == false ) {
 						isPressed_RightArrowKey = true;
 						if( isPressed_LeftArrowKey == false ) { isPlayerFacingLeft = false; }
-						if( inputFlag_Jumping == false && inputFlag_Left == false ) {
+						//if( inputFlag_Jumping == false && inputFlag_Left == false ) { //TODO: Make this configable
+						if (inputFlag_Left == false) {
 							inputFlag_Right = true;
 						}
 						else { isPressed_RightArrowKey = false; }

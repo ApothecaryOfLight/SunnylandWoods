@@ -8445,3 +8445,95 @@ medias
 doLoadImage
 5
 Initializing Collision Manager.
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+medias
+doLoadImage
+5
+Initializing Collision Manager.
+Collision on right!
+395
+2
+Closing remaining distance on right.
+Collision on right!
+395
+Collision on right!
+395
+391
+391
+384
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+medias
+doLoadImage
+5
+Initializing Collision Manager.
+389
+389
+309
+1
+Closing remaining distance on left.
