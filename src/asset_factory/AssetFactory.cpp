@@ -25,6 +25,10 @@ SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
 	SDL_Rect toRetByValue; toRetByValue.x = inX; toRetByValue.y = inY; toRetByValue.w = inW; toRetByValue.h = inH; return toRetByValue;
 }
 
+//Iterate through each image in the set.
+//Find the highest top, lowest low, leftiest left, and rightest right
+//Set the collective collisions accordingly
+
 void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames ) {
 	myLogger->log( "doLoadImage" );
 	myLogger->log( inAssetID );
@@ -122,11 +126,11 @@ void AssetFactory::doAdjustPlayerDest ( int inDestX, int inDestY ) { //TODO: Eac
 
 void AssetFactory::doLoadPlayerImages ( void ) {
 	myCameraManager->doSetPlayerSize( 90, 85 );
-	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 0, 0, 90, 58, 8 );
-	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 0, 0, 90, 58, 6 );
+	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 20, 0, 36, 48, 8 );
+	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 0, 0, 63, 48, 6 );
 	doLoadImage( 2, true, "media/SPRITES/player/hurt/player-hurt-", 0, 0, 90, 58, 2 );
 	doLoadImage( 3, true, "media/SPRITES/player/crouch/player-crouch-", 0, 0, 90, 58, 2 );
-	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 0, 0, 90, 58, 4 );	
+	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 21, 0, 45, 58, 4 );	
 
 	myLogger->log("medias");
 }
