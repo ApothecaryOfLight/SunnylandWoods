@@ -415,8 +415,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			myAssetFactory->doAdjustPlayerDest(myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 		}
 		if (distance_remaining > 0) {
-			//myLogger->log("Closing remaining distance on left.");
-			myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
+			myLogger->log("Closing remaining distance on left.");
+			//myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Left;
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level - distance_remaining;
 		}
 	}
@@ -490,7 +490,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			myAssetFactory->doAdjustPlayerDest(myCameraManager->PlayerX_screen, myCameraManager->PlayerY_screen); //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
 		}
 		if (distance_remaining > 0) {
-			//myLogger->log("Closing remaining distance on right.");
+			myLogger->log("Closing remaining distance on right.");
 			//myCameraManager->PlayerX_screen = myCameraManager->ScreenWall_Right;
 			myCameraManager->PlayerX_level = myCameraManager->PlayerX_level + distance_remaining;
 		}

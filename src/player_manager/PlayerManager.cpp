@@ -85,7 +85,8 @@ void PlayerManager::doGameLogic ( void ) {
 }
 
 void PlayerManager::doRenderFrame ( void ) {
-	if( myInputManager->inputFlag_Jumping == true ) {
+	//if( myInputManager->inputFlag_Jumping == true ) {
+	if( jump_counter != 0 ) {
 		anim_frame_Player_MAX = 4;
 		PlayerAnimationType = 4;
 		if( anim_frame_Player >= 4 ) { anim_frame_Player = 0; }
