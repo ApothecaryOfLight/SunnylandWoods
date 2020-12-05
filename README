@@ -15,77 +15,11 @@ by ApothecaryOfLight
 ==  CODING  ==
 ==============
 C++
-SDL
+SDL2
 
 
 ================
 ==   TARGETS  ==
 ================
-Windows
-Linux
-
-
-AssetID - Unique for each frame
-ObjectID - Unique for each gameworld object, so each Croc gets its own ObjectID, which is retired upon being killed and reissued when a new enemy/w/e is spawned.
-		ObjectID sets are self-contained, so EnemyID1 is not MapObjectID1.
-SectorFormat - Each object manager will store a SectorFormat with the following universal fields:
-	ObjectID	AssetID		XPos		YPos		XSector		YSector		CurrentFrame	MaxFrames	varies
-		Fields after MaxFrames vary based upon which Manager.
-AssetIDs map to a list of all assets
-	AssetID+CurrentFrame=OffsetPosition		XSize		YSize
-
-===============
-==  ROADMAP  ==
-===============
-1) Stack collision boxes vertically for finer collisions (down and up will only address top and bottom boxes, this granularity will exist side-to-side).
-2) Calculate boxes dynamically at startup for each Asset
-3) Introduce MapObjects, with collisions
-
-Collisions
-
-Objects
-Clickables		PLUS CLICKABLES THAT ARENT CLICKABLE, LIKE MENU LOADING BAR
-	EACH CLICKABLE CALLS UPON ARRAY OF HARDCODED FUNCTIONS AND CONDITIONALS
-	SO YOU CAN CUSTOMIZE THE APPEARANCE AND PLACEMENT OF BUTTONS
-	BUT YOU CAN'T CREATE CONDITIONALS OR EFFECTS
-	ONLY CHOOSE MULTIPLE CONDITIONALS AND EFFECTS FROM A DROPDOWN
-Collectibles
-Interactables
-
-XML levels
-Use CMake
-Map Editor
-Merge MainMenu and GameInterface
-Versioning
-
-All entities will be composed of collision boxes based on their pixels
-
--WAY TO CREATE BOUNDING BOXES DYNAMICALLY USING PIXEL TESTING!?
-
--ABILITY TO DRAW BOUNDING BOXES ON SCREEN (F4)
-
--Ability to have differently sized animations and variables capable of centering them and being accounted for in collisions.
-
--Collisions with enemies- SIDE, BELOW or FROM ABOVE
--Collisions with interactables- SIDE, BELOW, or FROM ABOVE
--Collision with terrains- SIDE, BELOW, or FROM ABOVE
--Collision with collectibles- IMPACT
-
-
-FACTORY TO CREATE ASSETS
-	-File name
-	-Calculate bounding boxes based on pixels FOR EACH FRAME
-	-Allocate and destroy all data appropriately
-	-On shutdown deallocate the buffers etc.
-	-Needs to handle static images and multiframe animations
-
-
-
-
-
-
----------------------------------
-AssetID - Unique to each sprite image, comes with sprite image and source dimensions
-UniversalID - Each instantiated object of any type will have a globally unique ID
-
-Magnification should only be applied when determining sectors and drawing.
+Windows (32 & 64) - Through Microsoft's MSVC.
+Linux - Through GNU's GCC
