@@ -20,8 +20,8 @@
 #define screenWIDTH 960
 #define screenHEIGHT 624
 
-GameInterface::GameInterface ( SDL_Renderer * inRen ) {
-	myLogger = new Logger;
+GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger ) {
+	myLogger = inLogger;
 	myCameraManager = new CameraManager { myLogger, (screenWIDTH/2)-((90*3)/2), (screenHEIGHT/2), screenWIDTH, screenHEIGHT };
 
 	myIDManager = new IDManager();

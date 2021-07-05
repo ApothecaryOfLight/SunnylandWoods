@@ -4,38 +4,20 @@
 #include <SDL_image.h>
 
 #include "MainMenuInterface.hpp"
+
+#include "../logger/logger.hpp"
 /*
 TODO: Subsume this within main game loop
 */
 
-MainMenuInterface::MainMenuInterface( SDL_Renderer * inRendererHandle ) {
+MainMenuInterface::MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRendererHandle, Logger * inLogger ) {
+	myLogger = inLogger;
 	isQuit = false;
 	GameInterfaceStarted = false;
 
 	ren = inRendererHandle;
 
-	AnimationCounterMountains = screenWIDTH/2;
-	AnimationCounterTrees = screenWIDTH/2;
-	AnimationCounterPressEnterText = 0;
-
-	BackgroundTileSrc = doMakeRect( 0, 0, 160, 208 );
-
-	BackgroundCloudsLeftDest = doMakeRect( 0, 0, screenWIDTH/2, screenHEIGHT );
-	BackgroundCloudsRightDest = doMakeRect( screenWIDTH/2, 0, screenWIDTH/2, screenHEIGHT );
-
-	BackgroundMountainsLeftestDest = doMakeRect( -1*(screenWIDTH/2), 0, screenWIDTH/2, screenHEIGHT );
-	BackgroundMountainsLeftDest = doMakeRect( 0, 0, screenWIDTH/2, screenHEIGHT );
-	BackgroundMountainsRightDest = doMakeRect( screenWIDTH/2, 0, screenWIDTH/2, screenHEIGHT );
-
-	BackgroundTreesLeftestDest = doMakeRect( -1*(screenWIDTH/2), 0, screenWIDTH/2, screenHEIGHT );
-	BackgroundTreesLeftDest = doMakeRect( 0, 0, screenWIDTH/2, screenHEIGHT );
-	BackgroundTreesRightDest = doMakeRect( screenWIDTH/2, 0, screenWIDTH/2, screenHEIGHT );
-
-	TitleCardSrc = doMakeRect( 0, 0, 194, 65 );
-	TitleCardDest = doMakeRect( (screenWIDTH/2)-((194*3.25)/2), (screenHEIGHT/2)-((65*2)/2.7)-(screenHEIGHT/4), (194*3.25), (65*3.25) );
-
-	PressEnterTextSrc = doMakeRect( 0, 0, 194, 65 );
-	PressEnterTextDest = doMakeRect( (screenWIDTH/2)-((194*2.4)/2), (screenHEIGHT/6)*4.5, (194*2.4), 65 );
+	doSetSizes();
 
 	SDL_Surface *myClouds = IMG_Load( "media/ENVIRONMENT/bg-clouds.png" );
 	myTClouds = SDL_CreateTextureFromSurface( ren, myClouds );
@@ -66,22 +48,64 @@ MainMenuInterface::~MainMenuInterface() {
 	SDL_DestroyTexture( myTPressEnterText );
 }
 
+void MainMenuInterface::doSetSizes() {
+	int screenWidth, screenHeight;
+	int return_code = SDL_GetRendererOutputSize(ren, &screenWidth, &screenHeight);
+	myLogger->log("Screen Dimensions: ");
+	myLogger->log(screenWidth);
+	myLogger->log(screenHeight);
+
+	AnimationCounterMountains = screenWidth / 2;
+	AnimationCounterTrees = screenWidth / 2;
+	AnimationCounterPressEnterText = 0;
+
+	BackgroundTileSrc = doMakeRect(0, 0, 160, 208);
+
+	BackgroundCloudsLeftDest = doMakeRect(0, 0, screenWidth / 2, screenHeight);
+	BackgroundCloudsRightDest = doMakeRect(screenWidth / 2, 0, screenWidth / 2, screenHeight);
+
+	BackgroundMountainsLeftestDest = doMakeRect(-1 * (screenWidth / 2), 0, screenWidth / 2, screenHeight);
+	BackgroundMountainsLeftDest = doMakeRect(0, 0, screenWidth / 2, screenHeight);
+	BackgroundMountainsRightDest = doMakeRect(screenWidth / 2, 0, screenWidth / 2, screenHeight);
+
+	BackgroundTreesLeftestDest = doMakeRect(-1 * (screenWidth / 2), 0, screenWidth / 2, screenHeight);
+	BackgroundTreesLeftDest = doMakeRect(0, 0, screenWidth / 2, screenHeight);
+	BackgroundTreesRightDest = doMakeRect(screenWidth / 2, 0, screenWidth / 2, screenHeight);
+
+	TitleCardSrc = doMakeRect(0, 0, 194, 65);
+	TitleCardDest = doMakeRect((screenWidth / 2) - ((194 * 3.25) / 2), (screenHeight / 2) - ((65 * 2) / 2.7) - (screenHeight / 4), (194 * 3.25), (65 * 3.25));
+
+	PressEnterTextSrc = doMakeRect(0, 0, 194, 65);
+	PressEnterTextDest = doMakeRect((screenWidth / 2) - ((194 * 2.4) / 2), (screenHeight / 6) * 4.5, (194 * 2.4), 65);
+}
+
 void MainMenuInterface::doComposeFrameMainMenuInterface() {
+	int screenWidth, screenHeight;
+	int return_code = SDL_GetRendererOutputSize(ren, &screenWidth, &screenHeight);
+	myLogger->log("Screen Dimensions: ");
+	myLogger->log(screenWidth);
+	myLogger->log(screenHeight);
+
+	if (screenWidth & 1) {
+		screenWidth--;
+	}
+	int half_screen = ceil(screenWidth / 2);
+
 	AnimationCounterMountains--;
 	if( AnimationCounterMountains <= 0 ) {
-		AnimationCounterMountains = screenWIDTH/2;
+		AnimationCounterMountains = half_screen;
 	}
-	BackgroundMountainsLeftDest.x = (screenWIDTH/2) - AnimationCounterMountains;
-	BackgroundMountainsLeftestDest.x = ((screenWIDTH)*-1) + (screenWIDTH-AnimationCounterMountains);
-	BackgroundMountainsRightDest.x = (screenWIDTH)-AnimationCounterMountains;
+	BackgroundMountainsLeftDest.x = (half_screen) - AnimationCounterMountains;
+	BackgroundMountainsLeftestDest.x = ((screenWidth)*-1) + (screenWidth-AnimationCounterMountains);
+	BackgroundMountainsRightDest.x = (screenWidth)-AnimationCounterMountains;
 
 	AnimationCounterTrees = AnimationCounterTrees-2;
 	if( AnimationCounterTrees <= 0 ) {
-		AnimationCounterTrees = screenWIDTH/2;
+		AnimationCounterTrees = half_screen;
 	}
-	BackgroundTreesLeftDest.x = (screenWIDTH/2) - AnimationCounterTrees;
-	BackgroundTreesLeftestDest.x = ((screenWIDTH)*-1) + (screenWIDTH-AnimationCounterTrees);
-	BackgroundTreesRightDest.x = (screenWIDTH)-AnimationCounterTrees;
+	BackgroundTreesLeftDest.x = (half_screen) - AnimationCounterTrees;
+	BackgroundTreesLeftestDest.x = ((screenWidth)*-1) + (screenWidth-AnimationCounterTrees);
+	BackgroundTreesRightDest.x = (screenWidth)-AnimationCounterTrees;
 
 	AnimationCounterPressEnterText++;
 }
@@ -130,6 +154,16 @@ void MainMenuInterface::doProcessInput ( SDL_Event * inEvent ) {
 	while (SDL_PollEvent(inEvent)){
 		if (inEvent->type == SDL_QUIT){
 			isQuit = true;
+		}
+		else if (inEvent->type == SDL_WINDOWEVENT) {
+			myLogger->log("Window event!");
+			switch (inEvent->window.event) {
+			case SDL_WINDOWEVENT_RESIZED:
+				myLogger->log("Window resized!");
+				doSetSizes();
+				doComposeFrameMainMenuInterface();
+				break;
+			}
 		}
 		switch( inEvent->key.keysym.sym ) {
 			case SDLK_ESCAPE: isQuit = true; break;

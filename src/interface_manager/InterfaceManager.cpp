@@ -6,10 +6,11 @@
 #include "../main_menu_interface/MainMenuInterface.hpp"
 #include "../game_interface/GameInterface.hpp"
 
-InterfaceManager::InterfaceManager ( SDL_Renderer * inRenderer ) {
-	myMainMenuInterface = new MainMenuInterface( inRenderer );
-	myGameInterface = new GameInterface( inRenderer );
-
+InterfaceManager::InterfaceManager ( SDL_Window * inWin, SDL_Renderer * inRenderer, Logger * inLogger ) {
+	myLogger = inLogger;
+	myWin = inWin;
+	myMainMenuInterface = new MainMenuInterface( inWin, inRenderer, inLogger );
+	myGameInterface = new GameInterface( inWin, inRenderer, inLogger );
 }
 
 InterfaceManager::~InterfaceManager ( void ) {

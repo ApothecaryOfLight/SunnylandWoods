@@ -21,7 +21,7 @@
 
 class GameInterface {
 public:
-	GameInterface ( SDL_Renderer * inRen );
+	GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger );
 	~GameInterface ( void );
 	void doGameLogic ( void );
 	void doRenderFrame ( void );

@@ -76,7 +76,7 @@
     <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\Include\SDL2;C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\Include\SDL2_win;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\chang\Downloads\Code\SDL2\SDL2-2.0.14\include;C:\Users\chang\Downloads\Code\SDL2\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -125,9 +125,9 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2.lib;C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2_main.lib;C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2_test.lib;C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2_image.lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\chang\Downloads\Code\SDL2\SDL2-2.0.14\lib\x64\SDL2.lib;C:\Users\chang\Downloads\Code\SDL2\SDL2-2.0.14\lib\x64\SDL2_main.lib;C:\Users\chang\Downloads\Code\SDL2\SDL2-2.0.14\lib\x64\SDL2_test.lib;C:\Users\chang\Downloads\Code\SDL2\SDL2_image-2.0.5\lib\x64\SDL2_image.lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2.lib;C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2main.lib;C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2test.lib;C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\lib\SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\chang\Downloads\Code\SDL2\SDL2-2.0.14\lib\x64\SDL2.lib;C:\Users\chang\Downloads\Code\SDL2\SDL2-2.0.14\lib\x64\SDL2main.lib;C:\Users\chang\Downloads\Code\SDL2\SDL2-2.0.14\lib\x64\SDL2test.lib;C:\Users\chang\Downloads\Code\SDL2\SDL2_image-2.0.5\lib\x64\SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

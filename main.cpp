@@ -4,6 +4,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "src/logger/logger.hpp"
+
 #include "src/time_manager/TimeManager.hpp"
 #include "src/interface_manager/InterfaceManager.hpp"
 
@@ -14,6 +16,7 @@ const int SCREEN_FPS = 24;
 const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 
 int main ( int argc, char *argv[] ) {
+	Logger * myLogger = new Logger;
 	//TODO: Have a proper usage invokation respond to command line arguemnts by saying just run it.
 	if ( SDL_Init( SDL_INIT_VIDEO ) != 0 ){
 		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
@@ -38,7 +41,7 @@ int main ( int argc, char *argv[] ) {
 	TimeManager myTimeManager;
 	std::stringstream timeText;
 
-	InterfaceManager myInterfaceManager ( ren );
+	InterfaceManager myInterfaceManager ( win, ren, myLogger );
 
 	while ( !myInterfaceManager.isQuit() ) {
                 myTimeManager.doStart();

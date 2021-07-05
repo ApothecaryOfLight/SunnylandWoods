@@ -1,4 +1,25 @@
-﻿  AssetFactory.cpp
-  InputManager.cpp
+﻿  main.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\main.cpp(1,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  AnimationManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\animation_manager\AnimationManager.hpp(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  AssetFactory.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\asset_factory\AssetFactory.hpp(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  CollisionManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\collision_manager\CollisionManager.hpp(3,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  EnemyManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\enemy_manager\EnemyManager.hpp(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  GameInterface.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\game_interface\GameInterface.hpp(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  id_manager.cpp
+  InterfaceManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\interface_manager\InterfaceManager.hpp(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  LevelManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\map_manager\MapManager.hpp(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  logger.cpp
+  MapManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\map_manager\MapManager.hpp(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  PlayerManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\player_manager\PlayerManager.hpp(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  TimeManager.cpp
+C:\Users\chang\OneDrive\Documents\Coding\Projects\SunnylandWoods\src\time_manager\TimeManager.hpp(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Generating Code...
-  SunnylandWoods.vcxproj -> C:\Users\chang\OneDrive\Documents\Coding\SunnylandWoods\x64\Debug\SunnylandWoods.exe

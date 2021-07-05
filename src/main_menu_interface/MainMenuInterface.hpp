@@ -8,15 +8,18 @@
 
 #include <iostream>
 
+#include "../logger/logger.hpp"
+
 #define screenWIDTH 960
 #define screenHEIGHT 624
 
 class MainMenuInterface {
 public:
-	MainMenuInterface( SDL_Renderer * inRendererHandle );
+	MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRendererHandle, Logger * inLogger );
 	~MainMenuInterface();
 
 	//Animation Functions
+	void doSetSizes();
 	void doComposeFrameMainMenuInterface();
 	void doRenderMainMenuInterface();
 
@@ -44,6 +47,8 @@ public:
 	bool GameInterfaceStarted;
 private:
 	SDL_Renderer *ren;
+	SDL_Window* myWin;
+	Logger* myLogger;
 };
 
 #endif
