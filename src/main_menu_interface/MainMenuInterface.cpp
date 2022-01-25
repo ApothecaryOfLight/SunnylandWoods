@@ -51,9 +51,6 @@ MainMenuInterface::~MainMenuInterface() {
 void MainMenuInterface::doSetSizes() {
 	int screenWidth, screenHeight;
 	int return_code = SDL_GetRendererOutputSize(ren, &screenWidth, &screenHeight);
-	myLogger->log("Screen Dimensions: ");
-	myLogger->log(screenWidth);
-	myLogger->log(screenHeight);
 
 	AnimationCounterMountains = screenWidth / 2;
 	AnimationCounterTrees = screenWidth / 2;
@@ -82,9 +79,6 @@ void MainMenuInterface::doSetSizes() {
 void MainMenuInterface::doComposeFrameMainMenuInterface() {
 	int screenWidth, screenHeight;
 	int return_code = SDL_GetRendererOutputSize(ren, &screenWidth, &screenHeight);
-	myLogger->log("Screen Dimensions: ");
-	myLogger->log(screenWidth);
-	myLogger->log(screenHeight);
 
 	if (screenWidth & 1) {
 		screenWidth--;
@@ -156,10 +150,8 @@ void MainMenuInterface::doProcessInput ( SDL_Event * inEvent ) {
 			isQuit = true;
 		}
 		else if (inEvent->type == SDL_WINDOWEVENT) {
-			myLogger->log("Window event!");
 			switch (inEvent->window.event) {
 			case SDL_WINDOWEVENT_RESIZED:
-				myLogger->log("Window resized!");
 				doSetSizes();
 				doComposeFrameMainMenuInterface();
 				break;

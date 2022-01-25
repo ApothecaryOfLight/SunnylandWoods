@@ -36,7 +36,8 @@ public:
 	void doLoadImages ( void );
 	void doLoadImage ( int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames );
 	void doLoadPlayerImages ( void );
-	void doResize ( void );
+	void doResize ( int screenWidth, int screenHeight );
+	void doSetSizes( int screenWidth, int screenHeight );
 
 	void doAdjustPlayerDest ( int inDestX, int inDestY );
 

@@ -9,8 +9,8 @@
 #include "src/time_manager/TimeManager.hpp"
 #include "src/interface_manager/InterfaceManager.hpp"
 
-#define screenWIDTH 960
-#define screenHEIGHT 624
+#define screenWIDTH 1024
+#define screenHEIGHT 640
 
 const int SCREEN_FPS = 24;
 const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
@@ -44,16 +44,16 @@ int main ( int argc, char *argv[] ) {
 	InterfaceManager myInterfaceManager ( win, ren, myLogger );
 
 	while ( !myInterfaceManager.isQuit() ) {
-                myTimeManager.doStart();
+		myTimeManager.doStart();
 
-				myInterfaceManager.doProcessInput( &mySDLEvent );
-				myInterfaceManager.doGameLogic();
-				myInterfaceManager.doRenderFrame();
+		myInterfaceManager.doProcessInput( &mySDLEvent );
+		myInterfaceManager.doGameLogic();
+		myInterfaceManager.doRenderFrame();
 
-                int frameTicks = myTimeManager.getTicks();
-                if( frameTicks < SCREEN_TICKS_PER_FRAME ) {
-                    SDL_Delay( SCREEN_TICKS_PER_FRAME - frameTicks );
-                }
+		int frameTicks = myTimeManager.getTicks();
+		if( frameTicks < SCREEN_TICKS_PER_FRAME ) {
+			SDL_Delay( SCREEN_TICKS_PER_FRAME - frameTicks );
+		}
 	}
 
 	SDL_DestroyRenderer( ren );

@@ -44,6 +44,8 @@ public:
 
 	void doLoadMapObjects ( void );
 
+	void doResize( int screenWidth, int screenHeight );
+
 	void doRenderFrame ( void );
 
 	int isColliding ( int inX, int inY, int inWidth, int inHeight );

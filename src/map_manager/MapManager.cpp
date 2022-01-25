@@ -101,6 +101,18 @@ void MapManager::doLoadMapTextures ( void ) {
 	SDL_FreeSurface( myNewSurface );
 }
 
+void MapManager::doResize( int screenWidth, int screenHeight ) {
+	rect_Clouds.x = 0;//TODO: Move to background manager.
+	rect_Clouds.y = 0;
+	rect_Clouds.w = 160;
+	rect_Clouds.h = 208;
+
+	rect_Clouds_dest.x = 0;
+	rect_Clouds_dest.y = 0;
+	rect_Clouds_dest.w = myCameraManager->ScreenWidth;
+	rect_Clouds_dest.h = myCameraManager->ScreenHeight;
+}
+
 void MapManager::doLoadMapObjects ( void ) {
 	doCreateRect( 0, 320, 320, 16, 16 );
 

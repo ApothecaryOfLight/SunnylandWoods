@@ -8488,3 +8488,2411 @@ Window event!
 Screen Dimensions: 
 1920
 1057
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+Collision on right!
+222
+3
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Closing remaining distance on right.
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+102
+3
+103
+104
+105
+Closing remaining distance on left.
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+Collision on right!
+380
+2
+Closing remaining distance on right.
+Collision on right!
+380
+311
+1
+Closing remaining distance on left.
+311
+311
+311
+311
+311
+311
+311
+Collision on right!
+386
+1
+Closing remaining distance on right.
+Collision on right!
+393
+1
+Closing remaining distance on right.
+Collision on right!
+393
+Collision on right!
+216
+3
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+220
+Closing remaining distance on right.
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+220
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+220
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+219
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+214
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+214
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+214
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+214
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+214
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+214
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+Collision on right!
+214
+Collision on right!
+215
+Collision on right!
+216
+Collision on right!
+217
+Collision on right!
+218
+393
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+YY:
+283
+YY:
+283
+YY:
+283
+YY:
+499
+YY:
+283
+YY:
+499
+YY:
+283
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+YY:
+499
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+YY:
+225
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+298
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+3
+Collision on right!
+90
+Collision on right!
+91
+Closing remaining distance on right.
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Collision on right!
+89
+Collision on right!
+90
+Collision on right!
+91
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+Hitting screen-wall right!
+89
+3
+90
+91
+Closing remaining distance on left.
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+89
+90
+91
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+102
+3
+103
+104
+105
+Closing remaining distance on left.
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+YY:
+499
+YY:
+291
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+Collision on right!
+222
+3
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Closing remaining distance on right.
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+102
+3
+103
+104
+105
+Closing remaining distance on left.
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+YY:
+291
+YY:
+291
+YY:
+291
+YY:
+291
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+Collision on right!
+222
+3
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Closing remaining distance on right.
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+102
+3
+103
+104
+105
+Closing remaining distance on left.
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+YY:
+283
+doLoadImage
+0
+media/SPRITES/player/idle/player-idle-1.png
+media/SPRITES/player/idle/player-idle-2.png
+media/SPRITES/player/idle/player-idle-3.png
+media/SPRITES/player/idle/player-idle-4.png
+media/SPRITES/player/idle/player-idle-5.png
+media/SPRITES/player/idle/player-idle-6.png
+media/SPRITES/player/idle/player-idle-7.png
+media/SPRITES/player/idle/player-idle-8.png
+doLoadImage
+1
+media/SPRITES/player/run/player-run-1.png
+media/SPRITES/player/run/player-run-2.png
+media/SPRITES/player/run/player-run-3.png
+media/SPRITES/player/run/player-run-4.png
+media/SPRITES/player/run/player-run-5.png
+media/SPRITES/player/run/player-run-6.png
+doLoadImage
+2
+media/SPRITES/player/hurt/player-hurt-1.png
+media/SPRITES/player/hurt/player-hurt-2.png
+doLoadImage
+3
+media/SPRITES/player/crouch/player-crouch-1.png
+media/SPRITES/player/crouch/player-crouch-2.png
+doLoadImage
+4
+media/SPRITES/player/jump/player-jump-1.png
+media/SPRITES/player/jump/player-jump-2.png
+media/SPRITES/player/jump/player-jump-3.png
+media/SPRITES/player/jump/player-jump-4.png
+Player images loaded.
+doLoadImage
+5
+Initializing Collision Manager.
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+Hitting screen-wall left!
+102
+3
+103
+104
+105
+Closing remaining distance on left.
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+102
+103
+104
+105
+Collision on right!
+222
+3
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Closing remaining distance on right.
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+397
+Collision on right!
+397
+Collision on right!
+221
+3
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Closing remaining distance on right.
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+219
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+219
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+219
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+219
+Collision on right!
+220
+Collision on right!
+221
+Collision on right!
+222
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+Collision on right!
+222
+Collision on right!
+223
+Collision on right!
+224
+Collision on right!
+225
+222
+2
+223
+224
+225
+Closing remaining distance on left.
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+399
+222
+223
+224
+225
+399
+222
+223
+224
+225
+221
+222
+223
+224
+225
+221
+222
+223
+224
+225
+221
+222
+223
+224
+225
+221
+222
+223
+224
+221
+222
+223
+224
+220
+221
+222
+223
+224
+220
+221
+222
+223
+224
+220
+221
+222
+223
+224
+220
+221
+222
+223
+220
+221
+222
+223
+219
+220
+221
+222
+223
+219
+220
+221
+222
+223
+219
+220
+221
+222
+223
+219
+220
+221
+222
+219
+220
+221
+222
+219
+220
+221
+222
+218
+219
+220
+221
+222
+218
+219
+220
+221
+222
+218
+219
+220
+221
+222
+218
+219
+220
+221
+218
+219
+220
+221
+217
+218
+219
+220
+221
+217
+218
+219
+220
+221
+217
+218
+219
+220
+221
+217
+218
+219
+220
+217
+218
+219
+220
+216
+217
+218
+219
+220
+216
+217
+218
+219
+220
+216
+217
+218
+219
+220
+216
+217
+218
+219
+216
+217
+218
+219
+216
+217
+218
+219
+215
+216
+217
+218
+219
+215
+216
+217
+218
+219
+215
+216
+217
+218
+219
+215
+216
+217
+218
+219
+216
+217
+218
+219
+216
+217
+218
+219
+220
+216
+217
+218
+219
+220
+217
+218
+219
+220
+217
+218
+219
+220
+221
+218
+219
+220
+221
+218
+219
+220
+221
+222
+218
+219
+220
+221
+222
+219
+220
+221
+222
+219
+220
+221
+222
+223
+219
+220
+221
+222
+223
+220
+221
+222
+223
+220
+221
+222
+223
+224
+221
+222
+223
+224
+221
+222
+223
+224
+225
+221
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+226
+399
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225
+222
+223
+224
+225

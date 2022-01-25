@@ -79,7 +79,11 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 	}
 }
 
-void AssetFactory::doResize ( void ) {
+void AssetFactory::doSetSizes( int screenWidth, int screenHeight ) {
+
+}
+
+void AssetFactory::doResize (int screenWidth, int screenHeight) {
 	//TODO: doSetPlayerSize
 	for( int i=0; i<8; i++ ) {
 		StaticAsset * myStaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
@@ -92,6 +96,8 @@ void AssetFactory::doResize ( void ) {
 			myStaticAssetPtr->PixelHeight*multiplier	//vertical scaling
 		);
 	}
+
+	doSetSizes( screenWidth, screenHeight );
 }
 
 //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
