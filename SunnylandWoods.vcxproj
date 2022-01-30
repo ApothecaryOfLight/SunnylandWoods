@@ -150,6 +150,7 @@
     <ClCompile Include="src\main_menu_interface\MainMenuInterface.cpp" />
     <ClCompile Include="src\map_manager\MapManager.cpp" />
     <ClCompile Include="src\player_manager\PlayerManager.cpp" />
+    <ClCompile Include="src\text_manager\text_manager.cpp" />
     <ClCompile Include="src\time_manager\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +243,7 @@
     <ClInclude Include="src\main_menu_interface\MainMenuInterface.hpp" />
     <ClInclude Include="src\map_manager\MapManager.hpp" />
     <ClInclude Include="src\player_manager\PlayerManager.hpp" />
+    <ClInclude Include="src\text_manager\text_manager.hpp" />
     <ClInclude Include="src\time_manager\TimeManager.hpp" />
   </ItemGroup>
   <ItemGroup>

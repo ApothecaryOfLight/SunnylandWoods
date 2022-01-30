@@ -21,7 +21,12 @@ void AssetFactory::doLoadImages ( void ) {
 }
 
 SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
-	SDL_Rect toRetByValue; toRetByValue.x = inX; toRetByValue.y = inY; toRetByValue.w = inW; toRetByValue.h = inH; return toRetByValue;
+	SDL_Rect toRetByValue;
+	toRetByValue.x = inX;
+	toRetByValue.y = inY;
+	toRetByValue.w = inW;
+	toRetByValue.h = inH;
+	return toRetByValue;
 }
 
 //Iterate through each image in the set.
@@ -80,7 +85,23 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 }
 
 void AssetFactory::doSetSizes( int screenWidth, int screenHeight ) {
+	/*myLogger->log(screenWidth);
+	myLogger->log(screenHeight);
+	float x_ratio = (float)screenWidth/(float)1024;
+	float y_ratio = (float)screenHeight/(float)800;
+	myLogger->log(x_ratio);
+	myLogger->log(y_ratio);
+	for (int AssetID = 0; AssetID < 5; AssetID++) {
+		for (int frame = 0; frame < myAnimatedAssets[AssetID]->frames; frame++) {
+			myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_dst.w =
+				int(myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_src.w * x_ratio);
+			myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_dst.h =
+				int(myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_src.h * y_ratio);
+		}
+	}
 
+	myStaticAssets[5]->myRect_dst.w = myStaticAssets[5]->myRect_src.w * x_ratio;
+	myStaticAssets[5]->myRect_dst.h = myStaticAssets[5]->myRect_src.h * y_ratio;*/
 }
 
 void AssetFactory::doResize (int screenWidth, int screenHeight) {
@@ -135,7 +156,7 @@ void AssetFactory::doLoadPlayerImages ( void ) {
 	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 9, 0, 54, 48, 6 );
 	doLoadImage( 2, true, "media/SPRITES/player/hurt/player-hurt-", 0, 0, 90, 58, 2 );
 	doLoadImage( 3, true, "media/SPRITES/player/crouch/player-crouch-", 0, 0, 90, 58, 2 );
-	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 21, 0, 45, 58, 4 );	
+	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 21, 0, 45, 58, 4 );
 
 	myLogger->log("Player images loaded.");
 }

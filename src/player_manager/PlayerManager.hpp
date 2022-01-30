@@ -21,6 +21,7 @@ public:
 	~PlayerManager ( void );
 
 	void doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray, std::string inFileLocation, int inLength );
+	void doAnimatePlayer(void);
 	void doRenderFrame ( void );
 	void doGameLogic ( void );
 

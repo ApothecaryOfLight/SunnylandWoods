@@ -11,6 +11,7 @@ public:
 	~Logger(void);
 	void log(std::string inMessage);
 	void log(int inInteger);
+	void log(float inFloat);
 private:
 	std::fstream outStream;
 };

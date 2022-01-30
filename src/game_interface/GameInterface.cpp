@@ -17,18 +17,21 @@
 #include "../map_manager/MapManager.hpp"
 #include "../id_manager/id_manager.hpp"
 
+#include "../text_manager/text_manager.hpp"
+
 #define screenWIDTH 960
 #define screenHEIGHT 624
 
 GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger ) {
 	myLogger = inLogger;
-	myCameraManager = new CameraManager { myLogger, (screenWIDTH/2)-((90*3)/2), (screenHEIGHT/2), screenWIDTH, screenHEIGHT };
+	myCameraManager = new CameraManager { myLogger, 0, 50, screenWIDTH, screenHEIGHT };
+	myTextManager = new TextManager(inRen,myLogger,myCameraManager);
 
 	myIDManager = new IDManager();
 
 	myAssetFactory = new AssetFactory( myLogger, inRen, myCameraManager );
 
-	myInputManager = new InputManager();
+	myInputManager = new InputManager( myCameraManager );
 
 	myMapManager = new MapManager ( inRen, myCameraManager, myAssetFactory, myIDManager );
 	myClickableManager = new ClickableManager ( inRen, myMapManager, myCameraManager, myIDManager );
@@ -37,7 +40,7 @@ GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger 
 	myCollisionManager = new CollisionManager ( myLogger, inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager, myIDManager );
 
 	myLevelManager = new LevelManager( myMapManager, myEnemyManager, myClickableManager, myIDManager );
-	myAnimationManager = new AnimationManager ( inRen, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager, myIDManager );
+	myAnimationManager = new AnimationManager ( inRen, myCameraManager, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager, myIDManager, myTextManager );
 }
 
 GameInterface::~GameInterface ( void ) {

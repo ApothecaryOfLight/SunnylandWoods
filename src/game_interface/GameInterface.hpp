@@ -19,6 +19,8 @@
 #include "../map_manager/MapManager.hpp"
 #include "../id_manager/id_manager.hpp"
 
+#include "../text_manager/text_manager.hpp"
+
 class GameInterface {
 public:
 	GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger );
@@ -40,6 +42,7 @@ private:
 	LevelManager * myLevelManager;
 	IDManager * myIDManager;
 	Logger * myLogger;
+	TextManager* myTextManager;
 };
 
 #endif

@@ -121,11 +121,13 @@ void PlayerManager::doRenderFrame ( void ) {
 			PlayerAnimationType = 1;
 			if( anim_frame_Player >= 6 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[1]->myStaticAssets[anim_frame_Player];
+			SDL_Rect PlayerCopy = myStaticAssetPtr->myRect_dst;
+			PlayerCopy.x -= 18;
 			SDL_RenderCopy(
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst)
+					&PlayerCopy
 				);
 		}
 		else {
@@ -149,6 +151,28 @@ void PlayerManager::doRenderFrame ( void ) {
 					&(myStaticAssetPtr->myRect_dst)
 				);
 			}
+		}
+	}
+}
+
+void PlayerManager::doAnimatePlayer(void) {
+	FPSCounter++;
+	if (myInputManager->inputFlag_Jumping == true || myInputManager->inputFlag_Right == true || myInputManager->inputFlag_Left == true) {
+		if (FPSCounter >= 2) {
+			anim_frame_Player++;
+			if (anim_frame_Player >= anim_frame_Player_MAX) {
+				anim_frame_Player = 0;
+			}
+			FPSCounter = 0;
+		}
+	}
+	else if (myInputManager->inputFlag_Right == false || myInputManager->inputFlag_Left == false || myInputManager->inputFlag_Jumping == false) {
+		if (FPSCounter >= 3) {
+			anim_frame_Player++;
+			if (anim_frame_Player >= anim_frame_Player_MAX) {
+				anim_frame_Player = 0;
+			}
+			FPSCounter = 0;
 		}
 	}
 }

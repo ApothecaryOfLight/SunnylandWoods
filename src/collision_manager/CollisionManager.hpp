@@ -17,6 +17,13 @@
 #ifndef _COLLISION_MANAGER_
 #define _COLLISION_MANAGER_
 
+class vector2d {
+public:
+	vector2d(int x, int y);
+	int x, y;
+	int magnitude();
+};
+
 class CollisionManager {
 public:
 	CollisionManager ( Logger * inLogger, SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * myPlayerManager, InputManager * inInputManager, IDManager * inIDManager );
@@ -33,6 +40,7 @@ public:
 	void doEnemyCollisions ( void );
 
 	void doDrawCollisionBoxes ( void );
+
 private:
 	SDL_Renderer * myRen;
 

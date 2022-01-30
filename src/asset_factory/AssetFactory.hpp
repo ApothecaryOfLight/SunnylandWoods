@@ -17,7 +17,7 @@ As well as the source dimensions of the image
 class StaticAsset {
 public:
 	SDL_Texture * myTexture;
-	SDL_Rect myRect_src, myRect_dst;//TODO: This should only be used for drawing, not collisions. Move that to the object managers.
+	SDL_Rect myRect_src, myRect_dst;
 	int PixelWidth, PixelHeight;
 };
 

@@ -237,7 +237,7 @@ void MapManager::doLoadMapObjects ( void ) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = 480;
+		myMapObjects[newID].YPos = 0;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
 		myMapObjects[newID].has_collided = false;
@@ -248,7 +248,7 @@ void MapManager::doLoadMapObjects ( void ) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = 700;
+		myMapObjects[newID].YPos = 400;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;
 		myMapObjects[newID].has_collided = false;
@@ -268,17 +268,14 @@ void MapManager::doRenderFrame ( void ) {
 	std::list<int>::iterator myEnd = myActiveMapObjects.end();
 	while( myIter != myEnd ) {
 		int myGlobalID = (*myIter);
-		//std::cout << "drawing object " << myGlobalID << std::endl;
 		MapObject * myMapObjectPtr = &myMapObjects[myGlobalID];
 		StaticAsset * myStaticAssetPtr = myAssetFactory->myStaticAssets[myMapObjectPtr->myAssetID];
 
 		SDL_Rect myObjectPosition;
-		//myCameraPosition = myStaticAssetPtr->myRect_dst;
-		myObjectPosition.x = (myMapObjects[myGlobalID].XPos - myCameraManager->PlayerX_level) * myCameraManager->magnification;
-		myObjectPosition.y = (myMapObjects[myGlobalID].YPos - myCameraManager->PlayerY_level) * myCameraManager->magnification;
-		myObjectPosition.w = myStaticAssetPtr->PixelWidth * myCameraManager->magnification;
-		myObjectPosition.h = myStaticAssetPtr->PixelHeight * myCameraManager->magnification;
-		//myCameraPosition.y = myCameraManager->PlayerY_level;
+		myObjectPosition.x = ((myMapObjects[myGlobalID].XPos - myCameraManager->PlayerX_level) ) * myCameraManager->magnification;
+		myObjectPosition.y = ((myMapObjects[myGlobalID].YPos - myCameraManager->PlayerY_level)) * myCameraManager->magnification;
+		myObjectPosition.w = myStaticAssetPtr->myRect_dst.w * myCameraManager->magnification;
+		myObjectPosition.h = myStaticAssetPtr->myRect_dst.h * myCameraManager->magnification;
 
 		SDL_RenderCopy(
 			myRen,

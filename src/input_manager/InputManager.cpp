@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 
-InputManager::InputManager ( void ) {
+InputManager::InputManager ( CameraManager* inCameraManager ) {
 	isQuit = false;
 
 	isChangeAnimationAlert = false;
@@ -26,6 +26,8 @@ InputManager::InputManager ( void ) {
 	int newWidth, newHeight;
 
 	isPressed_F5 = false;
+
+	myCameraManager = inCameraManager;
 }
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
@@ -50,12 +52,16 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 				case SDLK_RIGHT:
 					if( isPressed_RightArrowKey == false ) {
 						isPressed_RightArrowKey = true;
-						if( isPressed_LeftArrowKey == false ) { isPlayerFacingLeft = false; }
-						//if( inputFlag_Jumping == false && inputFlag_Left == false ) { //TODO: Make this configable
+						if( isPressed_LeftArrowKey == false ) {
+							isPlayerFacingLeft = false;
+						}
 						if (inputFlag_Left == false) {
 							inputFlag_Right = true;
+							//myCameraManager->PlayerX_level -= 18;
+							//myCameraManager->PlayerX_screen -= 18;
+						} else {
+							isPressed_RightArrowKey = false;
 						}
-						else { isPressed_RightArrowKey = false; }
 					}
 				break;
 				case SDLK_DOWN:
@@ -92,6 +98,7 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 				case SDLK_RIGHT:
 					isPressed_RightArrowKey = false;
 					inputFlag_Right = false;
+					//myCameraManager->PlayerX_level -= 9;
 				break;
 				case SDLK_DOWN:
 					isPressed_DownArrowKey = false;
@@ -106,9 +113,9 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 		if( inEvent->type == SDL_WINDOWEVENT ) {
 			switch( inEvent->window.event ) {
 				case SDL_WINDOWEVENT_RESIZED:
-					isResized = true;
 					newWidth = inEvent->window.data1;
 					newHeight = inEvent->window.data2;
+					isResized = true;
 					break;
 			}
 		}

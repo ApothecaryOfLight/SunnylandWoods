@@ -4,10 +4,11 @@
 #define _INPUT_MANAGER_
 
 #include <SDL.h>
+#include "../camera_manager/CameraManager.hpp"
 
 class InputManager {
 public:
-	InputManager ( void );
+	InputManager ( CameraManager * inCameraManager );
 	void doProcessInput ( SDL_Event * inEvent );
 	bool isQuit;
 	bool isPressed_LeftArrowKey, isPressed_RightArrowKey, isPressed_SpaceBar, isPressed_DownArrowKey;
@@ -22,6 +23,7 @@ public:
 
 	bool isPressed_F5;
 private:
+	CameraManager* myCameraManager;
 };
 
 #endif
