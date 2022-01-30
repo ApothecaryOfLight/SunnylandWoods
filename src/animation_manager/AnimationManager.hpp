@@ -6,6 +6,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include "../camera_manager/CameraManager.hpp"
 #include "../map_manager/MapManager.hpp"
 #include "../player_manager/PlayerManager.hpp"
 #include "../enemy_manager/EnemyManager.hpp"
@@ -13,7 +14,6 @@
 #include "../collision_manager/CollisionManager.hpp"
 #include "../id_manager/id_manager.hpp"
 #include "../text_manager/text_manager.hpp"
-#include "../camera_manager/CameraManager.hpp"
 
 class AnimationManager {
 public:
@@ -29,7 +29,6 @@ private:
 	InputManager * myInputManager;
 	CollisionManager * myCollisionManager;
 	IDManager * myIDManager;
-
 	TextManager* myTextManager;
 };
 

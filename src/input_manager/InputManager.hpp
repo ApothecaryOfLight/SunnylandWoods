@@ -22,6 +22,8 @@ public:
 	int newWidth, newHeight;
 
 	bool isPressed_F5;
+
+	int mouseX_pos, mouseY_pos;
 private:
 	CameraManager* myCameraManager;
 };

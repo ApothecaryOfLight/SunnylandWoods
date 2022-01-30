@@ -24,7 +24,13 @@ AnimationManager::AnimationManager ( SDL_Renderer * inRen, CameraManager* inCame
 	myIDManager = inIDManager;
 	myTextManager = inTextManager;
 
-	myTextManager->add_text_entity("playerXScreen", &myCameraManager->PlayerX_screen, 2);
+	myTextManager->add_text_entity("PlayerXScreen", &myCameraManager->PlayerX_screen, 1);
+	myTextManager->add_text_entity("PlayerYScreen", &myCameraManager->PlayerY_screen, 1);
+	myTextManager->add_text_entity("PlayerXLevel", &myCameraManager->PlayerY_level, 1);
+	myTextManager->add_text_entity("PlayerYLevel", &myCameraManager->PlayerY_level, 1);
+
+	myTextManager->add_text_entity("mouseYPos", &myInputManager->mouseY_pos, 2);
+	myTextManager->add_text_entity("mouseXPos", &myInputManager->mouseX_pos, 2);
 }
 
 void AnimationManager::doGameLogic ( void ) {
@@ -38,14 +44,8 @@ void AnimationManager::doRenderFrame ( void ) {
 	myPlayerManager->doAnimatePlayer();
 	myPlayerManager->doRenderFrame();
 
-
 	if (myInputManager->isPressed_F5) {
 		myCollisionManager->doDrawCollisionBoxes();
-
-		myTextManager->draw_player_position();
-		myTextManager->draw_player_screen_position();
-		myTextManager->draw_mouse_coords();
-
 		myTextManager->draw_text_entities();
 	}
 

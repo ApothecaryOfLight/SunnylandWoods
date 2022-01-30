@@ -130,62 +130,6 @@ void TextManager::draw_number(int posX, int posY, int value) {
 	}
 }
 
-void TextManager::draw_player_position() {
-	std::string txt_playerX("PlayerX");
-	int playerXPos = myCameraManager->PlayerX_level;
-	std::string txt_playerXPos = std::to_string(playerXPos);
-	int XPos_x_position = myCameraManager->ScreenWidth - (txt_playerXPos.length() * 20);
-	int txt_playerX_pos = XPos_x_position - (txt_playerX.length() * 20);
-	draw_number(XPos_x_position, 0, playerXPos);
-	draw_text(txt_playerX_pos-30, 0, txt_playerX);
-
-	std::string txt_playerY("PlayerY");
-	int playerYPos = myCameraManager->PlayerY_level;
-	std::string txt_playerYPos = std::to_string(playerYPos);
-	int YPos_x_position = myCameraManager->ScreenWidth - (txt_playerYPos.length() * 20);
-	int txt_playerY_pos = YPos_x_position - (txt_playerY.length() * 20);
-	draw_number(YPos_x_position, 20, playerYPos);
-	draw_text(txt_playerY_pos - 30, 20, txt_playerY);
-}
-
-void TextManager::draw_player_screen_position() {
-	std::string txt_playerX("PlayerXScreen");
-	int playerXPos = myCameraManager->PlayerX_screen;
-	std::string txt_playerXPos = std::to_string(playerXPos);
-	int XPos_x_position = myCameraManager->ScreenWidth - (txt_playerXPos.length() * 20);
-	int txt_playerX_pos = XPos_x_position - (txt_playerX.length() * 20);
-	draw_number(XPos_x_position, 40, playerXPos);
-	draw_text(txt_playerX_pos - 30, 40, txt_playerX);
-
-	std::string txt_playerY("PlayerYScreen");
-	int playerYPos = myCameraManager->PlayerY_screen;
-	std::string txt_playerYPos = std::to_string(playerYPos);
-	int YPos_x_position = myCameraManager->ScreenWidth - (txt_playerYPos.length() * 20);
-	int txt_playerY_pos = YPos_x_position - (txt_playerY.length() * 20);
-	draw_number(YPos_x_position, 60, playerYPos);
-	draw_text(txt_playerY_pos - 30, 60, txt_playerY);
-}
-
-void TextManager::draw_mouse_coords() {
-	int x, y;
-	Uint32 buttons;
-	buttons = SDL_GetMouseState( &x, &y );
-
-	std::string txt_mouseX_pos("mouseXScreen");
-	std::string txt_playerXPos = std::to_string(x);
-	int txt_mouseX_pos_position = myCameraManager->ScreenWidth - (txt_playerXPos.length() * 20);
-	int txt_mouseX_x_position = txt_mouseX_pos_position - (txt_mouseX_pos.length() * 20);
-	draw_number(txt_mouseX_pos_position, 80, x);
-	draw_text(txt_mouseX_x_position - 30, 80, txt_mouseX_pos);
-
-	std::string txt_mouseY_pos("mouseYScreen");
-	std::string txt_playerYPos = std::to_string(y);
-	int txt_mouseY_pos_position = myCameraManager->ScreenWidth - (txt_playerYPos.length() * 20);
-	int txt_mouseY_x_position = txt_mouseX_pos_position - (txt_mouseY_pos.length() * 20);
-	draw_number(txt_mouseY_pos_position, 100, y);
-	draw_text(txt_mouseY_x_position - 30, 100, txt_mouseY_pos);
-}
-
 void TextManager::add_text_entity(std::string in_name, int* in_ptr_to_value, int screen_corner) {
 	screen_text_entities_container[screen_corner].add_screen_text_entity(in_name, in_ptr_to_value);
 }
@@ -209,12 +153,12 @@ void TextManager::draw_text_entity(screen_text_entity* ptr_to_screen_text_entity
 	int integer_length = text_integer.length()*20;
 
 	if (corner_pos % 2 == 0) {
-		int_x_position = myCameraManager->ScreenWidth - integer_length;
-		text_x_position = int_x_position - text_length;
-	}
-	else {
 		text_x_position = 0;
 		int_x_position = text_length+20;
+	}
+	else {
+		int_x_position = myCameraManager->ScreenWidth - integer_length;
+		text_x_position = int_x_position - (text_length+20);
 	}
 
 	if (corner_pos < 2) {

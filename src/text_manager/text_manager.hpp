@@ -31,10 +31,6 @@ public:
 	void draw_text(int posX, int posY, std::string text);
 	void draw_number(int posX, int posY, int value);
 
-	void draw_player_position();
-	void draw_player_screen_position();
-	void draw_mouse_coords();
-
 	int get_letter_source_position(char& character);
 	int get_digit_source_position(char& digit);
 

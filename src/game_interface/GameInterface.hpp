@@ -18,7 +18,6 @@
 #include "../camera_manager/CameraManager.hpp"
 #include "../map_manager/MapManager.hpp"
 #include "../id_manager/id_manager.hpp"
-
 #include "../text_manager/text_manager.hpp"
 
 class GameInterface {
