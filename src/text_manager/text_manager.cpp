@@ -101,6 +101,8 @@ int TextManager::get_digit_source_position(char& digit) {
 		return 160;
 	} else if (digit == '9') {
 		return 180;
+	} else if ((int)digit == 45) {
+		return 200;
 	}
 }
 
@@ -136,7 +138,6 @@ void TextManager::add_text_entity(std::string in_name, int* in_ptr_to_value, int
 
 void TextManager::draw_text_entities() {
 	for (int corner = 0; corner < 4; corner++) {
-		myLogger->log((int)screen_text_entities_container[corner].entities.size());
 		for (int text_entity = 0; text_entity < screen_text_entities_container[corner].length; text_entity++) {
 			draw_text_entity(&screen_text_entities_container[corner].entities[text_entity],corner,text_entity);
 		}
@@ -144,8 +145,6 @@ void TextManager::draw_text_entities() {
 }
 
 void TextManager::draw_text_entity(screen_text_entity* ptr_to_screen_text_entity, int corner_pos, int stack_pos) {
-	myLogger->log(corner_pos);
-	myLogger->log(stack_pos);
 	int text_x_position, text_y_position, int_x_position, int_y_position;
 	int text_length = ptr_to_screen_text_entity->name.length()*20;
 	int integer = *(ptr_to_screen_text_entity->ptr_to_value);

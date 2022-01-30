@@ -26,7 +26,7 @@ AnimationManager::AnimationManager ( SDL_Renderer * inRen, CameraManager* inCame
 
 	myTextManager->add_text_entity("PlayerXScreen", &myCameraManager->PlayerX_screen, 1);
 	myTextManager->add_text_entity("PlayerYScreen", &myCameraManager->PlayerY_screen, 1);
-	myTextManager->add_text_entity("PlayerXLevel", &myCameraManager->PlayerY_level, 1);
+	myTextManager->add_text_entity("PlayerXLevel", &myCameraManager->PlayerX_level, 1);
 	myTextManager->add_text_entity("PlayerYLevel", &myCameraManager->PlayerY_level, 1);
 
 	myTextManager->add_text_entity("mouseYPos", &myInputManager->mouseY_pos, 2);

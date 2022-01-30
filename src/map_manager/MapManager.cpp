@@ -64,15 +64,7 @@ MapManager::~MapManager ( void ) {
 	SDL_DestroyTexture( texture_Clouds );
 }
 
-/*SDL_Rect MapManager::doCreateRect ( int inX, int inY, int inW, int inH ) {
-	SDL_Rect toRetByValue;
-	//SDL_Rect * toRetByValue = new SDL_Rect;
-	toRetByValue.x = inX; toRetByValue.y = inY; toRetByValue.w = inW; toRetByValue.h = inH;
-	return toRetByValue;
-}*/
-
 inline void MapManager::doCreateRect ( int inMapObjectID, int inX, int inY, int inW, int inH ) {
-	//myCollisionBoxes[ inMapObjectID ] = new SDL_Rect;
 	std::cout << "doCreateRect: " << inMapObjectID << " = " << inX << "/" << inY << "/" << inW << "/" << inH << std::endl;
 	std::cout << &myCollisionBoxes << std::endl;
 	int myMagnification = myCameraManager->magnification;
@@ -212,7 +204,7 @@ void MapManager::doLoadMapObjects ( void ) {
 	myMapObjects[newID].myAssetID = 5;*/
 
 
-	for (int i = -60; i < 60; i++) {
+	for (int i = 20; i < 60; i++) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = 500;
@@ -222,7 +214,7 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].has_collided = false;
 		myMapObjects[newID].has_collided_counter = 0;
 	}
-	for (int i = -60; i < 60; i++) {
+	for (int i = 20; i < 60; i++) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
 		myMapObjects[newID].XPos = 900;
