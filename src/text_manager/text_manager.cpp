@@ -165,7 +165,7 @@ void TextManager::draw_text_entity(screen_text_entity* ptr_to_screen_text_entity
 		int_y_position = text_y_position;
 	}
 	else {
-		text_y_position = myCameraManager->ScreenHeight - (stack_pos * 20);
+		text_y_position = myCameraManager->ScreenHeight - ((stack_pos+1) * 20);
 		int_y_position = text_y_position;
 	}
 

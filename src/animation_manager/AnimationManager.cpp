@@ -24,11 +24,13 @@ AnimationManager::AnimationManager ( SDL_Renderer * inRen, CameraManager* inCame
 	myIDManager = inIDManager;
 	myTextManager = inTextManager;
 
-	myTextManager->add_text_entity("PlayerXScreen", &myCameraManager->PlayerX_screen, 1);
-	myTextManager->add_text_entity("PlayerYScreen", &myCameraManager->PlayerY_screen, 1);
-	myTextManager->add_text_entity("PlayerXLevel", &myCameraManager->PlayerX_level, 1);
-	myTextManager->add_text_entity("PlayerYLevel", &myCameraManager->PlayerY_level, 1);
+	myTextManager->add_text_entity("CameraX", &myCameraManager->CameraX, 1);
+	myTextManager->add_text_entity("CameraY", &myCameraManager->CameraY, 1);
+	myTextManager->add_text_entity("PlayerXGameCoord", &myPlayerManager->PlayerGameCoordX, 1);
+	myTextManager->add_text_entity("PlayerYGameCoord", &myPlayerManager->PlayerGameCoordY, 1);
 
+	myTextManager->add_text_entity("mouseYGamepos", &myInputManager->mouseY_gamepos, 2);
+	myTextManager->add_text_entity("mouseXGamepos", &myInputManager->mouseX_gamepos, 2);
 	myTextManager->add_text_entity("mouseYPos", &myInputManager->mouseY_pos, 2);
 	myTextManager->add_text_entity("mouseXPos", &myInputManager->mouseX_pos, 2);
 }

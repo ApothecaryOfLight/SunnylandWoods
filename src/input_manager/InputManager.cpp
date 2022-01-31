@@ -32,6 +32,10 @@ InputManager::InputManager ( CameraManager* inCameraManager ) {
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 	SDL_GetMouseState(&mouseX_pos, &mouseY_pos);
+
+	mouseX_gamepos = mouseX_pos + myCameraManager->CameraX;
+	mouseY_gamepos = mouseY_pos + myCameraManager->CameraY;
+
 	while (SDL_PollEvent(inEvent)){
 		if( inEvent->type == SDL_QUIT ){
 			isQuit = true; 

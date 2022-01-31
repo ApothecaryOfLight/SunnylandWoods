@@ -24,6 +24,7 @@ public:
 	bool isPressed_F5;
 
 	int mouseX_pos, mouseY_pos;
+	int mouseX_gamepos, mouseY_gamepos;
 private:
 	CameraManager* myCameraManager;
 };

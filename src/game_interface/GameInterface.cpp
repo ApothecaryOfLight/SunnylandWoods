@@ -19,8 +19,8 @@
 
 #include "../text_manager/text_manager.hpp"
 
-#define screenWIDTH 960
-#define screenHEIGHT 624
+#define screenWIDTH 1024
+#define screenHEIGHT 640
 
 GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger ) {
 	myLogger = inLogger;
@@ -70,6 +70,7 @@ void GameInterface::doRenderFrame ( void ) {
 
 void GameInterface::doProcessInput ( SDL_Event * inEvent ) {
 	myInputManager->doProcessInput( inEvent );
+	myPlayerManager->doCalculatePlayerGameCoords();
 }
 
 bool GameInterface::isQuit ( void ) {

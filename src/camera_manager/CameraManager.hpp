@@ -12,6 +12,11 @@ public:
 	void doResize ( int inNewWidth, int inNewHeight );
 	void doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY );
 
+	int getPlayerAdjX();
+	int getPlayerAdjY();
+
+	void doInitializeCamera(int PlayerGameCoordX, int PlayerGameCoordY);
+
 	int PlayerX_screen, PlayerY_screen, //Poisitional system of where the player is on the screen.
 		PlayerX_level, PlayerY_level, //Positional system within the level of where the player is. Can be used to obtain CurrentSectorX/Y
 		CameraX, CameraY, //Position of the camera's upper-left corner. Used to lens everything that is not the player.
@@ -20,6 +25,7 @@ public:
 		CurrentSectorX, CurrentSectorY; //Which sector of the current level in which the player is. Can be derived from PlayerX_Level/PlayerY_Level.
 	int magnification;
 	int ScreenWall_Left, ScreenWall_Right; //The boundaries of how far the character can go left and right before they move the camera.
+	int ScreenWall_Top, ScreenWall_Bottom;
 	int PlayerSize_X, PlayerSize_Y;
 	Logger* myLogger;
 };

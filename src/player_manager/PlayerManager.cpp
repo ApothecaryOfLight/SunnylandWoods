@@ -28,6 +28,11 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 
 	FPSCounter = 0;
 	jump_counter = 0;
+
+	PlayerGameCoordX = 0;
+	PlayerGameCoordY = -80;
+
+	myCameraManager->doInitializeCamera(PlayerGameCoordX, PlayerGameCoordY);
 }
 
 PlayerManager::~PlayerManager ( void ) {
@@ -49,18 +54,28 @@ void PlayerManager::doGameLogic ( void ) {
 
 }
 
+SDL_Rect PlayerManager::getPlayerDest(void) {
+	SDL_Rect PlayerDest;
+	PlayerDest.x = (PlayerGameCoordX - myCameraManager->CameraX);
+	PlayerDest.y = (PlayerGameCoordY - myCameraManager->CameraY);
+	return PlayerDest;
+}
+
 void PlayerManager::doRenderFrame ( void ) {
+	SDL_Rect PlayerDest = getPlayerDest();
 	if( jump_counter != 0 ) {
 		anim_frame_Player_MAX = 4;
 		PlayerAnimationType = 4;
 		if( anim_frame_Player >= 4 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[4]->myStaticAssets[anim_frame_Player];
+			PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
+			PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
 			if( myInputManager->isPlayerFacingLeft == true ) { //Jumping left
 				SDL_RenderCopyEx(
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst),
+					&(PlayerDest),
 					0,
 					NULL,
 					SDL_FLIP_HORIZONTAL
@@ -71,7 +86,7 @@ void PlayerManager::doRenderFrame ( void ) {
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst)
+					&(PlayerDest)
 				);
 			}
 	}
@@ -81,12 +96,14 @@ void PlayerManager::doRenderFrame ( void ) {
 			PlayerAnimationType = 3;
 			if( anim_frame_Player >= 2 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[3]->myStaticAssets[anim_frame_Player];
+			PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
+			PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
 			if( myInputManager->isPlayerFacingLeft == true ) {
 				SDL_RenderCopyEx(
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst),
+					&(PlayerDest),
 					0,
 					NULL,
 					SDL_FLIP_HORIZONTAL
@@ -106,11 +123,13 @@ void PlayerManager::doRenderFrame ( void ) {
 			PlayerAnimationType = 1;
 			if( anim_frame_Player >= 6 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[1]->myStaticAssets[anim_frame_Player];
+			PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
+			PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
 			SDL_RenderCopyEx(
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst),
+					&(PlayerDest),
 					0,
 					NULL,
 					SDL_FLIP_HORIZONTAL
@@ -122,12 +141,14 @@ void PlayerManager::doRenderFrame ( void ) {
 			if( anim_frame_Player >= 6 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[1]->myStaticAssets[anim_frame_Player];
 			SDL_Rect PlayerCopy = myStaticAssetPtr->myRect_dst;
-			PlayerCopy.x -= 18;
+			PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
+			PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
+			PlayerDest.x -= 18;
 			SDL_RenderCopy(
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&PlayerCopy
+					(&PlayerDest)
 				);
 		}
 		else {
@@ -135,11 +156,13 @@ void PlayerManager::doRenderFrame ( void ) {
 			PlayerAnimationType = 0;
 			if( anim_frame_Player >= 8 ) { anim_frame_Player = 0; }
 			StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[anim_frame_Player];
+			PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
+			PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
 			if( myInputManager->isPlayerFacingLeft == true ) { //Idle left
 				//myLogger->log( "Idling left." );
 				SDL_RenderCopyEx( myRen, myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst),
+					&(PlayerDest),
 					0, NULL, SDL_FLIP_HORIZONTAL
 				);
 			}
@@ -148,7 +171,7 @@ void PlayerManager::doRenderFrame ( void ) {
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst)
+					&(PlayerDest)
 				);
 			}
 		}
@@ -175,4 +198,9 @@ void PlayerManager::doAnimatePlayer(void) {
 			FPSCounter = 0;
 		}
 	}
+}
+
+void PlayerManager::doCalculatePlayerGameCoords(void) {
+	//PlayerGameCoordX = myCameraManager->PlayerX_level + myCameraManager->PlayerX_screen;
+	//PlayerGameCoordY = myCameraManager->PlayerY_level + myCameraManager->PlayerY_screen;
 }
