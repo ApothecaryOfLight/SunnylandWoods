@@ -28,6 +28,11 @@ InputManager::InputManager ( CameraManager* inCameraManager ) {
 	isPressed_F5 = false;
 
 	myCameraManager = inCameraManager;
+
+	mouseX_pos = 0;
+	mouseY_pos = 0;
+	mouseX_gamepos = 0;
+	mouseY_gamepos = 0;
 }
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {

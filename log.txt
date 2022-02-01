@@ -35,56 +35,310 @@ Player images loaded.
 doLoadImage
 5
 Initializing Collision Manager.
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
-Hitting screen-wall left!
+Collision on right!
+2
+Distance on right detected!
+2
+Collision on right!
+2
+Collision on right!
+2
+Collision on right!
+2
+Closing remaining distance on right.
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+0
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6
+Collision on right!
+-6

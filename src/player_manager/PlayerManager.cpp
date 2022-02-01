@@ -199,8 +199,3 @@ void PlayerManager::doAnimatePlayer(void) {
 		}
 	}
 }
-
-void PlayerManager::doCalculatePlayerGameCoords(void) {
-	//PlayerGameCoordX = myCameraManager->PlayerX_level + myCameraManager->PlayerX_screen;
-	//PlayerGameCoordY = myCameraManager->PlayerY_level + myCameraManager->PlayerY_screen;
-}

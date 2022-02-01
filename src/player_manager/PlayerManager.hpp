@@ -25,8 +25,6 @@ public:
 	void doRenderFrame ( void );
 	void doGameLogic ( void );
 
-	void doCalculatePlayerGameCoords(void);
-
 	SDL_Rect getPlayerDest(void);
 
 	int anim_frame_Player;

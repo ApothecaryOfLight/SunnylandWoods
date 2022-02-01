@@ -18,8 +18,8 @@ CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, 
 	magnification = 1;
 	doResize( inScreenWidth, inScreenHeight );
 
-	//CameraX = 0;
-	//CameraY = 0;
+	CameraX = 0;
+	CameraY = 0;
 
 	SectorsX = 1;
 	SectorsY = 1;

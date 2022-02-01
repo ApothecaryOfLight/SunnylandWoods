@@ -19,9 +19,6 @@ Stores all Map Objects
 
 class MapObject {
 public:
-	//GlobalID = from IDManager
-	//AssetID = from AssetManager
-	//LocalID = How MapManager stores it.
 	MapObject ( void );
 	MapObject( int GlobalID, int AssetID );
 	int myGlobalID, myAssetID;
@@ -37,9 +34,6 @@ public:
 
 	void doLoadMapTextures ( void );
 
-	void doLoadMap ( std::string inFilename );
-
-	//SDL_Rect doCreateRect ( int inX, int inY, int inW, int inH );
 	void doCreateRect ( int inMapObjectID, int inX, int inY, int inW, int inH );
 
 	void doLoadMapObjects ( void );
@@ -47,8 +41,6 @@ public:
 	void doResize( int screenWidth, int screenHeight );
 
 	void doRenderFrame ( void );
-
-	int isColliding ( int inX, int inY, int inWidth, int inHeight );
 
 	void mark_collided(int inMapObjectID);
 	void decrement_collided(int inMapObjectID);

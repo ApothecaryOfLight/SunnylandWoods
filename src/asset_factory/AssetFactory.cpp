@@ -14,7 +14,6 @@ AssetFactory::AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraMana
 	doLoadImages();
 }
 
-//TODO: An asset file
 void AssetFactory::doLoadImages ( void ) {
 	doLoadPlayerImages();
 	doLoadImage( 5, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0 );
@@ -28,10 +27,6 @@ SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
 	toRetByValue.h = inH;
 	return toRetByValue;
 }
-
-//Iterate through each image in the set.
-//Find the highest top, lowest low, leftiest left, and rightest right
-//Set the collective collisions accordingly
 
 void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames ) {
 	myLogger->log( "doLoadImage" );
@@ -55,8 +50,6 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelWidth = inWidth;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelHeight = inHeight;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
-			//myLogger->log("Y:");
-			//myLogger->log(myCameraManager->PlayerY_screen);
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect (
 				myCameraManager->PlayerX_screen,
 				myCameraManager->PlayerY_screen,
@@ -84,26 +77,6 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 	}
 }
 
-void AssetFactory::doSetSizes( int screenWidth, int screenHeight ) {
-	/*myLogger->log(screenWidth);
-	myLogger->log(screenHeight);
-	float x_ratio = (float)screenWidth/(float)1024;
-	float y_ratio = (float)screenHeight/(float)800;
-	myLogger->log(x_ratio);
-	myLogger->log(y_ratio);
-	for (int AssetID = 0; AssetID < 5; AssetID++) {
-		for (int frame = 0; frame < myAnimatedAssets[AssetID]->frames; frame++) {
-			myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_dst.w =
-				int(myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_src.w * x_ratio);
-			myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_dst.h =
-				int(myAnimatedAssets[AssetID]->myStaticAssets[frame]->myRect_src.h * y_ratio);
-		}
-	}
-
-	myStaticAssets[5]->myRect_dst.w = myStaticAssets[5]->myRect_src.w * x_ratio;
-	myStaticAssets[5]->myRect_dst.h = myStaticAssets[5]->myRect_src.h * y_ratio;*/
-}
-
 void AssetFactory::doResize (int screenWidth, int screenHeight) {
 	//TODO: doSetPlayerSize
 	for( int i=0; i<8; i++ ) {
@@ -117,8 +90,6 @@ void AssetFactory::doResize (int screenWidth, int screenHeight) {
 			myStaticAssetPtr->PixelHeight*multiplier	//vertical scaling
 		);
 	}
-
-	doSetSizes( screenWidth, screenHeight );
 }
 
 //TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.

@@ -52,18 +52,6 @@ CollisionManager::~CollisionManager ( void ) {
 
 }
 
-void CollisionManager::doInitializeCollisions ( void ) {
-
-}
-
-void CollisionManager::doAddCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 ) {
-
-}
-
-void CollisionManager::doUpdateCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 ) {
-
-}
-
 void CollisionManager::doDrawCollisionBoxes ( void ) {
 	SDL_SetRenderDrawColor( myRen, 255, 0, 0, SDL_ALPHA_OPAQUE);
 
@@ -79,9 +67,9 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	myPlayerDrawnCollisionBox.x = myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX;
 	myPlayerDrawnCollisionBox.y = myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY;
 
-	/*if (myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true) {
+	if (myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true) {
 		myPlayerDrawnCollisionBox.x -= 18;
-	}*/
+	}
 
 	/*myPlayerDrawnCollisionBox.x *= magnification;
 	myPlayerDrawnCollisionBox.y *= magnification;
@@ -177,8 +165,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
 
-			myCollisionBox.x = (myMapObject->XPos - myCameraManager->PlayerX_level);
-			myCollisionBox.y = (myMapObject->YPos - myCameraManager->PlayerY_level);
+			myCollisionBox.x = myMapObject->XPos;
+			myCollisionBox.y = myMapObject->YPos;
 
 			//1) Get leading top edge of player collision box
 			int top_collision_player = myPlayer.y;
@@ -240,8 +228,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[MapObjectAssetID]->myRect_dst;
 
-			myCollisionBox.x = (myMapObject->XPos);
-			myCollisionBox.y = (myMapObject->YPos);
+			myCollisionBox.x = myMapObject->XPos;
+			myCollisionBox.y = myMapObject->YPos;
 
 			//1) Get bottom edge of player collision box
 			int bottom_collision_player = myPlayerDest.y + myPlayerDest.h;
@@ -306,7 +294,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myPlayerDest.x = myPlayerManager->PlayerGameCoordX;
-		myPlayerDest.x = myPlayerManager->PlayerGameCoordY;
+		myPlayerDest.y = myPlayerManager->PlayerGameCoordY;
 
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		bool is_colliding_left = false;
@@ -320,10 +308,10 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int MapObjectAssetID = myMapObject->myAssetID;
 			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
 
-			myCollisionBox.x = (myMapObject->XPos - myCameraManager->PlayerX_level);
-			myCollisionBox.y = (myMapObject->YPos - myCameraManager->PlayerY_level);
+			myCollisionBox.x = myMapObject->XPos;
+			myCollisionBox.y = myMapObject->YPos;
 
-			int left_collision_player = myPlayerDest.x;
+			int left_collision_player = myPlayerDest.x - movement_increment;
 			int top_collision_player = myPlayerDest.y;
 			int bottom_collision_player = myPlayerDest.y + myPlayerDest.h;
 
@@ -339,7 +327,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
 			) {
 				if (left_collision_player <= right_collision_object && left_collision_player >= left_collision_object) {
-					myLogger->log(MapObjectID);
+					myLogger->log("Collision on left!");
 					myMapManager->mark_collided(MapObjectID);
 					is_colliding_left = true;
 					int overlap_after_potential_movement = (left_collision_player+movement_increment) - right_collision_object;
@@ -372,8 +360,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
 
 		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
-		myPlayerDest.x = myPlayerManager->PlayerGameCoordX;
-		myPlayerDest.x = myPlayerManager->PlayerGameCoordY;
+		myPlayerDest.x = myPlayerManager->PlayerGameCoordX + movement_increment - 18;
+		myPlayerDest.y = myPlayerManager->PlayerGameCoordY;
 
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		bool is_colliding_right = false;
@@ -387,8 +375,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int MapObjectAssetID = myMapObject->myAssetID;
 			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[MapObjectAssetID]->myRect_dst;
 
-			myCollisionBox.x = myMapObject->XPos - myCameraManager->PlayerX_level;
-			myCollisionBox.y = myMapObject->YPos - myCameraManager->PlayerY_level;
+			myCollisionBox.x = myMapObject->XPos;
+			myCollisionBox.y = myMapObject->YPos;
 
 			int right_collision_player = myPlayerDest.x + myPlayerDest.w;
 			int top_collision_player = myPlayerDest.y;

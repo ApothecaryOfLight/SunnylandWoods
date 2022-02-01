@@ -27,9 +27,7 @@ MapManager::MapManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, 
 	myRen = inRen;
 	myIDManager = inIDManager;
 
-
 	//myObjectCounter = 0;
-
 
 	/*myObjects = new int*[1000];
 	for( int i=0; i<=999; i++ ) {
@@ -46,7 +44,6 @@ MapManager::MapManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, 
 	myObjectCounter++;*/
 
 	myMapObjects = new MapObject[5000];
-
 
 	myCollisionBoxes = new SDL_Rect*[1000];
 	for( int i=0; i<=999; i++ ) {
@@ -214,10 +211,10 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].has_collided = false;
 		myMapObjects[newID].has_collided_counter = 0;
 	}*/
-	for (int i = 20; i < 60; i++) {
+	for (int i = -60; i < 60; i++) {
 		newID = myIDManager->getNewID();
 		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = 900;
+		myMapObjects[newID].XPos = 90;
 		myMapObjects[newID].YPos = i * 16;
 		myMapObjects[newID].myGlobalID = newID;
 		myMapObjects[newID].myAssetID = 5;

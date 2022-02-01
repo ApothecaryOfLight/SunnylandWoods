@@ -70,7 +70,6 @@ void GameInterface::doRenderFrame ( void ) {
 
 void GameInterface::doProcessInput ( SDL_Event * inEvent ) {
 	myInputManager->doProcessInput( inEvent );
-	myPlayerManager->doCalculatePlayerGameCoords();
 }
 
 bool GameInterface::isQuit ( void ) {

@@ -29,18 +29,12 @@ public:
 	CollisionManager ( Logger * inLogger, SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * myPlayerManager, InputManager * inInputManager, IDManager * inIDManager );
 	~CollisionManager ( void );
 
-	void doInitializeCollisions ( void );
-
-	void doAddCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 );
-	void doUpdateCollisionRectangle ( int inID, int inX1, int inY1, int inX2, int inY2 );
-
 	void doGameLogic ( void );
 
 	void doPlayerCollisions ( void );
 	void doEnemyCollisions ( void );
 
 	void doDrawCollisionBoxes ( void );
-
 private:
 	SDL_Renderer * myRen;
 
@@ -53,11 +47,6 @@ private:
 	IDManager * myIDManager;
 
 	Logger * myLogger;
-
-	//int myCollisionBoxCounter;
-	//std::list<int> retiredCollisionBoxIDs;
-	SDL_Rect * myCollisionBoxes;
-	//std::list<int> * myCollisionBoxLookup;
 };
 
 #endif
