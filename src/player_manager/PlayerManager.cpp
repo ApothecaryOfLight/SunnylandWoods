@@ -29,8 +29,8 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 	FPSCounter = 0;
 	jump_counter = 0;
 
-	PlayerGameCoordX = 0;
-	PlayerGameCoordY = -80;
+	PlayerGameCoordX = 54;
+	PlayerGameCoordY = 2;
 
 	myCameraManager->doInitializeCamera(PlayerGameCoordX, PlayerGameCoordY);
 }

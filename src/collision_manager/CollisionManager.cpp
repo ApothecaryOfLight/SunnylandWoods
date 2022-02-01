@@ -144,7 +144,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 	//TODO: Collisions with: enemies, interactables, collectibles
 	int max_jump_height = 150;
 
-	int movement_increment = 6;
+	int movement_increment = 8;
 	if( myInputManager->inputFlag_Jumping == true && myPlayerManager->jump_counter < max_jump_height) { //jumping logic
 		myPlayerManager->jump_counter++;
 		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
@@ -356,10 +356,12 @@ void CollisionManager::doPlayerCollisions ( void ) {
 	}
 	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Logic for moving right
 		//1) Create a rect that would be where we want to move the player
-		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
-		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
+		int PlayerAnimationFrame = 0;
+		int PlayerAnimationType = 1;
 
 		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
+		myLogger->log("PlayerAnimationType.");
+		myLogger->log(PlayerAnimationType);
 		myPlayerDest.x = myPlayerManager->PlayerGameCoordX + movement_increment - 18;
 		myPlayerDest.y = myPlayerManager->PlayerGameCoordY;
 
@@ -387,12 +389,17 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int top_collision_object = myCollisionBox.y;
 			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
 
+
 			if (
 				top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
 				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
 				top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
 				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
 				) {
+				myLogger->log(right_collision_player);
+				myLogger->log(right_collision_object);
+				myLogger->log(right_collision_player);
+				myLogger->log(left_collision_object);
 				if (right_collision_player <= right_collision_object && right_collision_player >= left_collision_object) {
 					myLogger->log("Collision on right!");
 					myMapManager->mark_collided(MapObjectID);
@@ -410,6 +417,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		}
 
 		if (is_colliding_right == false) {
+			myLogger->log("No collision detected, moving.");
 			myPlayerManager->PlayerGameCoordX += movement_increment;
 			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
 				myLogger->log("Hitting screen-wall right!");
