@@ -47,6 +47,8 @@ private:
 	IDManager * myIDManager;
 
 	Logger * myLogger;
+
+	int max_jump_height = 150;
 };
 
 #endif

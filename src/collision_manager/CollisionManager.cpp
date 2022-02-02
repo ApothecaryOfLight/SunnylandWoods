@@ -67,8 +67,11 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	myPlayerDrawnCollisionBox.x = myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX;
 	myPlayerDrawnCollisionBox.y = myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY;
 
-	if (myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true) {
+	if (!myInputManager->inputFlag_Left && myInputManager->inputFlag_Right && !myInputManager->inputFlag_Jumping && myPlayerManager->jump_counter < max_jump_height) {
 		myPlayerDrawnCollisionBox.x -= 18;
+	}
+	if (myInputManager->inputFlag_Jumping && !myInputManager->isPlayerFacingLeft) {
+		//myPlayerDrawnCollisionBox.x -= 5;
 	}
 
 	/*myPlayerDrawnCollisionBox.x *= magnification;
@@ -142,13 +145,12 @@ void CollisionManager::doGameLogic ( void ) {
 
 void CollisionManager::doPlayerCollisions ( void ) {
 	//TODO: Collisions with: enemies, interactables, collectibles
-	int max_jump_height = 150;
 
-	int movement_increment = 8;
+	int movement_increment = 7;
 	if( myInputManager->inputFlag_Jumping == true && myPlayerManager->jump_counter < max_jump_height) { //jumping logic
 		myPlayerManager->jump_counter++;
-		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
-		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
+		int PlayerAnimationFrame = 0;
+		int PlayerAnimationType = 4;
 		SDL_Rect myPlayer;
 		myPlayer = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myPlayer.x = myPlayerManager->PlayerGameCoordX;
@@ -171,7 +173,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			//1) Get leading top edge of player collision box
 			int top_collision_player = myPlayer.y;
 			int left_collision_player = myPlayer.x;
-			int right_collision_player = myPlayer.x + myPlayer.w;
+			int right_collision_player = myPlayer.x + myPlayer.w - 10;
 
 			//2) Check against bottom edge of map object
 			int top_map_object = myCollisionBox.y;
@@ -203,6 +205,10 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 		if (is_jumping == true) {
 			myPlayerManager->PlayerGameCoordY -= movement_increment;
+			if ((myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
+				myLogger->log("Hitting screen-wall top!");
+				myCameraManager->CameraY -= movement_increment;
+			}
 		}
 		if (distance_remaining != 0) {
 			myPlayerManager->PlayerGameCoordY -= distance_remaining * -1;
@@ -210,8 +216,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 	}
 	else { //jump key not pressed or jump_counter has been maxed out.
 		//Check for collisions below, otherwise apply gravity effect.
-		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
-		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
+		int PlayerAnimationFrame = 0;
+		int PlayerAnimationType = 0;
 
 		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myPlayerDest.x = myPlayerManager->PlayerGameCoordX;
@@ -232,7 +238,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			myCollisionBox.y = myMapObject->YPos;
 
 			//1) Get bottom edge of player collision box
-			int bottom_collision_player = myPlayerDest.y + myPlayerDest.h;
+			int bottom_collision_player = myPlayerDest.y + myPlayerDest.h - 10;
 			int left_collision_player = myPlayerDest.x;
 			int right_collision_player = myPlayerDest.x + myPlayerDest.w;
 
@@ -249,6 +255,11 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				right_map_object > left_collision_player && right_map_object < right_collision_player ||
 				left_map_object > left_collision_player && left_map_object < right_collision_player
 			) {
+				myLogger->log("\n\nThis");
+				myLogger->log(right_collision_player);
+				myLogger->log(right_map_object);
+				myLogger->log(right_collision_player);
+				myLogger->log(left_map_object);
 				if (bottom_collision_player <= bottom_map_object && bottom_collision_player >= top_map_object) {
 					//myLogger->log("Collision to bottom!");
 					//myLogger->log(MapObjectID);
@@ -263,6 +274,9 @@ void CollisionManager::doPlayerCollisions ( void ) {
 						distance_remaining = overlap_after_potential_movement;
 						//myLogger->log(distance_remaining);
 					}
+					else if (distance_remaining > overlap_after_potential_movement) {
+						distance_remaining = overlap_after_potential_movement;
+					}
 					if (overlap_after_potential_movement < distance_remaining ) {
 						distance_remaining = overlap_after_potential_movement;
 					}
@@ -274,13 +288,17 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		if (is_falling == true) {
 			myPlayerManager->jump_counter = max_jump_height+1;
 			myPlayerManager->PlayerGameCoordY += movement_increment * 2;
+			if ((myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY) >= myCameraManager->ScreenWall_Bottom) {
+				//myLogger->log("Hitting screen-wall bottom!");
+				myCameraManager->CameraY += movement_increment*2;
+			}
 		}
 		else {
 			myPlayerManager->jump_counter = 0;
 			if (distance_remaining > 0) {
-				//myLogger->log("Moving to complete collision on bottom.");
+				myLogger->log("Moving to complete collision on bottom.");
 				//myLogger->log(distance_remaining);
-				myPlayerManager->PlayerGameCoordY += distance_remaining;
+				myPlayerManager->PlayerGameCoordY += distance_remaining - 10;
 			}
 		}
 	}
@@ -289,8 +307,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
 		//myLogger->log("Running left ");
 		//1) Create a rect that would be where we want to move the player
-		int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
-		int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
+		int PlayerAnimationFrame = 0;
+		int PlayerAnimationType = 1;
 
 		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myPlayerDest.x = myPlayerManager->PlayerGameCoordX;
@@ -360,8 +378,6 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		int PlayerAnimationType = 1;
 
 		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
-		myLogger->log("PlayerAnimationType.");
-		myLogger->log(PlayerAnimationType);
 		myPlayerDest.x = myPlayerManager->PlayerGameCoordX + movement_increment - 18;
 		myPlayerDest.y = myPlayerManager->PlayerGameCoordY;
 
@@ -396,10 +412,6 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
 				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
 				) {
-				myLogger->log(right_collision_player);
-				myLogger->log(right_collision_object);
-				myLogger->log(right_collision_player);
-				myLogger->log(left_collision_object);
 				if (right_collision_player <= right_collision_object && right_collision_player >= left_collision_object) {
 					myLogger->log("Collision on right!");
 					myMapManager->mark_collided(MapObjectID);

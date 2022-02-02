@@ -43,7 +43,7 @@ void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
 	ScreenWall_Left = ScreenWidth/5;
 	ScreenWall_Right = ScreenWidth - ScreenWall_Left;
 	ScreenWall_Top = ScreenHeight / 5;
-	ScreenWall_Bottom = ScreenHeight - ScreenWall_Top;
+	ScreenWall_Bottom = ScreenHeight/2;
 
 	PlayerSize_X = 90; //TODO: Apply resizing if appropriate.
 	PlayerSize_Y = 58;
