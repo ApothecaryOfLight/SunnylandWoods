@@ -52,7 +52,6 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 					if( isPressed_LeftArrowKey == false ) {
 						isPressed_LeftArrowKey = true;
 						if( isPressed_RightArrowKey == false ) { isPlayerFacingLeft = true; }
-						//if( inputFlag_Jumping == false && inputFlag_Right == false ) { //TODO: Make this configable
 						if (inputFlag_Right == false) {
 							inputFlag_Left = true;
 						}
@@ -67,8 +66,6 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 						}
 						if (inputFlag_Left == false) {
 							inputFlag_Right = true;
-							//myCameraManager->PlayerX_level -= 18;
-							//myCameraManager->PlayerX_screen -= 18;
 						} else {
 							isPressed_RightArrowKey = false;
 						}
@@ -108,7 +105,6 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 				case SDLK_RIGHT:
 					isPressed_RightArrowKey = false;
 					inputFlag_Right = false;
-					//myCameraManager->PlayerX_level -= 9;
 				break;
 				case SDLK_DOWN:
 					isPressed_DownArrowKey = false;

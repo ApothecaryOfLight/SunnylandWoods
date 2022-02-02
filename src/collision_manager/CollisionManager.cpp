@@ -157,7 +157,13 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		myPlayer.y = myPlayerManager->PlayerGameCoordY - movement_increment;
 
 		bool is_jumping = true;
+		bool is_colliding_left = false;
+		bool is_moving_left = false;
+		bool is_colliding_right = false;
+		bool is_moving_right = false;
 		int distance_remaining = 0;
+		int distance_remaining_left = 0;
+		int distance_remaining_right = 0;
 		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 		while( MapObjs_myStart != MapObjs_myEnd ) {
@@ -173,46 +179,119 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			//1) Get leading top edge of player collision box
 			int top_collision_player = myPlayer.y;
 			int left_collision_player = myPlayer.x;
-			int right_collision_player = myPlayer.x + myPlayer.w - 10;
+			int right_collision_player = myPlayer.x + myPlayer.w;
+			int bottom_collision_player = myPlayer.y + myPlayer.h - 10;
+
+			if (!myInputManager->isPlayerFacingLeft) {
+				right_collision_player -= 10;
+			}
+			if (myInputManager->isPlayerFacingLeft) {
+				left_collision_player += 10;
+			}
 
 			//2) Check against bottom edge of map object
-			int top_map_object = myCollisionBox.y;
-			int bottom_map_object = myCollisionBox.y + myCollisionBox.h;
-			int left_map_object = myCollisionBox.x;
-			int right_map_object = myCollisionBox.x + myCollisionBox.w;
+			int top_collision_object = myCollisionBox.y;
+			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
+			int left_collision_object = myCollisionBox.x;
+			int right_collision_object = myCollisionBox.x + myCollisionBox.w;
 
-			//3) Check for collision
+			//3) Check for collision to top
 			if (
-				left_collision_player < right_map_object && left_collision_player > left_map_object ||
-				right_collision_player > right_map_object && right_collision_player < right_map_object ||
-				right_map_object > left_collision_player && right_map_object < right_collision_player ||
-				left_map_object > left_collision_player && left_map_object < right_collision_player
+				left_collision_player < right_collision_object && left_collision_player > left_collision_object ||
+				right_collision_player > right_collision_object && right_collision_player < right_collision_object ||
+				right_collision_object > left_collision_player && right_collision_object < right_collision_player ||
+				left_collision_object > left_collision_player && left_collision_object < right_collision_player
 			) {
-				if( top_collision_player <= bottom_map_object && top_collision_player >= top_map_object ) {
-					myLogger->log("Collision to top!");
-					myLogger->log(MapObjectID);
+				if( top_collision_player <= bottom_collision_object && top_collision_player >= top_collision_object ) {
 					myMapManager->mark_collided(MapObjectID);
 					is_jumping = false;
-					int overlap_after_potential_movement = (bottom_map_object - top_collision_player) - movement_increment;
-					myLogger->log(overlap_after_potential_movement);
+					int overlap_after_potential_movement = (bottom_collision_object - top_collision_player) - movement_increment;
 					if (distance_remaining == 0 || overlap_after_potential_movement > distance_remaining && overlap_after_potential_movement < 0) {
 						distance_remaining = overlap_after_potential_movement;
 					}
 				}
 			}
+
+			//4) If moving left, check for collision to left.
+			if (myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false) {
+				is_moving_left = true;
+				left_collision_player -= (10 + movement_increment);
+				if (
+					top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
+					bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
+					top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
+					bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
+					) {
+					if (left_collision_player <= right_collision_object && left_collision_player >= left_collision_object) {
+						myMapManager->mark_collided(MapObjectID);
+						is_colliding_left = true;
+						int overlap_after_potential_movement = (left_collision_player + movement_increment) - right_collision_object;
+						if (distance_remaining_left == 0 && overlap_after_potential_movement > 0) {
+							distance_remaining_left = overlap_after_potential_movement;
+						}
+					}
+				}
+			}
+
+			//5) If moving right, check for collision to right.
+			if (myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true) {
+				is_moving_right = true;
+				right_collision_player += 10 + movement_increment;
+				if (
+					top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
+					bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
+					top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
+					bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
+					) {
+					if (right_collision_player <= right_collision_object && right_collision_player >= left_collision_object) {
+						myMapManager->mark_collided(MapObjectID);
+						is_colliding_right = true;
+						int overlap_after_potential_movement = left_collision_object - (right_collision_player - movement_increment);
+						if (distance_remaining_right == 0 && overlap_after_potential_movement > 0) {
+							distance_remaining_right = overlap_after_potential_movement;
+						}
+					}
+				}
+			}
+
 			++MapObjs_myStart;
 		}
 
+		//If there is no collision to the top, move the player up.
 		if (is_jumping == true) {
 			myPlayerManager->PlayerGameCoordY -= movement_increment;
 			if ((myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
-				myLogger->log("Hitting screen-wall top!");
 				myCameraManager->CameraY -= movement_increment;
 			}
 		}
+		//If there is a gap smaller than the movement increment between the player and the object above, close it.
 		if (distance_remaining != 0) {
 			myPlayerManager->PlayerGameCoordY -= distance_remaining * -1;
 		}
+
+		//If there is no collision to the left, while the player is trying to move left, move the player left.
+		if (is_colliding_left == false && is_moving_left) {
+			myPlayerManager->PlayerGameCoordX -= movement_increment;
+			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+				myCameraManager->CameraX -= movement_increment;
+			}
+		}
+		if (distance_remaining_left > 0) {
+			myPlayerManager->PlayerGameCoordX -= distance_remaining_left;
+		}
+
+
+		//If there is no collision to the right, while the player is trying to move right, move the player right.
+		if (is_colliding_right == false && is_moving_right) {
+			myPlayerManager->PlayerGameCoordX += movement_increment;
+			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+				myCameraManager->CameraX += movement_increment;
+			}
+		}
+		if (distance_remaining_right > 0) {
+			myPlayerManager->PlayerGameCoordX += distance_remaining_right;
+		}
+		return;
 	}
 	else { //jump key not pressed or jump_counter has been maxed out.
 		//Check for collisions below, otherwise apply gravity effect.
@@ -243,36 +322,24 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int right_collision_player = myPlayerDest.x + myPlayerDest.w;
 
 			//2) Check against top edge of map object
-			int top_map_object = myCollisionBox.y;
-			int bottom_map_object = myCollisionBox.y + myCollisionBox.h;
-			int left_map_object = myCollisionBox.x;
-			int right_map_object = myCollisionBox.x + myCollisionBox.w;
+			int top_collision_object = myCollisionBox.y;
+			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
+			int left_collision_object = myCollisionBox.x;
+			int right_collision_object = myCollisionBox.x + myCollisionBox.w;
 
 			//3) Check for collision
 			if (
-				left_collision_player < right_map_object && left_collision_player > left_map_object ||
-				right_collision_player < right_map_object && right_collision_player > left_map_object ||
-				right_map_object > left_collision_player && right_map_object < right_collision_player ||
-				left_map_object > left_collision_player && left_map_object < right_collision_player
+				left_collision_player < right_collision_object && left_collision_player > left_collision_object ||
+				right_collision_player < right_collision_object && right_collision_player > left_collision_object ||
+				right_collision_object > left_collision_player && right_collision_object < right_collision_player ||
+				left_collision_object > left_collision_player && left_collision_object < right_collision_player
 			) {
-				myLogger->log("\n\nThis");
-				myLogger->log(right_collision_player);
-				myLogger->log(right_map_object);
-				myLogger->log(right_collision_player);
-				myLogger->log(left_map_object);
-				if (bottom_collision_player <= bottom_map_object && bottom_collision_player >= top_map_object) {
-					//myLogger->log("Collision to bottom!");
-					//myLogger->log(MapObjectID);
+				if (bottom_collision_player <= bottom_collision_object && bottom_collision_player >= top_collision_object) {
 					myMapManager->mark_collided(MapObjectID);
 					is_falling = false;
-					//myLogger->log(bottom_collision_player);
-					//myLogger->log(top_map_object);
-					int overlap_after_potential_movement = top_map_object - (bottom_collision_player - (movement_increment*2));
-					//myLogger->log(overlap_after_potential_movement);
+					int overlap_after_potential_movement = top_collision_object - (bottom_collision_player - (movement_increment*2));
 					if (distance_remaining == 0 && overlap_after_potential_movement > 0) {
-						//myLogger->log("Distance between player and collision below detected.");
 						distance_remaining = overlap_after_potential_movement;
-						//myLogger->log(distance_remaining);
 					}
 					else if (distance_remaining > overlap_after_potential_movement) {
 						distance_remaining = overlap_after_potential_movement;
@@ -289,27 +356,21 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			myPlayerManager->jump_counter = max_jump_height+1;
 			myPlayerManager->PlayerGameCoordY += movement_increment * 2;
 			if ((myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY) >= myCameraManager->ScreenWall_Bottom) {
-				//myLogger->log("Hitting screen-wall bottom!");
 				myCameraManager->CameraY += movement_increment*2;
 			}
 		}
 		else {
 			myPlayerManager->jump_counter = 0;
 			if (distance_remaining > 0) {
-				myLogger->log("Moving to complete collision on bottom.");
-				//myLogger->log(distance_remaining);
 				myPlayerManager->PlayerGameCoordY += distance_remaining - 10;
 			}
 		}
 	}
 
-	//TODO: Replace input flags with case, and ensure in InputManager that only one flag can be set at a time.
 	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
-		//myLogger->log("Running left ");
-		//1) Create a rect that would be where we want to move the player
+		//1) Create an object containing player coordinates and size.
 		int PlayerAnimationFrame = 0;
 		int PlayerAnimationType = 1;
-
 		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
 		myPlayerDest.x = myPlayerManager->PlayerGameCoordX;
 		myPlayerDest.y = myPlayerManager->PlayerGameCoordY;
@@ -345,13 +406,11 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
 			) {
 				if (left_collision_player <= right_collision_object && left_collision_player >= left_collision_object) {
-					myLogger->log("Collision on left!");
 					myMapManager->mark_collided(MapObjectID);
 					is_colliding_left = true;
 					int overlap_after_potential_movement = (left_collision_player+movement_increment) - right_collision_object;
 					if (distance_remaining == 0 && overlap_after_potential_movement > 0 ) {
 						distance_remaining = overlap_after_potential_movement;
-						myLogger->log(distance_remaining);
 					}
 				}
 			}
@@ -363,12 +422,10 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		if (is_colliding_left == false) {
 			myPlayerManager->PlayerGameCoordX -= movement_increment;
 			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
-				myLogger->log("Hitting screen-wall left!");
 				myCameraManager->CameraX -= movement_increment;
 			}
 		}
 		if (distance_remaining > 0) {
-			myLogger->log("Closing remaining distance on left.");
 			myPlayerManager->PlayerGameCoordX -= distance_remaining;
 		}
 	}
@@ -405,7 +462,6 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int top_collision_object = myCollisionBox.y;
 			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
 
-
 			if (
 				top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
 				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
@@ -413,15 +469,11 @@ void CollisionManager::doPlayerCollisions ( void ) {
 				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
 				) {
 				if (right_collision_player <= right_collision_object && right_collision_player >= left_collision_object) {
-					myLogger->log("Collision on right!");
 					myMapManager->mark_collided(MapObjectID);
 					is_colliding_right = true;
 					int overlap_after_potential_movement = left_collision_object - (right_collision_player - movement_increment);
-					myLogger->log(overlap_after_potential_movement);
 					if (distance_remaining == 0 && overlap_after_potential_movement > 0) {
-						myLogger->log("Distance on right detected!");
 						distance_remaining = overlap_after_potential_movement;
-						myLogger->log(distance_remaining);
 					}
 				}
 			}
@@ -429,15 +481,12 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		}
 
 		if (is_colliding_right == false) {
-			myLogger->log("No collision detected, moving.");
 			myPlayerManager->PlayerGameCoordX += movement_increment;
 			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
-				myLogger->log("Hitting screen-wall right!");
 				myCameraManager->CameraX += movement_increment;
 			}
 		}
 		if (distance_remaining > 0) {
-			myLogger->log("Closing remaining distance on right.");
 			myPlayerManager->PlayerGameCoordX += distance_remaining;
 		}
 	}
