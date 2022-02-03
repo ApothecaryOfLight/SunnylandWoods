@@ -18,6 +18,8 @@ class StaticAsset {
 public:
 	SDL_Texture * myTexture;
 	SDL_Rect myRect_src, myRect_dst;
+	//SDL_Rect myRect_draw, myRect_collision;
+	//int offsetX, offsetY;
 	int PixelWidth, PixelHeight;
 };
 

@@ -35,6 +35,9 @@ public:
 	void doEnemyCollisions ( void );
 
 	void doDrawCollisionBoxes ( void );
+
+	inline int isWalkingPlayerCollidingLeftMapObject(int MapObjectID);
+	inline int isWalkingPlayerCollidingRightMapObject(int MapObjectID);
 private:
 	SDL_Renderer * myRen;
 

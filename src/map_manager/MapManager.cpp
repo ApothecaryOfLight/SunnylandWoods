@@ -221,6 +221,16 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].has_collided = false;
 		myMapObjects[newID].has_collided_counter = 0;
 	}
+	for (int i = -60; i < 60; i++) {
+		newID = myIDManager->getNewID();
+		myActiveMapObjects.push_back(newID);
+		myMapObjects[newID].XPos = 340;
+		myMapObjects[newID].YPos = i * 16;
+		myMapObjects[newID].myGlobalID = newID;
+		myMapObjects[newID].myAssetID = 5;
+		myMapObjects[newID].has_collided = false;
+		myMapObjects[newID].has_collided_counter = 0;
+	}
 
 	for (int i = -100; i < 100; i++) {
 		newID = myIDManager->getNewID();

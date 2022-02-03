@@ -29,8 +29,10 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 	FPSCounter = 0;
 	jump_counter = 0;
 
-	PlayerGameCoordX = 51;
-	PlayerGameCoordY = -300;
+	PlayerGameCoordX = 194;
+	PlayerGameCoordY = -148;
+
+	player_movement_increment = 8;
 
 	myCameraManager->doInitializeCamera(PlayerGameCoordX, PlayerGameCoordY);
 }
@@ -82,6 +84,7 @@ void PlayerManager::doRenderFrame ( void ) {
 				);
 			}
 			else if( myInputManager->isPlayerFacingLeft == false ) { //Jumping right
+				PlayerDest.x -= 10;
 				SDL_RenderCopy(
 					myRen,
 					myStaticAssetPtr->myTexture,

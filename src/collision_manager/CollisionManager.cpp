@@ -8,6 +8,7 @@ TODO:
 */
 #include "CollisionManager.hpp"
 
+#include <algorithm>
 #include <iostream>
 
 #include <list>
@@ -143,9 +144,82 @@ void CollisionManager::doGameLogic ( void ) {
 	//7) doInteractablesLogicTick();
 }
 
-void CollisionManager::doPlayerCollisions ( void ) {
-	//TODO: Collisions with: enemies, interactables, collectibles
+/*
+Determines if there is a collision for the player walking left.
+Returns -1 if there is no collision.
+Otherwise, returns the distance between the player and the colliding object.
+*/
+inline int CollisionManager::isWalkingPlayerCollidingLeftMapObject(int MapObjectID) {
+	//1) Get the collision box of the player.
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
+	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY;
+	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
+	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
+	int PlayerEdge_LeftAfterMovement = myPlayerManager->PlayerGameCoordX - myPlayerManager->player_movement_increment;
 
+	//2) Get the collision box of the map object.
+	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
+	int MapObjectEdge_Top = myMapObject->YPos;
+	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
+	int MapObjectEdge_Left = myMapObject->XPos;
+
+	//1) Determine if player is within the vertical range of the object.
+	if (
+		!(
+			(PlayerEdge_Top < MapObjectEdge_Bottom && PlayerEdge_Top > MapObjectEdge_Top) ||
+			(PlayerEdge_Bottom < MapObjectEdge_Bottom && PlayerEdge_Bottom > MapObjectEdge_Top) ||
+			(MapObjectEdge_Top > PlayerEdge_Top && MapObjectEdge_Top < PlayerEdge_Bottom ) ||
+			(MapObjectEdge_Bottom > PlayerEdge_Top && MapObjectEdge_Bottom < PlayerEdge_Bottom)
+		)
+	) {
+		return -1;
+	}
+
+	//2) Determine if player, after movement, will collide with object. If it will, return distance between the two.
+	if (std::max(PlayerEdge_LeftAfterMovement, MapObjectEdge_Left) < std::min(PlayerEdge_Right, MapObjectEdge_Right)) {
+		return PlayerEdge_Left - MapObjectEdge_Right;
+	}
+}
+
+inline int CollisionManager::isWalkingPlayerCollidingRightMapObject(int MapObjectID) {
+	//1) Get the collision box of the player.
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
+	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY;
+	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
+	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
+	int PlayerEdge_RightAfterMovement = PlayerEdge_Right + myPlayerManager->player_movement_increment;
+
+	//2) Get the collision box of the map object.
+	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	int MapObjectEdge_Left = myMapObject->XPos;
+	int MapObjectEdge_Top = myMapObject->YPos;
+	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
+	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
+
+	//1) Determine if player is within the vertical range of the object.
+	if (
+		!(
+			(PlayerEdge_Top < MapObjectEdge_Bottom && PlayerEdge_Top > MapObjectEdge_Top) ||
+			(PlayerEdge_Bottom < MapObjectEdge_Bottom && PlayerEdge_Bottom > MapObjectEdge_Top) ||
+			(MapObjectEdge_Top > PlayerEdge_Top && MapObjectEdge_Top < PlayerEdge_Bottom) ||
+			(MapObjectEdge_Bottom > PlayerEdge_Top && MapObjectEdge_Bottom < PlayerEdge_Bottom)
+			)
+		) {
+		return -1;
+	}
+
+	//2) Determine if player, after movement, will collide with object. If it will, return distance between the two.
+	if (std::max(PlayerEdge_Left, MapObjectEdge_Left) < std::min(PlayerEdge_RightAfterMovement, MapObjectEdge_Right)) {
+		return MapObjectEdge_Left - PlayerEdge_Right;
+	}
+}
+
+void CollisionManager::doPlayerCollisions ( void ) {
 	int movement_increment = 7;
 	if( myInputManager->inputFlag_Jumping == true && myPlayerManager->jump_counter < max_jump_height) { //jumping logic
 		myPlayerManager->jump_counter++;
@@ -236,7 +310,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			//5) If moving right, check for collision to right.
 			if (myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true) {
 				is_moving_right = true;
-				right_collision_player += 10 + movement_increment;
+				right_collision_player += movement_increment;
 				if (
 					top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
 					bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
@@ -289,7 +363,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 		}
 		if (distance_remaining_right > 0) {
-			myPlayerManager->PlayerGameCoordX += distance_remaining_right;
+			myLogger->log("Closing jump-right distance at : " + std::to_string(distance_remaining_right));
+			myPlayerManager->PlayerGameCoordX += distance_remaining_right-1;
 		}
 		return;
 	}
@@ -327,7 +402,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int left_collision_object = myCollisionBox.x;
 			int right_collision_object = myCollisionBox.x + myCollisionBox.w;
 
-			//3) Check for collision
+			//3) Check for collision to bottom.
 			if (
 				left_collision_player < right_collision_object && left_collision_player > left_collision_object ||
 				right_collision_player < right_collision_object && right_collision_player > left_collision_object ||
@@ -368,116 +443,54 @@ void CollisionManager::doPlayerCollisions ( void ) {
 	}
 
 	if( myInputManager->inputFlag_Left == true && myInputManager->inputFlag_Right == false ) { //Logic for moving left
-		//1) Create an object containing player coordinates and size.
-		int PlayerAnimationFrame = 0;
-		int PlayerAnimationType = 1;
-		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
-		myPlayerDest.x = myPlayerManager->PlayerGameCoordX;
-		myPlayerDest.y = myPlayerManager->PlayerGameCoordY;
-
-		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
+		//1) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		bool is_colliding_left = false;
-		int distance_remaining = 0;
-		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
+		int distance_remaining = -1;
+		std::list<int>::iterator MapObjs_myIter = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
-		while( MapObjs_myStart != MapObjs_myEnd ) {
-			int MapObjectID = (*MapObjs_myStart);
-			MapObject * myMapObject = myMapManager->getMapObject( MapObjectID );
-
-			int MapObjectAssetID = myMapObject->myAssetID;
-			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
-
-			myCollisionBox.x = myMapObject->XPos;
-			myCollisionBox.y = myMapObject->YPos;
-
-			int left_collision_player = myPlayerDest.x - movement_increment;
-			int top_collision_player = myPlayerDest.y;
-			int bottom_collision_player = myPlayerDest.y + myPlayerDest.h;
-
-			int right_collision_object = myCollisionBox.x + myCollisionBox.w;
-			int left_collision_object = myCollisionBox.x;
-			int top_collision_object = myCollisionBox.y;
-			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
-
-			if (
-				top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
-				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
-				top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
-				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
-			) {
-				if (left_collision_player <= right_collision_object && left_collision_player >= left_collision_object) {
-					myMapManager->mark_collided(MapObjectID);
-					is_colliding_left = true;
-					int overlap_after_potential_movement = (left_collision_player+movement_increment) - right_collision_object;
-					if (distance_remaining == 0 && overlap_after_potential_movement > 0 ) {
-						distance_remaining = overlap_after_potential_movement;
-					}
+		while( MapObjs_myIter != MapObjs_myEnd ) {
+			int distance = isWalkingPlayerCollidingLeftMapObject((*MapObjs_myIter));
+			if (distance != -1) {
+				is_colliding_left = true;
+				myMapManager->mark_collided((*MapObjs_myIter));
+				if (distance_remaining == -1) {
+					distance_remaining = distance;
+				} else if(distance < distance_remaining) {
+					distance_remaining = distance;
 				}
 			}
-
-			++MapObjs_myStart;
+			++MapObjs_myIter;
 		}
 
-		//3) Conditionally apply.
+		//2) Conditionally apply.
 		if (is_colliding_left == false) {
 			myPlayerManager->PlayerGameCoordX -= movement_increment;
 			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
 				myCameraManager->CameraX -= movement_increment;
 			}
-		}
-		if (distance_remaining > 0) {
+		} else if (distance_remaining > 0) {
+			myLogger->log(distance_remaining);
 			myPlayerManager->PlayerGameCoordX -= distance_remaining;
 		}
 	}
 	else if( myInputManager->inputFlag_Left == false && myInputManager->inputFlag_Right == true ) { //Logic for moving right
-		//1) Create a rect that would be where we want to move the player
-		int PlayerAnimationFrame = 0;
-		int PlayerAnimationType = 1;
-
-		SDL_Rect myPlayerDest = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame]->myRect_dst;
-		myPlayerDest.x = myPlayerManager->PlayerGameCoordX + movement_increment - 18;
-		myPlayerDest.y = myPlayerManager->PlayerGameCoordY;
-
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		bool is_colliding_right = false;
-		int distance_remaining = 0;
-		std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
+		int distance_remaining = -1;
+		std::list<int>::iterator MapObjs_myIter = myMapManager->myActiveMapObjects.begin();
 		std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
-		while (MapObjs_myStart != MapObjs_myEnd) {
-			int MapObjectID = (*MapObjs_myStart);
-			MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-
-			int MapObjectAssetID = myMapObject->myAssetID;
-			SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[MapObjectAssetID]->myRect_dst;
-
-			myCollisionBox.x = myMapObject->XPos;
-			myCollisionBox.y = myMapObject->YPos;
-
-			int right_collision_player = myPlayerDest.x + myPlayerDest.w;
-			int top_collision_player = myPlayerDest.y;
-			int bottom_collision_player = myPlayerDest.y + myPlayerDest.h;
-
-			int right_collision_object = myCollisionBox.x + myCollisionBox.w;
-			int left_collision_object = myCollisionBox.x;
-			int top_collision_object = myCollisionBox.y;
-			int bottom_collision_object = myCollisionBox.y + myCollisionBox.h;
-
-			if (
-				top_collision_player > top_collision_object && top_collision_player < bottom_collision_object ||
-				bottom_collision_player > top_collision_object && bottom_collision_player < bottom_collision_object ||
-				top_collision_object > top_collision_player && top_collision_object < bottom_collision_player ||
-				bottom_collision_object > top_collision_player && bottom_collision_object < bottom_collision_player
-				) {
-				if (right_collision_player <= right_collision_object && right_collision_player >= left_collision_object) {
-					myMapManager->mark_collided(MapObjectID);
-					is_colliding_right = true;
-					int overlap_after_potential_movement = left_collision_object - (right_collision_player - movement_increment);
-					if (distance_remaining == 0 && overlap_after_potential_movement > 0) {
-						distance_remaining = overlap_after_potential_movement;
-					}
+		while (MapObjs_myIter != MapObjs_myEnd) {
+			int distance = isWalkingPlayerCollidingRightMapObject((*MapObjs_myIter));
+			if (distance != -1) {
+				is_colliding_right = true;
+				myMapManager->mark_collided((*MapObjs_myIter));
+				if (distance_remaining == -1) {
+					distance_remaining = distance;
+				} else if (distance < distance_remaining) {
+					distance_remaining = distance;
 				}
 			}
-			++MapObjs_myStart;
+			++MapObjs_myIter;
 		}
 
 		if (is_colliding_right == false) {
@@ -485,8 +498,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
 				myCameraManager->CameraX += movement_increment;
 			}
-		}
-		if (distance_remaining > 0) {
+		} else if (distance_remaining > 0) {
 			myPlayerManager->PlayerGameCoordX += distance_remaining;
 		}
 	}

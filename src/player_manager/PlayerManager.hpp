@@ -34,6 +34,8 @@ public:
 	int FPSCounter;
 
 	int PlayerGameCoordX, PlayerGameCoordY;
+
+	int player_movement_increment;
 private:
 	Logger * myLogger;
 	SDL_Renderer * myRen;
