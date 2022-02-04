@@ -21,3 +21,6 @@ void IDManager::retireID ( int inID ) {
 	_retiredIDs.push_back( inID );
 }
 
+int IDManager::getIDcounter() {
+	return IDcounter;
+}

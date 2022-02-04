@@ -9,6 +9,7 @@
 #include "../camera_manager/CameraManager.hpp"
 #include "../asset_factory/AssetFactory.hpp"
 #include "../id_manager/id_manager.hpp"
+#include "../logger/logger.hpp"
 
 #include <list>
 #include <string>
@@ -29,7 +30,7 @@ public:
 
 class MapManager {
 public:
-	MapManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager );
+	MapManager ( SDL_Renderer * inRen, Logger *inLogger, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager );
 	~MapManager ( void );
 
 	void doLoadMapTextures ( void );
@@ -56,6 +57,7 @@ private:
 	AssetFactory * myAssetFactory;
 	SDL_Renderer * myRen;
 	IDManager * myIDManager;
+	Logger* myLogger;
 
 	//Rects
 	SDL_Rect rect_Clouds;

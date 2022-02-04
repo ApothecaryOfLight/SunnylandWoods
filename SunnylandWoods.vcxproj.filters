@@ -338,13 +338,13 @@
     <ClInclude Include="include\sdl2\close_code.h">
       <Filter>Header Files\SDL</Filter>
     </ClInclude>
-    <ClInclude Include="src\id_manager\id_manager.hpp">
-      <Filter>Header Files\SDL</Filter>
-    </ClInclude>
     <ClInclude Include="src\logger\logger.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\text_manager\text_manager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\id_manager\id_manager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

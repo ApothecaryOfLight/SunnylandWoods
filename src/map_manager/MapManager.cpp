@@ -20,8 +20,9 @@ MapObject::MapObject( int GlobalID, int AssetID ) {
 
 }
 
-MapManager::MapManager ( SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager ) {
+MapManager::MapManager ( SDL_Renderer * inRen, Logger* inLogger, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager ) {
 	std::cout << "MapManager constructor called." << std::endl;
+	myLogger = inLogger;
 	myAssetFactory = inAssetFactory;
 	myCameraManager = inCameraManager;
 	myRen = inRen;
@@ -293,6 +294,7 @@ void MapManager::doLoadMapObjects ( void ) {
 		myMapObjects[newID].has_collided = false;
 		myMapObjects[newID].has_collided_counter = 0;
 	}
+	myLogger->log("Map objects initialised. Total: " + std::to_string(myIDManager->getIDcounter()));
 }
 
 void MapManager::doRenderFrame ( void ) {

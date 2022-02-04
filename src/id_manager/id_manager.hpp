@@ -14,6 +14,7 @@ public:
 	int getNewID ( void );
 	//int getNewID ( int inOwningManager );
 	void retireID ( int inID );
+	int getIDcounter();
 private:
 	std::list<int> _retiredIDs;
 	//GlobalObject * myGlobalObjects;
