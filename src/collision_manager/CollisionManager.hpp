@@ -24,6 +24,12 @@ public:
 	int magnitude();
 };
 
+class CollisionBox {
+public:
+	CollisionBox(int x, int y, int w, int h);
+	int x, y, w, h;
+};
+
 class CollisionManager {
 public:
 	CollisionManager ( Logger * inLogger, SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * myPlayerManager, InputManager * inInputManager, IDManager * inIDManager );
@@ -38,6 +44,10 @@ public:
 
 	inline int isWalkingPlayerCollidingLeftMapObject(int MapObjectID);
 	inline int isWalkingPlayerCollidingRightMapObject(int MapObjectID);
+	inline int isJumpingPlayerCollidingUpMapObject(int MapObjectID);
+	inline int isFallingPlayerCollidingDownMapObject(int MapObjectID);
+
+	inline int isColliding(CollisionBox ObjectA, CollisionBox ObjectB, vector2d ObjectAMovement);
 private:
 	SDL_Renderer * myRen;
 
