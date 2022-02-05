@@ -61,6 +61,7 @@ void GameInterface::doGameLogic ( void ) {
 void GameInterface::doRenderFrame ( void ) {
 	if( myInputManager->isResized ) {
 		myCameraManager->doResize( myInputManager->newWidth, myInputManager->newHeight );
+		myCameraManager->doInitializeCamera( myPlayerManager->PlayerGameCoordX, myPlayerManager->PlayerGameCoordY );
 		myAssetFactory->doResize( myInputManager->newWidth, myInputManager->newHeight );
 		myMapManager->doResize(myInputManager->newWidth, myInputManager->newHeight);
 		myInputManager->isResized = false;
