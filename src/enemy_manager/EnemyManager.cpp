@@ -4,49 +4,91 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include "../logger/logger.hpp"
 #include "../map_manager/MapManager.hpp"
 #include "../camera_manager/CameraManager.hpp"
 #include "../id_manager/id_manager.hpp"
 
-EnemyManager::EnemyManager ( SDL_Renderer * inRen, MapManager * inMapManager, CameraManager * inCameraManager, IDManager * inIDManager ) {
+Enemy::Enemy() {
+
+}
+
+Enemy::Enemy(int XPos, int YPos, int inAssetID) {
+	EnemyGameCoordX = XPos;
+	EnemyGameCoordY = YPos;
+	AssetID = inAssetID;
+	isFacingLeft = false;
+	Frame = 0;
+}
+
+
+EnemyManager::EnemyManager ( SDL_Renderer * inRen, Logger* inLogger, AssetFactory* inAssetFactory, MapManager * inMapManager, CameraManager * inCameraManager, IDManager * inIDManager ) {
 	myRen = inRen;
+	myLogger = inLogger;
+	myAssetFactory = inAssetFactory;
 	myMapManager = inMapManager;
 	myCameraManager = inCameraManager;
 	myIDManager = inIDManager;
 
-	myEnemies = new int*[100];
-	for( int i=0; i++; i<100 ) {
-		myEnemies[i] = new int[4];
-	}
+	doAddEnemy(6, 114, -298);
+	doAddEnemy(6, -14, -298);
+	doAddEnemy(6, -114, -298);
+	doAddEnemy(6, -14, -398);
 }
 
 EnemyManager::~EnemyManager ( void ) {
-	for( int i=0; i++; i<100 ) {
-		delete[] myEnemies[i];
-	}
-	delete[] myEnemies;
-}
 
-void EnemyManager::doClearMyEnemies ( void ) {
-	for( int x=0; x<100; x++ ) {
-		myEnemies[x][0] = -1;
-	}
 }
 
 void EnemyManager::doAddEnemy ( int inAssetID, int inPosX, int inPosY ) {
-	for( int x=0; x<100; x++ ) {
-		if( myEnemies[x][0] != -1 ) {
-			myEnemies[x][0] = inAssetID;
-			myEnemies[x][1] = inPosX;
-			myEnemies[x][2] = inPosY;
-			myEnemies[x][3] = 0;//TODO: Randomize
+	myEnemies.push_back(Enemy(inPosX, inPosY, inAssetID));
+}
+
+void EnemyManager::doEnemyTick () {
+	std::list<Enemy>::iterator myIter = myEnemies.begin(), myEnd = myEnemies.end();
+	tick_counter++;
+	if (tick_counter > 2) {
+		while (myIter != myEnd) {
+			Enemy* myEnemy = &(*myIter);
+			myEnemy->Frame++;
+			if (myEnemy->Frame >= 7) {
+				myEnemy->Frame = 0;
+			}
+			++myIter;
 		}
+		tick_counter = 0;
 	}
 }
 
-void doEnemyTick ( int inSectorID, int inSectorX, int inSectorY ) {
-	int *mySectorsToCheck[9];
-	//mySectorsToCheck[0] = 
-	//int **myLocalEnemies = myEnemies[inSectorID];
+void EnemyManager::doRenderFrame() {
+	std::list<Enemy>::iterator myIter = myEnemies.begin(), myEnd = myEnemies.end();
+	while (myIter != myEnd) {
+		Enemy* myEnemy = &(*myIter);
+		StaticAsset* myStaticAssetPtr = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[myEnemy->Frame];
+		SDL_Rect enemy_dst;
+		enemy_dst.x = myEnemy->EnemyGameCoordX - myCameraManager->CameraX;
+		enemy_dst.y = myEnemy->EnemyGameCoordY - myCameraManager->CameraY;
+		enemy_dst.w = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst.w;
+		enemy_dst.h = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst.h;
+		if (!myEnemy->isFacingLeft) {
+			SDL_RenderCopyEx(
+				myRen,
+				myStaticAssetPtr->myTexture,
+				&(myStaticAssetPtr->myRect_src),
+				&(enemy_dst),
+				0,
+				NULL,
+				SDL_FLIP_HORIZONTAL
+			);
+		}
+		else {
+				SDL_RenderCopy(
+					myRen,
+					myStaticAssetPtr->myTexture,
+					&(myStaticAssetPtr->myRect_src),
+					&(enemy_dst)
+				);
+		}
+		++myIter;
+	}
 }
-

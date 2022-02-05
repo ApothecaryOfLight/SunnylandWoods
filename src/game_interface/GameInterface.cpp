@@ -35,7 +35,7 @@ GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger 
 
 	myMapManager = new MapManager ( inRen, myLogger, myCameraManager, myAssetFactory, myIDManager );
 	myClickableManager = new ClickableManager ( inRen, myMapManager, myCameraManager, myIDManager );
-	myEnemyManager = new EnemyManager ( inRen, myMapManager, myCameraManager, myIDManager );
+	myEnemyManager = new EnemyManager ( inRen, myLogger, myAssetFactory, myMapManager, myCameraManager, myIDManager );
 	myPlayerManager = new PlayerManager ( myLogger, inRen, myInputManager, myCameraManager, myAssetFactory, myIDManager );
 	myCollisionManager = new CollisionManager ( myLogger, inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager, myIDManager );
 
@@ -55,6 +55,7 @@ GameInterface::~GameInterface ( void ) {
 }
 
 void GameInterface::doGameLogic ( void ) {
+	myEnemyManager->doEnemyTick();
 	myAnimationManager->doGameLogic();
 }
 

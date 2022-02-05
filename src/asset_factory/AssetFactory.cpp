@@ -17,6 +17,7 @@ AssetFactory::AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraMana
 void AssetFactory::doLoadImages ( void ) {
 	doLoadPlayerImages();
 	doLoadImage( 5, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0 );
+	doLoadEnemyImages();
 }
 
 SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
@@ -92,35 +93,6 @@ void AssetFactory::doResize (int screenWidth, int screenHeight) {
 	}
 }
 
-//TODO: Remove, AssetFactory shouldn't track object positions, they're not the same thing.
-void AssetFactory::doAdjustPlayerDest ( int inDestX, int inDestY ) { //TODO: Each object needs a positional location and associated metadata outside of the Asset.
-	for( int i=0; i<8; i++ ) {
-		StaticAsset * StaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
-		StaticAssetPtr->myRect_dst.x = inDestX;
-		StaticAssetPtr->myRect_dst.y = inDestY;
-	}
-	for( int i=0; i<6; i++ ) {
-		StaticAsset * StaticAssetPtr = myAnimatedAssets[1]->myStaticAssets[i];
-		StaticAssetPtr->myRect_dst.x = inDestX;
-		StaticAssetPtr->myRect_dst.y = inDestY;
-	}
-	for( int i=0; i<4; i++ ) {
-		StaticAsset * StaticAssetPtr = myAnimatedAssets[4]->myStaticAssets[i];
-		StaticAssetPtr->myRect_dst.x = inDestX;
-		StaticAssetPtr->myRect_dst.y = inDestY;
-	}
-	for( int i=0; i<2; i++ ) {
-		StaticAsset * StaticAssetPtr = myAnimatedAssets[2]->myStaticAssets[i];
-		StaticAssetPtr->myRect_dst.x = inDestX;
-		StaticAssetPtr->myRect_dst.y = inDestY;
-	}
-	for( int i=0; i<2; i++ ) {
-		StaticAsset * StaticAssetPtr = myAnimatedAssets[3]->myStaticAssets[i];
-		StaticAssetPtr->myRect_dst.x = inDestX;
-		StaticAssetPtr->myRect_dst.y = inDestY;
-	}
-}
-
 void AssetFactory::doLoadPlayerImages ( void ) {
 	myCameraManager->doSetPlayerSize( 90, 85 );
 	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 20, 0, 36, 48, 8 );
@@ -130,4 +102,8 @@ void AssetFactory::doLoadPlayerImages ( void ) {
 	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 21, 0, 45, 58, 4 );
 
 	myLogger->log("Player images loaded.");
+}
+
+void AssetFactory::doLoadEnemyImages(void) {
+	doLoadImage(6, true, "media/SPRITES/enemies/ant/ant-", 0, 0, 37, 31, 7);
 }

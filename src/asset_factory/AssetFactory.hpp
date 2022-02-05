@@ -37,10 +37,11 @@ public:
 
 	void doLoadImages ( void );
 	void doLoadImage ( int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames );
-	void doLoadPlayerImages ( void );
-	void doResize ( int screenWidth, int screenHeight );
 
-	void doAdjustPlayerDest ( int inDestX, int inDestY );
+	void doLoadPlayerImages ( void );
+	void doLoadEnemyImages(void);
+
+	void doResize ( int screenWidth, int screenHeight );
 
 	StaticAsset * myStaticAssets[100];//TODO: Unify these two. IDs will be the distinciton between ranges and singles.
 	AnimatedAsset * myAnimatedAssets[100];

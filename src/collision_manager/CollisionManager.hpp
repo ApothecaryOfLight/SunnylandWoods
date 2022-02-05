@@ -47,6 +47,10 @@ public:
 	inline int isJumpingPlayerCollidingUpMapObject(int MapObjectID);
 	inline int isFallingPlayerCollidingDownMapObject(int MapObjectID);
 
+	inline int isFallingEnemyCollidingDownMapObject(Enemy* EnemyPtr, int MapObjectID);
+	inline int isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPtr, int MapObjectID);
+	inline int isWalkingEnemyCollidingRightMapObject(Enemy* EnemyPtr, int MapObjectID);
+
 	inline int isColliding(CollisionBox ObjectA, CollisionBox ObjectB, vector2d ObjectAMovement);
 private:
 	SDL_Renderer * myRen;

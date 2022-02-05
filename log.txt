@@ -34,5 +34,14 @@ media/SPRITES/player/jump/player-jump-4.png
 Player images loaded.
 doLoadImage
 5
+doLoadImage
+6
+media/SPRITES/enemies/ant/ant-1.png
+media/SPRITES/enemies/ant/ant-2.png
+media/SPRITES/enemies/ant/ant-3.png
+media/SPRITES/enemies/ant/ant-4.png
+media/SPRITES/enemies/ant/ant-5.png
+media/SPRITES/enemies/ant/ant-6.png
+media/SPRITES/enemies/ant/ant-7.png
 Map objects initialised. Total: 821
 Initializing Collision Manager.

@@ -45,6 +45,7 @@ void AnimationManager::doRenderFrame ( void ) {
 	myMapManager->doRenderFrame();
 	myPlayerManager->doAnimatePlayer();
 	myPlayerManager->doRenderFrame();
+	myEnemyManager->doRenderFrame();
 
 	if (myInputManager->isPressed_F5) {
 		myCollisionManager->doDrawCollisionBoxes();

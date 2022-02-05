@@ -139,6 +139,7 @@ void CollisionManager::doGameLogic ( void ) {
 	doPlayerCollisions();
 	//3) doEnemyLogicTick();
 	//4) TODO: Check for enemy collisions.
+	doEnemyCollisions();
 	//5) doCollectiblesLogicTick();
 	//6) doClickablesLogicTick();
 	//7) doInteractablesLogicTick();
@@ -549,7 +550,175 @@ void CollisionManager::doPlayerCollisions ( void ) {
 	}
 }
 
+inline int CollisionManager::isFallingEnemyCollidingDownMapObject(Enemy* EnemyPtr, int MapObjectID) {
+	//1) Get the collision box of the enemy.
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
+	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
+	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
+	int EnemyEdge_Top = EnemyPtr->EnemyGameCoordY + 12;
+	int EnemyEdge_BottomAfterMovement = EnemyEdge_Bottom + 14;
+
+	//2) Get the collision box of the map object.
+	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	int MapObjectEdge_Left = myMapObject->XPos;
+	int MapObjectEdge_Top = myMapObject->YPos;
+	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
+	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
+
+	//3)Determine if Enemy, after movement, will collide with object. If it will, return distance between the two.
+	if (std::max(EnemyEdge_Top, MapObjectEdge_Top) < std::min(EnemyEdge_BottomAfterMovement, MapObjectEdge_Bottom)) {
+		if (std::max(EnemyEdge_Left, MapObjectEdge_Left) < std::min(EnemyEdge_Right, MapObjectEdge_Right)) {
+			return MapObjectEdge_Top - EnemyEdge_Bottom;
+		}
+	}
+	return -1;
+}
+
+inline int CollisionManager::isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPtr, int MapObjectID) {
+	//1) Get the collision box of the enemy.
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
+	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
+	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
+	int EnemyEdge_Top = EnemyPtr->EnemyGameCoordY;
+	int EnemyEdge_LeftAfterMovement = EnemyEdge_Left - 7;
+
+	//2) Get the collision box of the map object.
+	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	int MapObjectEdge_Left = myMapObject->XPos;
+	int MapObjectEdge_Top = myMapObject->YPos;
+	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
+	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
+
+	//3)Determine if Enemy, after movement, will collide with object. If it will, return distance between the two.
+	if (std::max(EnemyEdge_Top, MapObjectEdge_Top) < std::min(EnemyEdge_Bottom, MapObjectEdge_Bottom)) {
+		if (std::max(EnemyEdge_LeftAfterMovement, MapObjectEdge_Left) < std::min(EnemyEdge_Right, MapObjectEdge_Right)) {
+			return EnemyEdge_Left - MapObjectEdge_Right;
+		}
+	}
+	return -1;
+}
+
+inline int CollisionManager::isWalkingEnemyCollidingRightMapObject(Enemy* EnemyPtr, int MapObjectID) {
+	//1) Get the collision box of the enemy.
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
+	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
+	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
+	int EnemyEdge_Top = EnemyPtr->EnemyGameCoordY;
+	int EnemyEdge_RightAfterMovement = EnemyEdge_Right + 7;
+
+	//2) Get the collision box of the map object.
+	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	int MapObjectEdge_Left = myMapObject->XPos;
+	int MapObjectEdge_Top = myMapObject->YPos;
+	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
+	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
+
+	//3)Determine if Enemy, after movement, will collide with object. If it will, return distance between the two.
+	if (std::max(EnemyEdge_Top, MapObjectEdge_Top) < std::min(EnemyEdge_Bottom, MapObjectEdge_Bottom)) {
+		if (std::max(EnemyEdge_Left, MapObjectEdge_Left) < std::min(EnemyEdge_RightAfterMovement, MapObjectEdge_Right)) {
+			return MapObjectEdge_Left - EnemyEdge_Right;
+		}
+	}
+	return -1;
+}
+
 void CollisionManager::doEnemyCollisions ( void ) {
-	
+	std::list<Enemy>::iterator myEnemyIter = myEnemyManager->myEnemies.begin(), myEnemyEnd = myEnemyManager->myEnemies.end();
+	while (myEnemyIter != myEnemyEnd) {
+		std::list<int>::iterator MapObjs_myIter = myMapManager->myActiveMapObjects.begin(), MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
+		bool is_colliding_down = false, is_colliding_left = false, is_colliding_right = false;
+		int smallest_down_distance = -1, smallest_left_distance = -1, smallest_right_distance = -1;
+		while (MapObjs_myIter != MapObjs_myEnd) {
+			//1) Test for enemy falling.
+			int down_distance = isFallingEnemyCollidingDownMapObject(&(*myEnemyIter), (*MapObjs_myIter));
+			if (down_distance != -1) {
+				is_colliding_down = true;
+				if (smallest_down_distance == -1) {
+					smallest_down_distance = down_distance;
+				}
+				else {
+					if (down_distance < smallest_down_distance) {
+						smallest_down_distance = down_distance;
+					}
+				}
+			}
+
+			//2) Test for enemy colliding left.
+			if (myEnemyIter->isFacingLeft) {
+				int left_distance = isWalkingEnemyCollidingLeftMapObject(&(*myEnemyIter), (*MapObjs_myIter));
+				if (left_distance != -1) {
+					is_colliding_left = true;
+					if (smallest_left_distance == -1) {
+						smallest_left_distance = left_distance;
+					}
+					else {
+						if (left_distance < smallest_left_distance) {
+							smallest_left_distance = left_distance;
+						}
+					}
+				}
+			}
+
+			//3) Test for enemy colliding right.
+			if (!myEnemyIter->isFacingLeft) {
+				int right_distance = isWalkingEnemyCollidingRightMapObject(&(*myEnemyIter), (*MapObjs_myIter));
+				if (right_distance != -1) {
+					is_colliding_right = true;
+					if (smallest_right_distance == -1) {
+						smallest_right_distance = right_distance;
+					}
+					else {
+						if (right_distance < smallest_right_distance) {
+							smallest_right_distance = right_distance;
+						}
+					}
+				}
+			}
+
+			++MapObjs_myIter;
+		}
+
+		//Apply gravity effect.
+		if (is_colliding_down) {
+			(*myEnemyIter).EnemyGameCoordY += smallest_down_distance;
+		}
+		else {
+			(*myEnemyIter).EnemyGameCoordY += 14;
+		}
+
+		//Apply moving left.
+		if (myEnemyIter->isFacingLeft) {
+			if (is_colliding_left) {
+				(*myEnemyIter).EnemyGameCoordX -= smallest_left_distance;
+				if (smallest_left_distance == 0) {
+					myEnemyIter->isFacingLeft = false;
+				}
+			}
+			else {
+				(*myEnemyIter).EnemyGameCoordX -= 7;
+			}
+		}
+
+		//Apply moving right.
+		if (!myEnemyIter->isFacingLeft) {
+			if (is_colliding_right) {
+				(*myEnemyIter).EnemyGameCoordX += smallest_right_distance;
+				if (smallest_right_distance == 0) {
+					myEnemyIter->isFacingLeft = true;
+				}
+			}
+			else {
+				(*myEnemyIter).EnemyGameCoordX += 7;
+			}
+		}
+
+		++myEnemyIter;
+	}
 }
 
