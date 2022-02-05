@@ -164,7 +164,7 @@ inline int CollisionManager::isWalkingPlayerCollidingLeftMapObject(int MapObject
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
 	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 10;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
-	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
+	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w - 10;
 	int PlayerEdge_LeftAfterMovement = myPlayerManager->PlayerGameCoordX - myPlayerManager->player_movement_increment;
 
 	//2) Get the collision box of the map object.
@@ -190,7 +190,7 @@ inline int CollisionManager::isWalkingPlayerCollidingRightMapObject(int MapObjec
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 10;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
-	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
+	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX + 10;
 	int PlayerEdge_RightAfterMovement = PlayerEdge_Right + myPlayerManager->player_movement_increment;
 
 	//2) Get the collision box of the map object.
@@ -216,7 +216,7 @@ inline int CollisionManager::isJumpingPlayerCollidingUpMapObject(int MapObjectID
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
-	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 10;
+	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 12;
 	int PlayerEdge_TopAfterMovement = myPlayerManager->PlayerGameCoordY - myPlayerManager->player_movement_increment;
 
 	//2) Get the collision box of the map object.
@@ -242,8 +242,17 @@ inline int CollisionManager::isFallingPlayerCollidingDownMapObject(int MapObject
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
-	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 10;
+	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 12;
 	int PlayerEdge_BottomAfterMovement = PlayerEdge_Bottom + (myPlayerManager->player_movement_increment*2);
+
+	if (!myInputManager->inputFlag_Left && !myInputManager->inputFlag_Right) {
+		if (myInputManager->isPlayerFacingLeft) {
+			PlayerEdge_Right -= 10;
+		}
+		else {
+			PlayerEdge_Left += 10;
+		}
+	}
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
