@@ -34,6 +34,8 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 
 	player_movement_increment = 8;
 
+	isHitByEnemy = false;
+
 	myCameraManager->doInitializeCamera(PlayerGameCoordX, PlayerGameCoordY);
 }
 
@@ -65,6 +67,23 @@ SDL_Rect PlayerManager::getPlayerDest(void) {
 
 void PlayerManager::doRenderFrame ( void ) {
 	SDL_Rect PlayerDest = getPlayerDest();
+	if (isHitByEnemy) {
+		anim_frame_Player_MAX = 2;
+		PlayerAnimationType = 2;
+		if (anim_frame_Player >= 2) {
+			anim_frame_Player = 0;
+		}
+		StaticAsset* myStaticAssetPtr = myAssetFactory->myAnimatedAssets[2]->myStaticAssets[anim_frame_Player];
+		PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
+		PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
+		SDL_RenderCopy(
+			myRen,
+			myStaticAssetPtr->myTexture,
+			&(myStaticAssetPtr->myRect_src),
+			&(PlayerDest)
+		);
+		return;
+	}
 	if( jump_counter != 0 ) {
 		anim_frame_Player_MAX = 4;
 		PlayerAnimationType = 4;

@@ -43,5 +43,12 @@ media/SPRITES/enemies/ant/ant-4.png
 media/SPRITES/enemies/ant/ant-5.png
 media/SPRITES/enemies/ant/ant-6.png
 media/SPRITES/enemies/ant/ant-7.png
+media/SPRITES/enemies/ant/ant-8.png
+doLoadImage
+7
+media/SPRITES/misc/enemy-death/enemy-death-1.png
+media/SPRITES/misc/enemy-death/enemy-death-2.png
+media/SPRITES/misc/enemy-death/enemy-death-3.png
+media/SPRITES/misc/enemy-death/enemy-death-4.png
 Map objects initialised. Total: 821
 Initializing Collision Manager.

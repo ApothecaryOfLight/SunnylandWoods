@@ -33,6 +33,8 @@ public:
 	int anim_frame_Player_MAX;
 	int FPSCounter;
 
+	bool isHitByEnemy;
+
 	int PlayerGameCoordX, PlayerGameCoordY;
 
 	int player_movement_increment;

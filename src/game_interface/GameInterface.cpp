@@ -55,7 +55,7 @@ GameInterface::~GameInterface ( void ) {
 }
 
 void GameInterface::doGameLogic ( void ) {
-	myEnemyManager->doEnemyTick();
+	myEnemyManager->doAnimateEnemy();
 	myAnimationManager->doGameLogic();
 }
 

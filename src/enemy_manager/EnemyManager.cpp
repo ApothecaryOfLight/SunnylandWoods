@@ -44,15 +44,23 @@ void EnemyManager::doAddEnemy ( int inAssetID, int inPosX, int inPosY ) {
 	myEnemies.push_back(Enemy(inPosX, inPosY, inAssetID));
 }
 
-void EnemyManager::doEnemyTick () {
+void EnemyManager::doDeleteEnemy(std::list<Enemy>::iterator inEnemyListPos) {
+	myEnemies.erase(inEnemyListPos);
+}
+
+void EnemyManager::doAnimateEnemy () {
 	std::list<Enemy>::iterator myIter = myEnemies.begin(), myEnd = myEnemies.end();
 	tick_counter++;
 	if (tick_counter > 2) {
 		while (myIter != myEnd) {
 			Enemy* myEnemy = &(*myIter);
+			int max_frames = myAssetFactory->myAnimatedAssets[myEnemy->AssetID]->frames;
 			myEnemy->Frame++;
-			if (myEnemy->Frame >= 7) {
+			if (myEnemy->Frame >= max_frames) {
 				myEnemy->Frame = 0;
+				if (myEnemy->AssetID == 7) {
+					myEnemies.erase(myIter);
+				}
 			}
 			++myIter;
 		}
@@ -64,12 +72,13 @@ void EnemyManager::doRenderFrame() {
 	std::list<Enemy>::iterator myIter = myEnemies.begin(), myEnd = myEnemies.end();
 	while (myIter != myEnd) {
 		Enemy* myEnemy = &(*myIter);
-		StaticAsset* myStaticAssetPtr = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[myEnemy->Frame];
+		int myAssetID = myEnemy->AssetID;
+		StaticAsset* myStaticAssetPtr = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[myEnemy->Frame];
 		SDL_Rect enemy_dst;
 		enemy_dst.x = myEnemy->EnemyGameCoordX - myCameraManager->CameraX;
 		enemy_dst.y = myEnemy->EnemyGameCoordY - myCameraManager->CameraY;
-		enemy_dst.w = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst.w;
-		enemy_dst.h = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst.h;
+		enemy_dst.w = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_dst.w;
+		enemy_dst.h = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_dst.h;
 		if (!myEnemy->isFacingLeft) {
 			SDL_RenderCopyEx(
 				myRen,
@@ -82,12 +91,12 @@ void EnemyManager::doRenderFrame() {
 			);
 		}
 		else {
-				SDL_RenderCopy(
-					myRen,
-					myStaticAssetPtr->myTexture,
-					&(myStaticAssetPtr->myRect_src),
-					&(enemy_dst)
-				);
+			SDL_RenderCopy(
+				myRen,
+				myStaticAssetPtr->myTexture,
+				&(myStaticAssetPtr->myRect_src),
+				&(enemy_dst)
+			);
 		}
 		++myIter;
 	}

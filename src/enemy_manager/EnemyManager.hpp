@@ -27,8 +27,9 @@ public:
 	~EnemyManager ( void );
 
 	void doAddEnemy ( int inAssetID, int inPosX, int inPosY );
+	void doDeleteEnemy(std::list<Enemy>::iterator inEnemyListPos);
 
-	void doEnemyTick ();
+	void doAnimateEnemy ();
 
 	void doRenderFrame();
 
