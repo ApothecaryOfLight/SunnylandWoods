@@ -24,14 +24,12 @@
 
 GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger ) {
 	myLogger = inLogger;
-	myCameraManager = new CameraManager { myLogger, 0, 50, screenWIDTH, screenHEIGHT };
-	myTextManager = new TextManager(inRen,myLogger,myCameraManager);
-
 	myIDManager = new IDManager();
 
+	myCameraManager = new CameraManager { myLogger, 0, 50, screenWIDTH, screenHEIGHT };
 	myAssetFactory = new AssetFactory( myLogger, inRen, myCameraManager );
-
-	myInputManager = new InputManager( myCameraManager );
+	myInputManager = new InputManager( myCameraManager, myAssetFactory );
+	myTextManager = new TextManager(inRen,myLogger,myCameraManager);
 
 	myMapManager = new MapManager ( inRen, myLogger, myCameraManager, myAssetFactory, myIDManager );
 	myClickableManager = new ClickableManager ( inRen, myMapManager, myCameraManager, myIDManager );
@@ -61,9 +59,10 @@ void GameInterface::doGameLogic ( void ) {
 
 void GameInterface::doRenderFrame ( void ) {
 	if( myInputManager->isResized ) {
+		myLogger->log("New screen height/width: " + std::to_string(myInputManager->newWidth) + "/" + std::to_string(myInputManager->newHeight));
+		myAssetFactory->doResize( myInputManager->newWidth, myInputManager->newHeight );
 		myCameraManager->doResize( myInputManager->newWidth, myInputManager->newHeight );
 		myCameraManager->doInitializeCamera( myPlayerManager->PlayerGameCoordX, myPlayerManager->PlayerGameCoordY );
-		myAssetFactory->doResize( myInputManager->newWidth, myInputManager->newHeight );
 		myMapManager->doResize(myInputManager->newWidth, myInputManager->newHeight);
 		myInputManager->isResized = false;
 	}

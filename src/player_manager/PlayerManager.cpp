@@ -60,8 +60,8 @@ void PlayerManager::doGameLogic ( void ) {
 
 SDL_Rect PlayerManager::getPlayerDest(void) {
 	SDL_Rect PlayerDest;
-	PlayerDest.x = (PlayerGameCoordX - myCameraManager->CameraX);
-	PlayerDest.y = (PlayerGameCoordY - myCameraManager->CameraY);
+	PlayerDest.x = (PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX;
+	PlayerDest.y = (PlayerGameCoordY * myCameraManager->zoom) - myCameraManager->CameraY;
 	return PlayerDest;
 }
 

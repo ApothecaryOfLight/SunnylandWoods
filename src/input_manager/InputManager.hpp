@@ -5,10 +5,11 @@
 
 #include <SDL.h>
 #include "../camera_manager/CameraManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
 
 class InputManager {
 public:
-	InputManager ( CameraManager * inCameraManager );
+	InputManager ( CameraManager * inCameraManager, AssetFactory* inAssetFactory );
 	void doProcessInput ( SDL_Event * inEvent );
 	bool isQuit;
 	bool isPressed_LeftArrowKey, isPressed_RightArrowKey, isPressed_SpaceBar, isPressed_DownArrowKey;
@@ -25,8 +26,13 @@ public:
 
 	int mouseX_pos, mouseY_pos;
 	int mouseX_gamepos, mouseY_gamepos;
+
+	int mouse_wheel;
+
+	float zoom;
 private:
 	CameraManager* myCameraManager;
+	AssetFactory* myAssetFactory;
 };
 
 #endif

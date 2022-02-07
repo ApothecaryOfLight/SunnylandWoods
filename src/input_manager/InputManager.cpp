@@ -1,12 +1,14 @@
 //InputManager.cpp
 #include "InputManager.hpp"
+#include "../asset_factory/AssetFactory.hpp"
 
 #include <SDL.h>
 
 #include <string>
 #include <iostream>
 
-InputManager::InputManager ( CameraManager* inCameraManager ) {
+InputManager::InputManager ( CameraManager* inCameraManager, AssetFactory* inAssetFactory ) {
+	myAssetFactory = inAssetFactory;
 	isQuit = false;
 
 	isChangeAnimationAlert = false;
@@ -23,7 +25,8 @@ InputManager::InputManager ( CameraManager* inCameraManager ) {
 	isPlayerFacingLeft = true;
 
 	isResized = false;
-	int newWidth, newHeight;
+	newWidth = 1024;
+	newHeight = 640;
 
 	isPressed_F5 = false;
 
@@ -33,6 +36,10 @@ InputManager::InputManager ( CameraManager* inCameraManager ) {
 	mouseY_pos = 0;
 	mouseX_gamepos = 0;
 	mouseY_gamepos = 0;
+
+	mouse_wheel = 0;
+
+	zoom = 1.0f;
 }
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
@@ -123,6 +130,32 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 					newHeight = inEvent->window.data2;
 					isResized = true;
 					break;
+			}
+		}
+		if (inEvent->type == SDL_MOUSEWHEEL) {
+			if (inEvent->wheel.y > 0) {
+				mouse_wheel = inEvent->wheel.y;
+				if (zoom < 10) {
+					zoom += 0.2f;
+				}
+				if (zoom > 10) {
+					zoom = 10.0f;
+				}
+				myAssetFactory->doResizeImages(zoom);
+				myCameraManager->zoom = zoom;
+				isResized = true;
+			}
+			else if (inEvent->wheel.y < 0) {
+				mouse_wheel = inEvent->wheel.y;
+				if (zoom > 1) {
+					zoom -= 0.2f;
+				}
+				if (zoom < 1) {
+					zoom = 1.0f;
+				}
+				myAssetFactory->doResizeImages(zoom);
+				myCameraManager->zoom = zoom;
+				isResized = true;
 			}
 		}
 	}

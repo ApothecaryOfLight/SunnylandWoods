@@ -17,11 +17,13 @@ CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, 
 
 	SectorsX = 1;
 	SectorsY = 1;
+
+	zoom = 1.0f;
 }
 
 void CameraManager::doInitializeCamera( int PlayerGameCoordX, int PlayerGameCoordY ) {
-	CameraX = PlayerGameCoordX - ((ScreenWidth - PlayerSize_X) / 2);
-	CameraY = PlayerGameCoordY - ((ScreenHeight - PlayerSize_Y) / 2);
+	CameraX = (PlayerGameCoordX*zoom) - ((ScreenWidth - PlayerSize_X) / 2);
+	CameraY = (PlayerGameCoordY*zoom) - ((ScreenHeight - PlayerSize_Y) / 2);
 }
 
 void CameraManager::doSetSectors ( int inSectorsX, int inSectorsY ) {
@@ -30,6 +32,7 @@ void CameraManager::doSetSectors ( int inSectorsX, int inSectorsY ) {
 }
 
 void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
+	myLogger->log("New screen height/width: " + std::to_string(inNewWidth) + "/" + std::to_string(inNewHeight));
 	ScreenWidth = inNewWidth;
 	ScreenHeight = inNewHeight;
 
@@ -37,9 +40,6 @@ void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
 	ScreenWall_Right = ScreenWidth - ScreenWall_Left;
 	ScreenWall_Top = ScreenHeight / 5;
 	ScreenWall_Bottom = ScreenHeight/2;
-
-	PlayerSize_X = 90; //TODO: Apply resizing if appropriate.
-	PlayerSize_Y = 58;
 }
 
 void CameraManager::doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY ) {

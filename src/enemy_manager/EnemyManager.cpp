@@ -30,10 +30,10 @@ EnemyManager::EnemyManager ( SDL_Renderer * inRen, Logger* inLogger, AssetFactor
 	myCameraManager = inCameraManager;
 	myIDManager = inIDManager;
 
-	doAddEnemy(6, 114, -298);
-	doAddEnemy(6, -14, -298);
-	doAddEnemy(6, -114, -298);
-	doAddEnemy(6, -14, -398);
+	doAddEnemy(5, 114, -298);
+	doAddEnemy(5, -14, -298);
+	doAddEnemy(5, -114, -298);
+	doAddEnemy(5, -14, -398);
 }
 
 EnemyManager::~EnemyManager ( void ) {
@@ -75,8 +75,8 @@ void EnemyManager::doRenderFrame() {
 		int myAssetID = myEnemy->AssetID;
 		StaticAsset* myStaticAssetPtr = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[myEnemy->Frame];
 		SDL_Rect enemy_dst;
-		enemy_dst.x = myEnemy->EnemyGameCoordX - myCameraManager->CameraX;
-		enemy_dst.y = myEnemy->EnemyGameCoordY - myCameraManager->CameraY;
+		enemy_dst.x = (myEnemy->EnemyGameCoordX - myCameraManager->CameraX) * myCameraManager->zoom;
+		enemy_dst.y = (myEnemy->EnemyGameCoordY - myCameraManager->CameraY) * myCameraManager->zoom;
 		enemy_dst.w = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_dst.w;
 		enemy_dst.h = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_dst.h;
 		if (!myEnemy->isFacingLeft) {

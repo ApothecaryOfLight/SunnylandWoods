@@ -33,6 +33,8 @@ AnimationManager::AnimationManager ( SDL_Renderer * inRen, CameraManager* inCame
 	myTextManager->add_text_entity("mouseXGamepos", &myInputManager->mouseX_gamepos, 2);
 	myTextManager->add_text_entity("mouseYPos", &myInputManager->mouseY_pos, 2);
 	myTextManager->add_text_entity("mouseXPos", &myInputManager->mouseX_pos, 2);
+
+	myTextManager->add_text_entity("Zoom", &myInputManager->zoom, 3);
 }
 
 void AnimationManager::doGameLogic ( void ) {
@@ -48,7 +50,7 @@ void AnimationManager::doRenderFrame ( void ) {
 	myEnemyManager->doRenderFrame();
 
 	if (myInputManager->isPressed_F5) {
-		myCollisionManager->doDrawCollisionBoxes();
+		//myCollisionManager->doDrawCollisionBoxes();
 		myTextManager->draw_text_entities();
 	}
 

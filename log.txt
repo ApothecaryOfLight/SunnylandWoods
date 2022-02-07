@@ -1,4 +1,4 @@
-Loading media/text_atlas.png
+New screen height/width: 1024/640
 doLoadImage
 0
 media/SPRITES/player/idle/player-idle-1.png
@@ -33,9 +33,9 @@ media/SPRITES/player/jump/player-jump-3.png
 media/SPRITES/player/jump/player-jump-4.png
 Player images loaded.
 doLoadImage
-5
+0
 doLoadImage
-6
+5
 media/SPRITES/enemies/ant/ant-1.png
 media/SPRITES/enemies/ant/ant-2.png
 media/SPRITES/enemies/ant/ant-3.png
@@ -45,10 +45,27 @@ media/SPRITES/enemies/ant/ant-6.png
 media/SPRITES/enemies/ant/ant-7.png
 media/SPRITES/enemies/ant/ant-8.png
 doLoadImage
-7
+6
 media/SPRITES/misc/enemy-death/enemy-death-1.png
 media/SPRITES/misc/enemy-death/enemy-death-2.png
 media/SPRITES/misc/enemy-death/enemy-death-3.png
 media/SPRITES/misc/enemy-death/enemy-death-4.png
+Loading media/text_atlas.png
 Map objects initialised. Total: 821
 Initializing Collision Manager.
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640

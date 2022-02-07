@@ -16,7 +16,7 @@ AssetFactory::AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraMana
 
 void AssetFactory::doLoadImages ( void ) {
 	doLoadPlayerImages();
-	doLoadImage( 5, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0 );
+	doLoadImage( 0, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0 );
 	doLoadEnemyImages();
 }
 
@@ -79,8 +79,7 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 }
 
 void AssetFactory::doResize (int screenWidth, int screenHeight) {
-	//TODO: doSetPlayerSize
-	for( int i=0; i<8; i++ ) {
+	/*for (int i = 0; i<8; i++) {
 		StaticAsset * myStaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
 		int width = myStaticAssetPtr->PixelWidth;
 		int multiplier = myCameraManager->magnification;//TODO: Tie into input
@@ -90,20 +89,40 @@ void AssetFactory::doResize (int screenWidth, int screenHeight) {
 			myStaticAssetPtr->PixelWidth*multiplier,	//hoziontal scaling
 			myStaticAssetPtr->PixelHeight*multiplier	//vertical scaling
 		);
+	}*/
+}
+
+void AssetFactory::doResizeImages(float inMagnification) {
+	for (int set = 0; set < 7; set++) {
+		AnimatedAsset* myAnimatedAssetPtr = myAnimatedAssets[set];
+		for (int frame = 0; frame<myAnimatedAssetPtr->frames; frame++) {
+			StaticAsset* myStaticAssetPtr = myAnimatedAssets[set]->myStaticAssets[frame];
+			myStaticAssetPtr->myRect_dst.w = static_cast<int>(myStaticAssetPtr->myRect_src.w * inMagnification);
+			myStaticAssetPtr->myRect_dst.h = static_cast<int>(myStaticAssetPtr->myRect_src.h * inMagnification);
+		}
 	}
+
+	SDL_Rect myPlayer = myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	myCameraManager->doSetPlayerSize(myPlayer.w, myPlayer.h);
+
+	StaticAsset* myStaticAssetPtr = myStaticAssets[0];
+	myStaticAssetPtr->myRect_dst.w = static_cast<int>(myStaticAssetPtr->myRect_src.w * inMagnification);
+	myStaticAssetPtr->myRect_dst.h = static_cast<int>(myStaticAssetPtr->myRect_src.h * inMagnification);
 }
 
 void AssetFactory::doLoadPlayerImages ( void ) {
-	myCameraManager->doSetPlayerSize( 90, 85 );
 	doLoadImage( 0, true, "media/SPRITES/player/idle/player-idle-", 20, 0, 36, 48, 8 );
 	doLoadImage( 1, true, "media/SPRITES/player/run/player-run-", 9, 0, 54, 48, 6 );
 	doLoadImage( 2, true, "media/SPRITES/player/hurt/player-hurt-", 0, 0, 90, 58, 2 );
 	doLoadImage( 3, true, "media/SPRITES/player/crouch/player-crouch-", 0, 0, 90, 58, 2 );
 	doLoadImage( 4, true, "media/SPRITES/player/jump/player-jump-", 21, 0, 45, 58, 4 );
+
+	SDL_Rect myPlayer = myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	myCameraManager->doSetPlayerSize(myPlayer.w, myPlayer.h);
 	myLogger->log("Player images loaded.");
 }
 
 void AssetFactory::doLoadEnemyImages(void) {
-	doLoadImage(6, true, "media/SPRITES/enemies/ant/ant-", 0, 0, 37, 31, 8);
-	doLoadImage(7, true, "media/SPRITES/misc/enemy-death/enemy-death-", 0, 0, 28, 26, 4);
+	doLoadImage(5, true, "media/SPRITES/enemies/ant/ant-", 0, 0, 37, 31, 8);
+	doLoadImage(6, true, "media/SPRITES/misc/enemy-death/enemy-death-", 0, 0, 28, 26, 4);
 }

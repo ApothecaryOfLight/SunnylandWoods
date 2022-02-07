@@ -64,7 +64,7 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	int PlayerAnimationFrame = myPlayerManager->anim_frame_Player;
 	int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
 	StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame];
-	SDL_Rect myPlayerDrawnCollisionBox = myStaticAssetPtr->myRect_dst;
+	SDL_Rect myPlayerDrawnCollisionBox = myStaticAssetPtr->myRect_src;
 	myPlayerDrawnCollisionBox.x = myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX;
 	myPlayerDrawnCollisionBox.y = myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY;
 
@@ -95,7 +95,7 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 		int MapObjectID = (*MapObjs_myStart);
 		MapObject * myMapObject = myMapManager->getMapObject( MapObjectID );
 		int MapObjectAssetID = myMapObject->myAssetID;
-		SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_dst;
+		SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_src;
 		myCollisionBox.x = myMapObject->XPos - myCameraManager->CameraX;
 		myCollisionBox.y = myMapObject->YPos - myCameraManager->CameraY;
 		myCollisionBox.w *= magnification;
@@ -165,7 +165,7 @@ Player/Map Object collisions
 */
 inline int CollisionManager::isWalkingPlayerCollidingLeftMapObject(int MapObjectID) {
 	//1) Get the collision box of the player.
-	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
 	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 10;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
@@ -174,7 +174,7 @@ inline int CollisionManager::isWalkingPlayerCollidingLeftMapObject(int MapObject
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
 	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
 	int MapObjectEdge_Top = myMapObject->YPos;
 	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
@@ -191,7 +191,7 @@ inline int CollisionManager::isWalkingPlayerCollidingLeftMapObject(int MapObject
 
 inline int CollisionManager::isWalkingPlayerCollidingRightMapObject(int MapObjectID) {
 	//1) Get the collision box of the player.
-	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 10;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
@@ -200,7 +200,7 @@ inline int CollisionManager::isWalkingPlayerCollidingRightMapObject(int MapObjec
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
 	int MapObjectEdge_Left = myMapObject->XPos;
 	int MapObjectEdge_Top = myMapObject->YPos;
 	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
@@ -217,7 +217,7 @@ inline int CollisionManager::isWalkingPlayerCollidingRightMapObject(int MapObjec
 
 inline int CollisionManager::isJumpingPlayerCollidingUpMapObject(int MapObjectID) {
 	//1) Get the collision box of the player.
-	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
@@ -226,7 +226,7 @@ inline int CollisionManager::isJumpingPlayerCollidingUpMapObject(int MapObjectID
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
 	int MapObjectEdge_Left = myMapObject->XPos;
 	int MapObjectEdge_Top = myMapObject->YPos;
 	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
@@ -243,7 +243,7 @@ inline int CollisionManager::isJumpingPlayerCollidingUpMapObject(int MapObjectID
 
 inline int CollisionManager::isFallingPlayerCollidingDownMapObject(int MapObjectID) {
 	//1) Get the collision box of the player.
-	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
@@ -261,7 +261,7 @@ inline int CollisionManager::isFallingPlayerCollidingDownMapObject(int MapObject
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
 	int MapObjectEdge_Left = myMapObject->XPos;
 	int MapObjectEdge_Top = myMapObject->YPos;
 	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
@@ -331,8 +331,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 		if (is_colliding_up == false) {
 			myPlayerManager->PlayerGameCoordY -= myPlayerManager->player_movement_increment;
-			if ((myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
-				myCameraManager->CameraY -= myPlayerManager->player_movement_increment;
+			if (((myPlayerManager->PlayerGameCoordY*myInputManager->zoom) - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
+				myCameraManager->CameraY -= (myPlayerManager->player_movement_increment*myInputManager->zoom);
 			}
 		}
 		else if (distance_remaining_top > 0) {
@@ -360,8 +360,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_left == false) {
 				myPlayerManager->PlayerGameCoordX -= myPlayerManager->player_movement_increment;
-				if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
-					myCameraManager->CameraX -= myPlayerManager->player_movement_increment;
+				if (((myPlayerManager->PlayerGameCoordX*myInputManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+					myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myInputManager->zoom;
 				}
 			}
 			else if (distance_remaining_left > 0) {
@@ -387,8 +387,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_right == false) {
 				myPlayerManager->PlayerGameCoordX += myPlayerManager->player_movement_increment;
-				if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
-					myCameraManager->CameraX += myPlayerManager->player_movement_increment;
+				if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+					myCameraManager->CameraX += myPlayerManager->player_movement_increment * myInputManager->zoom;
 				}
 			}
 			else if (distance_remaining_right > 0) {
@@ -422,8 +422,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		if (is_colliding_down == false) {
 			myPlayerManager->jump_counter = max_jump_height + 1;
 			myPlayerManager->PlayerGameCoordY += (myPlayerManager->player_movement_increment*2);
-			if ((myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY) >= myCameraManager->ScreenWall_Bottom) {
-				myCameraManager->CameraY += (myPlayerManager->player_movement_increment*2);
+			if (((myPlayerManager->PlayerGameCoordY * myInputManager->zoom) - myCameraManager->CameraY) >= myCameraManager->ScreenWall_Bottom) {
+				myCameraManager->CameraY += (myPlayerManager->player_movement_increment*2) * myInputManager->zoom;
 			}
 		}
 		else {
@@ -452,8 +452,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_left == false) {
 				myPlayerManager->PlayerGameCoordX -= myPlayerManager->player_movement_increment;
-				if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
-					myCameraManager->CameraX -= myPlayerManager->player_movement_increment;
+				if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+					myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myInputManager->zoom;
 				}
 			}
 			else if (distance_remaining_left > 0) {
@@ -479,8 +479,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_right == false) {
 				myPlayerManager->PlayerGameCoordX += myPlayerManager->player_movement_increment;
-				if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
-					myCameraManager->CameraX += myPlayerManager->player_movement_increment;
+				if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+					myCameraManager->CameraX += myPlayerManager->player_movement_increment * myInputManager->zoom;
 				}
 			}
 			else if (distance_remaining_right > 0) {
@@ -513,8 +513,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		//2) Conditionally apply.
 		if (is_colliding_left == false) {
 			myPlayerManager->PlayerGameCoordX -= myPlayerManager->player_movement_increment;
-			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
-				myCameraManager->CameraX -= myPlayerManager->player_movement_increment;
+			if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+				myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myInputManager->zoom;
 			}
 		} else if (distance_remaining > 0) {
 			myLogger->log(distance_remaining);
@@ -544,8 +544,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 		if (is_colliding_right == false) {
 			myPlayerManager->PlayerGameCoordX += myPlayerManager->player_movement_increment;
-			if ((myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
-				myCameraManager->CameraX += myPlayerManager->player_movement_increment;
+			if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+				myCameraManager->CameraX += myPlayerManager->player_movement_increment * myInputManager->zoom;
 			}
 		} else if (distance_remaining > 0) {
 			myPlayerManager->PlayerGameCoordX += distance_remaining;
@@ -559,7 +559,7 @@ Enemy Collisions
 */
 inline int CollisionManager::isFallingEnemyCollidingDownMapObject(Enemy* EnemyPtr, int MapObjectID) {
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -568,7 +568,7 @@ inline int CollisionManager::isFallingEnemyCollidingDownMapObject(Enemy* EnemyPt
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
 	int MapObjectEdge_Left = myMapObject->XPos;
 	int MapObjectEdge_Top = myMapObject->YPos;
 	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
@@ -585,7 +585,7 @@ inline int CollisionManager::isFallingEnemyCollidingDownMapObject(Enemy* EnemyPt
 
 inline int CollisionManager::isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPtr, int MapObjectID) {
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -594,7 +594,7 @@ inline int CollisionManager::isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPt
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
 	int MapObjectEdge_Left = myMapObject->XPos;
 	int MapObjectEdge_Top = myMapObject->YPos;
 	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
@@ -611,7 +611,7 @@ inline int CollisionManager::isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPt
 
 inline int CollisionManager::isWalkingEnemyCollidingRightMapObject(Enemy* EnemyPtr, int MapObjectID) {
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -620,7 +620,7 @@ inline int CollisionManager::isWalkingEnemyCollidingRightMapObject(Enemy* EnemyP
 
 	//2) Get the collision box of the map object.
 	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
-	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_dst;
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
 	int MapObjectEdge_Left = myMapObject->XPos;
 	int MapObjectEdge_Top = myMapObject->YPos;
 	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
@@ -638,7 +638,7 @@ inline int CollisionManager::isWalkingEnemyCollidingRightMapObject(Enemy* EnemyP
 void CollisionManager::doEnemyCollisions ( void ) {
 	std::list<Enemy>::iterator myEnemyIter = myEnemyManager->myEnemies.begin(), myEnemyEnd = myEnemyManager->myEnemies.end();
 	while (myEnemyIter != myEnemyEnd) {
-		if ((*myEnemyIter).AssetID != 7) {
+		if ((*myEnemyIter).AssetID != 6) {
 			std::list<int>::iterator MapObjs_myIter = myMapManager->myActiveMapObjects.begin(), MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 			bool is_colliding_down = false, is_colliding_left = false, is_colliding_right = false;
 			int smallest_down_distance = -1, smallest_left_distance = -1, smallest_right_distance = -1;
@@ -737,7 +737,7 @@ void CollisionManager::doPlayerEnemyCollisions(void) {
 	std::list<Enemy>::iterator myIter = myEnemyManager->myEnemies.begin(), myEnd = myEnemyManager->myEnemies.end();
 	bool is_player_colliding_down = false, is_player_colliding_not_down = false;
 	while (myIter != myEnd) {
-		if ((*myIter).AssetID != 7) {
+		if ((*myIter).AssetID != 6) {
 			if (!(!myInputManager->inputFlag_Jumping && myPlayerManager->jump_counter > 0)) {
 				int isGettingHitByEnemy = isWalkingPlayerCollidingEnemy(&(*myIter));
 				if (isGettingHitByEnemy != -1) {
@@ -748,7 +748,7 @@ void CollisionManager::doPlayerEnemyCollisions(void) {
 				int isSmooshingEnemy = isFallingPlayerCollidingDownEnemy(&(*myIter));
 				if (isSmooshingEnemy != -1) {
 					Enemy* myEnemy = &(*myIter);
-					myEnemyManager->doAddEnemy(7, myEnemy->EnemyGameCoordX, myEnemy->EnemyGameCoordY);
+					myEnemyManager->doAddEnemy(6, myEnemy->EnemyGameCoordX, myEnemy->EnemyGameCoordY);
 					myEnemyManager->myEnemies.erase(myIter);
 				}
 			}
@@ -762,7 +762,7 @@ void CollisionManager::doPlayerEnemyCollisions(void) {
 
 inline int CollisionManager::isFallingPlayerCollidingDownEnemy(Enemy* EnemyPtr) {
 	//1) Get the collision box of the player.
-	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
@@ -779,7 +779,7 @@ inline int CollisionManager::isFallingPlayerCollidingDownEnemy(Enemy* EnemyPtr) 
 	}*/
 
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -797,14 +797,14 @@ inline int CollisionManager::isFallingPlayerCollidingDownEnemy(Enemy* EnemyPtr) 
 
 inline int CollisionManager::isWalkingPlayerCollidingEnemy(Enemy* EnemyPtr) {
 	//1) Get the collision box of the player.
-	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
 	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 10;
 	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX + 10;
 
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_dst;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;

@@ -43,6 +43,8 @@ public:
 
 	void doResize ( int screenWidth, int screenHeight );
 
+	void doResizeImages(float inMagnification);
+
 	StaticAsset * myStaticAssets[100];//TODO: Unify these two. IDs will be the distinciton between ranges and singles.
 	AnimatedAsset * myAnimatedAssets[100];
 
