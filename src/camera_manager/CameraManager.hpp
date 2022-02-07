@@ -17,9 +17,7 @@ public:
 
 	void doInitializeCamera(int PlayerGameCoordX, int PlayerGameCoordY);
 
-	int PlayerX_screen, PlayerY_screen, //Poisitional system of where the player is on the screen.
-		PlayerX_level, PlayerY_level, //Positional system within the level of where the player is. Can be used to obtain CurrentSectorX/Y
-		CameraX, CameraY, //Position of the camera's upper-left corner. Used to lens everything that is not the player.
+	int CameraX, CameraY, //Position of the camera's upper-left corner. Used to lens everything that is not the player.
 		ScreenWidth, ScreenHeight, //Size of the screen
 		SectorsX, SectorsY,  //Size of level, set by LevelManager on loading a level.
 		CurrentSectorX, CurrentSectorY; //Which sector of the current level in which the player is. Can be derived from PlayerX_Level/PlayerY_Level.

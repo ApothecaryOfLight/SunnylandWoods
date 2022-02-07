@@ -52,8 +52,8 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelHeight = inHeight;
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
 			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect (
-				myCameraManager->PlayerX_screen,
-				myCameraManager->PlayerY_screen,
+				0,
+				0,
 				inWidth * myCameraManager->magnification,
 				inHeight * myCameraManager->magnification
 			);

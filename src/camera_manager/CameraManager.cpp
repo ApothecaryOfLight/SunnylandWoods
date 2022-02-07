@@ -9,12 +9,6 @@
 CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight ) {
 	myLogger = inLogger;
 
-	PlayerX_level = inPlayerX;
-	PlayerY_level = inPlayerY;
-
-	PlayerX_screen = (ScreenWidth / 2) - (PlayerSize_X / 2);
-	PlayerY_screen = (ScreenHeight / 2) - (PlayerSize_Y / 2);
-
 	magnification = 1;
 	doResize( inScreenWidth, inScreenHeight );
 
@@ -23,7 +17,6 @@ CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, 
 
 	SectorsX = 1;
 	SectorsY = 1;
-
 }
 
 void CameraManager::doInitializeCamera( int PlayerGameCoordX, int PlayerGameCoordY ) {
@@ -47,9 +40,6 @@ void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
 
 	PlayerSize_X = 90; //TODO: Apply resizing if appropriate.
 	PlayerSize_Y = 58;
-
-	PlayerX_screen = (ScreenWidth/2)-(PlayerSize_X/2);
-	PlayerY_screen = (ScreenHeight/2)-(PlayerSize_Y/2);
 }
 
 void CameraManager::doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY ) {
