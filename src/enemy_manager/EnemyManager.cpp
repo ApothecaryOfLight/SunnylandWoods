@@ -58,7 +58,7 @@ void EnemyManager::doAnimateEnemy () {
 			myEnemy->Frame++;
 			if (myEnemy->Frame >= max_frames) {
 				myEnemy->Frame = 0;
-				if (myEnemy->AssetID == 7) {
+				if (myEnemy->AssetID == 6) {
 					myEnemies.erase(myIter);
 				}
 			}
