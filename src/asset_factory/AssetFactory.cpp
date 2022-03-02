@@ -100,6 +100,7 @@ void AssetFactory::doLoadImages(void) {
 
 void AssetFactory::doLoadMapImages(void) {
 	doLoadImage(0, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0);
+	doLoadImage(1, false, "media/ENVIRONMENT/tileset.png", 128, 224, 32, 32, 0);
 }
 
 void AssetFactory::doLoadPlayerImages ( void ) {

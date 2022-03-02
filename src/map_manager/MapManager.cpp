@@ -103,93 +103,47 @@ void MapManager::doResize( int screenWidth, int screenHeight ) {
 	rect_Clouds_dest.h = myCameraManager->ScreenHeight;
 }
 
+void MapManager::doCreateMapObject(int XPos, int YPos, int AssetID) {
+	int newID = myIDManager->getNewID();
+	myActiveMapObjects.push_back(newID);
+	myMapObjects[newID].XPos = XPos;
+	myMapObjects[newID].YPos = YPos;
+	myMapObjects[newID].myGlobalID = newID;
+	myMapObjects[newID].myAssetID = AssetID;
+	myMapObjects[newID].has_collided = false;
+	myMapObjects[newID].has_collided_counter = 0;
+}
+
 void MapManager::doLoadMapObjects ( void ) {
 	doCreateRect( 0, 320, 320, 16, 16 );
 
 	int newID = myIDManager->getNewID();
 
 	for (int i = -60; i < 60; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = 90;
-		myMapObjects[newID].YPos = i * 16;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
-	}
-	for (int i = -60; i < 60; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = 340;
-		myMapObjects[newID].YPos = i * 16;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
+		doCreateMapObject( 90, i*16, 0 );
+		doCreateMapObject(340, i * 16, 0);
 	}
 
 	for (int i = -100; i < 100; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = 1000;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
+		doCreateMapObject(i * 16, 1000, 0);
+		doCreateMapObject( i*16, 50, 0 );
 	}
 
-	for (int i = -100; i < 100; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = 50;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
-	}
 	for (int i = -50; i < 50; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = -25;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
+		doCreateMapObject(i * 16, -25, 0);
 	}
 	for (int i = -25; i < 25; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = -100;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
+		doCreateMapObject(i * 16, -100, 0);
 	}
 	for (int i = -10; i < 10; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = -175;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
+		doCreateMapObject(i * 16, -175, 0);
 	}
 	for (int i = -5; i < 5; i++) {
-		newID = myIDManager->getNewID();
-		myActiveMapObjects.push_back(newID);
-		myMapObjects[newID].XPos = i * 16;
-		myMapObjects[newID].YPos = -250;
-		myMapObjects[newID].myGlobalID = newID;
-		myMapObjects[newID].myAssetID = 0;
-		myMapObjects[newID].has_collided = false;
-		myMapObjects[newID].has_collided_counter = 0;
+		doCreateMapObject(i * 16, -250, 0);
 	}
+
+	doCreateMapObject(220, -300, 1);
+
 	myLogger->log("Map objects initialised. Total: " + std::to_string(myIDManager->getIDcounter()));
 }
 

@@ -37,6 +37,7 @@ public:
 
 	void doCreateRect ( int inMapObjectID, int inX, int inY, int inW, int inH );
 
+	void doCreateMapObject(int XPos, int YPos, int AssetID);
 	void doLoadMapObjects ( void );
 
 	void doResize( int screenWidth, int screenHeight );
