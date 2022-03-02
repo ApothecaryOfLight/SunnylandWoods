@@ -53,3 +53,17 @@ media/SPRITES/misc/enemy-death/enemy-death-4.png
 Loading media/text_atlas.png
 Map objects initialised. Total: 821
 Initializing Collision Manager.
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640

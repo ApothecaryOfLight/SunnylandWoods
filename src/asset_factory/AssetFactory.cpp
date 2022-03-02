@@ -78,20 +78,6 @@ void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inS
 	}
 }
 
-void AssetFactory::doResize (int screenWidth, int screenHeight) {
-	/*for (int i = 0; i<8; i++) {
-		StaticAsset * myStaticAssetPtr = myAnimatedAssets[0]->myStaticAssets[i];
-		int width = myStaticAssetPtr->PixelWidth;
-		int multiplier = myCameraManager->magnification;//TODO: Tie into input
-		myStaticAssetPtr->myRect_dst = doCreateRect (
-			(myCameraManager->ScreenWidth/2)-( (width*multiplier)/2 ),	//screen position X
-			(myCameraManager->ScreenHeight/2),	//screen position y
-			myStaticAssetPtr->PixelWidth*multiplier,	//hoziontal scaling
-			myStaticAssetPtr->PixelHeight*multiplier	//vertical scaling
-		);
-	}*/
-}
-
 void AssetFactory::doResizeImages(float inMagnification) {
 	for (int set = 0; set < 7; set++) {
 		AnimatedAsset* myAnimatedAssetPtr = myAnimatedAssets[set];
