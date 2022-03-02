@@ -28,22 +28,6 @@ MapManager::MapManager ( SDL_Renderer * inRen, Logger* inLogger, CameraManager *
 	myRen = inRen;
 	myIDManager = inIDManager;
 
-	//myObjectCounter = 0;
-
-	/*myObjects = new int*[1000];
-	for( int i=0; i<=999; i++ ) {
-		myObjects[i] = new int[6];
-	}
-
-	//TODO: For load level function in LevelManager
-	myMapObjects[0][0] = 1;
-	myObjects[0][1] = 1;
-	myObjects[0][2] = 1;
-	myObjects[0][3] = 1;
-	myObjects[0][4] = 1;
-	myObjects[0][5] = 1;
-	myObjectCounter++;*/
-
 	myMapObjects = new MapObject[5000];
 
 	myCollisionBoxes = new SDL_Rect*[1000];
