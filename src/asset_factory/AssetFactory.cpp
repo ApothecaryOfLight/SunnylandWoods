@@ -11,13 +11,8 @@ AssetFactory::AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraMana
 	myLogger = inLogger;
 	myRen = inRen;
 	myCameraManager = inCameraManager;
-	doLoadImages();
-}
 
-void AssetFactory::doLoadImages ( void ) {
-	doLoadPlayerImages();
-	doLoadImage( 0, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0 );
-	doLoadEnemyImages();
+	doLoadImages();
 }
 
 SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
@@ -27,55 +22,6 @@ SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
 	toRetByValue.w = inW;
 	toRetByValue.h = inH;
 	return toRetByValue;
-}
-
-void AssetFactory::doLoadImage ( int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames ) {
-	myLogger->log( "doLoadImage" );
-	myLogger->log( inAssetID );
-	if( isAnimated ) {
-		myAnimatedAssets[inAssetID] = new AnimatedAsset;
-		myAnimatedAssets[inAssetID]->frames = inFrames;
-		myAnimatedAssets[inAssetID]->myStaticAssets = new StaticAsset*[inFrames];
-		for( int i=1; i<=inFrames; i++ ) {
-			std::stringstream myStringstreamConv;
-			myStringstreamConv << i;
-			std::string myConv = myStringstreamConv.str();
-
-			SDL_Surface *myNewSurface = IMG_Load( std::string( inSrcFilename + myConv + ".png" ).c_str() );
-			myLogger->log( std::string(inSrcFilename + myConv + ".png") );
-			
-			if(!myNewSurface) { myLogger->log(IMG_GetError()); }
-
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1] = new StaticAsset;
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myTexture = SDL_CreateTextureFromSurface( myRen, myNewSurface );
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelWidth = inWidth;
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->PixelHeight = inHeight;
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
-			myAnimatedAssets[inAssetID]->myStaticAssets[i-1]->myRect_dst = doCreateRect (
-				0,
-				0,
-				inWidth * myCameraManager->magnification,
-				inHeight * myCameraManager->magnification
-			);
-
-			SDL_FreeSurface( myNewSurface );
-		}
-	} else if( !isAnimated ) {
-		std::cout << "Loading image 5." << std::endl;
-		std::cout << inAssetID << std::endl;
-		myStaticAssets[inAssetID] = new StaticAsset;
-
-		SDL_Surface *myNewSurface = IMG_Load( inSrcFilename.c_str() );
-		if( !myNewSurface ) { std::cout << IMG_GetError() << std::endl; }
-
-		myStaticAssets[inAssetID]->myTexture = SDL_CreateTextureFromSurface( myRen, myNewSurface );
-		myStaticAssets[inAssetID]->PixelWidth = inWidth;
-		myStaticAssets[inAssetID]->PixelHeight = inHeight;
-		myStaticAssets[inAssetID]->myRect_src = doCreateRect ( inSrcX, inSrcY, inWidth, inHeight );
-		myStaticAssets[inAssetID]->myRect_dst = doCreateRect ( 0, 0, inWidth, inHeight );
-
-		SDL_FreeSurface( myNewSurface );
-	}
 }
 
 void AssetFactory::doResizeImages(float inMagnification) {
@@ -94,6 +40,66 @@ void AssetFactory::doResizeImages(float inMagnification) {
 	StaticAsset* myStaticAssetPtr = myStaticAssets[0];
 	myStaticAssetPtr->myRect_dst.w = static_cast<int>(myStaticAssetPtr->myRect_src.w * inMagnification);
 	myStaticAssetPtr->myRect_dst.h = static_cast<int>(myStaticAssetPtr->myRect_src.h * inMagnification);
+}
+
+void AssetFactory::doLoadImage(int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames) {
+	myLogger->log("doLoadImage");
+	myLogger->log(inAssetID);
+	if (isAnimated) {
+		myAnimatedAssets[inAssetID] = new AnimatedAsset;
+		myAnimatedAssets[inAssetID]->frames = inFrames;
+		myAnimatedAssets[inAssetID]->myStaticAssets = new StaticAsset * [inFrames];
+		for (int i = 1; i <= inFrames; i++) {
+			std::stringstream myStringstreamConv;
+			myStringstreamConv << i;
+			std::string myConv = myStringstreamConv.str();
+
+			SDL_Surface* myNewSurface = IMG_Load(std::string(inSrcFilename + myConv + ".png").c_str());
+			myLogger->log(std::string(inSrcFilename + myConv + ".png"));
+
+			if (!myNewSurface) { myLogger->log(IMG_GetError()); }
+
+			myAnimatedAssets[inAssetID]->myStaticAssets[i - 1] = new StaticAsset;
+			myAnimatedAssets[inAssetID]->myStaticAssets[i - 1]->myTexture = SDL_CreateTextureFromSurface(myRen, myNewSurface);
+			myAnimatedAssets[inAssetID]->myStaticAssets[i - 1]->PixelWidth = inWidth;
+			myAnimatedAssets[inAssetID]->myStaticAssets[i - 1]->PixelHeight = inHeight;
+			myAnimatedAssets[inAssetID]->myStaticAssets[i - 1]->myRect_src = doCreateRect(inSrcX, inSrcY, inWidth, inHeight);
+			myAnimatedAssets[inAssetID]->myStaticAssets[i - 1]->myRect_dst = doCreateRect(
+				0,
+				0,
+				inWidth * myCameraManager->magnification,
+				inHeight * myCameraManager->magnification
+			);
+
+			SDL_FreeSurface(myNewSurface);
+		}
+	}
+	else if (!isAnimated) {
+		std::cout << "Loading image 5." << std::endl;
+		std::cout << inAssetID << std::endl;
+		myStaticAssets[inAssetID] = new StaticAsset;
+
+		SDL_Surface* myNewSurface = IMG_Load(inSrcFilename.c_str());
+		if (!myNewSurface) { std::cout << IMG_GetError() << std::endl; }
+
+		myStaticAssets[inAssetID]->myTexture = SDL_CreateTextureFromSurface(myRen, myNewSurface);
+		myStaticAssets[inAssetID]->PixelWidth = inWidth;
+		myStaticAssets[inAssetID]->PixelHeight = inHeight;
+		myStaticAssets[inAssetID]->myRect_src = doCreateRect(inSrcX, inSrcY, inWidth, inHeight);
+		myStaticAssets[inAssetID]->myRect_dst = doCreateRect(0, 0, inWidth, inHeight);
+
+		SDL_FreeSurface(myNewSurface);
+	}
+}
+
+void AssetFactory::doLoadImages(void) {
+	doLoadMapImages();
+	doLoadPlayerImages();
+	doLoadEnemyImages();
+}
+
+void AssetFactory::doLoadMapImages(void) {
+	doLoadImage(0, false, "media/ENVIRONMENT/tileset.png", 384, 96, 16, 16, 0);
 }
 
 void AssetFactory::doLoadPlayerImages ( void ) {

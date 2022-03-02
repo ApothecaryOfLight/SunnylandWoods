@@ -35,9 +35,10 @@ public:
 
 	SDL_Rect doCreateRect ( int inX, int inY, int inW, int inH );
 
-	void doLoadImages ( void );
 	void doLoadImage ( int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames );
 
+	void doLoadImages(void);
+	void doLoadMapImages ( void );
 	void doLoadPlayerImages ( void );
 	void doLoadEnemyImages(void);
 
