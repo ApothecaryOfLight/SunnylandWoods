@@ -39,6 +39,8 @@ GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger 
 
 	myLevelManager = new LevelManager( myMapManager, myEnemyManager, myClickableManager, myIDManager );
 	myAnimationManager = new AnimationManager ( inRen, myCameraManager, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager, myIDManager, myTextManager );
+
+	setScreenTextFields();
 }
 
 GameInterface::~GameInterface ( void ) {
@@ -71,6 +73,20 @@ void GameInterface::doRenderFrame ( void ) {
 
 void GameInterface::doProcessInput ( SDL_Event * inEvent ) {
 	myInputManager->doProcessInput( inEvent );
+}
+
+void GameInterface::setScreenTextFields(void) {
+	myTextManager->add_text_entity("CameraX", &myCameraManager->CameraX, 1);
+	myTextManager->add_text_entity("CameraY", &myCameraManager->CameraY, 1);
+	myTextManager->add_text_entity("PlayerXGameCoord", &myPlayerManager->PlayerGameCoordX, 1);
+	myTextManager->add_text_entity("PlayerYGameCoord", &myPlayerManager->PlayerGameCoordY, 1);
+
+	myTextManager->add_text_entity("mouseYGamepos", &myInputManager->mouseY_gamepos, 2);
+	myTextManager->add_text_entity("mouseXGamepos", &myInputManager->mouseX_gamepos, 2);
+	myTextManager->add_text_entity("mouseYPos", &myInputManager->mouseY_pos, 2);
+	myTextManager->add_text_entity("mouseXPos", &myInputManager->mouseX_pos, 2);
+
+	myTextManager->add_text_entity("Zoom", &myInputManager->zoom, 3);
 }
 
 bool GameInterface::isQuit ( void ) {

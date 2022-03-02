@@ -23,18 +23,6 @@ AnimationManager::AnimationManager ( SDL_Renderer * inRen, CameraManager* inCame
 	myCollisionManager = inCollisionManager;
 	myIDManager = inIDManager;
 	myTextManager = inTextManager;
-
-	myTextManager->add_text_entity("CameraX", &myCameraManager->CameraX, 1);
-	myTextManager->add_text_entity("CameraY", &myCameraManager->CameraY, 1);
-	myTextManager->add_text_entity("PlayerXGameCoord", &myPlayerManager->PlayerGameCoordX, 1);
-	myTextManager->add_text_entity("PlayerYGameCoord", &myPlayerManager->PlayerGameCoordY, 1);
-
-	myTextManager->add_text_entity("mouseYGamepos", &myInputManager->mouseY_gamepos, 2);
-	myTextManager->add_text_entity("mouseXGamepos", &myInputManager->mouseX_gamepos, 2);
-	myTextManager->add_text_entity("mouseYPos", &myInputManager->mouseY_pos, 2);
-	myTextManager->add_text_entity("mouseXPos", &myInputManager->mouseX_pos, 2);
-
-	myTextManager->add_text_entity("Zoom", &myInputManager->zoom, 3);
 }
 
 void AnimationManager::doGameLogic ( void ) {

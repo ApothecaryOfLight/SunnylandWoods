@@ -27,6 +27,7 @@ public:
 	void doGameLogic ( void );
 	void doRenderFrame ( void );
 	void doProcessInput ( SDL_Event * inEvent );
+	void setScreenTextFields(void);
 	bool isQuit ( void );
 private:
 	AnimationManager * myAnimationManager;
