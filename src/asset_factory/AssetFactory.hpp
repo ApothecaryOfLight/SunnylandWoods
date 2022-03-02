@@ -9,17 +9,10 @@
 #include "../logger/logger.hpp"
 #include "../camera_manager/CameraManager.hpp"
 
-/*
-Should only include the sprite image, stored with asset ID
-As well as the source dimensions of the image
-*/
-
 class StaticAsset {
 public:
 	SDL_Texture * myTexture;
 	SDL_Rect myRect_src, myRect_dst;
-	//SDL_Rect myRect_draw, myRect_collision;
-	//int offsetX, offsetY;
 	int PixelWidth, PixelHeight;
 };
 
