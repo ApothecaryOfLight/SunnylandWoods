@@ -121,6 +121,7 @@ void PlayerManager::doRenderFrame ( void ) {
 			PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
 			PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
 			if( myInputManager->isPlayerFacingLeft == true ) {
+				PlayerDest.x -= 35;
 				SDL_RenderCopyEx(
 					myRen,
 					myStaticAssetPtr->myTexture,
@@ -132,11 +133,12 @@ void PlayerManager::doRenderFrame ( void ) {
 				);
 			}
 			else if( myInputManager->isPlayerFacingLeft == false ) {
+				PlayerDest.x -= 20;
 				SDL_RenderCopy(
 					myRen,
 					myStaticAssetPtr->myTexture,
 					&(myStaticAssetPtr->myRect_src),
-					&(myStaticAssetPtr->myRect_dst)
+					&(PlayerDest)
 				);
 			}
 		}
