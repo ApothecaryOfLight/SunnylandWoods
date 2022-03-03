@@ -70,6 +70,7 @@ private:
 	Logger * myLogger;
 
 	int max_jump_height = 15;
+	int max_jump_peak = 5;
 };
 
 #endif

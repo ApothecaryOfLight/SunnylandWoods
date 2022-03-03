@@ -28,7 +28,7 @@ public:
 	SDL_Rect getPlayerDest(void);
 
 	int anim_frame_Player;
-	int jump_counter;
+	int jump_counter, jump_peak_counter;
 	int PlayerAnimationType;
 	int anim_frame_Player_MAX;
 	int FPSCounter;

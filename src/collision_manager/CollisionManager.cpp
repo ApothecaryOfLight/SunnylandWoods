@@ -277,8 +277,7 @@ inline int CollisionManager::isFallingPlayerCollidingDownMapObject(int MapObject
 }
 
 void CollisionManager::doPlayerCollisions ( void ) {
-	if( myInputManager->inputFlag_Jumping == true && myPlayerManager->jump_counter < max_jump_height) { //jumping logic
-		myPlayerManager->jump_counter++;
+	if( myInputManager->inputFlag_Jumping == true && (myPlayerManager->jump_counter < max_jump_height || myPlayerManager->jump_peak_counter < max_jump_peak) ) { //jumping logic
 
 		//2) Check that rect against the map objects IN THIS SECTOR and adjacent sectors
 		bool is_colliding_up = false, is_colliding_left = false, is_colliding_right = false;
@@ -329,17 +328,22 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			++MapObjs_myIter;
 		}
 
-		if (is_colliding_up == false) {
-			myPlayerManager->PlayerGameCoordY -= myPlayerManager->player_movement_increment;
-			if (((myPlayerManager->PlayerGameCoordY* myCameraManager->zoom) - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
-				myCameraManager->CameraY -= (myPlayerManager->player_movement_increment* myCameraManager->zoom);
+
+		if (myPlayerManager->jump_counter >= max_jump_height) {
+			myPlayerManager->jump_peak_counter++;
+		}
+		else {
+			myPlayerManager->jump_counter++;
+			if (is_colliding_up == false) {
+				myPlayerManager->PlayerGameCoordY -= myPlayerManager->player_movement_increment;
+				if (((myPlayerManager->PlayerGameCoordY* myCameraManager->zoom) - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
+					myCameraManager->CameraY -= (myPlayerManager->player_movement_increment* myCameraManager->zoom);
+				}
+			}
+			else if (distance_remaining_top > 0) {
+				myPlayerManager->PlayerGameCoordY -= distance_remaining_top;
 			}
 		}
-		else if (distance_remaining_top > 0) {
-			myPlayerManager->PlayerGameCoordY -= distance_remaining_top;
-		}
-
-
 
 		if (myInputManager->inputFlag_Left && !myInputManager->inputFlag_Right) {
 			MapObjs_myIter = myMapManager->myActiveMapObjects.begin();
@@ -428,6 +432,7 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		}
 		else {
 			myPlayerManager->jump_counter = 0;
+			myPlayerManager->jump_peak_counter = 0;
 			if (distance_remaining_bottom > 0) {
 				myPlayerManager->PlayerGameCoordY += distance_remaining_bottom;
 			}

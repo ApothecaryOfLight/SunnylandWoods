@@ -28,6 +28,7 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 
 	FPSCounter = 0;
 	jump_counter = 0;
+	jump_peak_counter = 0;
 
 	PlayerGameCoordX = 194;
 	PlayerGameCoordY = -148;
