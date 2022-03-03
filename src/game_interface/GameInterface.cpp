@@ -85,7 +85,7 @@ void GameInterface::setScreenTextFields(void) {
 	myTextManager->add_text_entity("mouseYPos", &myInputManager->mouseY_pos, 2);
 	myTextManager->add_text_entity("mouseXPos", &myInputManager->mouseX_pos, 2);
 
-	myTextManager->add_text_entity("Zoom", &myInputManager->zoom, 3);
+	myTextManager->add_text_entity("Zoom", &myCameraManager->zoom, 3);
 }
 
 bool GameInterface::isQuit ( void ) {

@@ -331,8 +331,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 		if (is_colliding_up == false) {
 			myPlayerManager->PlayerGameCoordY -= myPlayerManager->player_movement_increment;
-			if (((myPlayerManager->PlayerGameCoordY*myInputManager->zoom) - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
-				myCameraManager->CameraY -= (myPlayerManager->player_movement_increment*myInputManager->zoom);
+			if (((myPlayerManager->PlayerGameCoordY* myCameraManager->zoom) - myCameraManager->CameraY) <= myCameraManager->ScreenWall_Top) {
+				myCameraManager->CameraY -= (myPlayerManager->player_movement_increment* myCameraManager->zoom);
 			}
 		}
 		else if (distance_remaining_top > 0) {
@@ -360,8 +360,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_left == false) {
 				myPlayerManager->PlayerGameCoordX -= myPlayerManager->player_movement_increment;
-				if (((myPlayerManager->PlayerGameCoordX*myInputManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
-					myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myInputManager->zoom;
+				if (((myPlayerManager->PlayerGameCoordX* myCameraManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+					myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myCameraManager->zoom;
 				}
 			}
 			else if (distance_remaining_left > 0) {
@@ -387,8 +387,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_right == false) {
 				myPlayerManager->PlayerGameCoordX += myPlayerManager->player_movement_increment;
-				if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
-					myCameraManager->CameraX += myPlayerManager->player_movement_increment * myInputManager->zoom;
+				if (((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+					myCameraManager->CameraX += myPlayerManager->player_movement_increment * myCameraManager->zoom;
 				}
 			}
 			else if (distance_remaining_right > 0) {
@@ -422,8 +422,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		if (is_colliding_down == false) {
 			myPlayerManager->jump_counter = max_jump_height + 1;
 			myPlayerManager->PlayerGameCoordY += (myPlayerManager->player_movement_increment*2);
-			if (((myPlayerManager->PlayerGameCoordY * myInputManager->zoom) - myCameraManager->CameraY) >= myCameraManager->ScreenWall_Bottom) {
-				myCameraManager->CameraY += (myPlayerManager->player_movement_increment*2) * myInputManager->zoom;
+			if (((myPlayerManager->PlayerGameCoordY * myCameraManager->zoom) - myCameraManager->CameraY) >= myCameraManager->ScreenWall_Bottom) {
+				myCameraManager->CameraY += (myPlayerManager->player_movement_increment*2) * myCameraManager->zoom;
 			}
 		}
 		else {
@@ -452,8 +452,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_left == false) {
 				myPlayerManager->PlayerGameCoordX -= myPlayerManager->player_movement_increment;
-				if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
-					myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myInputManager->zoom;
+				if (((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+					myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myCameraManager->zoom;
 				}
 			}
 			else if (distance_remaining_left > 0) {
@@ -479,8 +479,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 			if (is_colliding_right == false) {
 				myPlayerManager->PlayerGameCoordX += myPlayerManager->player_movement_increment;
-				if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
-					myCameraManager->CameraX += myPlayerManager->player_movement_increment * myInputManager->zoom;
+				if (((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+					myCameraManager->CameraX += myPlayerManager->player_movement_increment * myCameraManager->zoom;
 				}
 			}
 			else if (distance_remaining_right > 0) {
@@ -513,8 +513,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 		//2) Conditionally apply.
 		if (is_colliding_left == false) {
 			myPlayerManager->PlayerGameCoordX -= myPlayerManager->player_movement_increment;
-			if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
-				myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myInputManager->zoom;
+			if (((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+				myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myCameraManager->zoom;
 			}
 		} else if (distance_remaining > 0) {
 			myLogger->log(distance_remaining);
@@ -544,8 +544,8 @@ void CollisionManager::doPlayerCollisions ( void ) {
 
 		if (is_colliding_right == false) {
 			myPlayerManager->PlayerGameCoordX += myPlayerManager->player_movement_increment;
-			if (((myPlayerManager->PlayerGameCoordX * myInputManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
-				myCameraManager->CameraX += myPlayerManager->player_movement_increment * myInputManager->zoom;
+			if (((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+				myCameraManager->CameraX += myPlayerManager->player_movement_increment * myCameraManager->zoom;
 			}
 		} else if (distance_remaining > 0) {
 			myPlayerManager->PlayerGameCoordX += distance_remaining;

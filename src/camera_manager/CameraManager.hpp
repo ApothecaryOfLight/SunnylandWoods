@@ -25,7 +25,7 @@ public:
 	int ScreenWall_Left, ScreenWall_Right; //The boundaries of how far the character can go left and right before they move the camera.
 	int ScreenWall_Top, ScreenWall_Bottom;
 	int PlayerSize_X, PlayerSize_Y;
-	float zoom;
+	int zoom;
 	Logger* myLogger;
 };
 

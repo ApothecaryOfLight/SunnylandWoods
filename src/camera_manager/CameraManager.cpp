@@ -18,7 +18,7 @@ CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, 
 	SectorsX = 1;
 	SectorsY = 1;
 
-	zoom = 1.0f;
+	zoom = 2;
 }
 
 void CameraManager::doInitializeCamera( int PlayerGameCoordX, int PlayerGameCoordY ) {

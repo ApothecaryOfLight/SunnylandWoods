@@ -29,7 +29,7 @@ public:
 
 	int mouse_wheel;
 
-	float zoom;
+	//float zoom;
 private:
 	CameraManager* myCameraManager;
 	AssetFactory* myAssetFactory;

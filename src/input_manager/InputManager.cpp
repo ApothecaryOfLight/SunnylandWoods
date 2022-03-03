@@ -38,8 +38,6 @@ InputManager::InputManager ( CameraManager* inCameraManager, AssetFactory* inAss
 	mouseY_gamepos = 0;
 
 	mouse_wheel = 0;
-
-	zoom = 1.0f;
 }
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
@@ -135,26 +133,25 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 		if (inEvent->type == SDL_MOUSEWHEEL) {
 			if (inEvent->wheel.y > 0) {
 				mouse_wheel = inEvent->wheel.y;
-				if (zoom < 10) {
-					zoom += 0.2f;
+				if (myCameraManager->zoom < 10) {
+					myCameraManager->zoom += 1;
 				}
-				if (zoom > 10) {
-					zoom = 10.0f;
+				if (myCameraManager->zoom > 10) {
+					myCameraManager->zoom = 10;
 				}
-				myAssetFactory->doResizeImages(zoom);
-				myCameraManager->zoom = zoom;
+				myAssetFactory->doResizeImages(myCameraManager->zoom);
+				//myCameraManager->zoom = zoom;
 				isResized = true;
 			}
 			else if (inEvent->wheel.y < 0) {
 				mouse_wheel = inEvent->wheel.y;
-				if (zoom > 1) {
-					zoom -= 0.2f;
+				if (myCameraManager->zoom > 1) {
+					myCameraManager->zoom -= 1;
 				}
-				if (zoom < 1) {
-					zoom = 1.0f;
+				if (myCameraManager->zoom < 1) {
+					myCameraManager->zoom = 1;
 				}
-				myAssetFactory->doResizeImages(zoom);
-				myCameraManager->zoom = zoom;
+				myAssetFactory->doResizeImages(myCameraManager->zoom);
 				isResized = true;
 			}
 		}

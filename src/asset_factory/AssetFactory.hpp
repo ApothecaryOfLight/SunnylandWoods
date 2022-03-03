@@ -35,7 +35,7 @@ public:
 	void doLoadPlayerImages ( void );
 	void doLoadEnemyImages(void);
 
-	void doResizeImages(float inMagnification);
+	void doResizeImages(int inMagnification);
 
 	StaticAsset * myStaticAssets[100];//TODO: Unify these two. IDs will be the distinciton between ranges and singles.
 	AnimatedAsset * myAnimatedAssets[100];

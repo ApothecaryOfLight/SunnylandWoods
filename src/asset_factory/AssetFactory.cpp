@@ -13,6 +13,7 @@ AssetFactory::AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraMana
 	myCameraManager = inCameraManager;
 
 	doLoadImages();
+	doResizeImages(inCameraManager->zoom);
 }
 
 SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
@@ -24,7 +25,7 @@ SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
 	return toRetByValue;
 }
 
-void AssetFactory::doResizeImages(float inMagnification) {
+void AssetFactory::doResizeImages(int inMagnification) {
 	for (int set = 0; set < 7; set++) {
 		AnimatedAsset* myAnimatedAssetPtr = myAnimatedAssets[set];
 		for (int frame = 0; frame<myAnimatedAssetPtr->frames; frame++) {
