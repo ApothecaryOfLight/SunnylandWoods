@@ -44,6 +44,7 @@ private:
 	SDL_Renderer * myRen;
 	CameraManager * myCameraManager;
 	Logger * myLogger;
+	int static_asset_count, animated_asset_count;
 };
 
 #endif

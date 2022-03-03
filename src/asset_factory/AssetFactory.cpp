@@ -12,6 +12,9 @@ AssetFactory::AssetFactory ( Logger * inLogger, SDL_Renderer * inRen, CameraMana
 	myRen = inRen;
 	myCameraManager = inCameraManager;
 
+	static_asset_count = 0;
+	animated_asset_count = 0;
+
 	doLoadImages();
 	doResizeImages(inCameraManager->zoom);
 }
@@ -26,7 +29,7 @@ SDL_Rect AssetFactory::doCreateRect ( int inX, int inY, int inW, int inH ) {
 }
 
 void AssetFactory::doResizeImages(int inMagnification) {
-	for (int set = 0; set < 7; set++) {
+	for (int set = 0; set < animated_asset_count; set++) {
 		AnimatedAsset* myAnimatedAssetPtr = myAnimatedAssets[set];
 		for (int frame = 0; frame<myAnimatedAssetPtr->frames; frame++) {
 			StaticAsset* myStaticAssetPtr = myAnimatedAssets[set]->myStaticAssets[frame];
@@ -38,9 +41,11 @@ void AssetFactory::doResizeImages(int inMagnification) {
 	SDL_Rect myPlayer = myAnimatedAssets[0]->myStaticAssets[0]->myRect_dst;
 	myCameraManager->doSetPlayerSize(myPlayer.w, myPlayer.h);
 
-	StaticAsset* myStaticAssetPtr = myStaticAssets[0];
-	myStaticAssetPtr->myRect_dst.w = static_cast<int>(myStaticAssetPtr->myRect_src.w * inMagnification);
-	myStaticAssetPtr->myRect_dst.h = static_cast<int>(myStaticAssetPtr->myRect_src.h * inMagnification);
+	for (int static_asset_id = 0; static_asset_id < static_asset_count; static_asset_id++) {
+		StaticAsset* myStaticAssetPtr = myStaticAssets[static_asset_id];
+		myStaticAssetPtr->myRect_dst.w = static_cast<int>(myStaticAssetPtr->myRect_src.w * inMagnification);
+		myStaticAssetPtr->myRect_dst.h = static_cast<int>(myStaticAssetPtr->myRect_src.h * inMagnification);
+	}
 }
 
 void AssetFactory::doLoadImage(int inAssetID, bool isAnimated, std::string inSrcFilename, int inSrcX, int inSrcY, int inWidth, int inHeight, int inFrames) {
@@ -74,6 +79,7 @@ void AssetFactory::doLoadImage(int inAssetID, bool isAnimated, std::string inSrc
 
 			SDL_FreeSurface(myNewSurface);
 		}
+		animated_asset_count++;
 	}
 	else if (!isAnimated) {
 		std::cout << "Loading image 5." << std::endl;
@@ -90,6 +96,7 @@ void AssetFactory::doLoadImage(int inAssetID, bool isAnimated, std::string inSrc
 		myStaticAssets[inAssetID]->myRect_dst = doCreateRect(0, 0, inWidth, inHeight);
 
 		SDL_FreeSurface(myNewSurface);
+		static_asset_count++;
 	}
 }
 
