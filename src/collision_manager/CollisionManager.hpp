@@ -40,6 +40,9 @@ public:
 	void doPlayerCollisions ( void );
 	void doEnemyCollisions ( void );
 
+	void doAntCollisions(Enemy* EnemyPtr);
+	void doGatorCollisions(Enemy* EnemyPtr);
+
 	void doDrawCollisionBoxes ( void );
 
 	inline int isWalkingPlayerCollidingLeftMapObject(int MapObjectID);
@@ -48,6 +51,7 @@ public:
 	inline int isFallingPlayerCollidingDownMapObject(int MapObjectID);
 
 	inline int isFallingEnemyCollidingDownMapObject(Enemy* EnemyPtr, int MapObjectID);
+	inline int isFlyingEnemyCollidingUpMapObject(Enemy* EnemyPtr, int MapObjectID);
 	inline int isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPtr, int MapObjectID);
 	inline int isWalkingEnemyCollidingRightMapObject(Enemy* EnemyPtr, int MapObjectID);
 

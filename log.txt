@@ -52,6 +52,20 @@ media/SPRITES/misc/enemy-death/enemy-death-1.png
 media/SPRITES/misc/enemy-death/enemy-death-2.png
 media/SPRITES/misc/enemy-death/enemy-death-3.png
 media/SPRITES/misc/enemy-death/enemy-death-4.png
+doLoadImage
+7
+media/SPRITES/enemies/gator/gator-1.png
+media/SPRITES/enemies/gator/gator-2.png
+media/SPRITES/enemies/gator/gator-3.png
+media/SPRITES/enemies/gator/gator-4.png
 Loading media/text_atlas.png
 Map objects initialised. Total: 622
 Initializing Collision Manager.
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640
+New screen height/width: 1024/640

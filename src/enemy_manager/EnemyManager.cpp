@@ -18,7 +18,10 @@ Enemy::Enemy(int XPos, int YPos, int inAssetID) {
 	EnemyGameCoordY = YPos;
 	AssetID = inAssetID;
 	isFacingLeft = false;
+	isFlyingUp = false;
 	Frame = 0;
+	StartPosX = XPos;
+	StartPosY = YPos;
 }
 
 
@@ -34,6 +37,8 @@ EnemyManager::EnemyManager ( SDL_Renderer * inRen, Logger* inLogger, AssetFactor
 	doAddEnemy(5, -14, -298);
 	doAddEnemy(5, -114, -298);
 	doAddEnemy(5, -14, -398);
+
+	doAddEnemy(7, -30, -400);
 }
 
 EnemyManager::~EnemyManager ( void ) {

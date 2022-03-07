@@ -126,4 +126,5 @@ void AssetFactory::doLoadPlayerImages ( void ) {
 void AssetFactory::doLoadEnemyImages(void) {
 	doLoadImage(5, true, "media/SPRITES/enemies/ant/ant-", 0, 0, 37, 31, 8);
 	doLoadImage(6, true, "media/SPRITES/misc/enemy-death/enemy-death-", 0, 0, 28, 26, 4);
+	doLoadImage(7, true, "media/SPRITES/enemies/gator/gator-", 0, 0, 46, 49, 4);
 }

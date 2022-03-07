@@ -18,7 +18,8 @@ public:
 	int EnemyGameCoordX, EnemyGameCoordY;
 	int AssetID;
 	int Frame;
-	bool isFacingLeft;
+	bool isFacingLeft, isFlyingUp;
+	int StartPosX, StartPosY;
 };
 
 class EnemyManager {
