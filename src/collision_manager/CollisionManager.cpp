@@ -564,7 +564,8 @@ Enemy Collisions
 */
 inline int CollisionManager::isFallingEnemyCollidingDownMapObject(Enemy* EnemyPtr, int MapObjectID) {
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
+	int myAssetID = EnemyPtr->AssetID;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -590,7 +591,8 @@ inline int CollisionManager::isFallingEnemyCollidingDownMapObject(Enemy* EnemyPt
 
 inline int CollisionManager::isFlyingEnemyCollidingUpMapObject(Enemy* EnemyPtr, int MapObjectID) {
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
+	int myAssetID = EnemyPtr->AssetID;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -616,7 +618,8 @@ inline int CollisionManager::isFlyingEnemyCollidingUpMapObject(Enemy* EnemyPtr, 
 
 inline int CollisionManager::isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPtr, int MapObjectID) {
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
+	int myAssetID = EnemyPtr->AssetID;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -642,7 +645,8 @@ inline int CollisionManager::isWalkingEnemyCollidingLeftMapObject(Enemy* EnemyPt
 
 inline int CollisionManager::isWalkingEnemyCollidingRightMapObject(Enemy* EnemyPtr, int MapObjectID) {
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
+	int myAssetID = EnemyPtr->AssetID;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -885,7 +889,8 @@ inline int CollisionManager::isFallingPlayerCollidingDownEnemy(Enemy* EnemyPtr) 
 	}*/
 
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
+	int myAssetID = EnemyPtr->AssetID;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
@@ -910,7 +915,8 @@ inline int CollisionManager::isWalkingPlayerCollidingEnemy(Enemy* EnemyPtr) {
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX + 10;
 
 	//1) Get the collision box of the enemy.
-	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[6]->myStaticAssets[0]->myRect_src;
+	int myAssetID = EnemyPtr->AssetID;
+	SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[0]->myRect_src;
 	int EnemyEdge_Right = EnemyPtr->EnemyGameCoordX + myEnemyCollisionBox.w;
 	int EnemyEdge_Bottom = EnemyPtr->EnemyGameCoordY + myEnemyCollisionBox.h;
 	int EnemyEdge_Left = EnemyPtr->EnemyGameCoordX;
