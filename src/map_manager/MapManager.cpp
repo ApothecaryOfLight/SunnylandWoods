@@ -104,29 +104,42 @@ void MapManager::doLoadMapObjects ( void ) {
 	int newID = myIDManager->getNewID();
 
 	for (int i = -10; i < 10; i++) {
-		doCreateMapObject( 90, i*16, 0 );
-		doCreateMapObject( 340, i*16, 0 );
+		doCreateMapObject( 90, i*16, 0 ); // left column of blocks
+		doCreateMapObject( 340, i*16, 0 ); //right column of blocks
 	}
 
 	for (int i = -100; i < 100; i++) {
-		doCreateMapObject( i*16, 1000, 0 );
-		doCreateMapObject( i*16, 50, 0 );
+		doCreateMapObject( i*16, 1000, 0 ); //bottom row of blocks
+		doCreateMapObject( i*16, 50, 0 ); //2nd row of blocks
 	}
 
 	for (int i = -50; i < 50; i++) {
-		doCreateMapObject( i * 16, -25, 0 );
+		doCreateMapObject( i * 16, -25, 0 ); //3rd row of blocks
 	}
 	for (int i = -25; i < 25; i++) {
-		doCreateMapObject( i * 16, -100, 0 );
+		doCreateMapObject( i * 16, -100, 0 ); //4th row of blocks
 	}
 	for (int i = -10; i < 10; i++) {
-		doCreateMapObject( i*16, -175, 0 );
+		doCreateMapObject( i*16, -175, 0 ); //5th row of blocks
 	}
 	for (int i = -5; i < 5; i++) {
-		doCreateMapObject( i*16, -250, 0 );
+		doCreateMapObject( i*16, -250, 0 ); //top row of blocks
 	}
 
 	doCreateMapObject(220, -300, 1);
+
+	for (int log = -20; log < 20; log+=4) {
+		doCreateMapObject(-500, -200 + ((log) * 48), 3);
+		doCreateMapObject(-500, -200 + ((log+1) * 48), 4);
+		doCreateMapObject(-500, -200 + ((log+2) * 48), 5);
+		doCreateMapObject(-500, -200 + ((log + 3) * 48), 6);
+	}
+	for (int log = -20; log < 20; log += 4) {
+		doCreateMapObject(500, -200 + ((log) * 48), 3);
+		doCreateMapObject(500, -200 + ((log + 1) * 48), 4);
+		doCreateMapObject(500, -200 + ((log + 2) * 48), 5);
+		doCreateMapObject(500, -200 + ((log + 3) * 48), 6);
+	}
 
 	myLogger->log("Map objects initialised. Total: " + std::to_string(myIDManager->getIDcounter()));
 }

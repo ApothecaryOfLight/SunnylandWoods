@@ -4,6 +4,28 @@ doLoadImage
 doLoadImage
 1
 doLoadImage
+2
+doLoadImage
+3
+doLoadImage
+4
+doLoadImage
+5
+doLoadImage
+6
+doLoadImage
+7
+doLoadImage
+8
+doLoadImage
+9
+doLoadImage
+10
+doLoadImage
+11
+doLoadImage
+12
+doLoadImage
 0
 media/SPRITES/player/idle/player-idle-1.png
 media/SPRITES/player/idle/player-idle-2.png
@@ -59,5 +81,5 @@ media/SPRITES/enemies/gator/gator-2.png
 media/SPRITES/enemies/gator/gator-3.png
 media/SPRITES/enemies/gator/gator-4.png
 Loading media/text_atlas.png
-Map objects initialised. Total: 622
+Map objects initialised. Total: 702
 Initializing Collision Manager.
