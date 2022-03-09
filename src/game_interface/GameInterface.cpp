@@ -28,7 +28,7 @@ GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger 
 
 	myCameraManager = new CameraManager { myLogger, 0, 50, screenWIDTH, screenHEIGHT };
 	myAssetFactory = new AssetFactory( myLogger, inRen, myCameraManager );
-	myInputManager = new InputManager( myCameraManager, myAssetFactory );
+	myInputManager = new InputManager( myLogger, myCameraManager, myAssetFactory );
 	myTextManager = new TextManager(inRen,myLogger,myCameraManager);
 
 	myMapManager = new MapManager ( inRen, myLogger, myCameraManager, myAssetFactory, myIDManager );

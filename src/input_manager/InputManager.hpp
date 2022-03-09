@@ -4,12 +4,13 @@
 #define _INPUT_MANAGER_
 
 #include <SDL.h>
+#include "../logger/logger.hpp"
 #include "../camera_manager/CameraManager.hpp"
 #include "../asset_factory/AssetFactory.hpp"
 
 class InputManager {
 public:
-	InputManager ( CameraManager * inCameraManager, AssetFactory* inAssetFactory );
+	InputManager ( Logger * inLogger, CameraManager * inCameraManager, AssetFactory* inAssetFactory );
 	void doProcessInput ( SDL_Event * inEvent );
 	bool isQuit;
 	bool isPressed_LeftArrowKey, isPressed_RightArrowKey, isPressed_SpaceBar, isPressed_DownArrowKey;
@@ -31,6 +32,7 @@ public:
 
 	//float zoom;
 private:
+	Logger* myLogger;
 	CameraManager* myCameraManager;
 	AssetFactory* myAssetFactory;
 };

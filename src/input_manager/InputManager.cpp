@@ -7,7 +7,8 @@
 #include <string>
 #include <iostream>
 
-InputManager::InputManager ( CameraManager* inCameraManager, AssetFactory* inAssetFactory ) {
+InputManager::InputManager ( Logger* inLogger, CameraManager* inCameraManager, AssetFactory* inAssetFactory ) {
+	myLogger = inLogger;
 	myAssetFactory = inAssetFactory;
 	isQuit = false;
 
