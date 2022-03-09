@@ -43,8 +43,8 @@ InputManager::InputManager ( CameraManager* inCameraManager, AssetFactory* inAss
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 	SDL_GetMouseState(&mouseX_pos, &mouseY_pos);
 
-	mouseX_gamepos = mouseX_pos + myCameraManager->CameraX;
-	mouseY_gamepos = mouseY_pos + myCameraManager->CameraY;
+	mouseX_gamepos = (mouseX_pos + myCameraManager->CameraX) / myCameraManager->zoom;
+	mouseY_gamepos = (mouseY_pos + myCameraManager->CameraY) / myCameraManager->zoom;
 
 	while (SDL_PollEvent(inEvent)){
 		if( inEvent->type == SDL_QUIT ){
