@@ -17,7 +17,6 @@ public:
 	void doRenderFrame ( void );
 	bool isQuit ( void );
 private:
-//	SDL_Renderer * myRen;
 	MainMenuInterface * myMainMenuInterface;
 	GameInterface * myGameInterface;
 	SDL_Window* myWin;

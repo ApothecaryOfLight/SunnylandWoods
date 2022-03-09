@@ -24,6 +24,7 @@
 
 GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger ) {
 	myLogger = inLogger;
+	myWin = inWin;
 	myIDManager = new IDManager();
 
 	myCameraManager = new CameraManager { myLogger, 0, 50, screenWIDTH, screenHEIGHT };
@@ -86,6 +87,12 @@ void GameInterface::setScreenTextFields(void) {
 	myTextManager->add_text_entity("mouseXPos", &myInputManager->mouseX_pos, 2);
 
 	myTextManager->add_text_entity("Zoom", &myCameraManager->zoom, 3);
+}
+
+void GameInterface::doGameStart(void) {
+	int WindowSizeX, WindowSizeY;
+	SDL_GetWindowSize(myWin, &WindowSizeX, &WindowSizeY);
+	myInputManager->doResize(WindowSizeX, WindowSizeY);
 }
 
 bool GameInterface::isQuit ( void ) {

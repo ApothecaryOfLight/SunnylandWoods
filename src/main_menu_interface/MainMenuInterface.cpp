@@ -13,6 +13,7 @@ TODO: Subsume this within main game loop
 MainMenuInterface::MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRendererHandle, Logger * inLogger ) {
 	myLogger = inLogger;
 	isQuit = false;
+	GameInterfaceStart = false;
 	GameInterfaceStarted = false;
 
 	ren = inRendererHandle;
@@ -158,8 +159,12 @@ void MainMenuInterface::doProcessInput ( SDL_Event * inEvent ) {
 			}
 		}
 		switch( inEvent->key.keysym.sym ) {
-			case SDLK_ESCAPE: isQuit = true; break;
-			case SDLK_RETURN: GameInterfaceStarted = true; break;
+			case SDLK_ESCAPE:
+				isQuit = true;
+				break;
+			case SDLK_RETURN:
+				GameInterfaceStart = true;
+				break;
 		}
 	}
 }

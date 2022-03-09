@@ -28,8 +28,10 @@ public:
 	void doRenderFrame ( void );
 	void doProcessInput ( SDL_Event * inEvent );
 	void setScreenTextFields(void);
+	void doGameStart(void);
 	bool isQuit ( void );
 private:
+	SDL_Window* myWin;
 	AnimationManager * myAnimationManager;
 	MapManager * myMapManager;
 	PlayerManager * myPlayerManager;

@@ -42,8 +42,8 @@ InputManager::InputManager ( Logger* inLogger, CameraManager* inCameraManager, A
 }
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
-	SDL_GetMouseState(&mouseX_pos, &mouseY_pos);
 
+	SDL_GetMouseState(&mouseX_pos, &mouseY_pos);
 	mouseX_gamepos = (mouseX_pos + myCameraManager->CameraX) / myCameraManager->zoom;
 	mouseY_gamepos = (mouseY_pos + myCameraManager->CameraY) / myCameraManager->zoom;
 
@@ -125,9 +125,7 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 		if( inEvent->type == SDL_WINDOWEVENT ) {
 			switch( inEvent->window.event ) {
 				case SDL_WINDOWEVENT_RESIZED:
-					newWidth = inEvent->window.data1;
-					newHeight = inEvent->window.data2;
-					isResized = true;
+					doResize(inEvent->window.data1, newHeight = inEvent->window.data2);
 					break;
 			}
 		}
@@ -141,7 +139,6 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 					myCameraManager->zoom = 10;
 				}
 				myAssetFactory->doResizeImages(myCameraManager->zoom);
-				//myCameraManager->zoom = zoom;
 				isResized = true;
 			}
 			else if (inEvent->wheel.y < 0) {
@@ -157,4 +154,10 @@ void InputManager::doProcessInput ( SDL_Event * inEvent ) {
 			}
 		}
 	}
+}
+
+void InputManager::doResize(int WindowSizeX, int WindowSizeY) {
+	newWidth = WindowSizeX;
+	newHeight = WindowSizeY;
+	isResized = true;
 }

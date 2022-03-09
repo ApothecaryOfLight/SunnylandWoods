@@ -43,6 +43,11 @@ void InterfaceManager::doRenderFrame ( void ) {
 	else if( myMainMenuInterface->GameInterfaceStarted == true ) {
 		myGameInterface->doRenderFrame();
 	}
+	if (myMainMenuInterface->GameInterfaceStart == true) {
+		myGameInterface->doGameStart();
+		myMainMenuInterface->GameInterfaceStarted = true;
+		myMainMenuInterface->GameInterfaceStart = false;
+	}
 }
 
 

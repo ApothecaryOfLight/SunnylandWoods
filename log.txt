@@ -83,3 +83,5 @@ media/SPRITES/enemies/gator/gator-4.png
 Loading media/text_atlas.png
 Map objects initialised. Total: 232
 Initializing Collision Manager.
+New screen height/width: 1920/1057
+New screen height/width: 1920/1057

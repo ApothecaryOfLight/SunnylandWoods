@@ -12,6 +12,7 @@ class InputManager {
 public:
 	InputManager ( Logger * inLogger, CameraManager * inCameraManager, AssetFactory* inAssetFactory );
 	void doProcessInput ( SDL_Event * inEvent );
+	void doResize(int WindowSizeX, int WindowSizeY);
 	bool isQuit;
 	bool isPressed_LeftArrowKey, isPressed_RightArrowKey, isPressed_SpaceBar, isPressed_DownArrowKey;
 	bool isChangeAnimationAlert;

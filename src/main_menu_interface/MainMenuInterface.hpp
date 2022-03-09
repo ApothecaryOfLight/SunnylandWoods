@@ -44,7 +44,7 @@ public:
 
 	//Interface-flow variables.
 	bool isQuit;
-	bool GameInterfaceStarted;
+	bool GameInterfaceStart, GameInterfaceStarted;
 private:
 	SDL_Renderer *ren;
 	SDL_Window* myWin;
