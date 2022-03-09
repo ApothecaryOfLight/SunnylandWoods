@@ -113,7 +113,7 @@ void AssetFactory::doLoadMapImages(void) {
 	doLoadImage(3, false, "media/ENVIRONMENT/tileset.png", 241, 96, 95, 48, 0); //tree trunk b
 	doLoadImage(4, false, "media/ENVIRONMENT/tileset.png", 241, 160, 95, 48, 0); //tree trunk c
 	doLoadImage(5, false, "media/ENVIRONMENT/tileset.png", 353, 144, 95, 48, 0); //tree trunk alt c
-	doLoadImage(6, false, "media/ENVIRONMENT/tileset.png", 240, 224, 96, 48, 0); //tree trunk d
+	doLoadImage(6, false, "media/ENVIRONMENT/tileset.png", 241, 224, 96, 48, 0); //tree trunk d
 	doLoadImage(7, false, "media/ENVIRONMENT/tileset.png", 16, 224, 48, 29, 0); //branch a <---
 	doLoadImage(8, false, "media/ENVIRONMENT/tileset.png", 80, 224, 32, 30, 0); //branch b <---
 	doLoadImage(9, false, "media/ENVIRONMENT/tileset.png", 128, 224, 32, 32, 0); //branch c <---

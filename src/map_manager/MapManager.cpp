@@ -103,27 +103,8 @@ void MapManager::doLoadMapObjects ( void ) {
 
 	int newID = myIDManager->getNewID();
 
-	for (int i = -10; i < 10; i++) {
-		doCreateMapObject( 90, i*16, 0 ); // left column of blocks
-		doCreateMapObject( 340, i*16, 0 ); //right column of blocks
-	}
-
-	for (int i = -100; i < 100; i++) {
-		doCreateMapObject( i*16, 1000, 0 ); //bottom row of blocks
-		doCreateMapObject( i*16, 50, 0 ); //2nd row of blocks
-	}
-
-	for (int i = -50; i < 50; i++) {
-		doCreateMapObject( i * 16, -25, 0 ); //3rd row of blocks
-	}
-	for (int i = -25; i < 25; i++) {
-		doCreateMapObject( i * 16, -100, 0 ); //4th row of blocks
-	}
-	for (int i = -10; i < 10; i++) {
-		doCreateMapObject( i*16, -175, 0 ); //5th row of blocks
-	}
-	for (int i = -5; i < 5; i++) {
-		doCreateMapObject( i*16, -250, 0 ); //top row of blocks
+	for (int i = -50; i < 100; i++) {
+		doCreateMapObject( i*16, 100, 0 );
 	}
 
 	doCreateMapObject(220, -300, 1);
