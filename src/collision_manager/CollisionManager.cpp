@@ -27,15 +27,6 @@ TODO:
 
 #include "../logger/logger.hpp"
 
-vector2d::vector2d(int inX, int inY) {
-	x = inX;
-	y = inY;
-}
-
-int vector2d::magnitude() {
-	return x + y;
-}
-
 CollisionManager::CollisionManager ( Logger * inLogger, SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * inPlayerManager, InputManager * inInputManager, IDManager * inIDManager ) {
 	myRen = inRen;
 	myLogger = inLogger;
