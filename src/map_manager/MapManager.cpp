@@ -49,11 +49,10 @@ MapManager::~MapManager ( void ) {
 inline void MapManager::doCreateRect ( int inMapObjectID, int inX, int inY, int inW, int inH ) {
 	std::cout << "doCreateRect: " << inMapObjectID << " = " << inX << "/" << inY << "/" << inW << "/" << inH << std::endl;
 	std::cout << &myCollisionBoxes << std::endl;
-	int myMagnification = myCameraManager->magnification;
 	myCollisionBoxes[ inMapObjectID ]->x = inX;
 	myCollisionBoxes[ inMapObjectID ]->y = inY;
-	myCollisionBoxes[ inMapObjectID ]->w = inW * myMagnification;
-	myCollisionBoxes[ inMapObjectID ]->h = inH * myMagnification;
+	myCollisionBoxes[ inMapObjectID ]->w = inW;
+	myCollisionBoxes[ inMapObjectID ]->h = inH;
 }
 
 //TODO: This should take place in AssetFactory

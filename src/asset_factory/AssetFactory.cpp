@@ -73,8 +73,8 @@ void AssetFactory::doLoadImage(int inAssetID, bool isAnimated, std::string inSrc
 			myAnimatedAssets[inAssetID]->myStaticAssets[i - 1]->myRect_dst = doCreateRect(
 				0,
 				0,
-				inWidth * myCameraManager->magnification,
-				inHeight * myCameraManager->magnification
+				inWidth,
+				inHeight
 			);
 
 			SDL_FreeSurface(myNewSurface);

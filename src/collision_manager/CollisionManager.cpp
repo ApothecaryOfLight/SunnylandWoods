@@ -56,8 +56,6 @@ CollisionManager::~CollisionManager ( void ) {
 void CollisionManager::doDrawCollisionBoxes ( void ) {
 	SDL_SetRenderDrawColor( myRen, 255, 0, 0, SDL_ALPHA_OPAQUE);
 
-	int magnification = myCameraManager->magnification;
-
 	//0) Draw screen walls
 
 	//1) Enumerate and draw player collisions
@@ -74,11 +72,6 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	if (myInputManager->inputFlag_Jumping && !myInputManager->isPlayerFacingLeft) {
 		//myPlayerDrawnCollisionBox.x -= 5;
 	}
-
-	/*myPlayerDrawnCollisionBox.x *= magnification;
-	myPlayerDrawnCollisionBox.y *= magnification;
-	myPlayerDrawnCollisionBox.w *= magnification;
-	myPlayerDrawnCollisionBox.h *= magnification;*/
 
 	SDL_RenderDrawRect(
 		myRen,
@@ -98,8 +91,6 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 		SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_src;
 		myCollisionBox.x = myMapObject->XPos - myCameraManager->CameraX;
 		myCollisionBox.y = myMapObject->YPos - myCameraManager->CameraY;
-		myCollisionBox.w *= magnification;
-		myCollisionBox.h *= magnification;
 
 		if (myMapObject->has_collided == true) {
 			myMapManager->decrement_collided(MapObjectID);
