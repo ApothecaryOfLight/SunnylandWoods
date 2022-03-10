@@ -12,9 +12,6 @@ public:
 	void doResize ( int inNewWidth, int inNewHeight );
 	void doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY );
 
-	int getPlayerAdjX();
-	int getPlayerAdjY();
-
 	void doInitializeCamera(int PlayerGameCoordX, int PlayerGameCoordY);
 
 	int CameraX, CameraY, //Position of the camera's upper-left corner. Used to lens everything that is not the player.

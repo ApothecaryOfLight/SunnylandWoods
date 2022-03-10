@@ -46,11 +46,3 @@ void CameraManager::doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY ) {
 	PlayerSize_X = inPlayerSizeX;
 	PlayerSize_Y = inPlayerSizeY;
 }
-
-int CameraManager::getPlayerAdjX() {
-	return (ScreenWidth / 2) - (PlayerSize_X / 2);
-}
-
-int CameraManager::getPlayerAdjY() {
-	return (ScreenHeight / 2) - (PlayerSize_Y / 2);
-}
