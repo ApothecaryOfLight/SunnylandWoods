@@ -81,7 +81,6 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	//2) Enumerate and draw enemy collisions
 
 	//3) Enumerate and draw map object collisions
-	//std::list<int> myActiveMapObjects( myMapManager->myActiveMapObjects );
 	std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
 	std::list<int>::iterator MapObjs_myEnd = myMapManager->myActiveMapObjects.end();
 	while( MapObjs_myStart != MapObjs_myEnd ) {
@@ -135,20 +134,6 @@ void CollisionManager::doGameLogic ( void ) {
 	//5) doCollectiblesLogicTick();
 	//6) doClickablesLogicTick();
 	//7) doInteractablesLogicTick();
-}
-
-/*
-Determines if there is a collision for the player walking left.
-Returns -1 if there is no collision.
-Otherwise, returns the distance between the player and the colliding object.
-*/
-inline int CollisionManager::isColliding(CollisionBox ObjectA, CollisionBox ObjectB, vector2d ObjectAMovement) {
-/*	if (std::max(ObjectA.y, ObjectB.y) < std::min(ObjectA.y + ObjectA.h, ObjectB.y + ObjectB.h)) {
-		if (std::max(PlayerEdge_LeftAfterMovement, MapObjectEdge_Left) < std::min(PlayerEdge_Right, MapObjectEdge_Right)) {
-			return PlayerEdge_Left - MapObjectEdge_Right;
-		}
-	}*/
-	return -1;
 }
 
 /*
@@ -869,15 +854,6 @@ inline int CollisionManager::isFallingPlayerCollidingDownEnemy(Enemy* EnemyPtr) 
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
 	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 12;
 	int PlayerEdge_BottomAfterMovement = PlayerEdge_Bottom + (myPlayerManager->player_movement_increment * 2);
-
-	/*if (!myInputManager->inputFlag_Left && !myInputManager->inputFlag_Right) {
-		if (myInputManager->isPlayerFacingLeft) {
-			PlayerEdge_Right -= 10;
-		}
-		else {
-			PlayerEdge_Left += 10;
-		}
-	}*/
 
 	//1) Get the collision box of the enemy.
 	int myAssetID = EnemyPtr->AssetID;

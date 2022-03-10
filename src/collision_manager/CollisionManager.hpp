@@ -58,8 +58,6 @@ public:
 	void doPlayerEnemyCollisions(void);
 	inline int isWalkingPlayerCollidingEnemy(Enemy* EnemyPtr);
 	inline int isFallingPlayerCollidingDownEnemy(Enemy* EnemyPtr);
-
-	inline int isColliding(CollisionBox ObjectA, CollisionBox ObjectB, vector2d ObjectAMovement);
 private:
 	SDL_Renderer * myRen;
 
