@@ -5,6 +5,12 @@
 
 #include "../logger/logger.hpp"
 
+class coord {
+public:
+	coord(int inX, int inY);
+	int x, y;
+};
+
 class CameraManager {
 public:
 	CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight );
@@ -12,6 +18,10 @@ public:
 	void doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY );
 
 	void doInitializeCamera(int PlayerGameCoordX, int PlayerGameCoordY);
+	void doZoomCamera(int PlayerGameCoordX, int PlayerGameCoordY);
+
+	coord translate_coords(int GameCoordX, int GameCoordY);
+	coord translate_screen_coords(int ScreenCoordX, int ScreenCoordY);
 
 	int CameraX, CameraY; //Position of the camera's upper-left corner. Used to lens everything that is not the player.
 	int ScreenWidth, ScreenHeight; //Size of the screen

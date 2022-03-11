@@ -30,7 +30,6 @@ TODO:
 CollisionManager::CollisionManager ( Logger * inLogger, SDL_Renderer * inRen, CameraManager * inCameraManager, AssetFactory * inAssetFactory, MapManager * inMapManager, EnemyManager * inEnemyManager, PlayerManager * inPlayerManager, InputManager * inInputManager, IDManager * inIDManager ) {
 	myRen = inRen;
 	myLogger = inLogger;
-	myLogger->log( "Initializing Collision Manager." );
 	myCameraManager = inCameraManager;
 	myAssetFactory = inAssetFactory;
 	myEnemyManager = inEnemyManager;

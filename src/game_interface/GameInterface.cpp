@@ -64,7 +64,7 @@ void GameInterface::doRenderFrame ( void ) {
 	if( myInputManager->isResized ) {
 		myLogger->log("New screen height/width: " + std::to_string(myInputManager->newWidth) + "/" + std::to_string(myInputManager->newHeight));
 		myCameraManager->doResize( myInputManager->newWidth, myInputManager->newHeight );
-		myCameraManager->doInitializeCamera( myPlayerManager->PlayerGameCoordX, myPlayerManager->PlayerGameCoordY );
+		myCameraManager->doZoomCamera( myPlayerManager->PlayerGameCoordX, myPlayerManager->PlayerGameCoordY );
 		myMapManager->doResize(myInputManager->newWidth, myInputManager->newHeight);
 		myInputManager->isResized = false;
 	}

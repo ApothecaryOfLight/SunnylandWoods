@@ -61,8 +61,9 @@ void PlayerManager::doGameLogic ( void ) {
 
 SDL_Rect PlayerManager::getPlayerDest(void) {
 	SDL_Rect PlayerDest;
-	PlayerDest.x = (PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX;
-	PlayerDest.y = (PlayerGameCoordY * myCameraManager->zoom) - myCameraManager->CameraY;
+	coord PlayerCoords = myCameraManager->translate_coords(PlayerGameCoordX, PlayerGameCoordY);
+	PlayerDest.x = PlayerCoords.x;
+	PlayerDest.y = PlayerCoords.y;
 	return PlayerDest;
 }
 

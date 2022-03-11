@@ -5,6 +5,10 @@
 
 #include <iostream>
 
+coord::coord(int inX, int inY) {
+	x = inX;
+	y = inY;
+}
 
 CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, int inScreenWidth, int inScreenHeight ) {
 	myLogger = inLogger;
@@ -14,12 +18,17 @@ CameraManager::CameraManager ( Logger * inLogger, int inPlayerX, int inPlayerY, 
 	CameraX = 0;
 	CameraY = 0;
 
-	zoom = 2;
+	zoom = 1;
 }
 
 void CameraManager::doInitializeCamera( int PlayerGameCoordX, int PlayerGameCoordY ) {
 	CameraX = (PlayerGameCoordX*zoom) - ((ScreenWidth - PlayerSize_X) / 2);
 	CameraY = (PlayerGameCoordY*zoom) - ((ScreenHeight - PlayerSize_Y) / 2);
+}
+
+void CameraManager::doZoomCamera(int PlayerGameCoordX, int PlayerGameCoordY) {
+	CameraX = (PlayerGameCoordX * zoom) - ((ScreenWidth - PlayerSize_X) / 2);
+	CameraY = (PlayerGameCoordY * zoom) - ((ScreenHeight - PlayerSize_Y) / 2);
 }
 
 void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
@@ -36,4 +45,17 @@ void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
 void CameraManager::doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY ) {
 	PlayerSize_X = inPlayerSizeX;
 	PlayerSize_Y = inPlayerSizeY;
+}
+
+coord CameraManager::translate_coords(int GameCoordX, int GameCoordY) {
+	int ScreenX = (GameCoordX * zoom) - CameraX;
+	int ScreenY = (GameCoordY * zoom) - CameraY;
+	return coord(ScreenX, ScreenY);
+}
+
+coord CameraManager::translate_screen_coords(int ScreenCoordX, int ScreenCoordY) {
+	int GameCoordX = (ScreenCoordX + CameraX) / zoom;
+	int GameCoordY = (ScreenCoordY + CameraY) / zoom;
+	return coord(GameCoordX, GameCoordY);
+
 }

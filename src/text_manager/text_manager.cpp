@@ -182,7 +182,7 @@ void TextManager::add_text_entity(std::string in_name, float* in_ptr_to_float, i
 }
 
 void TextManager::draw_text_entities() {
-	for (int corner = 0; corner < 5; corner++) {
+	for (int corner = 0; corner <= 3; corner++) {
 		for (int text_entity = 0; text_entity < screen_text_entities_container[corner].length; text_entity++) {
 			draw_text_entity(&screen_text_entities_container[corner].entities[text_entity],corner,text_entity);
 		}

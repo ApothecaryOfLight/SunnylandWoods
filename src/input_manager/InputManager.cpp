@@ -42,10 +42,10 @@ InputManager::InputManager ( Logger* inLogger, CameraManager* inCameraManager, A
 }
 
 void InputManager::doProcessInput ( SDL_Event * inEvent ) {
-
 	SDL_GetMouseState(&mouseX_pos, &mouseY_pos);
-	mouseX_gamepos = (mouseX_pos + myCameraManager->CameraX) / myCameraManager->zoom;
-	mouseY_gamepos = (mouseY_pos + myCameraManager->CameraY) / myCameraManager->zoom;
+	coord myMouseGameCoords = myCameraManager->translate_screen_coords(mouseX_pos, mouseY_pos);
+	mouseX_gamepos = myMouseGameCoords.x;
+	mouseY_gamepos = myMouseGameCoords.y;
 
 	while (SDL_PollEvent(inEvent)){
 		if( inEvent->type == SDL_QUIT ){

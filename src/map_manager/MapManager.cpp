@@ -140,8 +140,9 @@ void MapManager::doRenderFrame ( void ) {
 		StaticAsset * myStaticAssetPtr = myAssetFactory->myStaticAssets[myMapObjectPtr->myAssetID];
 
 		SDL_Rect myObjectPosition;
-		myObjectPosition.x = static_cast<int>(myMapObjects[myGlobalID].XPos*myCameraManager->zoom) - myCameraManager->CameraX;
-		myObjectPosition.y = static_cast<int>(myMapObjects[myGlobalID].YPos*myCameraManager->zoom) - myCameraManager->CameraY;
+		coord myObjectCoords = myCameraManager->translate_coords(myMapObjects[myGlobalID].XPos, myMapObjects[myGlobalID].YPos);
+		myObjectPosition.x = myObjectCoords.x;
+		myObjectPosition.y = myObjectCoords.y;
 		myObjectPosition.w = myStaticAssetPtr->myRect_dst.w;
 		myObjectPosition.h = myStaticAssetPtr->myRect_dst.h;
 
