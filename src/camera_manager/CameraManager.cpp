@@ -27,8 +27,11 @@ void CameraManager::doInitializeCamera( int PlayerGameCoordX, int PlayerGameCoor
 }
 
 void CameraManager::doZoomCamera(int PlayerGameCoordX, int PlayerGameCoordY) {
-	CameraX = (PlayerGameCoordX * zoom) - ((ScreenWidth - PlayerSize_X) / 2);
-	CameraY = (PlayerGameCoordY * zoom) - ((ScreenHeight - PlayerSize_Y) / 2);
+	coord PlayerScreenCoord = translate_coords(PlayerGameCoordX, PlayerGameCoordY);
+	//int screen_wall_dist_x = (PlayerScreenCoord.x - ScreenWall_Left) / zoom;
+	//int screen_wall_dist_y = (PlayerScreenCoord.y - ScreenWall_Top) / zoom;
+	CameraX = (PlayerGameCoordX - PlayerScreenCoord.x) / zoom;
+	CameraY = (PlayerGameCoordY - PlayerScreenCoord.y) / zoom;
 }
 
 void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
@@ -39,7 +42,7 @@ void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
 	ScreenWall_Left = ScreenWidth/5;
 	ScreenWall_Right = ScreenWidth - ScreenWall_Left;
 	ScreenWall_Top = ScreenHeight / 5;
-	ScreenWall_Bottom = ScreenHeight/2;
+	ScreenWall_Bottom = ScreenHeight - (ScreenWall_Top*2);
 }
 
 void CameraManager::doSetPlayerSize ( int inPlayerSizeX, int inPlayerSizeY ) {
