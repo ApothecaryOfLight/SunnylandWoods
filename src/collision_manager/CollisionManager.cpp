@@ -56,6 +56,8 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	coord myPlayerCoords = myCameraManager->translate_coords(myPlayerManager->PlayerGameCoordX, myPlayerManager->PlayerGameCoordY);
 	myPlayerDrawnCollisionBox.x = myPlayerCoords.x;
 	myPlayerDrawnCollisionBox.y = myPlayerCoords.y;
+	myPlayerDrawnCollisionBox.w *= myCameraManager->zoom;
+	myPlayerDrawnCollisionBox.h *= myCameraManager->zoom;
 
 	if (!myInputManager->inputFlag_Left && myInputManager->inputFlag_Right && !myInputManager->inputFlag_Jumping && myPlayerManager->jump_counter < max_jump_height) {
 		myPlayerDrawnCollisionBox.x -= 18;
@@ -79,6 +81,8 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 		coord myEnemyCoords = myCameraManager->translate_coords(myEnemy->EnemyGameCoordX, myEnemy->EnemyGameCoordY);
 		myEnemyCollisionBox.x = myEnemyCoords.x;
 		myEnemyCollisionBox.y = myEnemyCoords.y;
+		myEnemyCollisionBox.w *= myCameraManager->zoom;
+		myEnemyCollisionBox.h *= myCameraManager->zoom;
 		SDL_RenderDrawRect(
 			myRen,
 			&myEnemyCollisionBox
@@ -97,6 +101,8 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 		coord myCollisionBoxCoords = myCameraManager->translate_coords(myMapObject->XPos, myMapObject->YPos);
 		myCollisionBox.x = myCollisionBoxCoords.x;
 		myCollisionBox.y = myCollisionBoxCoords.y;
+		myCollisionBox.w *= myCameraManager->zoom;
+		myCollisionBox.h *= myCameraManager->zoom;
 
 		if (myMapObject->has_collided == true) {
 			myMapManager->decrement_collided(MapObjectID);
