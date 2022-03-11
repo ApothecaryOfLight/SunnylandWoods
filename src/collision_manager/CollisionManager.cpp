@@ -53,8 +53,9 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	int PlayerAnimationType = myPlayerManager->PlayerAnimationType;
 	StaticAsset * myStaticAssetPtr = myAssetFactory->myAnimatedAssets[PlayerAnimationType]->myStaticAssets[PlayerAnimationFrame];
 	SDL_Rect myPlayerDrawnCollisionBox = myStaticAssetPtr->myRect_src;
-	myPlayerDrawnCollisionBox.x = myPlayerManager->PlayerGameCoordX - myCameraManager->CameraX;
-	myPlayerDrawnCollisionBox.y = myPlayerManager->PlayerGameCoordY - myCameraManager->CameraY;
+	coord myPlayerCoords = myCameraManager->translate_coords(myPlayerManager->PlayerGameCoordX, myPlayerManager->PlayerGameCoordY);
+	myPlayerDrawnCollisionBox.x = myPlayerCoords.x;
+	myPlayerDrawnCollisionBox.y = myPlayerCoords.y;
 
 	if (!myInputManager->inputFlag_Left && myInputManager->inputFlag_Right && !myInputManager->inputFlag_Jumping && myPlayerManager->jump_counter < max_jump_height) {
 		myPlayerDrawnCollisionBox.x -= 18;
@@ -69,6 +70,21 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 	);
 
 	//2) Enumerate and draw enemy collisions
+	std::list<Enemy>::iterator myIter = myEnemyManager->myEnemies.begin(), myEnd = myEnemyManager->myEnemies.end();
+	while (myIter != myEnd) {
+		Enemy* myEnemy = &(*myIter);
+		int myAssetID = myEnemy->AssetID;
+		StaticAsset* myStaticAssetPtr = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[myEnemy->Frame];
+		SDL_Rect myEnemyCollisionBox = myAssetFactory->myAnimatedAssets[myAssetID]->myStaticAssets[myEnemy->Frame]->myRect_src;
+		coord myEnemyCoords = myCameraManager->translate_coords(myEnemy->EnemyGameCoordX, myEnemy->EnemyGameCoordY);
+		myEnemyCollisionBox.x = myEnemyCoords.x;
+		myEnemyCollisionBox.y = myEnemyCoords.y;
+		SDL_RenderDrawRect(
+			myRen,
+			&myEnemyCollisionBox
+		);
+		++myIter;
+	}
 
 	//3) Enumerate and draw map object collisions
 	std::list<int>::iterator MapObjs_myStart = myMapManager->myActiveMapObjects.begin();
@@ -78,8 +94,9 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 		MapObject * myMapObject = myMapManager->getMapObject( MapObjectID );
 		int MapObjectAssetID = myMapObject->myAssetID;
 		SDL_Rect myCollisionBox = myAssetFactory->myStaticAssets[ MapObjectAssetID ]->myRect_src;
-		myCollisionBox.x = myMapObject->XPos - myCameraManager->CameraX;
-		myCollisionBox.y = myMapObject->YPos - myCameraManager->CameraY;
+		coord myCollisionBoxCoords = myCameraManager->translate_coords(myMapObject->XPos, myMapObject->YPos);
+		myCollisionBox.x = myCollisionBoxCoords.x;
+		myCollisionBox.y = myCollisionBoxCoords.y;
 
 		if (myMapObject->has_collided == true) {
 			myMapManager->decrement_collided(MapObjectID);

@@ -35,12 +35,12 @@ EnemyManager::EnemyManager ( SDL_Renderer * inRen, Logger* inLogger, AssetFactor
 
 	tick_counter = 0;
 
-	/*doAddEnemy(5, 114, -298);
+	doAddEnemy(5, 114, -298);
 	doAddEnemy(5, -14, -298);
 	doAddEnemy(5, -114, -298);
 	doAddEnemy(5, -14, -398);
 
-	doAddEnemy(7, -30, -400);*/
+	doAddEnemy(7, -30, -400);
 }
 
 EnemyManager::~EnemyManager ( void ) {

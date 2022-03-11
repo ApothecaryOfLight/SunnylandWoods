@@ -38,7 +38,7 @@ void AnimationManager::doRenderFrame ( void ) {
 	myEnemyManager->doRenderFrame();
 
 	if (myInputManager->isPressed_F5) {
-		//myCollisionManager->doDrawCollisionBoxes();
+		myCollisionManager->doDrawCollisionBoxes();
 		myTextManager->draw_text_entities();
 	}
 
