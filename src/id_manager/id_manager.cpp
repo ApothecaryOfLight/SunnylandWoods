@@ -1,9 +1,7 @@
-
 #include "id_manager.hpp"
 
 IDManager::IDManager ( void ) {
 	IDcounter = 0;
-	//myGlobalObjects = new GlobalObject[5000];
 }
 
 int IDManager::getNewID ( void ) {
@@ -12,7 +10,6 @@ int IDManager::getNewID ( void ) {
 	} else {
 		int ret = _retiredIDs.front();
 		_retiredIDs.pop_front();
-		//myGlobalObjects[ret] = nullptr;
 		return ret;
 	}
 }

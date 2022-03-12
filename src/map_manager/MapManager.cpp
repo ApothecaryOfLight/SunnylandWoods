@@ -109,16 +109,16 @@ void MapManager::doLoadMapObjects ( void ) {
 	doCreateMapObject(220, -300, 1);
 
 	for (int log = -20; log < 20; log+=4) {
-		doCreateMapObject(-500, -200 + ((log) * 48), 3);
-		doCreateMapObject(-500, -200 + ((log+1) * 48), 4);
-		doCreateMapObject(-500, -200 + ((log+2) * 48), 5);
-		doCreateMapObject(-500, -200 + ((log + 3) * 48), 6);
+		doCreateMapObject(-895, -200 + ((log) * 48), 3);
+		doCreateMapObject(-895, -200 + ((log+1) * 48), 4);
+		doCreateMapObject(-895, -200 + ((log+2) * 48), 5);
+		doCreateMapObject(-895, -200 + ((log + 3) * 48), 6);
 	}
 	for (int log = -20; log < 20; log += 4) {
-		doCreateMapObject(500, -200 + ((log) * 48), 3);
-		doCreateMapObject(500, -200 + ((log + 1) * 48), 4);
-		doCreateMapObject(500, -200 + ((log + 2) * 48), 5);
-		doCreateMapObject(500, -200 + ((log + 3) * 48), 6);
+		doCreateMapObject(1599, -200 + ((log) * 48), 3);
+		doCreateMapObject(1599, -200 + ((log + 1) * 48), 4);
+		doCreateMapObject(1599, -200 + ((log + 2) * 48), 5);
+		doCreateMapObject(1599, -200 + ((log + 3) * 48), 6);
 	}
 
 	myLogger->log("Map objects initialised. Total: " + std::to_string(myIDManager->getIDcounter()));
