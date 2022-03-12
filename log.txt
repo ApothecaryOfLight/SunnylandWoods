@@ -80,9 +80,5 @@ media/SPRITES/enemies/gator/gator-2.png
 media/SPRITES/enemies/gator/gator-3.png
 media/SPRITES/enemies/gator/gator-4.png
 Loading media/text_atlas.png
-Map objects initialised. Total: 247
-New screen height/width: 1024/640
-New screen height/width: 1024/640
-New screen height/width: 1024/640
-New screen height/width: 1024/640
-New screen height/width: 1024/640
+Map objects initialised. Total: 297
+New screen height/width: 1920/1057

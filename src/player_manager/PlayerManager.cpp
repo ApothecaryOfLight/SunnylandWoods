@@ -31,7 +31,7 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 	jump_peak_counter = 0;
 
 	PlayerGameCoordX = 194;
-	PlayerGameCoordY = -148;
+	PlayerGameCoordY = -80;
 
 	player_movement_increment = 8;
 
