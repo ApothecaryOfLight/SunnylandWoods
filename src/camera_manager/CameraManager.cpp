@@ -32,7 +32,6 @@ void CameraManager::doZoomCamera(int PlayerGameCoordX, int PlayerGameCoordY) {
 }
 
 void CameraManager::doResize ( int inNewWidth, int inNewHeight ) {
-	myLogger->log("New screen height/width: " + std::to_string(inNewWidth) + "/" + std::to_string(inNewHeight));
 	ScreenWidth = inNewWidth;
 	ScreenHeight = inNewHeight;
 

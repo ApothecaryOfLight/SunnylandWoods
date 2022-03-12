@@ -1,7 +1,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <iostream>
 #include <sstream>
 
 #include "src/logger/logger.hpp"
@@ -19,19 +18,19 @@ int main ( int argc, char *argv[] ) {
 	Logger * myLogger = new Logger;
 	//TODO: Have a proper usage invokation respond to command line arguemnts by saying just run it.
 	if ( SDL_Init( SDL_INIT_VIDEO ) != 0 ){
-		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+		myLogger->log( "SDL_Init Error: " + std::string(SDL_GetError()) );
 		return 1;
 	}
 	SDL_Window *win = SDL_CreateWindow(  "Sunnyland Woods", 100, 100, screenWIDTH, screenHEIGHT, SDL_WINDOW_SHOWN );
 	if (win == NULL){
-		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+		myLogger->log( "SDL_CreateWindow Error: " + std::string(SDL_GetError()) );
 		SDL_Quit();
 		return 1;
 	}
 	SDL_Renderer *ren = SDL_CreateRenderer( win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
 	if (ren == NULL){
 		SDL_DestroyWindow(win);
-		std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+		myLogger->log( "SDL_CreateRenderer Error: " + std::string(SDL_GetError()) );;
 		SDL_Quit();
 		return 1;
 	}
