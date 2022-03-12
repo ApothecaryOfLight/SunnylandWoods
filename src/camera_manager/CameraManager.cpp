@@ -53,8 +53,8 @@ coord CameraManager::translate_coords(int GameCoordX, int GameCoordY) {
 }
 
 coord CameraManager::translate_screen_coords(int ScreenCoordX, int ScreenCoordY) {
-	int GameCoordX = (ScreenCoordX + CameraX);
-	int GameCoordY = (ScreenCoordY + CameraY);
+	int GameCoordX = (ScreenCoordX + CameraX) / zoom;
+	int GameCoordY = (ScreenCoordY + CameraY) / zoom;
 	return coord(GameCoordX, GameCoordY);
 
 }
