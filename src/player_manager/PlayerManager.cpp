@@ -123,7 +123,7 @@ void PlayerManager::doRenderFrame ( void ) {
 			PlayerDest.w = myStaticAssetPtr->myRect_dst.w;
 			PlayerDest.h = myStaticAssetPtr->myRect_dst.h;
 			if( myInputManager->isPlayerFacingLeft == true ) {
-				PlayerDest.x -= 35;
+				PlayerDest.x -= 34 * myCameraManager->zoom;
 				SDL_RenderCopyEx(
 					myRen,
 					myStaticAssetPtr->myTexture,
@@ -135,7 +135,7 @@ void PlayerManager::doRenderFrame ( void ) {
 				);
 			}
 			else if( myInputManager->isPlayerFacingLeft == false ) {
-				PlayerDest.x -= 20;
+				PlayerDest.x -= 20 * myCameraManager->zoom;
 				SDL_RenderCopy(
 					myRen,
 					myStaticAssetPtr->myTexture,
