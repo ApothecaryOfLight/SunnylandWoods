@@ -34,7 +34,11 @@ public:
 
 	inline int isWalkingPlayerCollidingLeftMapObject(int MapObjectID);
 	inline int isWalkingPlayerCollidingRightMapObject(int MapObjectID);
+
 	inline int isJumpingPlayerCollidingUpMapObject(int MapObjectID);
+	inline int isJumpingPlayerCollidingLeftMapObject(int MapObjectID);
+	inline int isJumpingPlayerCollidingRightMapObject(int MapObjectID);
+
 	inline int isFallingPlayerCollidingDownMapObject(int MapObjectID);
 
 	inline int isFallingEnemyCollidingDownMapObject(Enemy* EnemyPtr, int MapObjectID);

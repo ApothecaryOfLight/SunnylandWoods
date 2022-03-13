@@ -267,6 +267,58 @@ inline int CollisionManager::isJumpingPlayerCollidingUpMapObject(int MapObjectID
 	return -1;
 }
 
+inline int CollisionManager::isJumpingPlayerCollidingLeftMapObject(int MapObjectID) {
+	//1) Get the collision box of the player.
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[4]->myStaticAssets[0]->myRect_src;
+	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
+	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
+	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
+	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 12;
+	int PlayerEdge_LeftAfterMovement = myPlayerManager->PlayerGameCoordX - myPlayerManager->player_movement_increment;
+
+	//2) Get the collision box of the map object.
+	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
+	int MapObjectEdge_Left = myMapObject->XPos;
+	int MapObjectEdge_Top = myMapObject->YPos;
+	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
+	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
+
+	//3)Determine if player, after movement, will collide with object. If it will, return distance between the two.
+	if (std::max(PlayerEdge_Top, MapObjectEdge_Top) < std::min(PlayerEdge_Bottom, MapObjectEdge_Bottom)) {
+		if (std::max(PlayerEdge_LeftAfterMovement, MapObjectEdge_Left) < std::min(PlayerEdge_Right, MapObjectEdge_Right)) {
+			return PlayerEdge_LeftAfterMovement - MapObjectEdge_Right;
+		}
+	}
+	return -1;
+}
+
+inline int CollisionManager::isJumpingPlayerCollidingRightMapObject(int MapObjectID) {
+	//1) Get the collision box of the player.
+	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
+	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
+	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h - 20;
+	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
+	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 12;
+	int PlayerEdge_RightAfterMovement = PlayerEdge_Right + myPlayerManager->player_movement_increment;
+
+	//2) Get the collision box of the map object.
+	MapObject* myMapObject = myMapManager->getMapObject(MapObjectID);
+	SDL_Rect myMapObjectCollisionBox = myAssetFactory->myStaticAssets[myMapObject->myAssetID]->myRect_src;
+	int MapObjectEdge_Left = myMapObject->XPos;
+	int MapObjectEdge_Top = myMapObject->YPos;
+	int MapObjectEdge_Bottom = myMapObject->YPos + myMapObjectCollisionBox.h;
+	int MapObjectEdge_Right = myMapObject->XPos + myMapObjectCollisionBox.w;
+
+	//3)Determine if player, after movement, will collide with object. If it will, return distance between the two.
+	if (std::max(PlayerEdge_Top, MapObjectEdge_Top) < std::min(PlayerEdge_Bottom, MapObjectEdge_Bottom)) {
+		if (std::max(PlayerEdge_Left, MapObjectEdge_Left) < std::min(PlayerEdge_RightAfterMovement, MapObjectEdge_Right)) {
+			return MapObjectEdge_Left - PlayerEdge_RightAfterMovement;
+		}
+	}
+	return -1;
+}
+
 inline int CollisionManager::isFallingPlayerCollidingDownMapObject(int MapObjectID) {
 	//1) Get the collision box of the player.
 	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
@@ -316,10 +368,10 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			int distance_left = -1;
 			int distance_right = -1;
 			if (myInputManager->inputFlag_Left && !myInputManager->inputFlag_Right) {
-				distance_left = isWalkingPlayerCollidingLeftMapObject((*MapObjs_myIter));
+				distance_left = isJumpingPlayerCollidingLeftMapObject((*MapObjs_myIter));
 			}
 			else if (myInputManager->inputFlag_Right && !myInputManager->inputFlag_Left) {
-				distance_right = isWalkingPlayerCollidingRightMapObject((*MapObjs_myIter));
+				distance_right = isJumpingPlayerCollidingRightMapObject((*MapObjs_myIter));
 			}
 			if (distance_top != -1) {
 				is_colliding_up = true;
@@ -371,53 +423,26 @@ void CollisionManager::doPlayerCollisions ( void ) {
 			}
 		}
 
+		//Jumping left
 		if (myInputManager->inputFlag_Left && !myInputManager->inputFlag_Right) {
-			MapObjs_myIter = myMapManager->myActiveMapObjects.begin();
-			while (MapObjs_myIter != MapObjs_myEnd) {
-				int distance_left = -1;
-				distance_left = isWalkingPlayerCollidingLeftMapObject((*MapObjs_myIter));
-				if (distance_left != -1) {
-					is_colliding_left = true;
-					myMapManager->mark_collided((*MapObjs_myIter));
-					if (distance_remaining_left == -1) {
-						distance_remaining_left = distance_left;
-					}
-					else if (distance_left < distance_remaining_left) {
-						distance_remaining_left = distance_left;
-					}
-				}
-				++MapObjs_myIter;
-			}
 			if (is_colliding_left == false) {
 				myPlayerManager->PlayerGameCoordX -= myPlayerManager->player_movement_increment;
-				if (((myPlayerManager->PlayerGameCoordX* myCameraManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
+				if (((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX) <= myCameraManager->ScreenWall_Left) {
 					myCameraManager->CameraX -= myPlayerManager->player_movement_increment * myCameraManager->zoom;
 				}
 			}
 			else if (distance_remaining_left > 0) {
+				myLogger->log("distance remaining");
+				myLogger->log(distance_remaining_left);
 				myPlayerManager->PlayerGameCoordX -= distance_remaining_left;
 			}
 		}
-		else if (myInputManager->inputFlag_Right && !myInputManager->inputFlag_Left) {
-			MapObjs_myIter = myMapManager->myActiveMapObjects.begin();
-			while (MapObjs_myIter != MapObjs_myEnd) {
-				int distance_right = -1;
-				distance_right = isWalkingPlayerCollidingRightMapObject((*MapObjs_myIter));
-				if (distance_right != -1) {
-					is_colliding_right = true;
-					myMapManager->mark_collided((*MapObjs_myIter));
-					if (distance_remaining_right == -1) {
-						distance_remaining_right = distance_right;
-					}
-					else if (distance_right < distance_remaining_right) {
-						distance_remaining_right = distance_right;
-					}
-				}
-				++MapObjs_myIter;
-			}
+
+		//Jumping right
+		else if (!myInputManager->inputFlag_Left && myInputManager->inputFlag_Right) {
 			if (is_colliding_right == false) {
 				myPlayerManager->PlayerGameCoordX += myPlayerManager->player_movement_increment;
-				if ((((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom)+myCameraManager->PlayerSize_X) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
+				if (((myPlayerManager->PlayerGameCoordX * myCameraManager->zoom) - myCameraManager->CameraX) >= myCameraManager->ScreenWall_Right) {
 					myCameraManager->CameraX += myPlayerManager->player_movement_increment * myCameraManager->zoom;
 				}
 			}
