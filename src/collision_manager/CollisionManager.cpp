@@ -245,7 +245,7 @@ inline int CollisionManager::isJumpingPlayerCollidingUpMapObject(int MapObjectID
 	//1) Get the collision box of the player.
 	SDL_Rect myPlayerCollisionBox = myAssetFactory->myAnimatedAssets[0]->myStaticAssets[0]->myRect_src;
 	int PlayerEdge_Right = myPlayerManager->PlayerGameCoordX + myPlayerCollisionBox.w;
-	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h;
+	int PlayerEdge_Bottom = myPlayerManager->PlayerGameCoordY + myPlayerCollisionBox.h - 20;
 	int PlayerEdge_Left = myPlayerManager->PlayerGameCoordX;
 	int PlayerEdge_Top = myPlayerManager->PlayerGameCoordY + 12;
 	int PlayerEdge_TopAfterMovement = myPlayerManager->PlayerGameCoordY - myPlayerManager->player_movement_increment;
