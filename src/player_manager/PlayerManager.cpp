@@ -43,22 +43,6 @@ PlayerManager::PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputMan
 PlayerManager::~PlayerManager ( void ) {
 }
 
-void PlayerManager::doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray, std::string inFileLocation, int inLength ) {
-	for( int i=1; i<=inLength; i++ ) {
-		std::stringstream myStringstreamConv;
-		myStringstreamConv << i;
-		std::string myConv = myStringstreamConv.str();
-		SDL_Surface *myNewSurface = IMG_Load( std::string(inFileLocation+myConv+".png").c_str() );
-		if(!myNewSurface) { std::cout << IMG_GetError(); }
-		DestTextureArray[i-1] = SDL_CreateTextureFromSurface( myRen, myNewSurface );
-		SDL_FreeSurface( myNewSurface );
-	}
-}
-
-void PlayerManager::doGameLogic ( void ) {
-
-}
-
 SDL_Rect PlayerManager::getPlayerDest(void) {
 	SDL_Rect PlayerDest;
 	coord PlayerCoords = myCameraManager->translate_coords(PlayerGameCoordX, PlayerGameCoordY);

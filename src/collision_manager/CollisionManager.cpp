@@ -175,15 +175,9 @@ void CollisionManager::doDrawCollisionBoxes ( void ) {
 }
 
 void CollisionManager::doGameLogic ( void ) {
-	myPlayerManager->doGameLogic();
 	doPlayerCollisions();
-	//3) doEnemyLogicTick();
-	//4) TODO: Check for enemy collisions.
 	doEnemyCollisions();
 	doPlayerEnemyCollisions();
-	//5) doCollectiblesLogicTick();
-	//6) doClickablesLogicTick();
-	//7) doInteractablesLogicTick();
 }
 
 /*

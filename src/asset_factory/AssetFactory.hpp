@@ -9,9 +9,14 @@
 #include "../logger/logger.hpp"
 #include "../camera_manager/CameraManager.hpp"
 
+class CollisionBox {
+	CollisionBox(int x, int y, int h, int w);
+	int x, y, h, w;
+};
+
 class StaticAsset {
 public:
-	SDL_Texture * myTexture;
+	SDL_Texture* myTexture;
 	SDL_Rect myRect_src, myRect_dst;
 	int PixelWidth, PixelHeight;
 };

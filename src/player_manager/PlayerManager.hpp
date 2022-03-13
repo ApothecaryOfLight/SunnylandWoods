@@ -20,10 +20,8 @@ public:
 	PlayerManager ( Logger * inLogger, SDL_Renderer * inRen, InputManager * inInputManager, CameraManager * inCameraManager, AssetFactory * inAssetFactory, IDManager * inIDManager );
 	~PlayerManager ( void );
 
-	void doLoadPlayerAnimationCycle ( SDL_Texture ** DestTextureArray, std::string inFileLocation, int inLength );
 	void doAnimatePlayer(void);
 	void doRenderFrame ( void );
-	void doGameLogic ( void );
 
 	SDL_Rect getPlayerDest(void);
 
