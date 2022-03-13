@@ -1,31 +1,17 @@
-doLoadImage
-0
-doLoadImage
-1
-doLoadImage
-2
-doLoadImage
-3
-doLoadImage
-4
-doLoadImage
-5
-doLoadImage
-6
-doLoadImage
-7
-doLoadImage
-8
-doLoadImage
-9
-doLoadImage
-10
-doLoadImage
-11
-doLoadImage
-12
-doLoadImage
-0
+Loading static image block
+Loading static image redundant_branch
+Loading static image tree_trunk_1
+Loading static image tree_trunk_2
+Loading static image tree_trunk_3
+Loading static image tree_trunk_4
+Loading static image tree_trunk_5
+Loading static image branch_l_a
+Loading static image branch_l_b
+Loading static image branch_l_c
+Loading static image branch_l_d
+Loading static image branch_r_a
+Loading static image branch_r_b
+Loading animated image player_idle
 media/SPRITES/player/idle/player-idle-1.png
 media/SPRITES/player/idle/player-idle-2.png
 media/SPRITES/player/idle/player-idle-3.png
@@ -34,31 +20,26 @@ media/SPRITES/player/idle/player-idle-5.png
 media/SPRITES/player/idle/player-idle-6.png
 media/SPRITES/player/idle/player-idle-7.png
 media/SPRITES/player/idle/player-idle-8.png
-doLoadImage
-1
+Loading animated image player_run
 media/SPRITES/player/run/player-run-1.png
 media/SPRITES/player/run/player-run-2.png
 media/SPRITES/player/run/player-run-3.png
 media/SPRITES/player/run/player-run-4.png
 media/SPRITES/player/run/player-run-5.png
 media/SPRITES/player/run/player-run-6.png
-doLoadImage
-2
+Loading animated image player_hurt
 media/SPRITES/player/hurt/player-hurt-1.png
 media/SPRITES/player/hurt/player-hurt-2.png
-doLoadImage
-3
+Loading animated image player_crough
 media/SPRITES/player/crouch/player-crouch-1.png
 media/SPRITES/player/crouch/player-crouch-2.png
-doLoadImage
-4
+Loading animated image player_jump
 media/SPRITES/player/jump/player-jump-1.png
 media/SPRITES/player/jump/player-jump-2.png
 media/SPRITES/player/jump/player-jump-3.png
 media/SPRITES/player/jump/player-jump-4.png
 Player images loaded.
-doLoadImage
-5
+Loading animated image ant
 media/SPRITES/enemies/ant/ant-1.png
 media/SPRITES/enemies/ant/ant-2.png
 media/SPRITES/enemies/ant/ant-3.png
@@ -67,18 +48,16 @@ media/SPRITES/enemies/ant/ant-5.png
 media/SPRITES/enemies/ant/ant-6.png
 media/SPRITES/enemies/ant/ant-7.png
 media/SPRITES/enemies/ant/ant-8.png
-doLoadImage
-6
+Loading animated image enemy_death
 media/SPRITES/misc/enemy-death/enemy-death-1.png
 media/SPRITES/misc/enemy-death/enemy-death-2.png
 media/SPRITES/misc/enemy-death/enemy-death-3.png
 media/SPRITES/misc/enemy-death/enemy-death-4.png
-doLoadImage
-7
+Loading animated image gator
 media/SPRITES/enemies/gator/gator-1.png
 media/SPRITES/enemies/gator/gator-2.png
 media/SPRITES/enemies/gator/gator-3.png
 media/SPRITES/enemies/gator/gator-4.png
 Loading media/text_atlas.png
 Map objects initialised. Total: 297
-New screen height/width: 1920/1057
+New screen height/width: 1024/640
