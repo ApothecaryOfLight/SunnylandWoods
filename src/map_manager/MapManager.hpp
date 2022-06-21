@@ -36,7 +36,6 @@ public:
 	void doLoadMapTextures ( void );
 
 	void doCreateMapObject(int XPos, int YPos, int AssetID);
-	void doLoadMapObjects ( void );
 
 	void doResize( int screenWidth, int screenHeight );
 

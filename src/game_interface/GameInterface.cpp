@@ -38,7 +38,7 @@ GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger 
 	myPlayerManager = new PlayerManager ( myLogger, inRen, myInputManager, myCameraManager, myAssetFactory, myIDManager );
 	myCollisionManager = new CollisionManager ( myLogger, inRen, myCameraManager, myAssetFactory, myMapManager, myEnemyManager, myPlayerManager, myInputManager, myIDManager );
 
-	myLevelManager = new LevelManager( myMapManager, myEnemyManager, myClickableManager, myIDManager );
+	myLevelManager = new LevelManager( myLogger, myMapManager, myEnemyManager, myClickableManager, myIDManager );
 	myAnimationManager = new AnimationManager ( inRen, myCameraManager, myMapManager, myPlayerManager, myEnemyManager, myInputManager, myCollisionManager, myIDManager, myTextManager );
 
 	setScreenTextFields();

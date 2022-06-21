@@ -31,8 +31,6 @@ MapManager::MapManager ( SDL_Renderer * inRen, Logger* inLogger, CameraManager *
 	myMapObjects = new MapObject[5000];
 
 	doLoadMapTextures();
-
-	doLoadMapObjects();
 }
 
 MapManager::~MapManager ( void ) {
@@ -79,55 +77,6 @@ void MapManager::doCreateMapObject(int XPos, int YPos, int AssetID) {
 	myMapObjects[newID].myAssetID = AssetID;
 	myMapObjects[newID].has_collided = false;
 	myMapObjects[newID].has_collided_counter = 0;
-}
-
-void MapManager::doLoadMapObjects ( void ) {
-	for (int i = -50; i < 100; i++) {
-		doCreateMapObject( i*16, 100, 0 );
-	}
-	for (int i = -50; i < -35; i++) {
-		doCreateMapObject(i * 16, 0, 0);
-	}
-
-	//-475 -> -350 @ -70
-	for (int i = -30; i < -21; i++) {
-		doCreateMapObject(i * 16, -70, 0);
-	}
-
-	//-475 -> -350 @ -70
-	for (int i = -16; i < -11; i++) {
-		doCreateMapObject(i * 16, -95, 0);
-	}
-
-	//Ant platform #1
-	for (int i = -8; i < 22; i++) {
-		doCreateMapObject(i * 16, -100, 0);
-	}
-	doCreateMapObject(-128, -116, 0);
-
-	//Branch #1
-	doCreateMapObject(127, -210, 7);
-	doCreateMapObject(175, -210, 8);
-	doCreateMapObject(207, -210, 9);
-	doCreateMapObject(239, -210, 8);
-	doCreateMapObject(271, -210, 9);
-	doCreateMapObject(303, -210, 10);
-
-	//Boundary trees
-	for (int log = -20; log < 20; log+=4) {
-		doCreateMapObject(-895, -200 + ((log) * 48), 3);
-		doCreateMapObject(-895, -200 + ((log+1) * 48), 4);
-		doCreateMapObject(-895, -200 + ((log+2) * 48), 5);
-		doCreateMapObject(-895, -200 + ((log + 3) * 48), 6);
-	}
-	for (int log = -20; log < 20; log += 4) {
-		doCreateMapObject(350, -200 + ((log) * 48), 3);
-		doCreateMapObject(350, -200 + ((log + 1) * 48), 4);
-		doCreateMapObject(350, -200 + ((log + 2) * 48), 5);
-		doCreateMapObject(350, -200 + ((log + 3) * 48), 6);
-	}
-
-	myLogger->log("Map objects initialised. Total: " + std::to_string(myIDManager->getIDcounter()));
 }
 
 void MapManager::doRenderFrame ( void ) {
