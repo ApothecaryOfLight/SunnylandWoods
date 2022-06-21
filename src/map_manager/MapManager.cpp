@@ -82,8 +82,6 @@ void MapManager::doCreateMapObject(int XPos, int YPos, int AssetID) {
 }
 
 void MapManager::doLoadMapObjects ( void ) {
-	int newID = myIDManager->getNewID();
-
 	for (int i = -50; i < 100; i++) {
 		doCreateMapObject( i*16, 100, 0 );
 	}
