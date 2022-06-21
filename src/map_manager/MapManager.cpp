@@ -30,29 +30,13 @@ MapManager::MapManager ( SDL_Renderer * inRen, Logger* inLogger, CameraManager *
 
 	myMapObjects = new MapObject[5000];
 
-	myCollisionBoxes = new SDL_Rect*[1000];
-	for( int i=0; i<=999; i++ ) {
-		myCollisionBoxes[i] = new SDL_Rect;
-	}
-	std::cout << &myCollisionBoxes << std::endl;
-
 	doLoadMapTextures();
 
 	doLoadMapObjects();
-	std::cout << "MapManager constructor finished." << std::endl;
 }
 
 MapManager::~MapManager ( void ) {
 	SDL_DestroyTexture( texture_Clouds );
-}
-
-inline void MapManager::doCreateRect ( int inMapObjectID, int inX, int inY, int inW, int inH ) {
-	std::cout << "doCreateRect: " << inMapObjectID << " = " << inX << "/" << inY << "/" << inW << "/" << inH << std::endl;
-	std::cout << &myCollisionBoxes << std::endl;
-	myCollisionBoxes[ inMapObjectID ]->x = inX;
-	myCollisionBoxes[ inMapObjectID ]->y = inY;
-	myCollisionBoxes[ inMapObjectID ]->w = inW;
-	myCollisionBoxes[ inMapObjectID ]->h = inH;
 }
 
 //TODO: This should take place in AssetFactory
@@ -98,8 +82,6 @@ void MapManager::doCreateMapObject(int XPos, int YPos, int AssetID) {
 }
 
 void MapManager::doLoadMapObjects ( void ) {
-	doCreateRect( 0, 320, 320, 16, 16 );
-
 	int newID = myIDManager->getNewID();
 
 	for (int i = -50; i < 100; i++) {

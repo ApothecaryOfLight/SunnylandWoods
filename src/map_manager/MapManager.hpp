@@ -35,8 +35,6 @@ public:
 
 	void doLoadMapTextures ( void );
 
-	void doCreateRect ( int inMapObjectID, int inX, int inY, int inW, int inH );
-
 	void doCreateMapObject(int XPos, int YPos, int AssetID);
 	void doLoadMapObjects ( void );
 
@@ -50,7 +48,6 @@ public:
 	int getAssetID ( int inGlobalID );
 	MapObject * getMapObject ( int inGlobalID );
 
-	SDL_Rect ** myCollisionBoxes;
 	std::list<int> myActiveMapObjects;
 private:
 	//My class pointers
