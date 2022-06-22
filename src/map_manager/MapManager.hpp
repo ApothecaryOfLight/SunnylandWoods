@@ -48,6 +48,9 @@ public:
 	MapObject * getMapObject ( int inGlobalID );
 
 	std::list<int> myActiveMapObjects;
+
+	//My Map Objects
+	MapObject * myMapObjects;
 private:
 	//My class pointers
 	CameraManager * myCameraManager;
@@ -63,8 +66,6 @@ private:
 	//Textures
 	SDL_Texture * texture_Clouds;
 
-	//My Map Objects
-	MapObject * myMapObjects;
 };
 
 #endif

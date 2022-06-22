@@ -41,6 +41,9 @@ public:
 	void loadMapObjects(std::fstream* inFileStream);
 	void ParseEnemyObject(std::string inEnemyObjectText);
 	void ParseMapObject(std::string inMapObjectText);
+	void doSaveLevel(std::string inLevelName);
+	void saveEnemyObjects(std::fstream* inFileStream);
+	void saveMapObjects(std::fstream* inFileStream);
 private:
 	MapManager * myMapManager;
 	EnemyManager * myEnemyManager;
