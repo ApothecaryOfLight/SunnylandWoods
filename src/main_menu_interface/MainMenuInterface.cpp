@@ -10,11 +10,9 @@
 TODO: Subsume this within main game loop
 */
 
-MainMenuInterface::MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRendererHandle, Logger * inLogger ) {
+MainMenuInterface::MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRendererHandle, Logger * inLogger, bool* interfaceSwitched, int* interfaceID ) {
 	myLogger = inLogger;
 	isQuit = false;
-	GameInterfaceStart = false;
-	GameInterfaceStarted = false;
 
 	ren = inRendererHandle;
 
@@ -39,6 +37,9 @@ MainMenuInterface::MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRende
 	SDL_Surface *myPressEnterText = IMG_Load( "media/INTERFACE/press-enter-text.png" );
 	myTPressEnterText = SDL_CreateTextureFromSurface( ren, myPressEnterText );
 	SDL_FreeSurface( myPressEnterText );
+
+	myInterfaceSwitched = interfaceSwitched;
+	myInterfaceID = interfaceID;
 }
 
 MainMenuInterface::~MainMenuInterface() {
@@ -163,7 +164,8 @@ void MainMenuInterface::doProcessInput ( SDL_Event * inEvent ) {
 				isQuit = true;
 				break;
 			case SDLK_RETURN:
-				GameInterfaceStart = true;
+				(*myInterfaceID) = 1;
+				(*myInterfaceSwitched) = true;
 				break;
 		}
 	}

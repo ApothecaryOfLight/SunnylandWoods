@@ -15,7 +15,7 @@
 
 class MainMenuInterface {
 public:
-	MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRendererHandle, Logger * inLogger );
+	MainMenuInterface( SDL_Window * inWin, SDL_Renderer * inRendererHandle, Logger * inLogger, bool* interfaceSwitched, int* interfaceID );
 	~MainMenuInterface();
 
 	//Animation Functions
@@ -42,13 +42,15 @@ public:
 	//Animation Variables
 	int AnimationCounterMountains, AnimationCounterTrees, AnimationCounterPressEnterText;
 
-	//Interface-flow variables.
+	//Quit variable.
 	bool isQuit;
-	bool GameInterfaceStart, GameInterfaceStarted;
 private:
 	SDL_Renderer *ren;
 	SDL_Window* myWin;
 	Logger* myLogger;
+
+	bool* myInterfaceSwitched;
+	int* myInterfaceID;
 };
 
 #endif

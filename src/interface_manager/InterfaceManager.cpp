@@ -9,8 +9,11 @@
 InterfaceManager::InterfaceManager ( SDL_Window * inWin, SDL_Renderer * inRenderer, Logger * inLogger ) {
 	myLogger = inLogger;
 	myWin = inWin;
-	myMainMenuInterface = new MainMenuInterface( inWin, inRenderer, inLogger );
-	myGameInterface = new GameInterface( inWin, inRenderer, inLogger );
+	myMainMenuInterface = new MainMenuInterface( inWin, inRenderer, inLogger, &interfaceSwitched, &interfaceID );
+	myGameInterface = new GameInterface( inWin, inRenderer, inLogger, &interfaceSwitched, &interfaceID );
+
+	interfaceSwitched = false;
+	interfaceID = 0;
 }
 
 InterfaceManager::~InterfaceManager ( void ) {
@@ -19,43 +22,44 @@ InterfaceManager::~InterfaceManager ( void ) {
 }
 
 void InterfaceManager::doProcessInput ( SDL_Event * inEvent ) {
-	if( myMainMenuInterface->GameInterfaceStarted == false ) {
+	if( interfaceID == 0 ) {
 		myMainMenuInterface->doProcessInput( inEvent );
 	}
-	else if( myMainMenuInterface->GameInterfaceStarted == true ) {
+	else if( interfaceID == 1 ) {
 		myGameInterface->doProcessInput( inEvent );
 	}
 }
 
 void InterfaceManager::doGameLogic ( void ) {
-	if( myMainMenuInterface->GameInterfaceStarted == false ) {
+	if( interfaceID == 0 ) {
 		myMainMenuInterface->doComposeFrameMainMenuInterface();
 	}
-	else if( myMainMenuInterface->GameInterfaceStarted == true ) {
+	else if( interfaceID == 1 ) {
 		myGameInterface->doGameLogic();
 	}
 }
 
 void InterfaceManager::doRenderFrame ( void ) {
-	if( myMainMenuInterface->GameInterfaceStarted == false ) {
+	if (interfaceSwitched) {
+		if (interfaceID == 1) {
+			myGameInterface->doGameStart();
+		}
+		interfaceSwitched = false;
+	}
+	if (interfaceID == 0) {
 		myMainMenuInterface->doRenderMainMenuInterface();
 	}
-	else if( myMainMenuInterface->GameInterfaceStarted == true ) {
+	else if (interfaceID == 1) {
 		myGameInterface->doRenderFrame();
-	}
-	if (myMainMenuInterface->GameInterfaceStart == true) {
-		myGameInterface->doGameStart();
-		myMainMenuInterface->GameInterfaceStarted = true;
-		myMainMenuInterface->GameInterfaceStart = false;
 	}
 }
 
 
 bool InterfaceManager::isQuit ( void ) {
-	if( myMainMenuInterface->GameInterfaceStarted == false ) {
+	if( interfaceID == 0 ) {
 		return myMainMenuInterface->isQuit;
 	}
-	else if( myMainMenuInterface->GameInterfaceStarted == true ) {
+	else if( interfaceID == 1 ) {
 		return myGameInterface->isQuit();
 	}
 }

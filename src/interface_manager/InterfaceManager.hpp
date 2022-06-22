@@ -16,6 +16,16 @@ public:
 	void doGameLogic ( void );
 	void doRenderFrame ( void );
 	bool isQuit ( void );
+
+	bool interfaceSwitched;
+	/*
+	* interfaceID: Determines which interface should be displayed to the user.
+	* 0: Main menu
+	* 1: Game interface
+	* 2: Editor interface
+	* 3: Level selector interface
+	*/
+	int interfaceID;
 private:
 	MainMenuInterface * myMainMenuInterface;
 	GameInterface * myGameInterface;

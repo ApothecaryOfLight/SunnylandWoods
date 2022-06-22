@@ -22,7 +22,7 @@
 
 class GameInterface {
 public:
-	GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger );
+	GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger, bool* interfaceSwitched, int* interfaceID);
 	~GameInterface ( void );
 	void doGameLogic ( void );
 	void doRenderFrame ( void );

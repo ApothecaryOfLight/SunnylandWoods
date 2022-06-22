@@ -22,7 +22,7 @@
 #define screenWIDTH 1024
 #define screenHEIGHT 640
 
-GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger ) {
+GameInterface::GameInterface ( SDL_Window * inWin, SDL_Renderer * inRen, Logger * inLogger, bool* interfaceSwitched, int* interfaceID) {
 	myLogger = inLogger;
 	myWin = inWin;
 	myIDManager = new IDManager();
